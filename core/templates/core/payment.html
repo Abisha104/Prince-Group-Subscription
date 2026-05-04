@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Payment | Prince Group</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
+:root{
+  --green:#16a34a;
+  --green-dark:#15803d;
+  --green-soft:#dcfce7;
+  --bg:#f6f9f7;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e5e7eb;
+}
+
+/* BODY */
+body{
+  background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+}
+
+/* Language Switcher - FIXED STICKY TOP */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* CARD */
+.payment-card{
+  width:100%;
+  max-width:640px;
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 0 20px rgba(22,163,74,0.05);
+  animation:fadeUp .6s ease;
+}
+
+/* TITLE */
+h1{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.subtext{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+/* PLAN HIGHLIGHT */
+.plan-box{
+  background:var(--green-soft);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:20px;
+}
+
+.plan-name{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.price-main{
+  font-size:28px;
+  font-weight:800;
+}
+
+.price-main small{
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  margin-left:4px;
+}
+
+.price-sub{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* SUMMARY */
+.summary-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.summary-box{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+}
+
+.summary-box span{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.summary-box strong{
+  display:block;
+  margin-top:4px;
+}
+
+/* METHODS */
+.payment-methods{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.method{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.method:hover{
+  border-color:var(--green);
+  transform:translateY(-2px);
+}
+
+.method.active{
+  border-color:var(--green);
+  background:var(--green-soft);
+}
+
+.method:focus{
+  outline:2px solid var(--green);
+  outline-offset:2px;
+}
+
+/* BUTTON */
+.pay-btn{
+  width:100%;
+  height:50px;
+  border:none;
+  border-radius:999px;
+  margin-top:20px;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.pay-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(22,163,74,0.25);
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  body {
+    padding: 60px 16px 20px 16px;
+  }
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  .payment-card {
+    padding: 25px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  .subtext {
+    font-size: 13px;
+  }
+  .plan-box {
+    padding: 16px;
+  }
+  .price-main {
+    font-size: 26px;
+  }
+  .summary-box {
+    padding: 11px;
+  }
+  .method {
+    padding: 13px;
+  }
+  .pay-btn {
+    height: 48px;
+  }
+}
+
+@media(max-width:600px){
+  .summary-grid,
+  .payment-methods{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:480px){
+  body {
+    padding: 55px 12px 16px 12px;
+  }
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 5px 10px;
+    gap: 4px;
+  }
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  .lang-sep {
+    font-size: 10px;
+  }
+  .payment-card {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  .subtext {
+    font-size: 12px;
+  }
+  .plan-box {
+    padding: 15px;
+    margin-bottom: 18px;
+  }
+  .price-main {
+    font-size: 24px;
+  }
+  .summary-grid {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .summary-box {
+    padding: 10px;
+  }
+  .payment-methods {
+    gap: 10px;
+  }
+  .method {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .pay-btn {
+    height: 46px;
+    font-size: 16px;
+    margin-top: 18px;
+  }
+}
+
+@media(max-width:360px){
+  body {
+    padding: 50px 10px 12px 10px;
+  }
+  .lang-switcher-fixed {
+    top: 6px;
+    right: 6px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .payment-card {
+    padding: 16px;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  .subtext {
+    font-size: 11px;
+  }
+  .plan-box {
+    padding: 12px;
+  }
+  .price-main {
+    font-size: 22px;
+  }
+  .method {
+    padding: 10px;
+    font-size: 13px;
+  }
+  .pay-btn {
+    height: 44px;
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="payment-card">
+
+<h1 id="paymentTitle">Complete Payment</h1>
+<p class="subtext" id="paymentSubtext">Review and confirm your subscription</p>
+
+<!-- PLAN -->
+<div class="plan-box">
+  <div class="plan-name" id="planName"></div>
+  <div class="price-main">
+    ₹<span id="daily"></span> <small id="perDayText">/ day</small>
+  </div>
+  <div class="price-sub">
+    ₹<span id="monthly"></span> <span id="perMonthText">/ month</span>
+  </div>
+</div>
+
+<!-- USER -->
+<div class="summary-grid">
+  <div class="summary-box">
+    <span id="usernameLabel">Username</span>
+    <strong id="userName"></strong>
+  </div>
+  <div class="summary-box">
+    <span id="mobileLabel">Mobile</span>
+    <strong id="userMobile"></strong>
+  </div>
+</div>
+
+<!-- METHODS -->
+<div class="payment-methods">
+  <div class="method active" onclick="selectMethod(this,'UPI')" id="methodUPI">📱 UPI</div>
+  <div class="method" onclick="selectMethod(this,'Card')" id="methodCard">💳 Card</div>
+  <div class="method" onclick="selectMethod(this,'NetBanking')" id="methodNetBanking">🏦 Net Banking</div>
+  <div class="method" onclick="selectMethod(this,'Wallet')" id="methodWallet">👛 Wallet</div>
+</div>
+
+<button class="pay-btn" onclick="payNow()" id="payBtn">Pay Now</button>
+
+</div>
+
+<script>
+
+// ============================================
+// LANGUAGE TRANSLATIONS FOR PAYMENT PAGE
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    paymentTitle: 'Complete Payment',
+    paymentSubtext: 'Review and confirm your subscription',
+    perDayText: '/ day',
+    perMonthText: '/ month',
+    usernameLabel: 'Username',
+    mobileLabel: 'Mobile',
+    methodUPI: '📱 UPI',
+    methodCard: '💳 Card',
+    methodNetBanking: '🏦 Net Banking',
+    methodWallet: '👛 Wallet',
+    payBtn: 'Pay Now'
+  },
+  'ta': {
+    paymentTitle: 'கட்டணத்தை முடிக்கவும்',
+    paymentSubtext: 'உங்கள் சந்தாவை மதிப்பாய்வு செய்து உறுதிப்படுத்தவும்',
+    perDayText: '/ நாள்',
+    perMonthText: '/ மாதம்',
+    usernameLabel: 'பயனர்பெயர்',
+    mobileLabel: 'மொபைல் எண்',
+    methodUPI: '📱 யுபிஐ',
+    methodCard: '💳 அட்டை',
+    methodNetBanking: '🏦 நெட் பேங்கிங்',
+    methodWallet: '👛 வாலட்',
+    payBtn: 'இப்போது செலுத்து'
+  }
+};
+
+// Apply language
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  const t = translations[lang];
+
+  document.getElementById('paymentTitle').innerText = t.paymentTitle;
+  document.getElementById('paymentSubtext').innerText = t.paymentSubtext;
+  document.getElementById('perDayText').innerText = t.perDayText;
+  document.getElementById('perMonthText').innerText = t.perMonthText;
+  document.getElementById('usernameLabel').innerText = t.usernameLabel;
+  document.getElementById('mobileLabel').innerText = t.mobileLabel;
+  document.getElementById('methodUPI').innerHTML = t.methodUPI;
+  document.getElementById('methodCard').innerHTML = t.methodCard;
+  document.getElementById('methodNetBanking').innerHTML = t.methodNetBanking;
+  document.getElementById('methodWallet').innerHTML = t.methodWallet;
+  document.getElementById('payBtn').innerText = t.payBtn;
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// ==========================
+// LOAD DATA SAFELY
+// ==========================
+const username = localStorage.getItem("username") || "-";
+const mobile = localStorage.getItem("mobile") || "-";
+const plan = localStorage.getItem("selectedPlan") || "Starter";
+const daily = parseInt(localStorage.getItem("planAmount")) || 0;
+
+// FIX: prevent zero bug
+const safeDaily = daily > 0 ? daily : 1;
+const monthly = safeDaily * 30;
+
+// ==========================
+// UPDATE UI (MATCH HTML IDS)
+// ==========================
+document.getElementById("userName").textContent = username;
+document.getElementById("userMobile").textContent = mobile;
+document.getElementById("planName").textContent = plan;
+document.getElementById("monthly").textContent = monthly;
+document.getElementById("daily").textContent = safeDaily;
+
+// ==========================
+// PAYMENT METHOD
+// ==========================
+let selectedMethod = "UPI";
+
+function selectMethod(card, method){
+  document.querySelectorAll(".method").forEach(el => el.classList.remove("active"));
+  card.classList.add("active");
+  selectedMethod = method;
+}
+
+// ==========================
+// MEMBER ID GENERATOR
+// ==========================
+function generateMemberID(){
+  return "PG" + Date.now().toString().slice(-6);
+}
+
+// ==========================
+// PAY NOW
+// ==========================
+function payNow(){
+  try {
+    const memberID = generateMemberID();
+
+    localStorage.setItem("memberID", memberID);
+    localStorage.setItem("paymentMethod", selectedMethod);
+    localStorage.setItem("paymentStatus", "Success");
+
+    console.log("Redirecting to success page...");
+    window.location.href = "payment-success.html";
+
+  } catch(err){
+    console.error(err);
+    const t = translations[currentLang];
+    alert(t.payBtn === 'Pay Now' ? "Something went wrong" : "ஏதோ தவறு நடந்துள்ளது");
+  }
+}
+
+// ==========================
+// LOAD SAVED LANGUAGE ON PAGE LOAD
+// ==========================
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('selectedLanguage');
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+  } else {
+    applyLanguage('en');
+  }
+});
+</script>
+
+</body>
+</html>

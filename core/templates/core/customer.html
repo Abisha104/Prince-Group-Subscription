@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Customer Testimonials | Prince Group</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Language Switcher - FIXED STICKY TOP */
+.lang-switcher-fixed {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 8px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.lang-btn-custom {
+  background: none;
+  border: none;
+  color: #22c55e;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 30px;
+  transition: all 0.2s;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.lang-btn-custom:hover {
+  background: rgba(34, 197, 94, 0.25);
+  transform: scale(1.02);
+}
+
+.lang-sep {
+  color: #ffffffaa;
+}
+
+.testimonials {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.testimonials h1 {
+  font-size: 32px;
+  color: #0f172a;
+}
+
+.sub {
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* HIGHLIGHT */
+.highlight {
+  border: 2px solid #19c37d;
+}
+
+/* TEXT */
+.text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1e293b;
+}
+
+/* TAGS */
+.tags {
+  margin-top: 10px;
+}
+
+.tags span {
+  font-size: 11px;
+  background: #eafff3;
+  color: #19c37d;
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+/* BOTTOM */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.info h3 {
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.info span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* AVATAR */
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #19c37d, #0ea765);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Back Button */
+.back-btn {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #19c37d, #0ea765);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(25, 195, 125, 0.3);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .testimonials {
+    padding: 70px 16px 40px 16px;
+  }
+
+  .testimonials h1 {
+    font-size: 28px;
+  }
+
+  .sub {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .tags span {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .info h3 {
+    font-size: 14px;
+  }
+
+  .info span {
+    font-size: 11px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .btn-back {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 5px 10px;
+    gap: 4px;
+  }
+
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .lang-sep {
+    font-size: 10px;
+  }
+
+  .testimonials {
+    padding: 65px 12px 30px 12px;
+  }
+
+  .testimonials h1 {
+    font-size: 24px;
+  }
+
+  .sub {
+    font-size: 12px;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .tags span {
+    font-size: 9px;
+    padding: 3px 6px;
+    margin-right: 4px;
+  }
+
+  .info h3 {
+    font-size: 13px;
+  }
+
+  .info span {
+    font-size: 10px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .btn-back {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonials h1 {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .text {
+    font-size: 11px;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<section class="testimonials">
+  <h1 id="pageTitle">Client Testimonials</h1>
+  <p class="sub" id="pageSub">Trusted by 50,000+ customers across all branches</p>
+
+  <div class="grid" id="testimonialsGrid">
+    <!-- Cards will be populated by JavaScript for language support -->
+  </div>
+
+  <div class="back-btn">
+    <button class="btn-back" onclick="goBack()" id="backBtn">← Back to Home</button>
+  </div>
+</section>
+
+<script>
+// ============================================
+// LANGUAGE TRANSLATIONS FOR CUSTOMER PAGE
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Client Testimonials',
+    pageSub: 'Trusted by 50,000+ customers across all branches',
+    backBtn: '← Back to Home'
+  },
+  'ta': {
+    pageTitle: 'வாடிக்கையாளர் மதிப்புரைகள்',
+    pageSub: 'அனைத்து கிளைகளிலும் 50,000+ வாடிக்கையாளர்களால் நம்பப்படுகிறது',
+    backBtn: '← முகப்புக்கு செல்லுங்கள்'
+  }
+};
+
+// Testimonials data
+const testimonialsData = {
+  'en': [
+    {
+      text: "I was facing continuous delays in land registration for several months. The team handled everything from document verification to final approval. Within 2 days, the entire process was completed smoothly without any complications.",
+      tags: ["Land Registration", "2 Days"],
+      name: "Kumar R",
+      branch: "Nagercoil Branch",
+      avatar: "K",
+      highlight: false
+    },
+    {
+      text: "Needed urgent patta transfer. Their team quickly verified documents and completed everything on the same day. Communication was clear and process was very smooth.",
+      tags: ["Patta Transfer", "Same Day"],
+      name: "Priya S",
+      branch: "Marthandam Branch",
+      avatar: "P",
+      highlight: true
+    },
+    {
+      text: "Required EC urgently for loan processing. The team guided me step by step and ensured quick delivery. Very professional and reliable service.",
+      tags: ["EC Apply", "Fast Delivery"],
+      name: "Arun K",
+      branch: "Colachel Branch",
+      avatar: "A",
+      highlight: false
+    },
+    {
+      text: "I had confusion in legal documentation. The team clearly explained everything and handled the process without any mistakes. Very smooth experience.",
+      tags: ["Legal Docs", "Clear Guidance"],
+      name: "Divya M",
+      branch: "Karungal Branch",
+      avatar: "D",
+      highlight: false
+    },
+    {
+      text: "Registration was completed faster than expected. The team coordinated everything perfectly and kept me updated throughout the process.",
+      tags: ["Registration", "Quick Process"],
+      name: "Ravi S",
+      branch: "Thuckalay Branch",
+      avatar: "R",
+      highlight: false
+    },
+    {
+      text: "Entire process was handled professionally without confusion. Very supportive team and timely updates made everything easy.",
+      tags: ["Patta Transfer", "Easy Process"],
+      name: "Anitha P",
+      branch: "Palugal Branch",
+      avatar: "A",
+      highlight: false
+    },
+    {
+      text: "Needed multiple documents processed. Everything was handled in one place and delivered quickly. Saved a lot of time.",
+      tags: ["EC + Docs", "One Place"],
+      name: "Manoj V",
+      branch: "Eraniel Branch",
+      avatar: "M",
+      highlight: false
+    },
+    {
+      text: "Excellent support from staff. Every step was clearly explained and completed without delay.",
+      tags: ["Registration", "Fast Support"],
+      name: "Suresh K",
+      branch: "Kottaram Branch",
+      avatar: "S",
+      highlight: false
+    },
+    {
+      text: "Had multiple corrections in documents. The team fixed everything and ensured smooth completion without issues.",
+      tags: ["Documentation", "Hassle Free"],
+      name: "Deepa R",
+      branch: "Thovalai Branch",
+      avatar: "D",
+      highlight: false
+    },
+    {
+      text: "Very reliable and professional service. Everything was handled from start to finish with complete transparency.",
+      tags: ["Land Service", "Reliable"],
+      name: "Vignesh T",
+      branch: "Boothapandy Branch",
+      avatar: "V",
+      highlight: false
+    }
+  ],
+  'ta': [
+    {
+      text: "நிலப் பதிவில் பல மாதங்களாக தொடர்ச்சியான தாமதங்களை எதிர்கொண்டேன். ஆவண சரிபார்ப்பு முதல் இறுதி ஒப்புதல் வரை அனைத்தையும் குழு கையாண்டது. 2 நாட்களுக்குள், முழு செயல்முறையும் எந்த சிக்கலும் இல்லாமல் சுமூகமாக முடிக்கப்பட்டது.",
+      tags: ["நிலப் பதிவு", "2 நாட்கள்"],
+      name: "குமார் ஆர்",
+      branch: "நாகர்கோவில் கிளை",
+      avatar: "க",
+      highlight: false
+    },
+    {
+      text: "அவசர பட்டா மாற்றம் தேவைப்பட்டது. அவர்களின் குழு விரைவாக ஆவணங்களை சரிபார்த்து அதே நாளில் அனைத்தையும் முடித்தது. தகவல்தொடர்பு தெளிவாக இருந்தது மற்றும் செயல்முறை மிகவும் சுமூகமாக இருந்தது.",
+      tags: ["பட்டா மாற்றல்", "அதே நாள்"],
+      name: "பிரியா எஸ்",
+      branch: "மார்த்தாண்டம் கிளை",
+      avatar: "ப",
+      highlight: true
+    },
+    {
+      text: "கடன் செயலாக்கத்திற்காக அவசரமாக EC தேவைப்பட்டது. குழு எனக்கு படிப்படியாக வழிகாட்டியது மற்றும் விரைவான விநியோகத்தை உறுதி செய்தது. மிகவும் தொழில்முறை மற்றும் நம்பகமான சேவை.",
+      tags: ["EC விண்ணப்பம்", "விரைவான விநியோகம்"],
+      name: "அருண் கே",
+      branch: "குளச்சல் கிளை",
+      avatar: "அ",
+      highlight: false
+    },
+    {
+      text: "சட்ட ஆவணங்களில் குழப்பம் இருந்தது. குழு அனைத்தையும் தெளிவாக விளக்கியது மற்றும் எந்த தவறும் இல்லாமல் செயல்முறையை கையாண்டது. மிகவும் சுமூகமான அனுபவம்.",
+      tags: ["சட்ட ஆவணங்கள்", "தெளிவான வழிகாட்டுதல்"],
+      name: "திவ்யா எம்",
+      branch: "கருவங்கல் கிளை",
+      avatar: "தி",
+      highlight: false
+    },
+    {
+      text: "பதிவு எதிர்பார்த்ததை விட வேகமாக முடிந்தது. குழு அனைத்தையும் சரியாக ஒருங்கிணைத்தது மற்றும் செயல்முறை முழுவதும் என்னைப் புதுப்பித்தது.",
+      tags: ["பதிவு", "விரைவான செயல்முறை"],
+      name: "ரவி எஸ்",
+      branch: "தக்கலை கிளை",
+      avatar: "ர",
+      highlight: false
+    },
+    {
+      text: "முழு செயல்முறையும் குழப்பமின்றி தொழில்முறையாக கையாளப்பட்டது. மிகவும் ஆதரவான குழு மற்றும் சரியான நேரத்தில் புதுப்பிப்புகள் எல்லாவற்றையும் எளிதாக்கியது.",
+      tags: ["பட்டா மாற்றல்", "எளிதான செயல்முறை"],
+      name: "அனிதா பி",
+      branch: "பழுகால் கிளை",
+      avatar: "அ",
+      highlight: false
+    },
+    {
+      text: "பல ஆவணங்களை செயலாக்க வேண்டியிருந்தது. எல்லாம் ஒரே இடத்தில் கையாளப்பட்டு விரைவாக வழங்கப்பட்டது. நிறைய நேரத்தை மிச்சப்படுத்தியது.",
+      tags: ["EC + ஆவணங்கள்", "ஒரே இடம்"],
+      name: "மனோஜ் வி",
+      branch: "எரணியேல் கிளை",
+      avatar: "ம",
+      highlight: false
+    },
+    {
+      text: "ஊழியர்களின் சிறந்த ஆதரவு. ஒவ்வொரு படியும் தெளிவாக விளக்கப்பட்டு தாமதமின்றி முடிக்கப்பட்டது.",
+      tags: ["பதிவு", "விரைவான ஆதரவு"],
+      name: "சுரேஷ் கே",
+      branch: "கோட்டாரம் கிளை",
+      avatar: "ச",
+      highlight: false
+    },
+    {
+      text: "ஆவணங்களில் பல திருத்தங்கள் இருந்தன. குழு எல்லாவற்றையும் சரிசெய்து சிக்கல்கள் இல்லாமல் சுமூகமாக முடிப்பதை உறுதி செய்தது.",
+      tags: ["ஆவணப்படுத்தல்", "சிக்கலற்ற"],
+      name: "தீபா ஆர்",
+      branch: "தோவளை கிளை",
+      avatar: "தி",
+      highlight: false
+    },
+    {
+      text: "மிகவும் நம்பகமான மற்றும் தொழில்முறை சேவை. தொடக்கத்திலிருந்து இறுதி வரை அனைத்தும் முழு வெளிப்படைத்தன்மையுடன் கையாளப்பட்டது.",
+      tags: ["நில சேவை", "நம்பகமான"],
+      name: "விக்னேஷ் டி",
+      branch: "பூதப்பாண்டி கிளை",
+      avatar: "வ",
+      highlight: false
+    }
+  ]
+};
+
+// Function to render testimonial cards
+function renderTestimonials(lang) {
+  const grid = document.getElementById('testimonialsGrid');
+  const data = testimonialsData[lang];
+
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  data.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = `card ${item.highlight ? 'highlight' : ''}`;
+    card.setAttribute('data-index', index);
+
+    card.innerHTML = `
+      <p class="text">${item.text}</p>
+      <div class="tags">
+        ${item.tags.map(tag => `<span>${tag}</span>`).join('')}
+      </div>
+      <div class="bottom">
+        <div class="info">
+          <h3>${item.name}</h3>
+          <span>${item.branch}</span>
+        </div>
+        <div class="avatar">${item.avatar}</div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  // Re-attach scroll animation
+  const cards = document.querySelectorAll(".card");
+
+  function reveal() {
+    const trigger = window.innerHeight - 80;
+    cards.forEach(c => {
+      if (c.getBoundingClientRect().top < trigger) {
+        c.classList.add("show");
+      }
+    });
+  }
+
+  window.removeEventListener("scroll", reveal);
+  window.addEventListener("scroll", reveal);
+  reveal();
+}
+
+// Apply language
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  const t = translations[lang];
+
+  document.getElementById('pageTitle').innerText = t.pageTitle;
+  document.getElementById('pageSub').innerText = t.pageSub;
+  document.getElementById('backBtn').innerText = t.backBtn;
+
+  // Render testimonials in selected language
+  renderTestimonials(lang);
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Go back to home page
+function goBack() {
+  window.location.href = '/';
+}
+
+// Load saved language on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('selectedLanguage');
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+  } else {
+    applyLanguage('en');
+  }
+});
+</script>
+
+</body>
+</html>

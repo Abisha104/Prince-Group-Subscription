@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agreement & Contract Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+/* Sticky language switcher - stays at top always */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT - SMALL SCREENS ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 16px 50px 16px;
+  }
+  .page-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .page-sub {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .box-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .icon {
+    font-size: 26px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .view {
+    font-size: 11px;
+  }
+  .popup-content {
+    padding: 20px;
+    max-width: 94%;
+  }
+  .popup-content h2 {
+    font-size: 20px;
+  }
+  .popup-content ul li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .lang-switcher-fixed {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .box-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .container {
+    padding: 80px 14px 40px 14px;
+  }
+  .page-title {
+    font-size: 26px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .icon {
+    font-size: 28px;
+  }
+  .card h3 {
+    font-size: 16px;
+  }
+  .card p {
+    font-size: 12px;
+  }
+  .view {
+    font-size: 12px;
+  }
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+}
+
+/* very tiny devices 360px and below */
+@media (max-width: 380px) {
+  .page-title {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .icon {
+    font-size: 24px;
+  }
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+/* Keep all animations for mobile, corner boxes slight adjustment */
+@media (max-width: 700px) {
+  .corner-box {
+    width: 140px;
+    height: 140px;
+    opacity: 0.5;
+  }
+  .blob {
+    width: 180px;
+    height: 180px;
+    filter: blur(70px);
+  }
+}
+
+/* preserve desktop look */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language Switcher -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Agreement & Contract Services</h1>
+<p class="page-sub" id="pageSub">Professional drafting and processing support for rental, lease, commercial, and contract agreements</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('rental')">
+  <div class="icon">🏠</div>
+  <h3 id="title1">Rental Agreement</h3>
+  <p id="desc1">Short-term property usage contract</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('lease')">
+  <div class="icon">📜</div>
+  <h3 id="title2">Lease Agreement</h3>
+  <p id="desc2">Long-term property legal contract</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('commercial')">
+  <div class="icon">🏢</div>
+  <h3 id="title3">Commercial Agreement</h3>
+  <p id="desc3">Business property & service contracts</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('partnership')">
+  <div class="icon">🤝</div>
+  <h3 id="title4">Partnership Agreement</h3>
+  <p id="desc4">Business partner legal structure</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('construction')">
+  <div class="icon">🏗️</div>
+  <h3 id="title5">Construction Agreement</h3>
+  <p id="desc5">Building project contract terms</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('service')">
+  <div class="icon">🛠️</div>
+  <h3 id="title6">Service Agreement</h3>
+  <p id="desc6">Professional service contracts</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('vendor')">
+  <div class="icon">📦</div>
+  <h3 id="title7">Vendor Agreement</h3>
+  <p id="desc7">Supplier & procurement contracts</p>
+  <div class="view" id="view7">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+<script>
+
+// ============================================
+// LANGUAGE TRANSLATIONS FOR SERVICE3 PAGE
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Agreement & Contract Services',
+    pageSub: 'Professional drafting and processing support for rental, lease, commercial, and contract agreements',
+    viewDetails: 'View Details →',
+    cards: {
+      rental: { title: 'Rental Agreement', desc: 'Short-term property usage contract' },
+      lease: { title: 'Lease Agreement', desc: 'Long-term property legal contract' },
+      commercial: { title: 'Commercial Agreement', desc: 'Business property & service contracts' },
+      partnership: { title: 'Partnership Agreement', desc: 'Business partner legal structure' },
+      construction: { title: 'Construction Agreement', desc: 'Building project contract terms' },
+      service: { title: 'Service Agreement', desc: 'Professional service contracts' },
+      vendor: { title: 'Vendor Agreement', desc: 'Supplier & procurement contracts' }
+    }
+  },
+  'ta': {
+    pageTitle: 'ஒப்பந்தம் மற்றும் ஒப்பந்த சேவைகள்',
+    pageSub: 'வாடகை, குத்தகை, வணிக மற்றும் ஒப்பந்த ஒப்பந்தங்களுக்கான தொழில்முறை வரைவு மற்றும் செயலாக்க ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      rental: { title: 'வாடகை ஒப்பந்தம்', desc: 'குறுகிய கால சொத்து பயன்பாட்டு ஒப்பந்தம்' },
+      lease: { title: 'குத்தகை ஒப்பந்தம்', desc: 'நீண்ட கால சொத்து சட்ட ஒப்பந்தம்' },
+      commercial: { title: 'வணிக ஒப்பந்தம்', desc: 'வணிக சொத்து மற்றும் சேவை ஒப்பந்தங்கள்' },
+      partnership: { title: 'கூட்டு ஒப்பந்தம்', desc: 'வணிக கூட்டாளர் சட்ட கட்டமைப்பு' },
+      construction: { title: 'கட்டுமான ஒப்பந்தம்', desc: 'கட்டிட திட்ட ஒப்பந்த விதிமுறைகள்' },
+      service: { title: 'சேவை ஒப்பந்தம்', desc: 'தொழில்முறை சேவை ஒப்பந்தங்கள்' },
+      vendor: { title: 'விற்பனையாளர் ஒப்பந்தம்', desc: 'சப்ளையர் மற்றும் கொள்முதல் ஒப்பந்தங்கள்' }
+    }
+  }
+};
+
+// Popup content translations
+const popupData = {
+  'en': {
+    agreementServices: {
+      title: "Agreement & Contract Services",
+      list: [
+        "Agreement & contract services involve legally drafting, reviewing, and formalizing binding documents between two or more parties to define rights, responsibilities, and obligations.",
+        "Ensures compliance with Indian Contract Act, 1872 and related legal frameworks.",
+        "Helps prevent disputes by clearly defining terms and conditions.",
+        "Used in residential, commercial, and business transactions.",
+        "Legally enforceable in courts when properly executed and registered."
+      ]
+    },
+    rental: {
+      title: "Rental Agreement",
+      list: [
+        "A rental agreement is a legal contract between landlord and tenant defining terms of property usage for a specific period.",
+        "Includes rent amount, deposit, maintenance terms, and notice period.",
+        "Protects both landlord and tenant rights under tenancy laws.",
+        "Usually valid for short-term residential or commercial use.",
+        "Can be registered or notarized for legal validity."
+      ]
+    },
+    lease: {
+      title: "Lease Agreement",
+      list: [
+        "A lease agreement is a long-term contract granting exclusive property rights to a tenant for a fixed duration.",
+        "Typically used for residential, commercial, and industrial properties.",
+        "Defines lease tenure, rent escalation, and renewal terms.",
+        "Legally binding under property and contract laws.",
+        "Provides stronger possession rights compared to rental agreements."
+      ]
+    },
+    commercial: {
+      title: "Commercial Agreement",
+      list: [
+        "A commercial agreement governs business-to-business transactions and usage of commercial property or services.",
+        "Includes terms of trade, payment structure, and obligations.",
+        "Used in office spaces, shops, and business operations.",
+        "Ensures clarity in financial and operational responsibilities.",
+        "Reduces risk of disputes in commercial dealings."
+      ]
+    },
+    partnership: {
+      title: "Partnership Agreement",
+      list: [
+        "A partnership agreement defines the relationship between business partners.",
+        "Specifies profit sharing, roles, capital contribution, and decision-making authority.",
+        "Legally governed under Partnership Act, 1932.",
+        "Prevents conflicts by clearly defining responsibilities.",
+        "Essential for business startups and joint ventures."
+      ]
+    },
+    construction: {
+      title: "Construction Agreement",
+      list: [
+        "A construction agreement is a contract between client and contractor for building or infrastructure work.",
+        "Includes project scope, timeline, payment stages, and material usage.",
+        "Ensures accountability and project completion standards.",
+        "Used in residential and commercial construction projects.",
+        "Protects both client and contractor legally."
+      ]
+    },
+    service: {
+      title: "Service Agreement",
+      list: [
+        "A service agreement defines terms between service provider and client for professional services.",
+        "Includes scope of work, payment terms, and deliverables.",
+        "Common in IT, consultancy, and maintenance services.",
+        "Ensures clarity in service expectations and obligations.",
+        "Legally enforceable under contract law."
+      ]
+    },
+    vendor: {
+      title: "Vendor Agreement",
+      list: [
+        "A vendor agreement is a contract between a business and supplier defining supply terms.",
+        "Includes pricing, delivery schedule, and quality standards.",
+        "Ensures smooth procurement and supply chain management.",
+        "Protects both vendor and buyer interests.",
+        "Common in retail, manufacturing, and corporate sectors."
+      ]
+    }
+  },
+  'ta': {
+    agreementServices: {
+      title: "ஒப்பந்தம் மற்றும் ஒப்பந்த சேவைகள்",
+      list: [
+        "ஒப்பந்தம் மற்றும் ஒப்பந்த சேவைகள் சட்டப்பூர்வமாக வரைவு, மதிப்பாய்வு மற்றும் உரிமைகள், பொறுப்புகள் மற்றும் கடமைகளை வரையறுக்க இரண்டு அல்லது அதற்கு மேற்பட்ட தரப்பினருக்கிடையே பிணைக்கும் ஆவணங்களை முறைப்படுத்துகின்றன.",
+        "இந்திய ஒப்பந்தச் சட்டம், 1872 மற்றும் தொடர்புடைய சட்ட கட்டமைப்புகளுக்கு இணங்குவதை உறுதி செய்கிறது.",
+        "விதிமுறைகள் மற்றும் நிபந்தனைகளை தெளிவாக வரையறுப்பதன் மூலம் சர்ச்சைகளைத் தடுக்க உதவுகிறது.",
+        "குடியிருப்பு, வணிக மற்றும் வணிக பரிவர்த்தனைகளில் பயன்படுத்தப்படுகிறது.",
+        "சரியாக செயல்படுத்தப்பட்டு பதிவு செய்யப்படும்போது நீதிமன்றங்களில் சட்டப்பூர்வமாக நிறைவேற்றக்கூடியது."
+      ]
+    },
+    rental: {
+      title: "வாடகை ஒப்பந்தம்",
+      list: [
+        "வாடகை ஒப்பந்தம் என்பது ஒரு குறிப்பிட்ட காலத்திற்கு சொத்து பயன்பாட்டு விதிமுறைகளை வரையறுக்கும் நில உரிமையாளருக்கும் குத்தகைதாரருக்கும் இடையிலான சட்ட ஒப்பந்தமாகும்.",
+        "வாடகைத் தொகை, வைப்புத்தொகை, பராமரிப்பு விதிமுறைகள் மற்றும் நோட்டீஸ் காலம் ஆகியவை அடங்கும்.",
+        "குத்தகைச் சட்டங்களின் கீழ் நில உரிமையாளர் மற்றும் குத்தகைதாரர் உரிமைகள் இரண்டையும் பாதுகாக்கிறது.",
+        "பொதுவாக குறுகிய கால குடியிருப்பு அல்லது வணிக பயன்பாட்டிற்கு செல்லுபடியாகும்.",
+        "சட்ட செல்லுபடியாகும் வகையில் பதிவு செய்யலாம் அல்லது நோட்டரி செய்யலாம்."
+      ]
+    },
+    lease: {
+      title: "குத்தகை ஒப்பந்தம்",
+      list: [
+        "குத்தகை ஒப்பந்தம் என்பது ஒரு குறிப்பிட்ட காலத்திற்கு ஒரு குத்தகைதாரருக்கு பிரத்யேக சொத்து உரிமைகளை வழங்கும் நீண்டகால ஒப்பந்தமாகும்.",
+        "பொதுவாக குடியிருப்பு, வணிக மற்றும் தொழில்துறை சொத்துகளுக்கு பயன்படுத்தப்படுகிறது.",
+        "குத்தகை காலம், வாடகை உயர்வு மற்றும் புதுப்பித்தல் விதிமுறைகளை வரையறுக்கிறது.",
+        "சொத்து மற்றும் ஒப்பந்தச் சட்டங்களின் கீழ் சட்டப்பூர்வமாக பிணைக்கக்கூடியது.",
+        "வாடகை ஒப்பந்தங்களுடன் ஒப்பிடும்போது வலுவான உடைமை உரிமைகளை வழங்குகிறது."
+      ]
+    },
+    commercial: {
+      title: "வணிக ஒப்பந்தம்",
+      list: [
+        "வணிக ஒப்பந்தம் வணிகத்திற்கு இடையிலான பரிவர்த்தனைகள் மற்றும் வணிக சொத்து அல்லது சேவைகளின் பயன்பாட்டை நிர்வகிக்கிறது.",
+        "வர்த்தக விதிமுறைகள், கட்டண அமைப்பு மற்றும் கடமைகள் ஆகியவை அடங்கும்.",
+        "அலுவலக இடங்கள், கடைகள் மற்றும் வணிக நடவடிக்கைகளில் பயன்படுத்தப்படுகிறது.",
+        "நிதி மற்றும் செயல்பாட்டுப் பொறுப்புகளில் தெளிவை உறுதி செய்கிறது.",
+        "வணிக பரிவர்த்தனைகளில் சர்ச்சைகளின் அபாயத்தை குறைக்கிறது."
+      ]
+    },
+    partnership: {
+      title: "கூட்டு ஒப்பந்தம்",
+      list: [
+        "கூட்டு ஒப்பந்தம் வணிக பங்காளர்களுக்கிடையேயான உறவை வரையறுக்கிறது.",
+        "லாபப் பகிர்வு, பங்குகள், மூலதன பங்களிப்பு மற்றும் முடிவெடுக்கும் அதிகாரம் ஆகியவற்றைக் குறிப்பிடுகிறது.",
+        "கூட்டுச் சட்டம், 1932 இன் கீழ் சட்டப்பூர்வமாக நிர்வகிக்கப்படுகிறது.",
+        "பொறுப்புகளை தெளிவாக வரையறுப்பதன் மூலம் மோதல்களைத் தடுக்கிறது.",
+        "வணிக தொடக்கங்கள் மற்றும் கூட்டு முயற்சிகளுக்கு அவசியம்."
+      ]
+    },
+    construction: {
+      title: "கட்டுமான ஒப்பந்தம்",
+      list: [
+        "கட்டுமான ஒப்பந்தம் என்பது கட்டிடம் அல்லது உள்கட்டமைப்பு பணிகளுக்கான வாடிக்கையாளருக்கும் ஒப்பந்ததாரருக்கும் இடையிலான ஒப்பந்தமாகும்.",
+        "திட்ட நோக்கம், காலவரிசை, கட்டண நிலைகள் மற்றும் பொருள் பயன்பாடு ஆகியவை அடங்கும்.",
+        "பொறுப்புக்கூறல் மற்றும் திட்ட நிறைவு தரங்களை உறுதி செய்கிறது.",
+        "குடியிருப்பு மற்றும் வணிக கட்டுமான திட்டங்களில் பயன்படுத்தப்படுகிறது.",
+        "வாடிக்கையாளர் மற்றும் ஒப்பந்ததாரர் இருவரையும் சட்டப்பூர்வமாக பாதுகாக்கிறது."
+      ]
+    },
+    service: {
+      title: "சேவை ஒப்பந்தம்",
+      list: [
+        "சேவை ஒப்பந்தம் சேவை வழங்குநருக்கும் வாடிக்கையாளருக்கும் இடையிலான தொழில்முறை சேவைகளுக்கான விதிமுறைகளை வரையறுக்கிறது.",
+        "பணியின் நோக்கம், கட்டண விதிமுறைகள் மற்றும் வழங்கக்கூடியவை ஆகியவை அடங்கும்.",
+        "ஐடி, ஆலோசனை மற்றும் பராமரிப்பு சேவைகளில் பொதுவானது.",
+        "சேவை எதிர்பார்ப்புகள் மற்றும் கடமைகளில் தெளிவை உறுதி செய்கிறது.",
+        "ஒப்பந்தச் சட்டத்தின் கீழ் சட்டப்பூர்வமாக நிறைவேற்றக்கூடியது."
+      ]
+    },
+    vendor: {
+      title: "விற்பனையாளர் ஒப்பந்தம்",
+      list: [
+        "விற்பனையாளர் ஒப்பந்தம் என்பது ஒரு வணிகத்திற்கும் சப்ளையருக்கும் இடையிலான ஒப்பந்தமாகும்.",
+        "விலை நிர்ணயம், விநியோக அட்டவணை மற்றும் தரத் தரநிலைகள் ஆகியவை அடங்கும்.",
+        "சீரான கொள்முதல் மற்றும் விநியோகச் சங்கிலி மேலாண்மையை உறுதி செய்கிறது.",
+        "விற்பனையாளர் மற்றும் வாங்குபவர் நலன்களைப் பாதுகாக்கிறது.",
+        "சில்லறை, உற்பத்தி மற்றும் கார்ப்பரேட் துறைகளில் பொதுவானது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (FIXED - WAS MISSING!)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Agreement services
+  const cardKeys = ['rental', 'lease', 'commercial', 'partnership', 'construction', 'service', 'vendor'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with translated content
+function openPopup(type) {
+  let data = popupData[currentLang][type];
+
+  // If no specific data, use agreementServices
+  if (!data) {
+    data = popupData[currentLang].agreementServices;
+  }
+
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup on background click
+window.onclick = function(e) {
+  const popupDiv = document.getElementById('popup');
+  if (e.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Agreement Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+
+</script>
+
+</body>
+</html>

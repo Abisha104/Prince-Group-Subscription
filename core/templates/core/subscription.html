@@ -1,0 +1,1054 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Create Account | Prince Group</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
+:root{
+  --green:#16a34a;
+  --green-dark:#15803d;
+  --green-soft:rgba(22,163,74,0.08);
+  --bg:#f6f9f7;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e5e7eb;
+  --danger:#ef4444;
+}
+
+body{
+  background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+}
+
+/* Language Switcher - FIXED STICKY TOP */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+.hero-logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 0 2px 0;
+  animation:fadeUp .8s ease both;
+}
+
+.hero-logo img{
+  width:138px;
+  height:138px;
+  object-fit:contain;
+  display:block;
+  filter:
+    drop-shadow(0 16px 34px rgba(25,195,125,0.34))
+    drop-shadow(0 0 22px rgba(25,195,125,0.30))
+    drop-shadow(0 0 56px rgba(39,217,141,0.22));
+}
+
+.signup{
+  text-align:center;
+  margin-bottom:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+
+.signup-badge{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  color:var(--green);
+  background:var(--green-soft);
+  padding:5px 12px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+.signup h3{
+  font-size:22px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:6px;
+}
+
+.signup p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.signup::after{
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:50%;
+  transform:translateX(-50%);
+  width:60px;
+  height:3px;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  border-radius:10px;
+}
+
+/* WRAPPER */
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  max-width:1000px;
+  width:100%;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+}
+
+/* LEFT SECTION - Order changes on mobile */
+.left{
+  padding:50px;
+  background:
+    radial-gradient(circle at top left, var(--green-soft), transparent 40%),
+    #ffffff;
+  animation:fadeIn 1s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.brand-section {
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.brand{
+  font-weight:800;
+  font-size:25px;
+  color:var(--green);
+  font-family:'Cinzel', serif;
+  text-shadow:0 0 20px rgba(25,195,125,0.08);
+  margin-top: -30px;
+}
+
+.content-section {
+  text-align:center;
+}
+
+.hero{
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:15px;
+  line-height:1.3;
+  color:var(--text);
+}
+
+.desc{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+/* RIGHT SECTION - Form */
+.card{
+  padding:30px;
+  background:#fff;
+  animation:slideUp 0.6s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* PLAN BOX */
+.plan-box{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:20px;
+  background:var(--green-soft);
+}
+
+.plan-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.plan-badge{
+  font-size:11px;
+  background:#dcfce7;
+  color:var(--green-dark);
+  padding:4px 10px;
+  border-radius:999px;
+}
+
+.plan-name{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.price-main{
+  font-size:28px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.price-sub{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.per-text{
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+  margin-left:1px;
+}
+
+/* INPUT */
+.input-group{margin-bottom:14px;}
+
+label{
+  font-size:13px;
+  margin-bottom:6px;
+  display:block;
+}
+
+input{
+  width:100%;
+  height:46px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  padding:0 12px;
+  transition:.25s;
+}
+
+input:hover{
+  border-color:var(--green);
+}
+
+input:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px var(--green-soft);
+  outline:none;
+}
+
+/* PASSWORD */
+.password-wrap{position:relative;}
+
+.toggle-password{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:none;
+  cursor:pointer;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:600;
+}
+
+/* ERROR */
+.error-text{
+  color:var(--danger);
+  font-size:12px;
+  display:none;
+  margin-top:6px;
+}
+
+/* BUTTON */
+.main-btn{
+  width:100%;
+  height:50px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.main-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(22,163,74,0.25);
+}
+
+/* NOTE */
+.note{
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  margin-top:12px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateX(-20px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ========== DESKTOP LAYOUT (min 769px) ========== */
+@media (min-width: 769px) {
+  .wrapper {
+    flex-direction: row;
+  }
+  .left {
+    flex: 1;
+  }
+  .card {
+    flex: 0 0 420px;
+  }
+}
+
+/* ========== MOBILE LAYOUT (max 768px) ========== */
+@media (max-width: 768px) {
+  body {
+    padding: 60px 16px 20px 16px;
+  }
+
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  /* MOBILE ORDER - Using flex column with order */
+  .left {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  /* Order 1: Signup section (Create Your Account) - TOP */
+  .left .signup {
+    order: 1;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  /* Order 2: Brand section (Logo + Text) */
+  .left .brand-section {
+    order: 2;
+    margin-bottom: 20px;
+  }
+
+  /* Order 3: Content section (Unlock Premium Experience) - BOTTOM */
+  .left .content-section {
+    order: 4;
+    margin-top: 16px;
+  }
+
+  /* Card (Form) comes between brand and content */
+  .card {
+    order: 3;
+    margin: 0 0 16px 0;
+    padding: 20px;
+  }
+
+  .hero-logo img {
+    width: 80px;
+    height: 80px;
+  }
+  .brand {
+    font-size: 18px;
+    margin-top: -20px;
+  }
+  .hero {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .plan-box {
+    padding: 15px;
+    margin-bottom: 16px;
+  }
+  .price-main {
+    font-size: 22px;
+  }
+  input {
+    height: 44px;
+    font-size: 14px;
+  }
+  .main-btn {
+    height: 48px;
+    font-size: 15px;
+  }
+  .signup h3 {
+    font-size: 18px;
+  }
+  .signup p {
+    font-size: 12px;
+  }
+}
+/* ========== MOBILE (max 480px) ========== */
+@media (max-width: 480px) {
+
+  /* Reset layout */
+  body {
+    padding: 60px 14px 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ❌ Hide top section completely */
+  .top-section {
+    display: none;
+  }
+
+  /* ✅ Main form section */
+  .left {
+    width: 100%;
+    max-width: 380px;
+    padding: 0;
+    margin: 0 auto;
+
+  }
+
+  .signup{
+    margin-top: -40px;
+  }
+
+  /* ✅ Card (main box) */
+  .card {
+    width: 100%;
+    padding: 18px 16px;
+    border-radius: 14px;
+    margin-top: 10px;
+  }
+
+  /* ✅ Plan box */
+  .plan-box {
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .plan-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .plan-name {
+    font-size: 13px;
+  }
+
+  .price-main {
+    font-size: 22px;
+  }
+
+  .price-sub {
+    font-size: 13px;
+  }
+
+  .per-text {
+    font-size: 11px;
+  }
+
+  /* ✅ Form inputs */
+  .input-group {
+    margin-bottom: 14px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input {
+    width: 100%;
+    height: 46px;
+    font-size: 15px;
+    padding: 0 12px;
+    border-radius: 8px;
+  }
+
+  .toggle-password {
+    font-size: 12px;
+  }
+
+  /* ✅ Button */
+  .main-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* ✅ Signup section */
+  .signup {
+    margin-top: 16px;
+    padding-top: 12px;
+    text-align: center;
+  }
+
+  .signup-badge {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+
+  .signup h3 {
+    font-size: 17px;
+  }
+
+  .signup p {
+    font-size: 12px;
+  }
+
+  /* ✅ Notes */
+  .note {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ✅ Language switch */
+  .lang-switcher-fixed {
+    top: 4px;
+    right: 10px;
+    padding: 4px 8px;
+    gap: 3px;
+  }
+
+  .lang-btn-custom {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .brand-section {
+    display: none;
+  }
+  .content-section {
+    display: none;
+  }
+
+
+  .wrapper{
+    margin-top: -46px;
+  }
+}
+
+/* ========== EXTRA SMALL (max 360px) ========== */
+@media (max-width: 360px) {
+  body {
+    padding: 50px 10px 12px 10px;
+  }
+  .lang-switcher-fixed {
+    top: 6px;
+    right: 6px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .left {
+    padding: 12px 10px;
+  }
+  .card {
+    padding: 12px;
+
+  }
+  .hero-logo img {
+    width: 55px;
+    height: 55px;
+  }
+  .brand {
+    font-size: 13px;
+    display: none;
+  }
+  .hero {
+    font-size: 16px;
+    display: none;
+  }
+  .desc {
+    font-size: 11px;
+  }
+  .price-main {
+    font-size: 18px;
+  }
+  input {
+    height: 40px;
+    font-size: 13px;
+  }
+  .main-btn {
+    height: 42px;
+    font-size: 13px;
+  }
+  .plan-box {
+    padding: 10px;
+  }
+  .signup h3 {
+    font-size: 15px;
+  }
+}
+
+/* ========== LANDSCAPE MODE ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    padding: 55px 16px 16px 16px;
+  }
+  .wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .left {
+    flex: 1;
+    padding: 16px;
+  }
+  .card {
+    flex: 1;
+    padding: 16px;
+  }
+  .hero-logo img {
+    width: 55px;
+    height: 55px;
+  }
+  .hero {
+    font-size: 18px;
+  }
+  .desc {
+    font-size: 12px;
+  }
+
+  /* Landscape order fix */
+  .left {
+    display: flex;
+    flex-direction: column;
+  }
+  .left .signup {
+    order: 1;
+  }
+  .left .brand-section {
+    order: 2;
+  }
+  .left .content-section {
+    order: 4;
+  }
+  .card {
+    order: 3;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="wrapper">
+
+<!-- LEFT -->
+<div class="left">
+  <div class="signup">
+    <span class="signup-badge" id="secureBadge">Secure Access</span>
+    <h3 id="createTitle">Create Your Account</h3>
+    <p id="createSub">Start your premium membership in seconds</p>
+  </div>
+  <div class="brand-section">
+    <div class="hero-logo">
+      <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
+    </div>
+    <div class="brand">Prince Group of Company</div>
+  </div>
+  <div class="content-section">
+    <div class="hero" id="heroTitle">Unlock Your Premium Experience</div>
+    <div class="desc" id="heroDesc">
+      Fast onboarding, transparent pricing, and priority support.
+      Experience a smooth subscription journey.
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT -->
+<div class="card">
+
+<div class="plan-box">
+  <div class="plan-top">
+    <span class="plan-badge" id="selectedPlanLabel">Selected Plan</span>
+    <span class="plan-name" id="planName"></span>
+  </div>
+
+  <div class="price-main">
+    ₹<span id="dailyPrice"></span>
+    <span class="per-text" id="perDayText">/ day</span>
+  </div>
+
+  <div class="price-sub">
+    ₹<span id="monthlyPrice"></span>
+    <span class="per-text" id="perMonthText">/ month</span>
+  </div>
+</div>
+
+<div class="input-group">
+  <label id="usernameLabel">Username</label>
+  <input id="username" placeholder="Enter your username">
+</div>
+
+<div class="input-group">
+  <label id="mobileLabel">Mobile</label>
+  <input id="mobile" maxlength="10" placeholder="10-digit mobile number">
+</div>
+
+<div class="input-group">
+  <label id="passwordLabel">Password</label>
+  <div class="password-wrap">
+    <input type="password" id="password" placeholder="Create a password">
+    <button class="toggle-password" onclick="togglePassword('password',this)" id="showBtn">Show</button>
+  </div>
+</div>
+
+<div class="input-group">
+  <label id="confirmLabel">Confirm Password</label>
+  <div class="password-wrap">
+    <input type="password" id="confirmPassword" placeholder="Confirm your password">
+    <button class="toggle-password" onclick="togglePassword('confirmPassword',this)" id="showConfirmBtn">Show</button>
+  </div>
+  <div class="error-text" id="errorText"></div>
+</div>
+
+<button class="main-btn" onclick="goPayment()" id="continueBtn">Continue to Payment</button>
+
+<div class="note" id="noteText">Secure • Fast • Trusted</div>
+
+</div>
+</div>
+
+<script>
+
+// ============================================
+// LANGUAGE TRANSLATIONS FOR SUBSCRIPTION PAGE
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    secureBadge: 'Secure Access',
+    createTitle: 'Create Your Account',
+    createSub: 'Start your premium membership in seconds',
+    heroTitle: 'Unlock Your Premium Experience',
+    heroDesc: 'Fast onboarding, transparent pricing, and priority support. Experience a smooth subscription journey.',
+    selectedPlanLabel: 'Selected Plan',
+    perDayText: '/ day',
+    perMonthText: '/ month',
+    usernameLabel: 'Username',
+    mobileLabel: 'Mobile',
+    passwordLabel: 'Password',
+    confirmLabel: 'Confirm Password',
+    continueBtn: 'Continue to Payment',
+    noteText: 'Secure • Fast • Trusted',
+    errors: {
+      fillAll: 'Fill all fields',
+      shortUsername: 'Username too short (min 3 chars)',
+      invalidMobile: 'Invalid mobile number (10 digits)',
+      shortPassword: 'Password must be at least 6 characters',
+      passwordMismatch: 'Passwords do not match'
+    },
+    placeholder: {
+      username: 'Enter your username',
+      mobile: '10-digit mobile number',
+      password: 'Create a password',
+      confirm: 'Confirm your password'
+    }
+  },
+  'ta': {
+    secureBadge: 'பாதுகாப்பான அணுகல்',
+    createTitle: 'உங்கள் கணக்கை உருவாக்கவும்',
+    createSub: 'உங்கள் பிரீமியம் உறுப்பினரை விரைவில் தொடங்குங்கள்',
+    heroTitle: 'உங்கள் பிரீமியம் அனுபவத்தைத் திறக்கவும்',
+    heroDesc: 'விரைவான பதிவு, வெளிப்படையான விலை மற்றும் முன்னுரிமை ஆதரவு. மென்மையான சந்தா பயணத்தை அனுபவிக்கவும்.',
+    selectedPlanLabel: 'தேர்ந்தெடுக்கப்பட்ட திட்டம்',
+    perDayText: '/ நாள்',
+    perMonthText: '/ மாதம்',
+    usernameLabel: 'பயனர்பெயர்',
+    mobileLabel: 'மொபைல் எண்',
+    passwordLabel: 'கடவுச்சொல்',
+    confirmLabel: 'கடவுச்சொல்லை உறுதி செய்க',
+    continueBtn: 'கட்டணத்திற்கு தொடரவும்',
+    noteText: 'பாதுகாப்பானது • வேகமானது • நம்பகமானது',
+    errors: {
+      fillAll: 'அனைத்து புலங்களையும் நிரப்பவும்',
+      shortUsername: 'பயனர்பெயர் மிகவும் குறுகியது (குறைந்தது 3 எழுத்துக்கள்)',
+      invalidMobile: 'தவறான மொபைல் எண் (10 இலக்கங்கள்)',
+      shortPassword: 'கடவுச்சொல் குறைந்தது 6 எழுத்துக்கள் இருக்க வேண்டும்',
+      passwordMismatch: 'கடவுச்சொற்கள் பொருந்தவில்லை'
+    },
+    placeholder: {
+      username: 'உங்கள் பயனர்பெயரை உள்ளிடவும்',
+      mobile: '10 இலக்க மொபைல் எண்',
+      password: 'கடவுச்சொல்லை உருவாக்கவும்',
+      confirm: 'உங்கள் கடவுச்சொல்லை உறுதிப்படுத்தவும்'
+    }
+  }
+};
+
+// Get plan from URL or localStorage
+const params = new URLSearchParams(window.location.search);
+let plan = params.get("plan") || localStorage.getItem("selectedPlan") || "Starter";
+let amount = parseInt(params.get("amount")) || parseInt(localStorage.getItem("planAmount")) || 1;
+
+localStorage.setItem("selectedPlan", plan);
+localStorage.setItem("planAmount", amount);
+
+const monthly = amount * 30;
+
+// Apply language
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  const t = translations[lang];
+
+  // Update text content
+  document.getElementById('secureBadge').innerText = t.secureBadge;
+  document.getElementById('createTitle').innerText = t.createTitle;
+  document.getElementById('createSub').innerText = t.createSub;
+  document.getElementById('heroTitle').innerText = t.heroTitle;
+  document.getElementById('heroDesc').innerText = t.heroDesc;
+  document.getElementById('selectedPlanLabel').innerText = t.selectedPlanLabel;
+  document.getElementById('perDayText').innerText = t.perDayText;
+  document.getElementById('perMonthText').innerText = t.perMonthText;
+  document.getElementById('usernameLabel').innerText = t.usernameLabel;
+  document.getElementById('mobileLabel').innerText = t.mobileLabel;
+  document.getElementById('passwordLabel').innerText = t.passwordLabel;
+  document.getElementById('confirmLabel').innerText = t.confirmLabel;
+  document.getElementById('continueBtn').innerText = t.continueBtn;
+  document.getElementById('noteText').innerText = t.noteText;
+
+  // Update placeholders
+  document.getElementById('username').placeholder = t.placeholder.username;
+  document.getElementById('mobile').placeholder = t.placeholder.mobile;
+  document.getElementById('password').placeholder = t.placeholder.password;
+  document.getElementById('confirmPassword').placeholder = t.placeholder.confirm;
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// UI - set plan details
+document.getElementById("planName").innerText = plan;
+document.getElementById("monthlyPrice").innerText = monthly;
+document.getElementById("dailyPrice").innerText = amount;
+
+// Toggle password visibility
+function togglePassword(id, btn){
+  const input = document.getElementById(id);
+  const t = translations[currentLang];
+  if(input.type === "password"){
+    input.type = "text";
+    btn.innerText = currentLang === 'ta' ? 'மறை' : 'Hide';
+  } else {
+    input.type = "password";
+    btn.innerText = currentLang === 'ta' ? 'காட்டு' : 'Show';
+  }
+}
+
+// Show error message
+function showError(msg){
+  const t = translations[currentLang];
+  const errorDiv = document.getElementById("errorText");
+  errorDiv.style.display = "block";
+
+  // Map error message to translation
+  if (msg === 'Fill all fields') errorDiv.innerText = t.errors.fillAll;
+  else if (msg === 'Username too short') errorDiv.innerText = t.errors.shortUsername;
+  else if (msg === 'Invalid mobile number') errorDiv.innerText = t.errors.invalidMobile;
+  else if (msg === 'Password must be 6+ chars') errorDiv.innerText = t.errors.shortPassword;
+  else if (msg === 'Passwords not matching') errorDiv.innerText = t.errors.passwordMismatch;
+  else errorDiv.innerText = msg;
+}
+
+function clearError(){
+  const e = document.getElementById("errorText");
+  e.style.display = "none";
+  e.innerText = "";
+}
+
+
+
+// Load saved language on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('selectedLanguage');
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+  } else {
+    applyLanguage('en');
+  }
+});
+
+
+function goPayment(){
+  clearError();
+
+  const username = document.getElementById("username").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if(!username || !mobile || !password || !confirmPassword){
+    showError("Fill all fields");
+    return;
+  }
+
+  if(username.length < 3){
+    showError("Username too short");
+    return;
+  }
+
+  if(!/^\d{10}$/.test(mobile)){
+    showError("Invalid mobile number");
+    return;
+  }
+
+  if(password.length < 6){
+    showError("Password must be 6+ chars");
+    return;
+  }
+
+  if(password !== confirmPassword){
+    showError("Passwords not matching");
+    return;
+  }
+
+  localStorage.setItem("username", username);
+  localStorage.setItem("mobile", mobile);
+
+  fetch("/create-order/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    plan: plan,
+    amount: amount
+  })
+})
+.then(res => res.json())
+.then(data => {
+
+  var options = {
+    key: "rzp_test_SlAn7R8uDTOsXv",
+    amount: data.amount,
+    currency: "INR",
+    name: "Prince Group",
+    description: plan + " Plan",
+    order_id: data.id,
+
+    handler: function (response) {
+
+      fetch("/verify-payment/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(response)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.status === "success"){
+          window.location.href = "/payment-success.html";
+        } else {
+          alert("Payment failed");
+        }
+      });
+
+    }
+  };
+
+  var rzp = new Razorpay(options);
+
+  rzp.on('payment.failed', function (){
+    alert("Payment failed. Try again.");
+  });
+
+  rzp.open();
+
+})
+.catch(() => {
+  alert("Server error. Try again later.");
+});
+
+}
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</body>
+</html>

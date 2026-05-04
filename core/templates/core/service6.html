@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Land & Revenue Services | Legal Documentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== FULLY RESPONSIVE MOBILE + STICKY LANG SWITCHER ========== */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* Responsive Grid - Tablet & Mobile */
+@media (max-width: 900px){
+  .box-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width: 650px){
+  .box-grid{grid-template-columns:1fr;}
+  .container{padding:80px 16px 50px 16px;}
+  .page-title{font-size:28px;}
+  .page-sub{font-size:14px; margin-bottom:32px;}
+  .card{padding:18px;}
+  .icon{font-size:28px;}
+  .card h3{font-size:16px;}
+  .card p{font-size:12px;}
+  .view{font-size:11px;}
+  .popup-content{padding:20px; max-width:94%;}
+  .popup-content h2{font-size:20px;}
+  .popup-content ul li{font-size:12px; padding:8px 0;}
+  .lang-switcher-fixed{top:12px; right:12px; padding:5px 12px; gap:6px;}
+  .lang-btn-custom{font-size:12px; padding:4px 8px;}
+}
+
+@media (max-width: 480px){
+  .container{padding:75px 14px 40px 14px;}
+  .page-title{font-size:26px;}
+  .card{padding:16px;}
+  .icon{font-size:26px;}
+  .card h3{font-size:15px;}
+  .lang-switcher-fixed{top:10px; right:10px; padding:4px 10px;}
+  .lang-btn-custom{font-size:11px; padding:3px 7px;}
+}
+
+@media (max-width: 360px){
+  .page-title{font-size:22px;}
+  .card h3{font-size:14px;}
+  .card p{font-size:11px;}
+  .icon{font-size:24px;}
+}
+
+/* preserve desktop look & animations */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+
+@media (max-width: 700px){
+  .corner-box{ width:140px; height:140px; opacity:0.5; }
+  .blob{ width:180px; height:180px; filter:blur(70px); }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Land & Revenue Services</h1>
+<p class="page-sub" id="pageSub">Official land records & revenue documentation support</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('survey')">
+  <div class="icon">📏</div>
+  <h3 id="title1">Land Survey Support</h3>
+  <p id="desc1">Boundary measurement assistance</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('subdivision')">
+  <div class="icon">🧱</div>
+  <h3 id="title2">Subdivision Process</h3>
+  <p id="desc2">Land parcel division approval</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('patta')">
+  <div class="icon">📜</div>
+  <h3 id="title3">Patta Transfer</h3>
+  <p id="desc3">Official land ownership update</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('fmb')">
+  <div class="icon">🗺️</div>
+  <h3 id="title4">FMB Sketch</h3>
+  <p id="desc4">Official land measurement drawing</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('chitta')">
+  <div class="icon">📄</div>
+  <h3 id="title5">Chitta / Adangal</h3>
+  <p id="desc5">Revenue land record verification</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('layout')">
+  <div class="icon">🏗️</div>
+  <h3 id="title6">Layout Approval Support</h3>
+  <p id="desc6">Government layout permission process</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP MODAL -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// LAND & REVENUE SERVICES
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Land & Revenue Services',
+    pageSub: 'Official land records & revenue documentation support',
+    viewDetails: 'View Details →',
+    cards: {
+      survey: { title: 'Land Survey Support', desc: 'Boundary measurement assistance' },
+      subdivision: { title: 'Subdivision Process', desc: 'Land parcel division approval' },
+      patta: { title: 'Patta Transfer', desc: 'Official land ownership update' },
+      fmb: { title: 'FMB Sketch', desc: 'Official land measurement drawing' },
+      chitta: { title: 'Chitta / Adangal', desc: 'Revenue land record verification' },
+      layout: { title: 'Layout Approval Support', desc: 'Government layout permission process' }
+    }
+  },
+  'ta': {
+    pageTitle: 'நிலம் மற்றும் வருவாய் சேவைகள்',
+    pageSub: 'அதிகாரப்பூர்வ நிலப் பதிவுகள் & வருவாய் ஆவண ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      survey: { title: 'நில ஆய்வு ஆதரவு', desc: 'எல்லை அளவீட்டு உதவி' },
+      subdivision: { title: 'துணைப்பிரிவு செயல்முறை', desc: 'நிலப் பகுதி பிரிவு ஒப்புதல்' },
+      patta: { title: 'பட்டா மாற்றல்', desc: 'அதிகாரப்பூர்வ நில உரிமை மேம்படுத்தல்' },
+      fmb: { title: 'FMB ஸ்கெட்ச்', desc: 'அதிகாரப்பூர்வ நில அளவீட்டு வரைபடம்' },
+      chitta: { title: 'சிட்டா / அடங்கல்', desc: 'வருவாய் நில பதிவு சரிபார்ப்பு' },
+      layout: { title: 'லேஅவுட் ஒப்புதல் ஆதரவு', desc: 'அரசு தளவமைப்பு அனுமதி செயல்முறை' }
+    }
+  }
+};
+
+// Popup content with complete legal details (EN + TA)
+const popupData = {
+  'en': {
+    survey: {
+      title: "Land Survey Support",
+      list: [
+        "Land survey support involves measurement and mapping of land boundaries by licensed survey authorities.",
+        "Ensures accurate demarcation of property limits.",
+        "Prevents boundary disputes between owners.",
+        "Used for registration, subdivision, and development.",
+        "Based on official government survey standards."
+      ]
+    },
+    subdivision: {
+      title: "Subdivision Process",
+      list: [
+        "Subdivision is the legal division of a single land parcel into multiple smaller plots.",
+        "Updated in official revenue records after approval.",
+        "Used for property development and inheritance division.",
+        "Requires survey and government approval.",
+        "Ensures separate legal identity for each plot."
+      ]
+    },
+    patta: {
+      title: "Patta Transfer",
+      list: [
+        "Patta transfer is the process of updating land ownership records in government revenue records.",
+        "Confirms legal ownership of property in revenue documents.",
+        "Updated by Tahsildar or revenue authorities.",
+        "Required after property sale or inheritance.",
+        "Ensures official recognition of new landowner."
+      ]
+    },
+    fmb: {
+      title: "FMB Sketch",
+      list: [
+        "FMB (Field Measurement Book) sketch is an official land survey drawing maintained by revenue department.",
+        "Shows exact dimensions, boundaries, and survey numbers.",
+        "Used for legal verification of property extent.",
+        "Essential for land disputes and registration processes.",
+        "Acts as official survey reference document."
+      ]
+    },
+    chitta: {
+      title: "Chitta / Adangal",
+      list: [
+        "Chitta and Adangal are official land revenue records maintained by Tamil Nadu government.",
+        "Chitta shows ownership details of land.",
+        "Adangal records land usage and cultivation details.",
+        "Used for agricultural and property verification.",
+        "Essential documents in revenue records system."
+      ]
+    },
+    layout: {
+      title: "Layout Approval Support",
+      list: [
+        "Layout approval support involves obtaining government permission for residential or commercial land layouts.",
+        "Ensures compliance with planning authority regulations.",
+        "Required for approved plotted developments.",
+        "Includes DTCP or local planning authority approval.",
+        "Ensures legal validity of land subdivision layouts."
+      ]
+    }
+  },
+  'ta': {
+    survey: {
+      title: "நில ஆய்வு ஆதரவு",
+      list: [
+        "நில ஆய்வு ஆதரவு என்பது உரிமம் பெற்ற ஆய்வு அதிகாரிகளால் நில எல்லைகளை அளவிடுதல் மற்றும் வரைபடமாக்குதல் ஆகும்.",
+        "சொத்து எல்லைகளின் துல்லியமான எல்லைக் குறியீட்டை உறுதி செய்கிறது.",
+        "உரிமையாளர்களிடையே எல்லை தகராறுகளைத் தடுக்கிறது.",
+        "பதிவு, துணைப்பிரிவு மற்றும் மேம்பாட்டிற்கு பயன்படுகிறது.",
+        "அதிகாரப்பூர்வ அரசு ஆய்வுத் தரங்களை அடிப்படையாகக் கொண்டது."
+      ]
+    },
+    subdivision: {
+      title: "துணைப்பிரிவு செயல்முறை",
+      list: [
+        "துணைப்பிரிவு என்பது ஒரு நிலப்பரப்பை பல சிறிய அடுக்குகளாக சட்டப்பூர்வமாக பிரிப்பதாகும்.",
+        "ஒப்புதலுக்குப் பிறகு அதிகாரப்பூர்வ வருவாய் பதிவுகளில் புதுப்பிக்கப்படுகிறது.",
+        "சொத்து மேம்பாடு மற்றும் மரபுரிமைப் பிரிவுக்கு பயன்படுகிறது.",
+        "ஆய்வு மற்றும் அரசு ஒப்புதல் தேவை.",
+        "ஒவ்வொரு நிலத்திற்கும் தனி சட்ட அடையாளத்தை உறுதி செய்கிறது."
+      ]
+    },
+    patta: {
+      title: "பட்டா மாற்றல்",
+      list: [
+        "பட்டா மாற்றல் என்பது அரசு வருவாய் பதிவுகளில் நில உரிமை பதிவுகளை புதுப்பிக்கும் செயல்முறையாகும்.",
+        "வருவாய் ஆவணங்களில் சொத்தின் சட்ட உரிமையை உறுதிப்படுத்துகிறது.",
+        "தாசில்தார் அல்லது வருவாய் அதிகாரிகளால் புதுப்பிக்கப்படுகிறது.",
+        "சொத்து விற்பனை அல்லது மரபுரிமைக்குப் பிறகு தேவைப்படுகிறது.",
+        "புதிய நில உரிமையாளரின் அதிகாரப்பூர்வ அங்கீகாரத்தை உறுதி செய்கிறது."
+      ]
+    },
+    fmb: {
+      title: "FMB ஸ்கெட்ச்",
+      list: [
+        "FMB (பீல்ட் மெஷர்மென்ட் புக்) ஸ்கெட்ச் என்பது வருவாய்த் துறையால் பராமரிக்கப்படும் அதிகாரப்பூர்வ நில ஆய்வு வரைபடமாகும்.",
+        "சரியான பரிமாணங்கள், எல்லைகள் மற்றும் கணக்கெடுப்பு எண்களைக் காட்டுகிறது.",
+        "சொத்து அளவின் சட்ட சரிபார்ப்புக்கு பயன்படுகிறது.",
+        "நில தகராறுகள் மற்றும் பதிவு செயல்முறைகளுக்கு அவசியம்.",
+        "அதிகாரப்பூர்வ ஆய்வு குறிப்பு ஆவணமாக செயல்படுகிறது."
+      ]
+    },
+    chitta: {
+      title: "சிட்டா / அடங்கல்",
+      list: [
+        "சிட்டா மற்றும் அடங்கல் என்பது தமிழ்நாடு அரசால் பராமரிக்கப்படும் அதிகாரப்பூர்வ நில வருவாய் பதிவுகள் ஆகும்.",
+        "சிட்டா நிலத்தின் உரிமை விவரங்களைக் காட்டுகிறது.",
+        "அடங்கல் நில பயன்பாடு மற்றும் சாகுபடி விவரங்களை பதிவு செய்கிறது.",
+        "விவசாய மற்றும் சொத்து சரிபார்ப்புக்கு பயன்படுகிறது.",
+        "வருவாய் பதிவு முறையில் அத்தியாவசிய ஆவணங்கள்."
+      ]
+    },
+    layout: {
+      title: "லேஅவுட் ஒப்புதல் ஆதரவு",
+      list: [
+        "லேஅவுட் ஒப்புதல் ஆதரவு என்பது குடியிருப்பு அல்லது வணிக நில தளவமைப்புகளுக்கான அரசு அனுமதியைப் பெறுவதை உள்ளடக்கியது.",
+        "திட்டமிடல் ஆணைய விதிமுறைகளுடன் இணங்குவதை உறுதி செய்கிறது.",
+        "ஒப்புதல் பெற்ற திட்டமிடப்பட்ட மேம்பாடுகளுக்கு தேவைப்படுகிறது.",
+        "DTCP அல்லது உள்ளூர் திட்டமிடல் ஆணைய ஒப்புதலை உள்ளடக்கியது.",
+        "நில உட்பிரிவு தளவமைப்புகளின் சட்ட செல்லுபடியை உறுதி செய்கிறது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (FIXED - WAS MISSING!)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Land & Revenue services
+  const cardKeys = ['survey', 'subdivision', 'patta', 'fmb', 'chitta', 'layout'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with full details based on current language
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  const popupDiv = document.getElementById('popup');
+  if (event.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Land & Revenue Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

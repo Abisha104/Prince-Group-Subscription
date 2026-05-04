@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Property Documentation Services | Legal Support</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+/* Sticky language switcher - stays at top always */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT - SMALL SCREENS ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 16px 50px 16px;
+  }
+  .page-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .page-sub {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .box-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .icon {
+    font-size: 26px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .view {
+    font-size: 11px;
+  }
+  .popup-content {
+    padding: 20px;
+    max-width: 94%;
+  }
+  .popup-content h2 {
+    font-size: 20px;
+  }
+  .popup-content ul li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .lang-switcher-fixed {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .box-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .container {
+    padding: 80px 14px 40px 14px;
+  }
+  .page-title {
+    font-size: 26px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .icon {
+    font-size: 28px;
+  }
+  .card h3 {
+    font-size: 16px;
+  }
+  .card p {
+    font-size: 12px;
+  }
+  .view {
+    font-size: 12px;
+  }
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+}
+
+/* very tiny devices 360px and below */
+@media (max-width: 380px) {
+  .page-title {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .icon {
+    font-size: 24px;
+  }
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+/* Keep all animations for mobile, corner boxes slight adjustment */
+@media (max-width: 700px) {
+  .corner-box {
+    width: 140px;
+    height: 140px;
+    opacity: 0.5;
+  }
+  .blob {
+    width: 180px;
+    height: 180px;
+    filter: blur(70px);
+  }
+}
+
+/* preserve desktop look */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher - STICKY (fixed top) -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<!-- Background layers (all animations preserved) -->
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Property Documentation Services</h1>
+<p class="page-sub" id="pageSub">Click any service to view full details</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('saleDeed')">
+  <div class="icon">🏠</div>
+  <h3 id="title1">Sale Deed Registration</h3>
+  <p id="desc1">Final ownership transfer document</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('saleAgreement')">
+  <div class="icon">📑</div>
+  <h3 id="title2">Sale Agreement</h3>
+  <p id="desc2">Pre-sale legal contract</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('giftDeed')">
+  <div class="icon">🎁</div>
+  <h3 id="title3">Gift Deed</h3>
+  <p id="desc3">Free property transfer</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('settlement')">
+  <div class="icon">👨‍👩‍👧</div>
+  <h3 id="title4">Settlement Deed</h3>
+  <p id="desc4">Family property transfer</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('partition')">
+  <div class="icon">🧾</div>
+  <h3 id="title5">Partition Deed</h3>
+  <p id="desc5">Property division document</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('release')">
+  <div class="icon">📜</div>
+  <h3 id="title6">Release Deed</h3>
+  <p id="desc6">Ownership relinquishment</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('exchange')">
+  <div class="icon">🔁</div>
+  <h3 id="title7">Exchange Deed</h3>
+  <p id="desc7">Property swap agreement</p>
+  <div class="view" id="view7">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('rectification')">
+  <div class="icon">✏️</div>
+  <h3 id="title8">Rectification Deed</h3>
+  <p id="desc8">Error correction document</p>
+  <div class="view" id="view8">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('cancellation')">
+  <div class="icon">❌</div>
+  <h3 id="title9">Cancellation Deed</h3>
+  <p id="desc9">Document nullification</p>
+  <div class="view" id="view9">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('guideline')">
+  <div class="icon">📊</div>
+  <h3 id="title10">Guideline Value</h3>
+  <p id="desc10">Government property valuation</p>
+  <div class="view" id="view10">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('pattaChitta')">
+  <div class="icon">📄</div>
+  <h3 id="title11">Patta / Chitta</h3>
+  <p id="desc11">Land ownership records</p>
+  <div class="view" id="view11">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('ec')">
+  <div class="icon">📋</div>
+  <h3 id="title12">EC Apply</h3>
+  <p id="desc12">Encumbrance certificate</p>
+  <div class="view" id="view12">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP MODAL -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Property Documentation Services',
+    pageSub: 'Click any service to view full details',
+    viewDetails: 'View Details →',
+    cards: {
+      saleDeed: { title: 'Sale Deed Registration', desc: 'Final ownership transfer document' },
+      saleAgreement: { title: 'Sale Agreement', desc: 'Pre-sale legal contract' },
+      giftDeed: { title: 'Gift Deed', desc: 'Free property transfer' },
+      settlement: { title: 'Settlement Deed', desc: 'Family property transfer' },
+      partition: { title: 'Partition Deed', desc: 'Property division document' },
+      release: { title: 'Release Deed', desc: 'Ownership relinquishment' },
+      exchange: { title: 'Exchange Deed', desc: 'Property swap agreement' },
+      rectification: { title: 'Rectification Deed', desc: 'Error correction document' },
+      cancellation: { title: 'Cancellation Deed', desc: 'Document nullification' },
+      guideline: { title: 'Guideline Value', desc: 'Government property valuation' },
+      pattaChitta: { title: 'Patta / Chitta', desc: 'Land ownership records' },
+      ec: { title: 'EC Apply', desc: 'Encumbrance certificate' }
+    }
+  },
+  'ta': {
+    pageTitle: 'சொத்து ஆவணப்படுத்தல் சேவைகள்',
+    pageSub: 'முழு விவரங்களைக் காண எந்த சேவையிலும் கிளிக் செய்யவும்',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      saleDeed: { title: 'விற்பனை பத்திரம் பதிவு', desc: 'இறுதி உரிமை மாற்று ஆவணம்' },
+      saleAgreement: { title: 'விற்பனை ஒப்பந்தம்', desc: 'விற்பனைக்கு முந்தைய சட்ட ஒப்பந்தம்' },
+      giftDeed: { title: 'பரிசு பத்திரம்', desc: 'இலவச சொத்து பரிமாற்றம்' },
+      settlement: { title: 'குடியேற்ற பத்திரம்', desc: 'குடும்ப சொத்து பரிமாற்றம்' },
+      partition: { title: 'பிரிவினை பத்திரம்', desc: 'சொத்து பிரிவு ஆவணம்' },
+      release: { title: 'விடுதலை பத்திரம்', desc: 'உரிமையை கைவிடுதல்' },
+      exchange: { title: 'பரிமாற்ற பத்திரம்', desc: 'சொத்து மாற்று ஒப்பந்தம்' },
+      rectification: { title: 'திருத்த பத்திரம்', desc: 'பிழை திருத்த ஆவணம்' },
+      cancellation: { title: 'ரத்து பத்திரம்', desc: 'ஆவணத்தை நீக்குதல்' },
+      guideline: { title: 'வழிகாட்டு மதிப்பு', desc: 'அரசு சொத்து மதிப்பீடு' },
+      pattaChitta: { title: 'பட்டா / சிட்டா', desc: 'நில உரிமை பதிவுகள்' },
+      ec: { title: 'EC விண்ணப்பம்', desc: 'சுமை சான்றிதழ்' }
+    }
+  }
+};
+
+// Popup content (EN + TA)
+const popupData = {
+  'en': {
+    saleDeed: { title: "Sale Deed Registration", list: ["A sale deed is the final legal document that transfers ownership of property from seller to buyer.", "Must be registered at Sub-Registrar Office.", "Acts as primary proof of ownership.", "Legally binding and enforceable.", "Required for all property purchase transactions."] },
+    saleAgreement: { title: "Sale Agreement", list: ["A sale agreement is a pre-sale contract between buyer and seller.", "Defines price, terms, and payment conditions.", "Not a transfer document but a legal commitment.", "Used for loan processing and legal clarity.", "Protects both parties before final registration."] },
+    giftDeed: { title: "Gift Deed", list: ["A gift deed is used to transfer property without monetary consideration.", "Commonly used among family members.", "Must be registered to be legally valid.", "Irrevocable once executed and registered.", "Ensures lawful transfer of ownership."] },
+    settlement: { title: "Settlement Deed", list: ["A settlement deed transfers property within family members.", "Often used for estate planning.", "Can take effect immediately or after conditions.", "Helps avoid future inheritance disputes.", "Legally valid when registered."] },
+    partition: { title: "Partition Deed", list: ["A partition deed divides property among co-owners.", "Defines individual ownership shares.", "Eliminates joint ownership disputes.", "Must be registered for legal validity.", "Common in family property division."] },
+    release: { title: "Release Deed", list: ["A release deed allows one co-owner to relinquish rights in favor of another.", "Used in joint ownership situations.", "Helps simplify ownership structure.", "Legally binding when registered.", "Often used among family members."] },
+    exchange: { title: "Exchange Deed", list: ["An exchange deed involves mutual transfer of properties between parties.", "No monetary transaction required.", "Both parties transfer ownership simultaneously.", "Must be registered legally.", "Recognized under property laws."] },
+    rectification: { title: "Rectification Deed", list: ["A rectification deed corrects errors in previously registered documents.", "Used for name, boundary, or detail corrections.", "Requires consent of both parties.", "Registered to maintain legal validity.", "Prevents future legal complications."] },
+    cancellation: { title: "Cancellation Deed", list: ["A cancellation deed nullifies a previously executed document.", "Requires agreement of involved parties or legal order.", "Used when transaction is void or disputed.", "Must be registered legally.", "Protects against invalid transactions."] },
+    guideline: { title: "Guideline Value", list: ["Guideline value is the minimum property value set by government authorities.", "Used for stamp duty and registration calculation.", "Helps determine correct property valuation.", "Prevents undervaluation issues.", "Important for legal compliance."] },
+    pattaChitta: { title: "Patta / Chitta", list: ["Patta confirms ownership in revenue records.", "Chitta shows land classification and usage.", "Essential for property verification in Tamil Nadu.", "Required for land transactions and loans.", "Ensures legal clarity of land ownership."] },
+    ec: { title: "Encumbrance Certificate (EC)", list: ["EC shows history of transactions on a property.", "Confirms whether property has any legal liabilities.", "Issued by Sub-Registrar Office.", "Required for buying property or loan approval.", "Ensures property is free from encumbrances."] }
+  },
+  'ta': {
+    saleDeed: { title: "விற்பனை பத்திரம் பதிவு", list: ["விற்பனை பத்திரம் என்பது விற்பவரிடமிருந்து வாங்குபவருக்கு சொத்தின் உரிமையை மாற்றும் இறுதி சட்ட ஆவணமாகும்.", "துணைப் பதிவாளர் அலுவலகத்தில் பதிவு செய்யப்பட வேண்டும்.", "உரிமைக்கான முதன்மை ஆதாரமாக செயல்படுகிறது.", "சட்டப்பூர்வமாக பிணைக்கக்கூடியது மற்றும் நிறைவேற்றக்கூடியது.", "அனைத்து சொத்து வாங்கும் பரிவர்த்தனைகளுக்கும் தேவைப்படுகிறது."] },
+    saleAgreement: { title: "விற்பனை ஒப்பந்தம்", list: ["விற்பனை ஒப்பந்தம் என்பது வாங்குபவருக்கும் விற்பவருக்கும் இடையிலான விற்பனைக்கு முந்தைய ஒப்பந்தமாகும்.", "விலை, விதிமுறைகள் மற்றும் கட்டண நிபந்தனைகளை வரையறுக்கிறது.", "மாற்று ஆவணம் அல்ல, சட்டப்பூர்வ உறுதிப்பாடு.", "கடன் செயலாக்கம் மற்றும் சட்டத் தெளிவுக்கு பயன்படுகிறது.", "இறுதிப் பதிவுக்கு முன் இரு தரப்பினரையும் பாதுகாக்கிறது."] },
+    giftDeed: { title: "பரிசு பத்திரம்", list: ["பரிசு பத்திரம் பண பரிசீலனை இல்லாமல் சொத்தை மாற்ற பயன்படுகிறது.", "பொதுவாக குடும்ப உறுப்பினர்களிடையே பயன்படுத்தப்படுகிறது.", "சட்டப்பூர்வமாக செல்லுபடியாக பதிவு செய்யப்பட வேண்டும்.", "செயல்படுத்தப்பட்டு பதிவு செய்யப்பட்டவுடன் மாற்ற முடியாதது.", "சட்டப்பூர்வ உரிமை மாற்றத்தை உறுதி செய்கிறது."] },
+    settlement: { title: "குடியேற்ற பத்திரம்", list: ["குடியேற்ற பத்திரம் சொத்தை குடும்ப உறுப்பினர்களுக்கு மாற்றுகிறது.", "பெரும்பாலும் திட்டமிடலுக்கு பயன்படுகிறது.", "உடனடியாக அல்லது நிபந்தனைகளுக்குப் பிறகு நடைமுறைக்கு வரலாம்.", "எதிர்கால மரபுரிமை சர்ச்சைகளைத் தவிர்க்க உதவுகிறது.", "பதிவு செய்யப்படும்போது சட்டப்பூர்வமாக செல்லுபடியாகும்."] },
+    partition: { title: "பிரிவினை பத்திரம்", list: ["பிரிவினை பத்திரம் சொத்தை இணை உரிமையாளர்களிடையே பிரிக்கிறது.", "தனிப்பட்ட உரிமைப் பங்குகளை வரையறுக்கிறது.", "கூட்டு உரிமை சர்ச்சைகளை நீக்குகிறது.", "சட்ட செல்லுபடியாகும் தன்மைக்கு பதிவு செய்யப்பட வேண்டும்.", "குடும்ப சொத்து பிரிவில் பொதுவானது."] },
+    release: { title: "விடுதலை பத்திரம்", list: ["விடுதலை பத்திரம் ஒரு இணை உரிமையாளர் மற்றொருவருக்கு ஆதரவாக உரிமைகளை கைவிட அனுமதிக்கிறது.", "கூட்டு உரிமை சூழ்நிலைகளில் பயன்படுகிறது.", "உரிமை கட்டமைப்பை எளிதாக்க உதவுகிறது.", "பதிவு செய்யப்படும்போது சட்டப்பூர்வமாக பிணைக்கக்கூடியது.", "பெரும்பாலும் குடும்ப உறுப்பினர்களிடையே பயன்படுகிறது."] },
+    exchange: { title: "பரிமாற்ற பத்திரம்", list: ["பரிமாற்ற பத்திரம் என்பது தரப்பினருக்கிடையே சொத்துக்களின் பரஸ்பர மாற்றத்தை உள்ளடக்கியது.", "பண பரிவர்த்தனை தேவையில்லை.", "இரு தரப்பினரும் ஒரே நேரத்தில் உரிமையை மாற்றுகிறார்கள்.", "சட்டப்பூர்வமாக பதிவு செய்யப்பட வேண்டும்.", "சொத்துச் சட்டங்களின் கீழ் அங்கீகரிக்கப்பட்டது."] },
+    rectification: { title: "திருத்த பத்திரம்", list: ["திருத்த பத்திரம் முன்னர் பதிவுசெய்யப்பட்ட ஆவணங்களில் உள்ள பிழைகளை சரிசெய்கிறது.", "பெயர், எல்லை அல்லது விவரத் திருத்தங்களுக்கு பயன்படுகிறது.", "இரு தரப்பினரின் ஒப்புதல் தேவை.", "சட்ட செல்லுபடியை பராமரிக்க பதிவு செய்யப்பட்டது.", "எதிர்கால சட்ட சிக்கல்களைத் தடுக்கிறது."] },
+    cancellation: { title: "ரத்து பத்திரம்", list: ["ரத்து பத்திரம் முன்னர் செயல்படுத்தப்பட்ட ஆவணத்தை ரத்து செய்கிறது.", "சம்பந்தப்பட்ட தரப்பினரின் ஒப்பந்தம் அல்லது சட்ட உத்தரவு தேவை.", "பரிவர்த்தனை செல்லாது அல்லது தகராறு ஏற்படும்போது பயன்படுகிறது.", "சட்டப்பூர்வமாக பதிவு செய்யப்பட வேண்டும்.", "செல்லாத பரிவர்த்தனைகளுக்கு எதிராக பாதுகாக்கிறது."] },
+    guideline: { title: "வழிகாட்டு மதிப்பு", list: ["வழிகாட்டு மதிப்பு என்பது அரசு அதிகாரிகளால் நிர்ணயிக்கப்பட்ட குறைந்தபட்ச சொத்து மதிப்பாகும்.", "முத்திரை வரி மற்றும் பதிவுக் கணக்கீட்டிற்கு பயன்படுகிறது.", "சரியான சொத்து மதிப்பீட்டை தீர்மானிக்க உதவுகிறது.", "குறைத்து மதிப்பிடும் சிக்கல்களைத் தடுக்கிறது.", "சட்ட இணக்கத்திற்கு முக்கியமானது."] },
+    pattaChitta: { title: "பட்டா / சிட்டா", list: ["பட்டா வருவாய் பதிவுகளில் உரிமையை உறுதிப்படுத்துகிறது.", "சிட்டா நிலத்தின் வகைப்பாடு மற்றும் பயன்பாட்டைக் காட்டுகிறது.", "தமிழ்நாட்டில் சொத்து சரிபார்ப்புக்கு அவசியம்.", "நிலப் பரிவர்த்தனைகள் மற்றும் கடன்களுக்கு தேவை.", "நில உரிமையின் சட்டத் தெளிவை உறுதி செய்கிறது."] },
+    ec: { title: "EC விண்ணப்பம்", list: ["EC ஒரு சொத்தின் பரிவர்த்தனைகளின் வரலாற்றைக் காட்டுகிறது.", "சொத்துக்கு ஏதேனும் சட்டப் பொறுப்புகள் உள்ளதா என்பதை உறுதிப்படுத்துகிறது.", "துணைப் பதிவாளர் அலுவலகத்தால் வழங்கப்படுகிறது.", "சொத்து வாங்க அல்லது கடன் ஒப்புதலுக்கு தேவை.", "சொத்து சுமைகள் இல்லாதது என்பதை உறுதி செய்கிறது."] }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (THIS WAS MISSING!)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards
+  const cardKeys = ['saleDeed', 'saleAgreement', 'giftDeed', 'settlement', 'partition', 'release', 'exchange', 'rectification', 'cancellation', 'guideline', 'pattaChitta', 'ec'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function (called by buttons)
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with translated details
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup on background click
+window.onclick = function(e) {
+  const popupDiv = document.getElementById('popup');
+  if (e.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

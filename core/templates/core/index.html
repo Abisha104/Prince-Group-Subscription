@@ -1,0 +1,5179 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate">
+  <meta name="google-translate" content="notranslate">
+  <title>Prince Group of company</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --white:#ffffff;
+      --text:#17212f;
+      --text-soft:#415063;
+      --muted:#5f6b7a;
+      --line:#dcefe5;
+      --green:#19c37d;
+      --green-dark:#109d63;
+      --green-bright:#27d98d;
+      --green-soft:#eafff3;
+      --green-soft-2:#f5fff9;
+      --logo-dark:#0f172a;
+      --logo-mid:#15803d;
+      --logo-light:#19c37d;
+      --card-shadow:0 18px 45px rgba(16, 24, 40, 0.07);
+      --card-shadow-hover:0 24px 55px rgba(25, 195, 125, 0.12);
+      --radius-xl:32px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --max:1200px;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:white;
+      color:var(--text);
+      overflow-x:hidden;
+    }
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px; /* icon size */
+  text-decoration: none;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+
+  transition: all 0.25s ease;
+}
+
+/* scroll வந்தா மேல போகும் */
+.whatsapp-float.move-up {
+  bottom: 90px;
+}
+
+/* hover subtle effect */
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* icon alignment fix */
+.whatsapp-float i {
+  line-height: 1;
+}
+.lang-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.85); /* dark overlay */
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lang-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  width: 300px;
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.lang-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: #19c37d;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+    .section {
+  position: relative;
+  background: transparent !important;
+  padding: 120px 0;
+}
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,input,select,textarea{
+      font-family:inherit;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .section{
+      position:relative;
+      padding:96px 0;
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:auto auto 0 0;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(39,217,141,0.10), transparent 70%);
+      filter:blur(18px);
+      pointer-events:none;
+    }
+
+    .section-alt{
+      background:
+        radial-gradient(circle at top right, rgba(39,217,141,0.08), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(25,195,125,0.07), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f8fffb 100%);
+    }
+
+    .section-soft{
+      background:
+        radial-gradient(circle at 18% 12%, rgba(25,195,125,0.07), transparent 20%),
+        radial-gradient(circle at 85% 80%, rgba(39,217,141,0.07), transparent 26%),
+        linear-gradient(180deg, #f7fff9 0%, #effcf4 100%);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.88);
+      border:1px solid rgba(25,195,125,0.18);
+      color:#126f4e;
+      font-size:0.75rem;
+      font-weight:800;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      box-shadow:0 14px 32px rgba(25,195,125,0.10);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+    }
+
+    .eyebrow .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green-bright);
+      box-shadow:0 0 18px rgba(39,217,141,0.9);
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:840px;
+      margin:0 auto 54px;
+    }
+
+    .section-head .eyebrow{
+      margin-bottom:18px;
+    }
+
+    .section-title{
+      font-family:'Cinzel', serif;
+      font-size:clamp(2rem, 4vw, 3.4rem);
+      line-height:1.14;
+      color:var(--logo-dark);
+      margin-bottom:18px;
+    }
+
+    .section-title .grad{
+      background:linear-gradient(90deg, var(--logo-dark) 0%, var(--logo-mid) 35%, var(--logo-light) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .section-subtitle{
+      color:var(--text-soft);
+      font-size:1.05rem;
+      line-height:1.9;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 22px;
+      border-radius:999px;
+      border:none;
+      font-weight:800;
+      cursor:pointer;
+      transition:all .28s ease;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      color:#fff;
+      box-shadow:0 16px 34px rgba(25,195,125,0.28);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 22px 42px rgba(25,195,125,0.34);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:#111827;
+      border:1px solid rgba(15,23,42,0.10);
+      box-shadow:0 12px 28px rgba(0,0,0,0.06);
+    }
+
+    .btn-secondary:hover{
+      transform:translateY(-3px);
+      border-color:rgba(25,195,125,0.22);
+      box-shadow:0 18px 38px rgba(25,195,125,0.12);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(25,195,125,0.20), transparent 26%),
+        radial-gradient(circle at 88% 14%, rgba(39,217,141,0.16), transparent 24%),
+        radial-gradient(circle at 50% 78%, rgba(25,195,125,0.11), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f6fff9 46%, #eefbf4 100%);
+      isolation:isolate;
+      z-index:1;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(25,195,125,0.08), transparent 34%),
+        linear-gradient(to bottom, rgba(255,255,255,0.48), transparent 22%);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .hero-glow{
+      position:absolute;
+      left:50%;
+      top:42%;
+      transform:translate(-50%,-50%);
+      width:min(900px, 88vw);
+      height:min(900px, 88vw);
+      border-radius:50%;
+      background:
+        radial-gradient(circle,
+        rgba(39,217,141,0.28) 0%,
+        rgba(25,195,125,0.18) 22%,
+        rgba(25,195,125,0.11) 42%,
+        transparent 72%);
+      filter:blur(52px);
+      z-index:0;
+      animation:pulseGlow 5.2s ease-in-out infinite;
+      pointer-events:none;
+      opacity:1;
+    }
+
+    .mobile-orb{
+      display:none;
+    }
+
+    .glass-bar{
+      position:absolute;
+      width:146px;
+      height:390px;
+      border-radius:24px;
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.95) 0%,
+        rgba(39,217,141,0.28) 22%,
+        rgba(255,255,255,0.74) 50%,
+        rgba(25,195,125,0.20) 78%,
+        rgba(255,255,255,0.88) 100%
+      );
+      border:1px solid rgba(25,195,125,0.22);
+      box-shadow:
+        0 0 30px rgba(25,195,125,0.26),
+        0 0 68px rgba(25,195,125,0.18),
+        inset 0 0 22px rgba(255,255,255,0.55);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      transform:skewY(-18deg);
+      z-index:1;
+      opacity:0.98;
+      animation:floatPanel 6s ease-in-out infinite, glassPulse 4.5s ease-in-out infinite;
+      pointer-events:none;
+      will-change:transform, opacity, box-shadow;
+    }
+
+    .glass-bar.light{
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.99) 0%,
+        rgba(234,255,245,0.92) 42%,
+        rgba(39,217,141,0.18) 100%
+      );
+    }
+
+    .g1{ left:4%; top:13%; animation-delay:0s, 0s; }
+    .g2{ left:14%; top:28%; height:300px; animation-delay:.5s, .7s; }
+    .g3{ left:24%; top:10%; height:430px; animation-delay:1s, 1.2s; }
+    .g4{ right:24%; top:10%; height:430px; animation-delay:1.2s, 1.4s; }
+    .g5{ right:14%; top:28%; height:300px; animation-delay:1.7s, 1.9s; }
+    .g6{ right:4%; top:13%; animation-delay:2.2s, 2.4s; }
+
+    .hero-container{
+      position:relative;
+      z-index:5;
+      width:min(1200px, calc(100% - 32px));
+      margin:0 auto;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:64px 0 52px;
+    }
+
+    .hero-content{
+      width:100%;
+      max-width:1040px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      z-index:2;
+      margin-top:-10px;
+    }
+
+    .hero-logo{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:0 0 2px 0;
+      animation:fadeUp .8s ease both;
+      margin-top:-40px;
+    }
+
+    .hero-logo img{
+      width:168px;
+      height:168px;
+      object-fit:contain;
+      display:block;
+      filter:
+        drop-shadow(0 16px 34px rgba(25,195,125,0.34))
+        drop-shadow(0 0 22px rgba(25,195,125,0.30))
+        drop-shadow(0 0 56px rgba(39,217,141,0.22));
+    }
+
+    .hero-title{
+      margin:0;
+      font-family:'Cinzel', serif;
+      font-size:clamp(2.45rem, 5.2vw, 5rem);
+      font-weight:800;
+      line-height:1.03;
+      letter-spacing:0.02em;
+      color:var(--logo-dark);
+      text-transform:uppercase;
+      text-align:center;
+      animation:fadeUp .8s ease .15s both;
+      overflow-wrap:anywhere;
+      text-shadow:0 0 20px rgba(25,195,125,0.08);
+      margin-top:-20px;
+    }
+
+    .hero-title .line{
+      display:block;
+    }
+
+    .hero-title .highlight{
+      background:linear-gradient(90deg, var(--logo-dark) 0%, var(--logo-mid) 34%, var(--logo-light) 72%, var(--green-bright) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+
+    .hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:50px;
+  background:#e7fdf0; /* ✅ your old bg */
+  color:#19c37d;
+  font-size:13px;
+  font-weight:600;
+
+  /* 🔥 ZOOM + BRIGHT */
+  animation:zoomBright 1.8s ease-in-out infinite;
+}
+
+/* DOT */
+.dot{
+  width:8px;
+  height:8px;
+  background:#19c37d;
+  border-radius:50%;
+  position:relative;
+}
+
+/* DOT PULSE */
+.dot::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#19c37d;
+  top:0;
+  left:0;
+  animation:pulse 1.2s infinite;
+}
+
+/* 🔥 ZOOM + BRIGHT EFFECT */
+@keyframes zoomBright{
+  0%{
+    transform:scale(1);
+    filter:brightness(1.1);
+     box-shadow:0 0 18px rgba(25,195,125,0.5);
+  }
+  50%{
+    transform:scale(1.08);
+    filter:brightness(1);
+    box-shadow:0 0 18px rgba(10, 123, 76, 0.5);
+    font-weight: bold;
+  }
+  100%{
+    transform:scale(1);
+    filter:brightness(1.1);
+     box-shadow:0 0 18px rgba(25,195,125,0.5);
+  }
+}
+
+/* DOT PULSE */
+@keyframes pulse{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  70%{
+    transform:scale(2.8);
+    opacity:0;
+  }
+  100%{
+    opacity:0;
+  }
+}
+
+
+    .hero-subtitle{
+      margin-top:4px;
+      max-width:790px;
+      font-size:clamp(1.04rem, 1.7vw, 1.18rem);
+      line-height:1.88;
+      color:var(--text);
+      font-weight:500;
+      animation:fadeUp .8s ease .34s both;
+    }
+
+    .hero-subtitle strong{
+      color:#0f172a;
+      font-weight:800;
+    }
+/* CONTAINER */
+.hero-actions{
+  display:flex;
+  gap:16px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+/* BASE BUTTON */
+.hero-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 18px;
+  border-radius:999px;
+
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+
+  flex:1;
+  min-width:180px;
+
+  position:relative;
+  overflow:hidden;
+
+  transition:all 0.35s ease;
+}
+
+/* PRIMARY */
+.hero-btn.primary{
+  background:linear-gradient(135deg,#19c37d,#0ea765);
+  color:#fff;
+  box-shadow:0 10px 25px rgba(25,195,125,0.3);
+}
+
+/* SECONDARY */
+.hero-btn.secondary{
+  background:#ffffffcc;
+  backdrop-filter:blur(10px);
+  color:#19c37d;
+  border:2px solid rgba(25,195,125,0.4);
+}
+
+/* ✨ HOVER EFFECT */
+.hero-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+  transition:0.6s;
+}
+
+/* HOVER */
+.hero-btn:hover::after{
+  left:100%;
+}
+
+.hero-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+}
+
+/* PRIMARY HOVER */
+.hero-btn.primary:hover{
+  box-shadow:0 15px 35px rgba(25,195,125,0.5);
+}
+
+/* SECONDARY HOVER */
+.hero-btn.secondary:hover{
+  background:#19c37d;
+  color:#fff;
+  border-color:#19c37d;
+  box-shadow:0 12px 30px rgba(25,195,125,0.3);
+}
+
+/* CLICK EFFECT */
+.hero-btn:active{
+  transform:scale(0.96);
+}
+
+
+    .hero-stats{
+      margin-top:34px;
+      width:100%;
+      max-width:940px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+      align-items:start;
+      animation:fadeUp .8s ease .6s both;
+    }
+
+    .hero-stat{
+      position:relative;
+      padding:18px 12px;
+      text-align:center;
+      overflow:visible;
+      isolation:isolate;
+    }
+
+    .hero-stat::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      background:radial-gradient(circle,
+        rgba(39,217,141,0.20) 0%,
+        rgba(25,195,125,0.12) 42%,
+        rgba(25,195,125,0.00) 72%);
+      filter:blur(10px);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .hero-stat h3{
+      font-size:2.15rem;
+      color:#111827;
+      margin-bottom:8px;
+      font-weight:900;
+      line-height:1;
+      text-shadow:0 0 18px rgba(39,217,141,0.12);
+    }
+
+    .hero-stat p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.98rem;
+      line-height:1.45;
+      font-weight:700;
+    }
+
+  /* NAV AFTER HERO */
+.site-header{
+  position:fixed; /* sticky remove pannom */
+  top:-100px; /* initially hide */
+  left:0;
+  width:100%;
+  z-index:1000;
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.82);
+  border-bottom:1px solid rgba(25,195,125,0.12);
+  box-shadow:0 10px 30px rgba(16,24,40,0.05);
+
+  transition:all .4s ease;
+  opacity:0;
+}
+
+/* SHOW AFTER SCROLL */
+.site-header.show{
+  top:0;
+  opacity:1;
+}
+
+.site-header .container {
+  width:100%;
+  max-width:100%;
+  margin:0;
+  padding:0 20px;
+}
+
+.navbar{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:0px;
+  min-width:0;
+  flex-shrink:0;
+}
+
+.brand img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  filter:drop-shadow(0 6px 18px rgba(25,195,125,0.20));
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  gap:0px;
+  min-width:0;
+  margin-left: -12px;
+}
+
+.brand-text h2{
+  font-size:1.12rem;
+  line-height:1.1;
+  margin-bottom:4px;
+  font-weight:800;
+  color:var(--logo-dark);
+  font-family:'Cinzel', serif;
+}
+.brand-text .com{
+  background:linear-gradient(90deg, var(--logo-dark) 0%, var(--logo-mid) 34%, var(--logo-light) 72%, var(--green-bright) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  color:transparent;
+}
+
+.brand-text p{
+  font-size:0.8rem;
+  color:#4b5a6b;
+  line-height:1.2;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex:1;
+  justify-content:flex-end;
+}
+
+.nav-links a{
+  position:relative;
+  font-size:0.95rem;
+  color:#102031;
+  font-weight:700;
+  transition:all .25s ease;
+  font-family:'Cinzel', serif;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  border-radius:10px;
+  background:linear-gradient(90deg, var(--green), var(--green-dark));
+  transition:width .25s ease;
+}
+
+.nav-links a:hover{
+  color:var(--green-dark);
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-cta{
+  padding:12px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+  color:#fff !important;
+  box-shadow:0 14px 28px rgba(25,195,125,0.22);
+}
+
+.nav-cta::after{
+  display:none;
+}
+/* ========== MOBILE NAVIGATION - UNIFIED ========== */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(18px);
+  padding: 16px 20px;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 1px solid rgba(25, 195, 125, 0.15);
+  z-index: 1000;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav.show {
+  display: flex !important;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav .nav-cta {
+  background: linear-gradient(135deg, #27d98d, #109d63);
+  color: #fff !important;
+  text-align: center;
+  padding: 12px;
+  border-radius: 30px;
+  margin-top: 10px;
+  border-bottom: none;
+}
+
+/* Language switcher in mobile nav */
+.lang-switcher-mobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 16px 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.lang-switcher-mobile .lang-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.lang-switcher-mobile .lang-separator {
+  color: #64748b;
+}
+
+/* Ensure menu button is visible */
+.menu-btn {
+  display: flex !important;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Make sure container has relative position for absolute positioning */
+.site-header .container {
+  position: relative;
+}
+
+
+
+    /* FEATURE CARDS */
+/* FEATURE CARDS */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:24px;
+}
+
+/* CARD */
+.feature-card{
+  position:relative;
+  background:rgba(255,255,255,0.86);
+  border:3px solid rgba(86, 221, 165, 0.14);
+  border-radius:28px;
+  padding:30px 26px;
+  box-shadow:var(--card-shadow);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s ease,
+              border-color 0.45s ease;
+  overflow:hidden;
+
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* SOFT GLOW */
+.feature-card::before{
+  content:"";
+  position:absolute;
+  right:-60px;
+  bottom:-60px;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(39,217,141,0.14), transparent 70%);
+  pointer-events:none;
+
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s ease;
+
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* HOVER CARD */
+.feature-card:hover{
+  transform: translateY(-6px);
+  box-shadow:var(--card-shadow-hover);
+  border-color:rgba(25,195,125,0.22);
+}
+
+/* GLOW MOVE (SMOOTHER, LESS DISTANCE) */
+.feature-card:hover::before{
+  transform: translate(-60px, -60px) scale(1.15);
+}
+
+/* ICON */
+.feature-icon{
+  width:62px;
+  height:62px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  background:linear-gradient(135deg, #ffffff, #d2f4df);
+  border:1px solid rgba(25,195,125,0.16);
+  box-shadow:0 12px 28px rgba(25,195,125,0.10);
+  margin-bottom:18px;
+
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+
+  will-change: transform;
+}
+
+/* ICON HOVER */
+.feature-card:hover .feature-icon{
+  transform: translate(-6px, -6px);
+  box-shadow:0 18px 35px rgba(25,195,125,0.16);
+}
+
+
+    .feature-card h3{
+      font-size:1.32rem;
+      color:var(--logo-dark);
+      margin-bottom:12px;
+    }
+
+    .feature-card p{
+      color:var(--text-soft);
+      line-height:1.86;
+      font-size:0.97rem;
+    }
+
+    /* SERVICES */
+
+    .service-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+
+/* small premium icon bubble */
+.service-icon-mini{
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:10px;
+
+  background:rgba(25,195,125,0.12);
+  color:#19c37d;
+
+  font-size:14px;
+
+  box-shadow:0 6px 16px rgba(25,195,125,0.12);
+
+  flex-shrink:0;
+}
+
+/* title refinement */
+.service-title h3{
+  font-size:1.1rem;
+  color:var(--logo-dark);
+  margin:0;
+}
+    .services-list{
+      max-width:1120px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .service-row{
+      position:relative;
+      background:rgba(255,255,255,0.84);
+      border:3px solid rgba(25,195,125,0.14);
+      border-radius:28px;
+      padding:28px 28px;
+      box-shadow:var(--card-shadow);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      transition:all .3s ease;
+      cursor:pointer;
+    }
+
+    .service-row:hover{
+      transform:translateY(-4px);
+      border-color:rgba(25,195,125,0.24);
+      box-shadow:var(--card-shadow-hover);
+
+    }
+
+    .service-row.active{
+      border-color:rgba(25,195,125,0.30);
+      box-shadow:0 24px 55px rgba(25,195,125,0.14);
+      background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,255,249,0.96));
+    }
+
+    .service-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .service-left{
+      display:flex;
+      align-items:flex-start;
+      gap:18px;
+      min-width:0;
+    }
+
+    .service-no{
+      min-width:60px;
+      height:60px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, #ffffff, #eafff2);
+      border:1px solid rgba(25,195,125,0.16);
+      color:#11724e;
+      font-weight:900;
+      box-shadow:0 10px 24px rgba(25,195,125,0.10);
+    }
+
+    .service-text h3{
+      font-size:1.38rem;
+      color:var(--logo-dark);
+      margin-bottom:8px;
+    }
+
+    .service-text p{
+      color:var(--text-soft);
+      line-height:1.8;
+      font-size:0.96rem;
+      max-width:780px;
+    }
+
+    .service-toggle{
+      position:relative;
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:#fff;
+      border:1px solid rgba(25,195,125,0.16);
+      flex-shrink:0;
+      box-shadow:0 8px 20px rgba(25,195,125,0.08);
+      transition:all .3s ease;
+    }
+
+    .service-toggle span{
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:16px;
+      height:2px;
+      border-radius:10px;
+      background:#0f172a;
+      transform:translate(-50%,-50%);
+      transition:all .3s ease;
+    }
+
+    .service-toggle span:last-child{
+      transform:translate(-50%,-50%) rotate(90deg);
+    }
+
+    .service-row.active .service-toggle{
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      border-color:transparent;
+    }
+
+    .service-row.active .service-toggle span{
+      background:#fff;
+    }
+
+    .service-row.active .service-toggle span:last-child{
+      transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+    .service-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .4s ease, margin-top .4s ease;
+      margin-top:0;
+    }
+
+    .service-row.active .service-content{
+      max-height:500px;
+      margin-top:24px;
+    }
+
+    .pill-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
+      padding-left:78px;
+    }
+
+    .pill{
+      min-height:54px;
+      display:flex;
+      align-items:center;
+      padding:14px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg, #ffffff, #f4fff8);
+      border:1px solid rgba(25,195,125,0.12);
+      color:#1f2d3d;
+      font-weight:700;
+      font-size:0.92rem;
+      box-shadow:0 8px 20px rgba(25,195,125,0.06);
+      transition:all .25s ease;
+    }
+
+    .pill:hover{
+      transform:translateY(-2px);
+      border-color:rgba(25,195,125,0.24);
+      box-shadow:0 14px 28px rgba(25,195,125,0.10);
+    }
+
+    .service-arrow-box{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+  overflow:hidden;
+
+  /* glass premium base */
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,0.75),
+    rgba(255,255,255,0.35)
+  );
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  /* layered depth */
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08),
+    0 2px 8px rgba(25,195,125,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  transition:all 0.45s cubic-bezier(.22,1,.36,1);
+}
+
+/* arrow */
+.service-arrow-box .arrow{
+  font-size:18px;
+  font-weight:600;
+  color:var(--logo-dark);
+  transition:all 0.35s ease;
+}
+
+/* hover = lift + glow */
+.service-row:hover .service-arrow-box{
+  transform:translateX(8px) translateY(-2px) scale(1.06);
+
+  border-color:rgba(39,217,141,0.45);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.12),
+    0 10px 25px rgba(39,217,141,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* arrow micro motion */
+.service-row:hover .service-arrow-box .arrow{
+  transform:translateX(3px);
+}
+
+/* ✨ subtle light sweep effect */
+.service-arrow-box::before{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-60%;
+  width:120%;
+  height:120%;
+
+  background:radial-gradient(
+    circle,
+    rgba(39,217,141,0.25),
+    transparent 60%
+  );
+
+  opacity:0;
+  transform:scale(0.8);
+  transition:0.5s ease;
+}
+
+.service-row:hover .service-arrow-box::before{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* ✨ glass reflection highlight */
+.service-arrow-box::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:40%;
+
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  border-radius:16px 16px 0 0;
+  opacity:0.6;
+}
+
+
+.service-arrow-box{
+  width:50px;
+  height:50px;
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+
+  transition:0.45s cubic-bezier(.22,1,.36,1);
+}
+
+.arrow-icon{
+  width:22px;
+  height:22px;
+  color:var(--logo-dark);
+  transition:0.35s ease;
+}
+
+/* hover premium motion */
+.service-row:hover .service-arrow-box{
+  transform:translateX(8px) scale(1.07);
+  border-color:rgba(25,195,125,0.4);
+  box-shadow:
+    0 18px 40px rgba(25,195,125,0.18),
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.service-row:hover .arrow-icon{
+  transform:translateX(3px);
+  color:#19c37d;
+}
+    .service-icon-circle svg{
+  width:20px;
+  height:20px;
+  stroke:#19c37d;
+  stroke-width:2;
+  fill:none;
+}
+
+/* LEFT GROUP */
+.service-left{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+}
+
+/* ICON CIRCLE (premium green style.css) */
+.service-icon-circle{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(145deg,#f4fff9,#ffffff);
+  border:1px solid rgba(25,195,125,0.25);
+
+  box-shadow:
+    0 10px 22px rgba(25,195,125,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+
+  flex-shrink:0;
+  transition:0.4s ease;
+}
+
+/* ICON inside */
+.service-icon-circle svg{
+  width:20px;
+  height:20px;
+  color:#19c37d;
+}
+
+/* hover effect */
+.service-row:hover .service-icon-circle{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 16px 35px rgba(25,195,125,0.18);
+  border-color:rgba(25,195,125,0.4);
+}
+
+
+/* PRICING GRID */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:30px;
+}
+
+/* CARD BASE */
+.price-card{
+  position:relative;
+  border-radius:32px;
+  padding:38px 28px 30px;
+  overflow:hidden;
+
+  background:rgba(255,255,255,0.75);
+  border:1px solid rgba(255,255,255,0.4);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+
+  transition:all .45s cubic-bezier(.22,.61,.36,1);
+}
+
+/* GLOW BORDER EFFECT */
+.price-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:32px;
+  padding:1px;
+  background:linear-gradient(135deg, transparent, rgba(25,195,125,0.4), transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.4;
+}
+
+/* HOVER */
+.price-card:hover{
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 30px 80px rgba(0,0,0,0.12);
+}
+
+/* POPULAR CARD */
+.price-card.popular{
+  transform:scale(1.04);
+  background:linear-gradient(180deg,#ffffff 0%,#f4fff9 100%);
+  box-shadow:0 30px 80px rgba(25,195,125,0.2);
+}
+
+/* ✨ RIBBON (TOP RIGHT CORNER) */
+.price-card .ribbon{
+  position:absolute;
+  top:18px;
+  right:-40px;
+  background:linear-gradient(135deg,#19c37d,#0ea765);
+  color:#fff;
+  padding:10px 50px;
+  font-size:0.75rem;
+  font-weight:800;
+  transform:rotate(45deg);
+  box-shadow:0 10px 25px rgba(25,195,125,0.3);
+  letter-spacing:.08em;
+}
+
+/* TEXT STYLES */
+.plan-label{
+  color:#16a46b;
+  font-size:0.75rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.plan-name{
+  font-size:1.8rem;
+  font-weight:900;
+  color:#0f172a;
+  margin-bottom:10px;
+}
+
+.plan-price{
+  font-size:3.2rem;
+  font-weight:900;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,#19c37d,#0ea765);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.plan-price span{
+  font-size:1rem;
+  color:#5b6b7c;
+  font-weight:700;
+}
+
+/* DESCRIPTION */
+.plan-desc{
+  color:#5b6b7c;
+  line-height:1.8;
+  margin-bottom:22px;
+  min-height:80px;
+}
+
+/* FEATURES */
+.feature-list{
+  list-style:none;
+  display:grid;
+  gap:12px;
+  margin-bottom:26px;
+}
+
+.feature-list li{
+  position:relative;
+  padding-left:30px;
+  font-weight:600;
+  color:#1f2d3a;
+}
+
+/* ICON STYLE */
+.feature-list li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:2px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(135deg,#19c37d,#0ea765);
+  color:#fff;
+  font-size:0.75rem;
+
+  box-shadow:0 5px 12px rgba(25,195,125,0.3);
+}
+
+/* BUTTON HOVER PREMIUM */
+.subscribe-btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.subscribe-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+  transition:0.6s;
+}
+
+.subscribe-btn:hover::after{
+  left:100%;
+}
+
+    /* BENEFITS */
+    .benefits-layout{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:26px;
+      align-items:stretch;
+    }
+
+    .benefits-main{
+      position:relative;
+      border-radius:32px;
+      padding:34px;
+      background:linear-gradient(145deg, #ffffff, #f0fff6);
+      border:1px solid rgba(25,195,125,0.18);
+      box-shadow:0 24px 55px rgba(25,195,125,0.12);
+      overflow:hidden;
+    }
+
+    .benefits-main::before{
+      content:"";
+      position:absolute;
+      top:-60px;
+      right:-60px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(39,217,141,0.18), transparent 70%);
+      filter:blur(10px);
+    }
+
+    .benefits-main h3{
+      font-size:2rem;
+      line-height:1.28;
+      margin:18px 0 16px;
+      color:var(--logo-dark);
+    }
+
+    .benefits-main p{
+      color:var(--text-soft);
+      line-height:1.9;
+      font-size:1rem;
+    }
+
+    .point-list{
+      display:grid;
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .point-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:18px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.80);
+      border:1px solid rgba(25,195,125,0.12);
+      box-shadow:0 12px 26px rgba(25,195,125,0.08);
+    }
+
+    .point-icon{
+      min-width:34px;
+      height:34px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      color:#fff;
+      font-size:0.9rem;
+      font-weight:900;
+      box-shadow:0 8px 18px rgba(25,195,125,0.18);
+    }
+
+    .point-item h4{
+      font-size:1rem;
+      color:var(--logo-dark);
+      margin-bottom:5px;
+    }
+
+    .point-item p{
+      margin:0;
+      font-size:0.93rem;
+      line-height:1.72;
+    }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .mini-benefit{
+      background:rgba(255,255,255,0.85);
+      border:1px solid rgba(25,195,125,0.12);
+      border-radius:24px;
+      padding:24px 20px;
+      box-shadow:var(--card-shadow);
+      transition:all .28s ease;
+    }
+
+    .mini-benefit:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--card-shadow-hover);
+    }
+
+    .mini-benefit .feature-icon{
+      width:54px;
+      height:54px;
+      font-size:24px;
+      margin-bottom:14px;
+    }
+
+    .mini-benefit h4{
+      font-size:1.08rem;
+      color:var(--logo-dark);
+      margin-bottom:10px;
+    }
+
+    .mini-benefit p{
+      color:var(--text-soft);
+      line-height:1.76;
+      font-size:0.93rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-wrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+    }
+
+    .testimonial-track{
+      display:flex;
+      transition:transform .8s cubic-bezier(.22,1,.36,1);
+    }
+
+    .testimonial-slide{
+      min-width:100%;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:22px;
+    }
+
+    .testimonial-card{
+      background:rgba(255,255,255,0.90);
+      border:1px solid rgba(25,195,125,0.12);
+      border-radius:26px;
+      padding:26px 22px;
+      box-shadow:var(--card-shadow);
+      transition:all .28s ease;
+    }
+
+    .testimonial-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--card-shadow-hover);
+    }
+
+    .stars{
+      color:#13a061;
+      letter-spacing:2px;
+      margin-bottom:14px;
+      font-size:0.95rem;
+      font-weight:900;
+    }
+
+    .testimonial-card p{
+      color:var(--text-soft);
+      line-height:1.9;
+      font-size:0.96rem;
+      margin-bottom:16px;
+    }
+
+    .testimonial-card strong{
+      color:var(--logo-dark);
+      font-size:1rem;
+    }
+
+    .slider-controls{
+      margin-top:26px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .slider-btn{
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:50%;
+      background:#fff;
+      color:#102031;
+      font-size:1rem;
+      cursor:pointer;
+      box-shadow:0 12px 26px rgba(25,195,125,0.10);
+      border:1px solid rgba(25,195,125,0.12);
+      transition:all .25s ease;
+    }
+
+    .slider-btn:hover{
+      transform:translateY(-3px);
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      color:#fff;
+    }
+
+    /* CONTACT */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .contact-box,
+    .contact-form{
+      position:relative;
+      background:rgba(255,255,255,0.88);
+      border:1px solid rgba(25,195,125,0.14);
+      border-radius:30px;
+      padding:32px;
+      box-shadow:var(--card-shadow);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      overflow:hidden;
+    }
+
+    .contact-box::before,
+    .contact-form::before{
+      content:"";
+      position:absolute;
+      top:-70px;
+      right:-70px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(39,217,141,0.16), transparent 70%);
+      pointer-events:none;
+    }
+
+    .contact-box h3,
+    .contact-form h3{
+      font-size:1.8rem;
+      color:var(--logo-dark);
+      margin-bottom:12px;
+    }
+
+    .contact-box > p,
+    .contact-form > p{
+      color:var(--text-soft);
+      line-height:1.84;
+      margin-bottom:24px;
+    }
+
+    .contact-info{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(135deg, #ffffff, #f6fff9);
+      border:1px solid rgba(25,195,125,0.10);
+      box-shadow:0 8px 18px rgba(25,195,125,0.06);
+    }
+
+    .contact-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--green-soft), #ffffff);
+      border:1px solid rgba(25,195,125,0.12);
+      font-size:23px;
+      flex-shrink:0;
+    }
+
+    .contact-item h4{
+      color:var(--logo-dark);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .contact-item p,
+    .contact-item a{
+      color:var(--text-soft);
+      line-height:1.72;
+      font-size:0.94rem;
+    }
+
+
+/* STRIP */
+.stats-strip{
+  display:flex;
+  gap:14px;
+  margin-top:30px;
+}
+
+/* CARD */
+.stats-mini{
+  flex:1;
+  padding:18px 16px;
+  border-radius:14px;
+
+  background:#ffffff; /* clean white */
+  border:1px solid #e5e7eb;
+
+  text-align:center;
+  text-decoration:none;
+
+  transition:all 0.25s ease;
+}
+
+/* TEXT */
+.stats-mini strong{
+  display:block;
+  font-size:22px;
+  font-weight:800;
+  color:#ffffff; /* dark for readability */
+}
+
+.stats-mini span{
+  font-size:13px;
+  color:#ffffff;
+}
+
+/* HOVER (SUBTLE PREMIUM) */
+.stats-mini:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  border-color:#19c37d;
+}
+
+/* HIGHLIGHT (IMPORTANT CARD) */
+.stats-mini.highlight{
+  background:#19c37d;
+  border-color:#19c37d;
+}
+
+.stats-mini.highlight strong,
+.stats-mini.highlight span{
+  color:#fff;
+}
+
+    .stats-mini{
+      padding:18px 14px;
+      border-radius:20px;
+      text-align:center;
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      color:#fff;
+      box-shadow:0 14px 28px rgba(25,195,125,0.18);
+    }
+
+    .stats-mini strong{
+      display:block;
+      font-size:1.3rem;
+      margin-bottom:4px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .form-group.full{
+      grid-column:span 2;
+    }
+
+    .form-group label{
+      color:#223243;
+      font-size:0.93rem;
+      font-weight:800;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    .input-wrap span{
+      position:absolute;
+      left:14px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:1rem;
+      opacity:.72;
+    }
+
+    .input-wrap textarea + span{
+      top:22px;
+      transform:none;
+    }
+
+    .input-wrap input,
+    .input-wrap select,
+    .input-wrap textarea{
+      width:100%;
+      border:1px solid rgba(25,195,125,0.16);
+      background:#fff;
+      border-radius:18px;
+      padding:15px 16px 15px 44px;
+      font-size:0.95rem;
+      color:#102031;
+      transition:all .22s ease;
+      box-shadow:0 8px 18px rgba(25,195,125,0.04);
+    }
+
+    .input-wrap textarea{
+      min-height:132px;
+      resize:vertical;
+      padding-top:16px;
+    }
+
+    .input-wrap input:focus,
+    .input-wrap select:focus,
+    .input-wrap textarea:focus{
+      outline:none;
+      border-color:rgba(25,195,125,0.36);
+      box-shadow:0 0 0 4px rgba(25,195,125,0.10);
+      transform:translateY(-1px);
+    }
+
+    .form-note{
+      display:none;
+      margin-top:16px;
+      color:#11724e;
+      font-weight:800;
+    }
+
+    /* FOOTER */
+    .site-footer{
+      position:relative;
+      background:
+        radial-gradient(circle at top left, rgba(39,217,141,0.12), transparent 24%),
+        linear-gradient(180deg, #0d1723 0%, #0f1f1e 100%);
+      color:#d6e7de;
+      padding:74px 0 26px;
+      overflow:hidden;
+    }
+
+    .site-footer::before{
+      content:"";
+      position:absolute;
+      top:-60px;
+      right:-60px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(39,217,141,0.16), transparent 70%);
+      pointer-events:none;
+    }
+
+    .footer-top{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1.1fr;
+      gap:28px;
+      padding-bottom:32px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand h3{
+      font-size:1.8rem;
+      color:#fff;
+      margin-bottom:14px;
+    }
+
+    .footer-brand p{
+      color:#c1d6cb;
+      line-height:1.9;
+      max-width:420px;
+      font-size:0.96rem;
+    }
+
+    .footer-column h4{
+      color:#fff;
+      font-size:1rem;
+      margin-bottom:16px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .footer-links a,
+    .footer-column p{
+      color:#c1d6cb;
+      line-height:1.7;
+      font-size:0.93rem;
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+    }
+
+    .footer-bottom{
+      padding-top:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-bottom p{
+      color:#9eb6a8;
+      font-size:0.88rem;
+    }
+
+    /* SCROLL TOP */
+    #scrollTopBtn{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      width:48px;
+      height:48px;
+      border:none;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+      color:#fff;
+      font-size:20px;
+      font-weight:900;
+      cursor:pointer;
+      display:none;
+      z-index:1200;
+      box-shadow:0 12px 28px rgba(25,195,125,0.24);
+      transition:all .3s ease;
+    }
+
+    #scrollTopBtn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 34px rgba(25,195,125,0.30);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(28px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes pulseGlow{
+      0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+        opacity:.96;
+      }
+      50%{
+        transform:translate(-50%,-50%) scale(1.10);
+        opacity:1;
+      }
+    }
+
+    @keyframes floatPanel{
+      0%,100%{ transform:skewY(-18deg) translateY(0px); }
+      50%{ transform:skewY(-18deg) translateY(-18px); }
+    }
+
+    @keyframes glassPulse{
+      0%,100%{
+        opacity:.94;
+        box-shadow:
+          0 0 28px rgba(25,195,125,0.22),
+          0 0 62px rgba(25,195,125,0.16),
+          inset 0 0 18px rgba(255,255,255,0.50);
+      }
+      50%{
+        opacity:1;
+        box-shadow:
+          0 0 38px rgba(39,217,141,0.32),
+          0 0 88px rgba(25,195,125,0.24),
+          inset 0 0 26px rgba(255,255,255,0.60);
+      }
+    }
+
+    @keyframes floatOrb{
+      0%,100%{ transform:translate3d(0,0,0) scale(1); opacity:.92; }
+      50%{ transform:translate3d(0,-16px,0) scale(1.08); opacity:1; }
+    }
+
+
+
+
+
+
+        /* ---------------- FOOTER ---------------- */
+    .site-footer{
+      position:relative;
+      background:
+        radial-gradient(circle at top left, rgba(212,175,55,0.10), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(25,195,125,0.12), transparent 24%),
+        linear-gradient(180deg, #0c1d1a 0%, #0a1614 100%);
+      color:#d6e7de;
+      padding:76px 0 26px;
+      overflow:hidden;
+    }
+
+    .site-footer::before{
+      content:"";
+      position:absolute;
+      top:-80px;
+      right:-80px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+      pointer-events:none;
+    }
+
+    .footer-wave{
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:220px;
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .footer-top{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1.1fr;
+      gap:28px;
+      padding-bottom:32px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand h3{
+      color:#fff;
+      font-size:1.8rem;
+      margin-bottom:14px;
+    }
+
+    .footer-brand p{
+      color:#c1d6cb;
+      font-size:.96rem;
+      line-height:1.9;
+      max-width:420px;
+    }
+
+    .footer-column h4{
+      color:#fff;
+      font-size:1rem;
+      margin-bottom:16px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .footer-links a,
+    .footer-column p{
+      color:#c1d6cb;
+      font-size:.93rem;
+      line-height:1.7;
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+    }
+
+    .footer-bottom{
+      position:relative;
+      z-index:2;
+      padding-top:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-bottom p{
+      color:#9eb6a8;
+      font-size:.88rem;
+    }
+
+    /* LANGUAGE MODAL */
+    .lang-modal{
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.5);
+      display:flex;
+      align-items:center;justify-content:center;
+      z-index:9999;
+      backdrop-filter:blur(4px);
+      animation:fadeIn 0.4s ease-out;
+      opacity:1;
+    }
+
+    .lang-modal.hidden{
+      display:none;
+      opacity:0;
+    }
+
+    .lang-modal-content{
+      background:white;
+      border-radius:var(--radius-xl);
+      padding:50px 40px;
+      max-width:500px;
+      width:90%;
+      text-align:center;
+      animation:slideUp 0.5s ease-out;
+      box-shadow:var(--card-shadow-hover);
+    }
+
+    .lang-modal-header{
+      margin-bottom:30px;
+    }
+
+    .lang-modal-header h2{
+      font-size:28px;
+      color:var(--text);
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .lang-modal-header p{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .lang-options{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-bottom:20px;
+    }
+
+    .lang-btn{
+      padding:25px 20px;
+      border:2px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:#fff;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      font-size:18px;
+      font-weight:600;
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+
+    .lang-btn .flag{
+      font-size:40px;
+    }
+
+    .lang-btn:hover{
+      border-color:var(--green);
+      background:var(--green-soft);
+      transform:translateY(-3px);
+      box-shadow:var(--card-shadow);
+    }
+
+    .lang-btn.active{
+      border-color:var(--green);
+      background:linear-gradient(135deg, var(--green-soft), var(--green-soft-2));
+      color:var(--green-dark);
+    }
+
+    .lang-modal-footer{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .lang-overlay{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.72);
+      backdrop-filter:blur(10px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:24px;
+    }
+
+    .lang-overlay.hidden{
+      display:none;
+      opacity:0;
+    }
+
+    .lang-box{
+      width:min(520px,100%);
+      background:rgba(255,255,255,0.98);
+      border-radius:32px;
+      padding:40px 32px;
+      text-align:center;
+      box-shadow:0 28px 80px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.72);
+      backdrop-filter:blur(18px);
+    }
+
+    .lang-box h2{
+      margin:0 0 24px;
+      font-size:2rem;
+      line-height:1.1;
+      color:var(--text);
+      font-weight:800;
+    }
+
+    .lang-buttons{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .lang-option-btn{
+      min-height:68px;
+      border:0;
+      border-radius:20px;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:700;
+      transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      color:#fff;
+      background:var(--green);
+    }
+
+    .lang-option-btn:nth-child(2){
+      background:#111827;
+    }
+
+    .lang-option-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 32px rgba(0,0,0,0.16);
+    }
+
+    /* LANGUAGE SELECTOR */
+    .lang-selector{
+      position:fixed;
+      top:20px;right:20px;
+      z-index:1000;
+      display:flex;
+      gap:8px;
+      background:white;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .lang-selector button{
+      padding:6px 12px;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      font-weight:600;
+      font-size:12px;
+      color:var(--muted);
+      transition:all 0.3s ease;
+      border-radius:999px;
+    }
+
+    .lang-selector button.active{
+      background:var(--green);
+      color:#fff;
+    }
+
+    /* Language Switcher in Navbar */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      margin-right: 20px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .lang-btn:hover {
+      background: rgba(25, 195, 125, 0.1);
+    }
+
+    .lang-separator {
+      color: var(--text-soft);
+      font-weight: 400;
+    }
+
+    /* Mobile Language Switcher */
+    .lang-switcher-mobile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lang-selector button:hover{
+      color:var(--green);
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+
+    @keyframes slideUp{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+
+
+    /* ============ RESPONSIVE FIXES ============ */
+
+/* Prevent horizontal scroll & white space */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Global box-sizing for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Images scaling fix */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container overflow protection */
+.container {
+  overflow: hidden;
+}
+
+/* Section overflow protection */
+.section {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Hero section overflow fix */
+.hero {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 100%;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
+/* ============ FULL RESPONSIVE MEDIA QUERIES ============ */
+
+/* Prevent horizontal scroll & overflow */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.section, .hero, .site-header {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+
+@media (max-width: 320px) {
+
+
+
+
+  .brand-text h2 {
+    font-size: 0.58rem !important;
+    line-height: 1.2 !important;
+  }
+  .brand-text p {
+    font-size: 0.40rem !important;
+    line-height: 1.4 !important;
+  }
+  body .glass-bar {
+    width: 46px !important;
+    opacity: 0.7 !important;
+    border-radius: 14px !important;
+    display: block !important;
+
+  }
+
+
+  body .g1, body .g6 {
+    height: 180px !important;
+  }
+  body .g2, body .g5 {
+    height: 120px !important;
+  }
+  body .g3, body .g4 {
+    height: 220px !important;
+  }
+
+  body .g1{ left:1% !important; top:18% !important; }
+  body .g2{ left:6% !important; top:60% !important; }
+  body .g3{ left:12% !important; top:12% !important; }
+  body .g4{ right:12% !important; top:12% !important; }
+  body .g5{ right:6% !important; top:60% !important; }
+  body .g6{ right:1% !important; top:18% !important; }
+}
+
+
+/* ============================================== */
+/* MOBILE: ≤480px */
+/* ============================================== */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  /* HERO */
+  .hero-container {
+    padding: 48px 0 40px;
+    width: 100%;
+  }
+
+  .hero-logo img {
+    width: 120px;
+    height: 120px;
+    margin-top: -12px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    margin-top: -20px;
+    line-height: 1.15;
+  }
+
+  .hero-badge {
+    font-size: 0.56rem;
+    padding: 6px 10px;
+    gap: 5px;
+    max-width: 260px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+   .hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* First button */
+  .hero-actions .hero-btn:first-child {
+    order: 1 !important;
+    flex: 0 0 calc(50% - 5px) !important;
+    width: calc(50% - 5px) !important;
+    margin: 0 !important;
+    padding: 10px 10px !important;
+    font-size: 0.8rem !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+
+
+  }
+
+  /* Second button */
+  .hero-actions .hero-btn:nth-child(2) {
+    order: 2 !important;
+    flex: 0 0 calc(50% - 5px) !important;
+    width: calc(50% - 5px) !important;
+    margin: 0 !important;
+    padding: 10px 10px !important;
+    font-size: 0.8rem !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Third button - center, full width separate row */
+  .hero-actions .hero-btn:nth-child(3) {
+    order: 3 !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 240px !important;
+    margin: 0 auto !important;
+    padding: 10px 10px !important;
+    font-size: 0.8rem !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    display: block !important;
+
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .hero-stat {
+    padding: 12px 8px;
+  }
+
+  .hero-stat h3 {
+    font-size: 1.3rem;
+  }
+
+  .hero-stat p {
+    font-size: 0.65rem;
+  }
+
+
+  .glass-bar {
+  width: 46px;
+  opacity: 0.7;
+  border-radius: 14px;
+}
+.g1, .g6 { height: 180px; }
+.g2, .g5 { height: 120px; }
+.g3, .g4 { height: 220px; }
+.g1{ left:1%; top:18%; }
+.g2{ left:6%; top:60%; }
+.g3{ left:12%; top:12%; }
+.g4{ right:12%; top:12%; }
+.g5{ right:6%; top:60%; }
+.g6{ right:1%; top:18%; }
+
+
+    /* NAVBAR - Mobile with 3 lines menu */
+  .navbar {
+    flex-wrap: nowrap;
+    gap: 3px;
+    min-height: 56px;
+    padding: 6px 0;
+  }
+
+  .brand {
+    margin-right: -12px;
+  }
+
+  .brand img {
+    width: 54px;
+    height: 54px;
+    margin-right: 6px;
+    margin-left: -16px;
+  }
+
+  .brand-text {
+    margin-left: -16px;
+  }
+
+  .brand-text h2 {
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .brand-text p {
+    font-size: 0.5rem;
+  }
+
+  /* Language Switcher */
+  .lang-switcher {
+    gap: 2px;
+    margin: 0 4px;
+  }
+
+  .lang-switcher .lang-btn {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+  }
+
+  .lang-switcher .lang-separator {
+    font-size: 0.65rem;
+  }
+
+  /* Menu Button - 3 lines (MUST BE VISIBLE) */
+  .menu-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    background: rgba(25, 195, 125, 0.1) !important;
+    border: 1px solid rgba(25, 195, 125, 0.2) !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+  }
+
+  .menu-btn span {
+    display: block !important;
+    width: 16px !important;
+    height: 2px !important;
+    background: #0f172a !important;
+    border-radius: 2px !important;
+  }
+
+  /* Mobile Navigation Menu */
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(18px);
+    padding: 12px 16px 20px;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(25, 195, 125, 0.15);
+    z-index: 999;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+
+  .mobile-nav a {
+    padding: 12px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0f172a;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-nav .nav-cta {
+    background: linear-gradient(135deg, #27d98d, #109d63);
+    color: #fff !important;
+    text-align: center;
+    padding: 12px;
+    border-radius: 30px;
+    margin-top: 10px;
+    border-bottom: none;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-head {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* CARDS */
+  .cards-grid,
+  .pricing-grid,
+  .benefits-grid,
+  .testimonial-slide,
+  .pill-grid,
+  .stats-strip,
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature-card {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .feature-card p {
+    font-size: 0.82rem;
+  }
+
+  /* SERVICE */
+  .service-row {
+    padding: 16px 12px;
+    border-radius: 20px;
+  }
+
+  .service-top {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .service-left {
+    gap: 8px;
+  }
+
+  .service-icon-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .service-icon-circle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .service-text h3 {
+    font-size: 0.9rem;
+  }
+
+  .service-text p {
+    font-size: 0.78rem;
+  }
+
+  .service-no {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+  }
+
+  .service-arrow-box {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .pill-grid {
+    padding-left: 0;
+    gap: 8px;
+  }
+
+  .pill {
+    min-height: 40px;
+    padding: 10px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* PRICING */
+  .price-card {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .price-card.popular {
+    transform: scale(1);
+  }
+
+  .plan-name {
+    font-size: 1.3rem;
+  }
+
+  .plan-price {
+    font-size: 2rem;
+  }
+
+  .ribbon {
+    font-size: 0.6rem;
+    padding: 6px 40px;
+    right: -36px;
+  }
+
+  /* BENEFITS */
+  .benefits-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .benefits-main {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .benefits-main h3 {
+    font-size: 1.2rem;
+  }
+
+  .point-item {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .mini-benefit {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-box,
+  .contact-form {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .contact-box h3,
+  .contact-form h3 {
+    font-size: 1.3rem;
+  }
+
+  /* FOOTER */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* LANGUAGE OVERLAY */
+  .lang-box {
+    width: 92%;
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  .lang-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .lang-option-btn {
+    min-height: 50px;
+    font-size: 0.85rem;
+    border-radius: 14px;
+  }
+
+  #scrollTopBtn {
+    width: 38px;
+    height: 38px;
+    bottom: 14px;
+    right: 14px;
+    font-size: 16px;
+  }
+}
+
+
+
+/* ============================================== */
+/* LARGE MOBILE: 481px – 767px */
+/* ============================================== */
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-logo img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-badge {
+    font-size: 0.62rem;
+    max-width: 320px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hero-stat h3 {
+    font-size: 1.5rem;
+  }
+
+  .cards-grid,
+  .pricing-grid,
+  .testimonial-slide {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .benefits-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+   /* NAVBAR */
+  .navbar {
+    flex-wrap: nowrap;
+    gap: 3px;
+    min-height: 56px;
+    padding: 6px 0;
+  }
+  .brand {
+    margin-right: -12px;
+  }
+  .brand img {
+    width: 54px;
+    height: 54px;
+   margin-right: 6px;
+   margin-left: -16px;
+  }
+  .menu-btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ============================================== */
+/* TABLET & LAPTOP: 768px – 1199px (WITH TOGGLE) */
+/* ============================================== */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  /* NAVBAR - Mobile style.css with toggle button */
+  .navbar {
+    gap: 12px;
+    min-height: 62px;
+    flex-wrap: nowrap;
+  }
+
+  .brand img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .brand-text h2 {
+    font-size: 0.9rem;
+  }
+
+  .brand-text p {
+    font-size: 0.7rem;
+  }
+
+  /* Hide desktop nav links */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Show mobile menu button (toggle) - 3 lines */
+  .menu-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    background: rgba(25, 195, 125, 0.1) !important;
+    border: 1px solid rgba(25, 195, 125, 0.2) !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+  }
+
+  .menu-btn span {
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    background: #0f172a !important;
+    border-radius: 2px !important;
+  }
+
+  /* Mobile navigation panel */
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(18px);
+    padding: 16px 24px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(25, 195, 125, 0.15);
+  }
+
+  .mobile-nav.show {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 14px 0;
+    color: #0f172a;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-nav .nav-cta {
+    background: linear-gradient(135deg, #27d98d, #109d63);
+    color: #fff !important;
+    text-align: center;
+    padding: 12px;
+    border-radius: 30px;
+    margin-top: 10px;
+  }
+
+  /* Language switcher positioning */
+  .lang-switcher {
+    margin-right: 15px;
+  }
+
+  /* HERO */
+  .hero-logo img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  /* GRIDS */
+  .cards-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .testimonial-slide {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .benefits-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .contact-wrap {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pill-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 20px;
+    gap: 10px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .glass-bar {
+    width: 80px;
+    opacity: 0.7;
+  }
+  .g2, .g5 { height: 180px; }
+  .g3, .g4 { height: 280px; }
+}
+
+/* ============================================== */
+/* DESKTOP: ≥1200px - Full Navbar */
+/* ============================================== */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  /* Desktop - Show full navbar, hide toggle button */
+  .nav-links {
+    display: flex !important;
+    gap: 22px;
+  }
+
+  .menu-btn {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+/* ============================================== */
+/* HERO BUTTON RESPONSIVE FIX */
+/* ============================================== */
+@media (max-width: 767px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    min-width: auto;
+    justify-content: center;
+  }
+}
+
+/* ============================================== */
+/* SCROLL TOP BUTTON */
+/* ============================================== */
+@media (max-width: 767px) {
+  #scrollTopBtn {
+    width: 40px;
+    height: 40px;
+    bottom: 14px;
+    right: 14px;
+    font-size: 18px;
+  }
+}
+
+/* ============================================== */
+/* LANGUAGE OVERLAY RESPONSIVE */
+/* ============================================== */
+@media (max-width: 480px) {
+  .lang-overlay {
+    padding: 16px;
+  }
+
+  .lang-box {
+    width: 100%;
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  .lang-box h2 {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
+  .lang-buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .lang-option-btn {
+    min-height: 50px;
+    font-size: 0.85rem;
+    border-radius: 14px;
+  }
+}
+
+/* ============================================== */
+/* FORM FULL WIDTH FIX */
+/* ============================================== */
+@media (max-width: 767px) {
+  .form-group.full {
+    grid-column: span 1;
+  }
+
+  .input-wrap input,
+  .input-wrap select,
+  .input-wrap textarea {
+    padding: 12px 12px 12px 38px;
+    font-size: 0.85rem;
+    border-radius: 14px;
+  }
+}
+
+/* ============================================== */
+/* STATS STRIP FIX */
+/* ============================================== */
+@media (max-width: 767px) {
+  .stats-strip {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stats-mini {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .stats-mini strong {
+    font-size: 1rem;
+  }
+
+  .stats-mini span {
+    font-size: 0.75rem;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+<div id="langOverlay" class="lang-overlay hidden">
+  <div class="lang-box" role="dialog" aria-modal="true" aria-labelledby="langBoxTitle">
+    <h2 id="langBoxTitle">Select Your Language</h2>
+    <div class="lang-buttons">
+      <button class="lang-option-btn" onclick="selectLanguage('ta')">தமிழ்</button>
+      <button class="lang-option-btn" onclick="selectLanguage('en')">English</button>
+    </div>
+  </div>
+</div>
+
+  <div class="mobile-orb orb1"></div>
+  <div class="mobile-orb orb2"></div>
+  <div class="mobile-orb orb3"></div>
+  <div class="mobile-orb orb4"></div>
+
+  <!-- HERO WITHOUT NAVBAR -->
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+
+    <div class="glass-bar g1"></div>
+    <div class="glass-bar light g2"></div>
+    <div class="glass-bar g3"></div>
+    <div class="glass-bar g4"></div>
+    <div class="glass-bar light g5"></div>
+    <div class="glass-bar g6"></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-logo">
+        <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line" data-i18n="hero.title.line1">Prince Group of</span>
+          <span class="line highlight" data-i18n="hero.title.line2">Company</span>
+        </h1>
+
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Trusted Registration & Subscription Services</span>
+        </div>
+
+        <p class="hero-subtitle">
+          <strong data-i18n="hero.subtitle.strong">20+ Branches Across Kanniyakumari District</strong><br>
+          <span data-i18n="hero.subtitle.text">The one trusted destination for documentation, registration, subscription benefits, and customer-focused support.</span>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#services" class="hero-btn primary" data-i18n="hero.btn.explore">Explore Services</a>
+          <a href="#plans" class="hero-btn secondary" data-i18n="hero.btn.plans">Subscription Plans</a>
+          <a href="#contact" class="hero-btn secondary" data-i18n="hero.btn.contact">Contact Us</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3><span class="counter" data-target="20" data-suffix="+">0</span></h3>
+            <p data-i18n="hero.stat1.label">Branches Across District</p>
+          </div>
+          <div class="hero-stat">
+            <h3><span class="counter" data-target="10" data-suffix="+">0</span></h3>
+            <p data-i18n="hero.stat2.label">Years of Service Trust</p>
+          </div>
+          <div class="hero-stat">
+            <h3><span class="counter" data-target="50" data-suffix="K+">0</span></h3>
+            <p data-i18n="hero.stat3.label">Customers Supported</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVBAR STARTS AFTER HERO -->
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar">
+        <a href="#home" class="brand">
+          <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
+          <div class="brand-text">
+            <h2>Prince Group<span class="com"> of Company</span></h2>
+            <p>Trusted registration & subscription platform</p>
+          </div>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#overview" data-i18n="nav.overview">Explore</a>
+          <a href="#services" data-i18n="nav.services">Features</a>
+          <a href="#plans" data-i18n="nav.plans">Pricing</a>
+          <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
+          <a href="#testimonials" data-i18n="nav.testimonials">Reviews</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+          <a href="login.html" class="nav-cta" data-i18n="nav.login">Member Login</a>
+        </nav>
+
+        <!-- LANGUAGE SWITCHER -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ta" onclick="switchLanguage('ta')">TA</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <div class="lang-switcher-mobile">
+          <button class="lang-btn" data-lang="ta" onclick="switchLanguage('ta')">TA</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        </div>
+        <a href="#overview" data-i18n="nav.overview">Overview</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#plans" data-i18n="nav.plans">Plans</a>
+        <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">Reviews</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="login.html" class="nav-cta" data-i18n="nav.login">Member Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section class="section section-alt" id="overview">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span class="dot"></span> <span data-i18n="overview.eyebrow">Why Customers Stay With Us</span></div>
+          <h2 class="section-title"><span data-i18n="overview.title">Built for </span><span class="grad" data-i18n="overview.title.highlight">Trust, Value & Long-Term Support</span></h2>
+          <p class="section-subtitle" data-i18n="overview.subtitle">
+            Our subscription model is designed to provide consistent value, reduced costs,
+            clear communication, and a dependable documentation experience for every customer.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon">🏛️</div>
+            <h3 data-i18n="overview.card1.title">Trusted Documentation</h3>
+            <p data-i18n="overview.card1.text">
+              We handle registration and documentation work with accuracy, clarity,
+              and a process customers can rely on from start to finish.
+            </p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">💳</div>
+            <h3 data-i18n="overview.card2.title">Subscription Benefits</h3>
+            <p data-i18n="overview.card2.text">
+              Flexible plans help customers save more, access faster assistance,
+              and enjoy better value across repeated service needs.
+            </p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">🤝</div>
+            <h3 data-i18n="overview.card3.title">We Stay With You</h3>
+            <p data-i18n="overview.card3.text">
+              Our focus is not one-time service alone. We aim to build a strong,
+              ongoing customer relationship through support and reliability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- SERVICES -->
+<section class="section section-soft" id="services">
+
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> <span data-i18n="services.eyebrow">Our Expertise</span></div>
+      <h2 class="section-title"><span data-i18n="services.title">Professional </span><span class="grad" data-i18n="services.title.highlight">Documentation Services</span></h2>
+      <p class="section-subtitle" data-i18n="services.subtitle">
+        We provide complete documentation, legal processing, registration guidance,
+        follow-up support, and customer assistance under one premium service platform.
+      </p>
+    </div>
+
+    <div class="services-list">
+      <!-- 1 -->
+<div class="service-row reveal">
+  <a href="service1.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <!-- ICON (before text) -->
+        <div class="service-icon-circle">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2V10z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <!-- TEXT -->
+        <div class="service-text">
+          <h3 data-i18n="service.1.title">Property Documentation Services</h3>
+          <p data-i18n="service.1.desc">Complete support for property transfer, deed preparation, and registration assistance.</p>
+        </div>
+      </div>
+      <!-- ARROW -->
+      <div class="service-arrow-box">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+
+      <!-- 2 -->
+<div class="service-row reveal">
+  <a href="service2.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+     <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M12 2v20" stroke="currentColor" stroke-width="2"/>
+    <path d="M17 6a5 5 0 0 0-5-2 5 5 0 0 0-5 2c0 2 2 3 5 4s5 2 5 4a5 5 0 0 1-10 0"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.2.title">Loan & Mortgage Services</h3>
+          <p data-i18n="service.2.desc">Professional support for home loan, mortgage, banking, and finance-related documentation.</p>
+        </div>
+      </div>
+       <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 3 -->
+<div class="service-row reveal">
+  <a href="service3.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+      <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M6 2h9l3 3v17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"
+      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M9 9h6M9 13h6M9 17h5"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.3.title">Agreement & Contract Services</h3>
+              <p data-i18n="service.3.desc">Drafting and processing support for rental, lease, commercial, and contract agreements.</p>
+        </div>
+      </div>
+       <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 4 -->
+<div class="service-row reveal">
+  <a href="service4.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z"
+      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M9 12l2 2 4-5"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.4.title">Legal & Verification Services</h3>
+              <p data-i18n="service.4.desc">Legal validation, document checks, and expert review services for safe documentation.</p>
+        </div>
+      </div>
+       <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 5 -->
+<div class="service-row reveal">
+  <a href="service5.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M5 10V8l7-4 7 4v2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M6 10v10M10 10v10M14 10v10M18 10v10"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.5.title">Registration & Government Services</h3>
+              <p data-i18n="service.5.desc">Support for official registration work and essential government-related documentation services.</p>
+        </div>
+      </div>
+      <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 6 -->
+<div class="service-row reveal">
+  <a href="service6.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M9 4l6 2 6-2v16l-6 2-6-2-6 2V6l6-2z"
+      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M9 4v16M15 6v16"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.6.title">Land & Revenue Services</h3>
+              <p data-i18n="service.6.desc">Land records, survey support, and revenue document assistance for property-related needs.</p>
+        </div>
+      </div>
+      <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 7 -->
+<div class="service-row reveal">
+  <a href="service7.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M4 7h16v12H4V7z"
+      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M4 11h16"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+        <h3 data-i18n="service.7.title">Business & Commercial Documentation</h3>
+              <p data-i18n="service.7.desc">Business registration and commercial compliance support for companies and enterprises.</p>
+        </div>
+      </div>
+       <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 8 -->
+<div class="service-row reveal">
+  <a href="service8.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M4 6h16M4 12h10M4 18h16"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M18 10l2 2-2 2"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.8.title">Follow-up & Processing Services</h3>
+              <p data-i18n="service.8.desc">End-to-end status tracking, office follow-up, and process coordination for smoother completion.</p>
+        </div>
+      </div>
+    <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 9 -->
+<div class="service-row reveal">
+  <a href="service9.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M3 7l5 5 4-6 4 6 5-5v10H3V7z"
+      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M3 17h18"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+<h3 data-i18n="service.9.title">Premium / Member Services</h3>
+              <p data-i18n="service.9.desc">Exclusive benefits, quicker handling, and dedicated support for subscribed customers.</p>
+        </div>
+      </div>
+       <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+      <!-- 10 -->
+<div class="service-row reveal">
+  <a href="service10.html" class="service-link">
+    <div class="service-top">
+      <div class="service-left">
+        <div class="service-icon-circle">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M4 12a8 8 0 0 1 16 0v5a2 2 0 0 1-2 2h-2v-6h2"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M4 17v-5"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M6 17a2 2 0 0 0 2 2"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <div class="service-text">
+          <h3 data-i18n="service.10.title">Digital & Support Services</h3>
+              <p data-i18n="service.10.desc">Modern communication and digital support services for convenience, updates, and record access.</p>
+        </div>
+      </div>
+      <div class="service-arrow-box">
+  <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+    </div>
+  </a>
+</div>
+
+
+
+
+    </div>
+  </div>
+</section>
+
+   <!-- PLANS -->
+<section class="section section-alt" id="plans">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> <span data-i18n="plans.eyebrow">Subscription Plans</span></div>
+      <h2 class="section-title"><span data-i18n="plans.title">Choose the Right </span><span class="grad" data-i18n="plans.title.highlight">Membership Plan</span></h2>
+      <p class="section-subtitle" data-i18n="plans.subtitle">
+        Flexible subscription plans designed to give customers better savings,
+        priority service, and long-term value.
+      </p>
+    </div>
+
+<div class="pricing-grid">
+
+  <!-- ₹1 PLAN -->
+  <div class="price-card reveal">
+    <div class="ribbon" data-i18n="plan.starter.badge">STARTER</div>
+
+    <div class="plan-label">Core</div>
+    <div class="plan-name" data-i18n="plan.starter.name">Quick Access</div>
+    <div class="plan-price">₹1 <span>/ day</span></div>
+
+    <p class="plan-desc" data-i18n="plan.starter.desc">
+      Start small, experience smart. Perfect entry plan to explore our services with minimal cost.
+    </p>
+
+    <ul class="feature-list">
+      <li data-i18n="plan.starter.feature1">Basic service access</li>
+      <li data-i18n="plan.starter.feature2">Standard response support</li>
+      <li data-i18n="plan.starter.feature3">Starter level benefits</li>
+      <li data-i18n="plan.starter.feature4">Perfect for first-time users</li>
+    </ul>
+
+    <a href="subscription.html"
+   onclick="selectPlan(event,this)"
+   class="btn btn-secondary subscribe-btn"
+   data-plan="₹1 Daily Plan" data-price="1" data-i18n="plan.starter.btn">Get Started</a>
+  </div>
+
+
+  <!-- ₹10 PLAN -->
+  <div class="price-card popular reveal">
+    <div class="ribbon" data-i18n="plan.prime.badge">MOST CHOSEN</div>
+
+    <div class="plan-label">Prime</div>
+    <div class="plan-name" data-i18n="plan.prime.name">FastTrack</div>
+    <div class="plan-price">₹10 <span>/ day</span></div>
+
+    <p class="plan-desc" data-i18n="plan.prime.desc">
+      Upgrade your experience with better savings and faster support — the most balanced plan.
+    </p>
+
+    <ul class="feature-list">
+      <li data-i18n="plan.prime.feature1">Up to 40% savings advantage</li>
+      <li data-i18n="plan.prime.feature2">Priority response support</li>
+      <li data-i18n="plan.prime.feature3">Faster service processing</li>
+      <li data-i18n="plan.prime.feature4">Best value for regular users</li>
+    </ul>
+
+    <a href="subscription.html"
+   onclick="selectPlan(event,this)"
+   class="btn btn-primary subscribe-btn"
+   data-plan="₹10 Daily Plan" data-price="10" data-i18n="plan.prime.btn">Choose Smart</a>
+  </div>
+
+
+  <!-- ₹100 PLAN -->
+  <div class="price-card reveal">
+    <div class="ribbon" data-i18n="plan.apex.badge">PREMIUM</div>
+
+    <div class="plan-label">Apex</div>
+    <div class="plan-name" data-i18n="plan.apex.name">Express Priority</div>
+    <div class="plan-price">₹100 <span>/ day</span></div>
+
+    <p class="plan-desc" data-i18n="plan.apex.desc">
+      Experience the highest level of service with maximum benefits, speed, and priority.
+    </p>
+
+    <ul class="feature-list">
+      <li data-i18n="plan.apex.feature1"><strong>75% discount advantage</strong></li>
+      <li data-i18n="plan.apex.feature2">Top priority service access</li>
+      <li data-i18n="plan.apex.feature3">Instant processing support</li>
+      <li data-i18n="plan.apex.feature4">Exclusive premium benefits</li>
+    </ul>
+
+    <a href="subscription.html"
+   onclick="selectPlan(event,this)"
+   class="btn btn-secondary subscribe-btn"
+   data-plan="₹100 Daily Plan" data-price="100" data-i18n="plan.apex.btn">Go Premium</a>
+  </div>
+
+</div>
+    </section>
+
+
+    <!-- BENEFITS -->
+    <section class="section section-soft" id="benefits">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span class="dot"></span> <span data-i18n="benefits.eyebrow">Member Advantages</span></div>
+          <h2 class="section-title"><span data-i18n="benefits.title">Why Customers Choose </span><span class="grad" data-i18n="benefits.title.highlight">Subscription</span></h2>
+          <p class="section-subtitle" data-i18n="benefits.subtitle">
+            Our subscription plans are designed to deliver better value, faster service,
+            and a more dependable documentation experience for every customer.
+          </p>
+        </div>
+
+        <div class="benefits-layout">
+          <div class="benefits-main reveal">
+            <div class="eyebrow"><span class="dot"></span> <span data-i18n="benefits.main.eyebrow">Premium Customer Experience</span></div>
+            <h3 data-i18n="benefits.main.title">Smarter Savings, Priority Support, and Better Service Continuity</h3>
+            <p data-i18n="benefits.main.text">
+              Customers who stay connected through subscription plans receive stronger value,
+              more convenience, reduced fees, and better overall service consistency across every visit.
+            </p>
+
+            <div class="point-list">
+              <div class="point-item">
+                <div class="point-icon">✓</div>
+                <div>
+                  <h4 data-i18n="benefits.point1.title">Reduced Documentation Cost</h4>
+                  <p data-i18n="benefits.point1.text">Customers can enjoy better pricing and stronger value compared to standard service visits.</p>
+                </div>
+              </div>
+
+              <div class="point-item">
+                <div class="point-icon">✓</div>
+                <div>
+                  <h4 data-i18n="benefits.point2.title">Priority Service Flow</h4>
+                  <p data-i18n="benefits.point2.text">Subscription members receive quicker response handling and smoother support coordination.</p>
+                </div>
+              </div>
+
+              <div class="point-item">
+                <div class="point-icon">✓</div>
+                <div>
+                  <h4 data-i18n="benefits.point3.title">Long-Term Relationship Benefit</h4>
+                  <p data-i18n="benefits.point3.text">Ongoing support helps customers continue their documentation needs with greater confidence and trust.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="benefits-grid">
+            <div class="mini-benefit reveal">
+              <div class="feature-icon">⚡</div>
+              <h4 data-i18n="benefits.mini1.title">Faster Response</h4>
+              <p data-i18n="benefits.mini1.text">Customers get better communication flow and quicker action on service requests.</p>
+            </div>
+
+            <div class="mini-benefit reveal">
+              <div class="feature-icon">💚</div>
+              <h4 data-i18n="benefits.mini2.title">Better Value</h4>
+              <p data-i18n="benefits.mini2.text">Plans are designed to give stronger benefits than repeated one-time service usage.</p>
+            </div>
+
+            <div class="mini-benefit reveal">
+              <div class="feature-icon">🔒</div>
+              <h4 data-i18n="benefits.mini3.title">Trusted Process</h4>
+              <p data-i18n="benefits.mini3.text">Clear handling, reliable guidance, and a consistent process build stronger trust.</p>
+            </div>
+
+            <div class="mini-benefit reveal">
+              <div class="feature-icon">📞</div>
+              <h4 data-i18n="benefits.mini4.title">Ongoing Support</h4>
+              <p data-i18n="benefits.mini4.text">Members stay connected with the company for smoother follow-up and service continuation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span class="dot"></span> <span data-i18n="testimonials.eyebrow">Customer Reviews</span></div>
+          <h2 class="section-title"><span data-i18n="testimonials.title">What Customers Say </span><span class="grad" data-i18n="testimonials.title.highlight">About Us</span></h2>
+          <p class="section-subtitle" data-i18n="testimonials.subtitle">
+            Real feedback from customers who experienced our documentation services,
+            follow-up support, and subscription value.
+          </p>
+        </div>
+
+        <div class="testimonial-wrap reveal">
+          <div class="testimonial-track" id="testimonialTrack"></div>
+        </div>
+
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="prevTestimonial()" aria-label="Previous">←</button>
+          <button class="slider-btn" onclick="nextTestimonial()" aria-label="Next">→</button>
+        </div>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section class="section section-soft" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span class="dot"></span> <span data-i18n="contact.eyebrow">Contact Us</span></div>
+          <h2 class="section-title"><span data-i18n="contact.title">Let’s Help You </span><span class="grad" data-i18n="contact.title.highlight">Faster</span></h2>
+          <p class="section-subtitle" data-i18n="contact.subtitle">
+            Reach out to our team for documentation services, subscription plans,
+            follow-up support, and service consultation.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-box reveal">
+            <h3 data-i18n="contact.box.title">Reach Our Support Team</h3>
+            <p data-i18n="contact.box.text">
+              Connect with us for registration support, subscription details,
+              office follow-up, and service guidance.
+            </p>
+
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                  <h4 data-i18n="contact.phone.label">Phone Support</h4>
+                  <p>+91 98765 43210</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                  <h4 data-i18n="contact.email.label">Email Address</h4>
+                  <p>support@princegroup.in</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <h4 data-i18n="contact.location.label">Office Address</h4>
+                  <p>Prince Group, Main Branch, Tamil Nadu, India</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">🕒</div>
+                <div>
+                  <h4 data-i18n="contact.hours.label">Working Hours</h4>
+                  <p data-i18n="contact.hours.value">Monday to Saturday · 9:00 AM to 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-strip">
+
+  <a href="branch.html" class="stats-mini">
+    <strong>20+</strong>
+    <span data-i18n="contact.branches">Branches</span>
+  </a>
+
+  <a href="customer.html" class="stats-mini">
+    <strong>50K+</strong>
+    <span data-i18n="contact.customers">Customers</span>
+  </a>
+
+  <a href="fastresponse.html" class="stats-mini highlight">
+    <strong>Fast</strong>
+    <span data-i18n="contact.response">Response</span>
+  </a>
+
+</div>
+          </div>
+
+          <div class="contact-form reveal">
+            <h3 data-i18n="contact.form.title">Send Your Enquiry</h3>
+            <p data-i18n="contact.form.text">
+              Fill in your details and our team will contact you shortly with the right support.
+            </p>
+
+            <form id="contactForm">
+  <div class="form-grid">
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <div class="input-wrap">
+        <span>👤</span>
+        <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <div class="input-wrap">
+        <span>📱</span>
+        <input type="tel" id="phone" name="user_phone" placeholder="Enter your mobile number" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <div class="input-wrap">
+        <span>✉️</span>
+        <input type="email" id="email" name="user_email" placeholder="Enter your email">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Service Type</label>
+      <div class="input-wrap">
+        <span>📂</span>
+        <select id="service" name="service_type" required>
+          <option value="">Select a service</option>
+          <option>Property Documentation</option>
+          <option>Loan & Mortgage Service</option>
+          <option>Agreement & Contract</option>
+          <option>Legal Verification</option>
+          <option>Registration & Government Service</option>
+          <option>Land & Revenue Service</option>
+          <option>Business Documentation</option>
+          <option>Subscription Enquiry</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <label>Message</label>
+      <div class="input-wrap">
+        <span>📝</span>
+        <textarea id="message" name="user_message" placeholder="Tell us what support you need"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <button type="submit" class="btn btn-primary">Send Enquiry</button>
+    </div>
+
+  </div>
+
+  <div class="form-note" id="formNote">
+    Your enquiry has been submitted successfully.
+  </div>
+</form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <svg class="footer-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#d4af37" stop-opacity="0.02"/>
+          <stop offset="50%" stop-color="#d4af37" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,120 C160,60 260,170 430,110 C620,42 680,170 860,112 C1040,54 1160,150 1440,70" fill="none" stroke="url(#footerGold)" stroke-width="1.2"/>
+      <path d="M0,138 C160,78 260,188 430,128 C620,60 680,188 860,130 C1040,72 1160,168 1440,88" fill="none" stroke="url(#footerGold)" stroke-width="1.1"/>
+      <path d="M0,156 C160,96 260,206 430,146 C620,78 680,206 860,148 C1040,90 1160,186 1440,106" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
+    </svg>
+
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 data-i18n="footer.brand">Prince Groups</h3>
+          <p data-i18n="footer.desc">
+            Trusted registration and subscription services with a customer-focused
+            approach, better value plans, and dependable support across Kanniyakumari District.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4 data-i18n="footer.quicklinks">Quick Links</h4>
+          <div class="footer-links">
+            <a href="#overview" data-i18n="footer.link.overview">Overview</a>
+            <a href="#services" data-i18n="footer.link.services">Services</a>
+            <a href="#plans" data-i18n="footer.link.plans">Plans</a>
+            <a href="#benefits" data-i18n="footer.link.benefits">Benefits</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4 data-i18n="footer.more">More</h4>
+          <div class="footer-links">
+            <a href="#testimonials" data-i18n="footer.link.reviews">Reviews</a>
+            <a href="#contact" data-i18n="footer.link.contact">Contact</a>
+            <a href="login.html" data-i18n="footer.link.login">Member Login</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <p>+91 98765 43210</p>
+          <p>support@princegroup.in</p>
+          <p>Tamil Nadu, India</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer.copyright">© 2026 Prince Groups. All rights reserved.</p>
+        <p data-i18n="footer.designed">Designed for a premium customer service experience.</p>
+      </div>
+    </div>
+  </footer>
+
+<a href="https://wa.me/919812345678" target="_blank" class="whatsapp-float" id="whatsappBtn">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  emailjs.init("cFj9dlSGcd6S0a1yr"); // your public key
+
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = this;
+
+    // 1️⃣ Admin mail
+    emailjs.sendForm("service_dja23hd", "template_6x1x8qw", form)
+      .then(() => {
+        console.log("Admin mail sent");
+      })
+      .catch(err => {
+        console.error("Admin error:", err);
+      });
+
+    // 2️⃣ User mail
+    emailjs.send("service_dja23hd", "template_2awq37j", {
+      to_name: form.user_name.value,
+      to_email: form.user_email.value,
+      reply_message: "Thank you for contacting Prince Group. We will get back to you shortly."
+    })
+    .then(() => {
+      document.getElementById("formNote").style.display = "block";
+      form.reset();
+    })
+    .catch(err => {
+      alert("User mail failed: " + err.text);
+    });
+
+  });
+
+window.addEventListener("scroll", function () {
+  const whatsapp = document.getElementById("whatsappBtn");
+  const heroHeight = document.querySelector(".hero").offsetHeight;
+
+  if (window.scrollY > heroHeight - 50) {
+    whatsapp.classList.add("move-up");
+  } else {
+    whatsapp.classList.remove("move-up");
+  }
+});
+/* =========================
+   GLASS BAR MOUSE EFFECT
+========================= */
+const bars = document.querySelectorAll(".glass-bar");
+
+if (window.innerWidth > 767 && bars.length) {
+  let mouseX = 0, mouseY = 0;
+  let ticking = false;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 14;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 16;
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        bars.forEach((bar, index) => {
+          const speed = (index + 1) * 0.10;
+          bar.style.transform =
+            `skewY(-18deg) translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+
+/* =========================
+   HERO COUNTER ANIMATION
+========================= */
+const counters = document.querySelectorAll(".counter");
+let counted = false;
+
+function animateCounter(counter) {
+  const target = Number(counter.dataset.target || 0);
+  const suffix = counter.dataset.suffix || "";
+  const duration = 1600;
+  const startTime = performance.now();
+
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.floor(eased * target);
+
+    counter.textContent = value + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      counter.textContent = target + suffix;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+function runCounters() {
+  if (counted) return;
+
+  const statsSection = document.querySelector(".hero-stats");
+  if (!statsSection) return;
+
+  const rect = statsSection.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight - 40) {
+    counters.forEach(animateCounter);
+    counted = true;
+  }
+}
+
+window.addEventListener("load", runCounters);
+window.addEventListener("scroll", runCounters, { passive: true });
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+// Mobile menu toggle - FIXED
+const menuBtn = document.getElementById("menuBtn");
+const mobileNav = document.getElementById("mobileNav");
+
+if (menuBtn && mobileNav) {
+  menuBtn.addEventListener("click", function() {
+    mobileNav.classList.toggle("show");
+  });
+
+  // Close mobile nav when clicking a link
+  mobileNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("show");
+    });
+  });
+}
+
+
+/* =========================
+   TESTIMONIAL SYSTEM
+========================= */
+const testimonials = [
+  { text: "This was my first time using their service. The process was clearly explained.", name: "Ramesh Kumar", textKey: "testimonial.1.text", nameKey: "testimonial.1.name" },
+  { text: "No hidden charges, very trustworthy experience.", name: "Keerthana S", textKey: "testimonial.2.text", nameKey: "testimonial.2.name" },
+  { text: "Subscription made follow-ups easier.", name: "Arun Prakash", textKey: "testimonial.3.text", nameKey: "testimonial.3.name" },
+  { text: "Smooth registration process.", name: "Sathish", textKey: "testimonial.4.text", nameKey: "testimonial.4.name" },
+  { text: "Regular updates were helpful.", name: "Divya", textKey: "testimonial.5.text", nameKey: "testimonial.5.name" },
+  { text: "Good results overall.", name: "Karthik", textKey: "testimonial.6.text", nameKey: "testimonial.6.name" },
+  { text: "Very professional handling.", name: "Priya", textKey: "testimonial.7.text", nameKey: "testimonial.7.name" },
+  { text: "They kept me informed.", name: "Manoj", textKey: "testimonial.8.text", nameKey: "testimonial.8.name" },
+  { text: "Simple communication.", name: "Naveen", textKey: "testimonial.9.text", nameKey: "testimonial.9.name" }
+];
+
+let currentSlide = 0;
+let testimonialSlides = [];
+
+function getChunkSize() {
+  if (window.innerWidth <= 767) return 1;
+  if (window.innerWidth <= 1199) return 2;
+  return 3;
+}
+
+function chunkTestimonials(data, size) {
+  const chunks = [];
+  for (let i = 0; i < data.length; i += size) {
+    chunks.push(data.slice(i, i + size));
+  }
+  return chunks;
+}
+
+function renderTestimonials() {
+  const track = document.getElementById("testimonialTrack");
+  if (!track) return;
+
+  testimonialSlides = chunkTestimonials(testimonials, getChunkSize());
+
+  track.innerHTML = testimonialSlides.map(group => `
+    <div class="testimonial-slide">
+      ${group.map(item => `
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="${item.textKey}">${item.text}</p>
+          <strong data-i18n="${item.nameKey}">${item.name}</strong>
+        </div>
+      `).join("")}
+    </div>
+  `).join("");
+
+  currentSlide = 0;
+  updateSlider();
+}
+
+function updateSlider() {
+  const track = document.getElementById("testimonialTrack");
+  if (!track) return;
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextTestimonial() {
+  currentSlide = (currentSlide + 1) % testimonialSlides.length;
+  updateSlider();
+}
+
+function prevTestimonial() {
+  currentSlide =
+    (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+  updateSlider();
+}
+
+renderTestimonials();
+window.addEventListener("resize", renderTestimonials);
+
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+const revealElements = document.querySelectorAll(".reveal");
+
+let revealTick = false;
+
+function revealOnScroll() {
+  if (!revealTick) {
+    requestAnimationFrame(() => {
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add("show");
+        }
+      });
+      revealTick = false;
+    });
+    revealTick = true;
+  }
+}
+
+window.addEventListener("scroll", revealOnScroll, { passive: true });
+window.addEventListener("load", revealOnScroll);
+
+
+/* =========================
+   SCROLL TO TOP BUTTON
+========================= */
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (!scrollTopBtn) return;
+  scrollTopBtn.style.display = window.scrollY > 500 ? "block" : "none";
+}, { passive: true });
+
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+
+/* =========================
+   HEADER SHOW AFTER HERO
+========================= */
+const hero = document.querySelector("#home");
+const header = document.querySelector(".site-header");
+
+window.addEventListener("scroll", () => {
+  if (!hero || !header) return;
+
+  const heroHeight = hero.offsetHeight;
+
+  if (window.scrollY > heroHeight - 80) {
+    header.classList.add("show");
+  } else {
+    header.classList.remove("show");
+  }
+}, { passive: true });
+
+
+/* =========================
+   SMOOTH SCROLL
+========================= */
+document.documentElement.style.scrollBehavior = "smooth";
+
+
+/* =========================
+   SUBSCRIPTION BUTTON LOGIC (FINAL FIXED)
+========================= */
+document.querySelectorAll(".subscribe-btn").forEach(btn => {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const card = this.closest(".price-card");
+    if (!card) return;
+
+    const planName = card.querySelector(".plan-name").innerText.trim();
+    const price = this.dataset.price;
+
+    const serviceSelect = document.getElementById("service");
+    const messageBox = document.getElementById("message");
+
+    if (serviceSelect) {
+      serviceSelect.value = "Subscription Enquiry";
+    }
+
+    if (messageBox) {
+      messageBox.value = `${planName} plan பற்றி மேலும் தெரிந்துகொள்ள வேண்டும்.`;
+    }
+
+    localStorage.setItem("selectedPlan", planName);
+    localStorage.setItem("planAmount", price);
+
+    window.location.href =
+      "subscription.html?plan=" +
+      encodeURIComponent(planName) +
+      "&amount=" +
+      price;
+  });
+});
+/* =========================
+   COMPLETE FIXED TRANSLATION SYSTEM WITH POPUP
+========================= */
+
+// Complete translations - MATCHES YOUR HTML data-i18n keys
+const translations = {
+  'en': {
+    // Navigation
+    "nav.overview": "Explore",
+    "nav.services": "Services",
+    "nav.plans": "Plans",
+    "nav.benefits": "Benefits",
+    "nav.testimonials": "Reviews",
+    "nav.contact": "Contact",
+    "nav.login": "Member Login",
+
+    // Hero
+    "hero.title.line1": "Prince Group of",
+    "hero.title.line2": "Company",
+    "hero.badge": "Trusted Registration & Subscription Services",
+    "hero.subtitle.strong": "20+ branches across Kanyakumari district",
+    "hero.subtitle.text": "The one trusted destination for documentation, registration, subscription benefits, and customer-focused support.",
+    "hero.btn.explore": "Explore Services",
+    "hero.btn.plans": "Subscription Plans",
+    "hero.btn.contact": "Contact Us",
+    "hero.stat1.label": "Branches Across District",
+    "hero.stat2.label": "Years of Service Trust",
+    "hero.stat3.label": "Customers Supported",
+
+    // Overview
+    "overview.eyebrow": "Why Customers Stay With Us",
+    "overview.title": "Built for ",
+    "overview.title.highlight": "Trust, Value & Long-Term Support",
+    "overview.subtitle": "Our subscription model is designed to provide consistent value, reduced costs, clear communication, and a dependable documentation experience for every customer.",
+    "overview.card1.title": "Trusted Documentation",
+    "overview.card1.text": "We handle registration and documentation work with accuracy, clarity, and a process customers can rely on from start to finish.",
+    "overview.card2.title": "Subscription Benefits",
+    "overview.card2.text": "Flexible plans help customers save more, access faster assistance, and enjoy better value across repeated service needs.",
+    "overview.card3.title": "We Stay With You",
+    "overview.card3.text": "Our focus is not one-time service alone. We aim to build a strong, ongoing customer relationship through support and reliability.",
+
+    // Services
+    "services.eyebrow": "Our Expertise",
+    "services.title": "Professional ",
+    "services.title.highlight": "Documentation Services",
+    "services.subtitle": "We provide complete documentation, legal processing, registration guidance, follow-up support, and customer assistance under one premium service platform.",
+
+    "service.1.title": "Property Documentation Services",
+    "service.1.desc": "Complete support for property transfer, deed preparation, and registration assistance.",
+    "service.2.title": "Loan & Mortgage Services",
+    "service.2.desc": "Professional support for home loan, mortgage, banking, and finance-related documentation.",
+    "service.3.title": "Agreement & Contract Services",
+    "service.3.desc": "Drafting and processing support for rental, lease, commercial, and contract agreements.",
+    "service.4.title": "Legal & Verification Services",
+    "service.4.desc": "Legal validation, document checks, and expert review services for safe documentation.",
+    "service.5.title": "Registration & Government Services",
+    "service.5.desc": "Support for official registration work and essential government-related documentation services.",
+    "service.6.title": "Land & Revenue Services",
+    "service.6.desc": "Land records, survey support, and revenue document assistance for property-related needs.",
+    "service.7.title": "Business & Commercial Documentation",
+    "service.7.desc": "Business registration and commercial compliance support for companies and enterprises.",
+    "service.8.title": "Follow-up & Processing Services",
+    "service.8.desc": "End-to-end status tracking, office follow-up, and process coordination for smoother completion.",
+    "service.9.title": "Premium / Member Services",
+    "service.9.desc": "Exclusive benefits, quicker handling, and dedicated support for subscribed customers.",
+    "service.10.title": "Digital & Support Services",
+    "service.10.desc": "Modern communication and digital support services for convenience, updates, and record access.",
+
+    // Plans
+    "plans.eyebrow": "Subscription Plans",
+    "plans.title": "Choose the Right ",
+    "plans.title.highlight": "Membership Plan",
+    "plans.subtitle": "Flexible subscription plans designed to give customers better savings, priority service, and long-term value.",
+
+    "plan.starter.badge": "STARTER",
+    "plan.starter.name": "Quick Access",
+    "plan.starter.price": "₹1",
+    "plan.starter.period": "/ day",
+    "plan.starter.desc": "Start small, experience smart. Perfect entry plan to explore our services with minimal cost.",
+    "plan.starter.feature1": "Basic service access",
+    "plan.starter.feature2": "Standard response support",
+    "plan.starter.feature3": "Starter level benefits",
+    "plan.starter.feature4": "Perfect for first-time users",
+    "plan.starter.btn": "Get Started",
+
+    "plan.prime.badge": "MOST CHOSEN",
+    "plan.prime.name": "FastTrack",
+    "plan.prime.price": "₹10",
+    "plan.prime.period": "/ day",
+    "plan.prime.desc": "Upgrade your experience with better savings and faster support — the most balanced plan.",
+    "plan.prime.feature1": "Up to 40% savings advantage",
+    "plan.prime.feature2": "Priority response support",
+    "plan.prime.feature3": "Faster service processing",
+    "plan.prime.feature4": "Best value for regular users",
+    "plan.prime.btn": "Choose Smart",
+
+    "plan.apex.badge": "PREMIUM",
+    "plan.apex.name": "Express Priority",
+    "plan.apex.price": "₹100",
+    "plan.apex.period": "/ day",
+    "plan.apex.desc": "Experience the highest level of service with maximum benefits, speed, and priority.",
+    "plan.apex.feature1": "75% discount advantage",
+    "plan.apex.feature2": "Top priority service access",
+    "plan.apex.feature3": "Instant processing support",
+    "plan.apex.feature4": "Exclusive premium benefits",
+    "plan.apex.btn": "Go Premium",
+
+    // Benefits
+    "benefits.eyebrow": "Member Advantages",
+    "benefits.title": "Why Customers Choose ",
+    "benefits.title.highlight": "Subscription",
+    "benefits.subtitle": "Our subscription plans are designed to deliver better value, faster service, and a more dependable documentation experience for every customer.",
+    "benefits.main.eyebrow": "Premium Customer Experience",
+    "benefits.main.title": "Smarter Savings, Priority Support, and Better Service Continuity",
+    "benefits.main.text": "Customers who stay connected through subscription plans receive stronger value, more convenience, reduced fees, and better overall service consistency across every visit.",
+    "benefits.point1.title": "Reduced Documentation Cost",
+    "benefits.point1.text": "Customers can enjoy better pricing and stronger value compared to standard service visits.",
+    "benefits.point2.title": "Priority Service Flow",
+    "benefits.point2.text": "Subscription members receive quicker response handling and smoother support coordination.",
+    "benefits.point3.title": "Long-Term Relationship Benefit",
+    "benefits.point3.text": "Ongoing support helps customers continue their documentation needs with greater confidence and trust.",
+    "benefits.mini1.title": "Faster Response",
+    "benefits.mini1.text": "Customers get better communication flow and quicker action on service requests.",
+    "benefits.mini2.title": "Better Value",
+    "benefits.mini2.text": "Plans are designed to give stronger benefits than repeated one-time service usage.",
+    "benefits.mini3.title": "Trusted Process",
+    "benefits.mini3.text": "Clear handling, reliable guidance, and a consistent process build stronger trust.",
+    "benefits.mini4.title": "Ongoing Support",
+    "benefits.mini4.text": "Members stay connected with the company for smoother follow-up and service continuation.",
+
+    // Testimonials
+    "testimonials.eyebrow": "Customer Reviews",
+    "testimonials.title": "What Customers Say ",
+    "testimonials.title.highlight": "About Us",
+    "testimonials.subtitle": "Real feedback from customers who experienced our documentation services, follow-up support, and subscription value.",
+
+    "testimonial.1.text": "This was my first time using their service. The process was clearly explained.",
+    "testimonial.1.name": "Ramesh Kumar",
+    "testimonial.2.text": "No hidden charges, very trustworthy experience.",
+    "testimonial.2.name": "Keerthana S",
+    "testimonial.3.text": "Subscription made follow-ups easier.",
+    "testimonial.3.name": "Arun Prakash",
+    "testimonial.4.text": "Smooth registration process.",
+    "testimonial.4.name": "Sathish",
+    "testimonial.5.text": "Regular updates were helpful.",
+    "testimonial.5.name": "Divya",
+    "testimonial.6.text": "Good results overall.",
+    "testimonial.6.name": "Karthik",
+    "testimonial.7.text": "Very professional handling.",
+    "testimonial.7.name": "Priya",
+    "testimonial.8.text": "They kept me informed.",
+    "testimonial.8.name": "Manoj",
+    "testimonial.9.text": "Simple communication.",
+    "testimonial.9.name": "Naveen",
+
+    // Contact
+    "contact.eyebrow": "Contact Us",
+    "contact.title": "Let’s Help You ",
+    "contact.title.highlight": "Faster",
+    "contact.subtitle": "Reach out to our team for documentation services, subscription plans, follow-up support, and service consultation.",
+    "contact.box.title": "Reach Our Support Team",
+    "contact.box.text": "Connect with us for registration support, subscription details, office follow-up, and service guidance.",
+    "contact.phone.label": "Phone Support",
+    "contact.email.label": "Email Address",
+    "contact.location.label": "Office Address",
+    "contact.hours.label": "Working Hours",
+    "contact.hours.value": "Monday to Saturday · 9:00 AM to 6:00 PM",
+    "contact.branches": "Branches",
+    "contact.customers": "Customers",
+    "contact.response": "Response",
+    "contact.form.title": "Send Your Enquiry",
+    "contact.form.text": "Fill in your details and our team will contact you shortly with the right support.",
+    "contact.form.name": "Full Name",
+    "contact.form.phone": "Phone Number",
+    "contact.form.email": "Email Address",
+    "contact.form.service": "Service Type",
+    "contact.form.message": "Message",
+    "contact.form.submit": "Send Enquiry",
+    "contact.form.note": "Your enquiry has been submitted successfully.",
+    "contact.form.name.placeholder": "Enter your name",
+    "contact.form.phone.placeholder": "Enter your mobile number",
+    "contact.form.email.placeholder": "Enter your email",
+    "contact.form.message.placeholder": "Tell us what support you need",
+
+    // Footer
+    "footer.brand": "Prince Groups",
+    "footer.desc": "Trusted registration and subscription services with a customer-focused approach, better value plans, and dependable support across Kanniyakumari District.",
+    "footer.quicklinks": "Quick Links",
+    "footer.more": "More",
+    "footer.contact": "Contact",
+    "footer.copyright": "© 2026 Prince Groups. All rights reserved.",
+    "footer.designed": "Designed for a premium customer service experience.",
+    "footer.link.overview": "Overview",
+    "footer.link.services": "Services",
+    "footer.link.plans": "Plans",
+    "footer.link.benefits": "Benefits",
+    "footer.link.reviews": "Reviews",
+    "footer.link.contact": "Contact",
+    "footer.link.login": "Member Login"
+  },
+  'ta': {
+    // Navigation
+    "nav.overview": "ஆராய்க",
+    "nav.services": "சேவைகள்",
+    "nav.plans": "திட்டங்கள்",
+    "nav.benefits": "நன்மைகள்",
+    "nav.testimonials": "மதிப்புரைகள்",
+    "nav.contact": "தொடர்பு",
+    "nav.login": "உறுப்பினர் உள்நுழைவு",
+
+    // Hero
+    "hero.title.line1": "பிரின்ஸ்  குரூப்",
+    "hero.title.line2": "நிறுவனம்",
+    "hero.badge": "நம்பகமான பதிவு & சந்தா சேவைகள்",
+    "hero.subtitle.strong": "கன்னியாகுமரி மாவட்டம் முழுவதும் 20+ கிளைகள் உள்ளன",
+    "hero.subtitle.text": "ஆவணப் பணிகள், பதிவு சேவைகள், சந்தா நன்மைகள் மற்றும் வாடிக்கையாளர் ஆதரவுக்கான நம்பகமான ஒரே இடம்.",
+    "hero.btn.explore": "எங்கள் சேவைகள்",
+    "hero.btn.plans": "சந்தா திட்டங்கள்",
+    "hero.btn.contact": "எங்களை அணுகுக",
+    "hero.stat1.label": "மாவட்டம் முழுவதும் கிளைகள்",
+    "hero.stat2.label": "சேவை நம்பிக்கையின் ஆண்டுகள்",
+    "hero.stat3.label": "ஆதரவு பெற்ற வாடிக்கையாளர்கள்",
+
+    // Overview
+    "overview.eyebrow": "ஏன் எங்கள் சேவை?",
+    "overview.title": "நம்பிக்கையுடன் தொடங்கி, ",
+    "overview.title.highlight": "நீண்டநாள் மதிப்பை வழங்கும் சேவை",
+    "overview.subtitle": "எங்கள் சந்தா முறை தெளிவான தகவல், குறைந்த செலவு மற்றும் நம்பகமான சேவையை வழங்க வடிவமைக்கப்பட்டுள்ளது.",
+    "overview.card1.title": "நம்பகமான ஆவணப்படுத்தல்",
+    "overview.card1.text": "நாங்கள் பதிவு மற்றும் ஆவணப்படுத்தல் பணிகளை துல்லியம், தெளிவு மற்றும் வாடிக்கையாளர்கள் நம்பக கூடிய செயல்முறையுடன் கையாளுகிறோம்.",
+    "overview.card2.title": "சந்தா நன்மைகள்",
+    "overview.card2.text": "நமனீய திட்டங்கள் வாடிக்கையாளர்களை அதிக சேமிப்பு, வேகமான உதவி மற்றும் பல சேவை தேவைகளில் சிறந்த மதிப்பு பெற உதவுகிறது.",
+    "overview.card3.title": "நாங்கள் உங்களுடன் இருக்கிறோம்",
+    "overview.card3.text": "ஒரு முறை சேவை மட்டுமல்ல, ஆதரவு மற்றும் நம்பகத்தன்மை மூலம் வலுவான, நீண்ட கால வாடிக்கையாளர் உறவை கட்ட நாங்கள் குறிவைக்கிறோம்.",
+
+    // Services
+    "services.eyebrow": "எங்களின் திறமை",
+    "services.title": "நம்பகமான ",
+    "services.title.highlight": " ஆவண பதிவு சேவைகள்",
+    "services.subtitle": "ஒரு முதன்மை சேவை தளத்தின் கீழ் முழு ஆவணப்படுத்தல், சட்ட செயல்முறை, பதிவு வழிகாட்டுதல், பின்தொடர்தல் ஆதரவு மற்றும் வாடிக்கையாளர் உதவி வழங்குகிறோம்.",
+
+    "service.1.title": "சொத்து ஆவணப்படுத்தல் சேவைகள்",
+    "service.1.desc": "சொத்து மாற்றம், செயல் தயாரிப்பு மற்றும் பதிவு உதவிக்கான முழு ஆதரவு.",
+    "service.2.title": "கடன் மற்றும் மானிய சேவைகள்",
+    "service.2.desc": "வீட்டு கடன், மானிய, வங்கி மற்றும் நிதி தொடர்பான ஆவணப்படுத்தலுக்கான தொழிலாளர் ஆதரவு.",
+    "service.3.title": "ஒப்பந்தம் மற்றும் ஒப்பந்த சேவைகள்",
+    "service.3.desc": "வாடகை, குத்தகை, வணிக மற்றும் ஒப்பந்த ஒப்பந்தங்களுக்கான வரைவு மற்றும் செயல்முறை ஆதரவு.",
+    "service.4.title": "சட்ட மற்றும் சரிபார்ப்பு சேவைகள்",
+    "service.4.desc": "பாதுகாப்பான ஆவணப்படுத்தலுக்கான சட்ட சரிபார்ப்பு, ஆவண சரிபார்ப்புகள் மற்றும் நிபுணர் மதிப்பாய்வு சேவைகள்.",
+    "service.5.title": "பதிவு மற்றும் அரசாங்க சேவைகள்",
+    "service.5.desc": "அதிகாரப்பூர்வ பதிவு பணி மற்றும் அத்தியாவசிய அரசாங்க தொடர்பான ஆவணப்படுத்தல் சேவைகளுக்கான ஆதரவு.",
+    "service.6.title": "நிலம் மற்றும் வருவாய் சேவைகள்",
+    "service.6.desc": "சொத்து தொடர்பான தேவைகளுக்கு நில பதிவுகள், கணக்கெடுப்பு ஆதரவு மற்றும் வருவாய் ஆவண உதவி.",
+    "service.7.title": "வணிக மற்றும் வணிக ஆவணப்படுத்தல்",
+    "service.7.desc": "நிறுவனங்கள் மற்றும் நிறுவனங்களுக்கான வணிக பதிவு மற்றும் வணிக இணங்கல் ஆதரவு.",
+    "service.8.title": "பின்தொடர்தல் மற்றும் செயல்முறை சேவைகள்",
+    "service.8.desc": "மென்மையான முடிவுக்கு முடிவு முதல் முடிவு நிலை கண்காணிப்பு, அலுவலக பின்தொடர்தல் மற்றும் செயல்முறை ஒருங்கிணைப்பு.",
+    "service.9.title": "பிரீமியம் / உறுப்பினர் சேவைகள்",
+    "service.9.desc": "சந்தாதாரர்களுக்கு பிரத்யேக நன்மைகள், விரைவான கையாளுதல் மற்றும் அர்ப்பணிப்பு ஆதரவு.",
+    "service.10.title": "டிஜிட்டல் மற்றும் ஆதரவு சேவைகள்",
+    "service.10.desc": "வசதிக்கு, புதுப்பித்தல்களுக்கு மற்றும் பதிவு அணுகலுக்கு நவீன தகவல் தொடர்பு மற்றும் டிஜிட்டல் ஆதரவு சேவைகள்.",
+
+    // Plans
+    "plans.eyebrow": "சந்தா திட்டங்கள்",
+    "plans.title": "சரியானதை தேர்வு செய்யுங்கள் ",
+    "plans.title.highlight": "உறுப்பினர் திட்டம்",
+    "plans.subtitle": "வாடிக்கையாளர்களுக்கு சிறந்த சேமிப்பு, முன்னுரிமை சேவை மற்றும் நீண்ட கால மதிப்பு வழங்க வடிவமைக்கப்பட்ட நெகிழ்வான சந்தா திட்டங்கள்.",
+
+    "plan.starter.badge": "தொடங்குபவர்",
+    "plan.starter.name": "விரைவு அணுகல்",
+    "plan.starter.price": "₹1",
+    "plan.starter.period": "/ நாள்",
+    "plan.starter.desc": "சிறியதாக தொடங்கவும், புத்திசாலியாக அனுபவிக்கவும். எங்கள் சேவைகளை குறைந்த செலவில் ஆராய்வதற்கான சிறந்த நுழைய திட்டம்.",
+    "plan.starter.feature1": "அடிப்படை சேவை அணுகல்",
+    "plan.starter.feature2": "நிலையான பதிலளிப்பு ஆதரவு",
+    "plan.starter.feature3": "தொடங்குபவர் அளவு நன்மைகள்",
+    "plan.starter.feature4": "முதல் முறை பயனர்களுக்கு சிறந்தது",
+    "plan.starter.btn": "தொடங்குக",
+
+    "plan.prime.badge": "மிக தேர்ந்தெடுக்கப்பட்ட",
+    "plan.prime.name": "விரைவு பாதை",
+    "plan.prime.price": "₹10",
+    "plan.prime.period": "/ நாள்",
+    "plan.prime.desc": "சிறந்த சேமிப்பு மற்றும் வேகமான ஆதரவுடன் உங்கள் அனுபவை மேம்படுத்தவும் — மிகச் சாருடைய திட்டம்.",
+    "plan.prime.feature1": "40% வரை சேமிப்பு நன்மை",
+    "plan.prime.feature2": "முன்னுரிமை பதிலளிப்பு ஆதரவு",
+    "plan.prime.feature3": "வேகமான சேவை செயலாக்கம்",
+    "plan.prime.feature4": "வழக்கமான பயனர்களுக்கு சிறந்த மதிப்பு",
+    "plan.prime.btn": "சிறந்த தேர்வு",
+
+    "plan.apex.badge": "பிரீமியம்",
+    "plan.apex.name": "அதிவேக அணுகல்",
+    "plan.apex.price": "₹100",
+    "plan.apex.period": "/ நாள்",
+    "plan.apex.desc": "அதிகபட்ச நன்மைகள், வேகம் மற்றும் முன்னுரிமையுடன் உயர்தர சேவையை அனுபவிக்கவும்.",
+    "plan.apex.feature1": "75% தள்ளுபடி நன்மை",
+    "plan.apex.feature2": "மிக உயர்ந்த முன்னுரிமை சேவை",
+    "plan.apex.feature3": "உடனடி செயலாக்க உதவி",
+    "plan.apex.feature4": "தனிப்பட்ட பிரீமியம் நன்மைகள்",
+    "plan.apex.btn": "பிரீமியம் பெறுங்கள்",
+
+    // Benefits
+    "benefits.eyebrow": "உறுப்பினர் நன்மைகள்",
+    "benefits.title": "வாடிக்கையாளர்கள் ஏன் தேர்ந்தெடுக்கிறார்கள்",
+    "benefits.title.highlight": "சந்தா",
+    "benefits.subtitle": "எங்கள் சந்தா திட்டங்கள் சிறந்த மதிப்பு, விரைவான சேவை மற்றும் மிகவும் நம்பகமான ஆவணப்படுத்தல் அனுபவத்தை வழங்குவதற்காக வடிவமைக்கப்பட்டுள்ளன.",
+    "benefits.main.eyebrow": "பிரீமியம் வாடிக்கையாளர் அனுபவம்",
+    "benefits.main.title": "புத்திசாலியான சேமிப்புகள், முன்னுரிமை ஆதரவு மற்றும் சிறந்த சேவை தொடர்ச்சி",
+    "benefits.main.text": "சந்தா திட்டங்கள் மூலம் இணைந்திருக்கும் வாடிக்கையாளர்களுக்கு வலுவான மதிப்பு, அதிக வசதி, குறைந்த கட்டணம் மற்றும் சிறந்த சேவை நிலைத்தன்மை கிடைக்கிறது.",
+    "benefits.point1.title": "குறைந்த ஆவணப்படுத்தல் செலவு",
+    "benefits.point1.text": "வாடிக்கையாளர்கள் நிலையான சேவை வருகைகளுடன் ஒப்பிடும்போது சிறந்த விலை மற்றும் வலுவான மதிப்பைப் பெறலாம்.",
+    "benefits.point2.title": "முன்னுரிமை சேவை ஓட்டம்",
+    "benefits.point2.text": "சந்தாதாரர்களுக்கு விரைவான பதிலளிப்பு கையாளுதல் மற்றும் மென்மையான ஆதரவு ஒருங்கிணைப்பு கிடைக்கிறது.",
+    "benefits.point3.title": "நீண்ட கால உறவு நன்மை",
+    "benefits.point3.text": "நடைபெறும் ஆதரவு வாடிக்கையாளர்களுக்கு அதிக நம்பிக்கை மற்றும் நம்பிக்கையுடன் தங்கள் ஆவணப்படுத்தல் தேவைகளை தொடர உதவுகிறது.",
+    "benefits.mini1.title": "விரைவான பதில்",
+    "benefits.mini1.text": "வாடிக்கையாளர்களுக்கு சிறந்த தகவல் தொடர்பு ஓட்டம் மற்றும் சேவை கோரிக்கைகளில் விரைவான செயல் கிடைக்கிறது.",
+    "benefits.mini2.title": "சிறந்த மதிப்பு",
+    "benefits.mini2.text": "திட்டங்கள் மீண்டும் மீண்டும் ஒரு முறை சேவை பயன்பாட்டுடன் ஒப்பிடும்போது வலுவான நன்மைகளை வழங்குவதற்காக வடிவமைக்கப்பட்டுள்ளன.",
+    "benefits.mini3.title": "நம்பகமான செயல்முறை",
+    "benefits.mini3.text": "தெளிவான நிர்வாகம், நம்பகமான வழிகாட்டுதல் மற்றும் நிலையான செயல்முறை வலுவான நம்பிக்கையை உருவாக்குகிறது.",
+    "benefits.mini4.title": "நடைபெறும் ஆதரவு",
+    "benefits.mini4.text": "உறுப்பினர்கள் மென்மையான பின்தொடர்தல் மற்றும் சேவை தொடர்ச்சிக்காக நிறுவனத்துடன் இணைந்திருக்கிறார்கள்.",
+
+    // Testimonials
+    "testimonials.eyebrow": "வாடிக்கையாளர் மதிப்புரைகள்",
+    "testimonials.title": "வாடிக்கையாளர்கள் என்ன சொல்கிறார்கள்",
+    "testimonials.title.highlight": "எங்களைப் பற்றி",
+    "testimonials.subtitle": "எங்கள் ஆவணப்படுத்தல் சேவைகள், பின்தொடர்தல் ஆதரவு மற்றும் சந்தா மதிப்பை அனுபவித்த வாடிக்கையாளர்களிடமிருந்து உண்மையான கருத்துகள்.",
+
+    "testimonial.1.text": "இது அவர்களின் சேவையைப் பயன்படுத்திய எனது முதல் முறை. செயல்முறை தெளிவாக விளக்கப்பட்டது.",
+    "testimonial.1.name": "ரமேஷ் குமார்",
+    "testimonial.2.text": "மறைக்கப்பட்ட கட்டணங்கள் இல்லை, மிகவும் நம்பகமான அனுபவம்.",
+    "testimonial.2.name": "கீர்த்தனா எஸ்",
+    "testimonial.3.text": "சந்தா பின்தொடர்தல்களை எளிதாக்கியது.",
+    "testimonial.3.name": "அருண் பிரகாஷ்",
+    "testimonial.4.text": "மென்மையான பதிவு செயல்முறை.",
+    "testimonial.4.name": "சதீஷ்",
+    "testimonial.5.text": "தொடர்ந்த புதுப்பித்தல்கள் உதவியாக இருந்தன.",
+    "testimonial.5.name": "திவ்யா",
+    "testimonial.6.text": "ஒட்டுமொத்தமாக நல்ல முடிவுகள்.",
+    "testimonial.6.name": "கார்த்திக்",
+    "testimonial.7.text": "மிகவும் தொழில்முறை கையாளுதல்.",
+    "testimonial.7.name": "பிரியா",
+    "testimonial.8.text": "அவர்கள் என்னை தகவலறிவித்தனர்.",
+    "testimonial.8.name": "மனோஜ்",
+    "testimonial.9.text": "எளிய தகவல் தொடர்பு.",
+    "testimonial.9.name": "நவீன்",
+
+    // Contact
+    "contact.eyebrow": "எங்களைத் தொடர்பு கொள்ளுங்கள்",
+    "contact.title": "உதவி செய்வோம்",
+    "contact.title.highlight": "விரைவாக",
+    "contact.subtitle": "ஆவணப்படுத்தல் சேவைகள், சந்தா திட்டங்கள், பின்தொடர்தல் ஆதரவு மற்றும் சேவை ஆலோசனைக்கு எங்கள் குழுவைத் தொடர்பு கொள்ளுங்கள்.",
+    "contact.box.title": "எங்கள் ஆதரவு குழுவை அணுகுங்கள்",
+    "contact.box.text": "பதிவு ஆதரவு, திட்ட விவரங்கள், அலுவலக பின்தொடர்தல் மற்றும் சேவை வழிகாட்டலுக்கு எங்களுடன் இணையுங்கள்.",
+    "contact.phone.label": "தொலைபேசி ஆதரவு",
+    "contact.email.label": "மின்னஞ்சல் முகவரி",
+    "contact.location.label": "அலுவலக முகவரி",
+    "contact.hours.label": "வேலை நேரம்",
+    "contact.hours.value": "திங்கள் முதல் சனி · காலை 9:00 முதல் மாலை 6:00 வரை",
+    "contact.branches": "கிளைகள்",
+    "contact.customers": "வாடிக்கையாளர்கள்",
+    "contact.response": "பதில்",
+    "contact.form.title": "உங்கள் கேள்வியை அனுப்புங்கள்",
+    "contact.form.text": "உங்கள் விவரங்களை நிரப்புங்கள், எங்கள் குழு விரைவில் உங்களை தொடர்பு கொள்ள்வார்கள்.",
+    "contact.form.name": "முழு பெயர்",
+    "contact.form.phone": "தொலைபேசி எண்",
+    "contact.form.email": "மின்னஞ்சல் முகவரி",
+    "contact.form.service": "சேவை வகை",
+    "contact.form.message": "செய்தி",
+    "contact.form.submit": "விசாரணையை அனுப்பு",
+    "contact.form.note": "உங்கள் விசாரணை வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது.",
+    "contact.form.name.placeholder": "உங்கள் பெயரை உள்ளீடு செய்யவும்",
+    "contact.form.phone.placeholder": "உங்கள் மொபைல் எண்ணை உள்ளீடு செய்யவும்",
+    "contact.form.email.placeholder": "உங்கள் மின்னஞ்சலை உள்ளீடு செய்யவும்",
+    "contact.form.message.placeholder": "எந்த ஆதரவு தேவை என்பதை எங்களுக்கு சொல்லுங்கள்",
+
+    // Footer
+    "footer.brand": "பிரின்ஸ்  குரூப்",
+    "footer.desc": "கன்னியாகுமரி மாவட்டம் முழுவதும் நம்பகமான பதிவு மற்றும் சந்தா சேவைகள் வாடிக்கையாளர் கவனம், சிறந்த மதிப்பு திட்டங்கள் மற்றும் நம்பகமான ஆதரவு.",
+    "footer.quicklinks": "விரைவு இணைப்புகள்",
+    "footer.more": "மேலும்",
+    "footer.contact": "தொடர்பு",
+    "footer.copyright": "© 2026 பிரின்ஸ்  குரூப். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டுள்ளன.",
+    "footer.designed": "ஒரு பிரீமியம் வாடிக்கையாளர் சேவை அனுபவத்திற்காக வடிவமைக்கப்பட்டது.",
+    "footer.link.overview": "ஒப்புமை",
+    "footer.link.services": "சேவைகள்",
+    "footer.link.plans": "திட்டங்கள்",
+    "footer.link.benefits": "நன்மைகள்",
+    "footer.link.reviews": "மதிப்புரைகள்",
+    "footer.link.contact": "தொடர்பு",
+    "footer.link.login": "உறுப்பினர் உள்நுழைவு"
+  }
+};
+
+
+// ============================================
+// LANGUAGE SYSTEM - COMPLETELY FIXED (Popup WILL appear)
+// ============================================
+
+let currentLang = 'en';
+let popupShown = false;
+
+// Prevent browser translation popup
+document.documentElement.setAttribute('translate', 'no');
+document.body.setAttribute('translate', 'no');
+
+// Function to translate page
+function translatePage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+  localStorage.setItem('languageSelected', 'true');
+
+  // Translate all elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+
+  // Update language switcher buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-lang') === lang) {
+      btn.classList.add('active');
+    }
+  });
+
+  document.documentElement.lang = lang === 'ta' ? 'ta' : 'en';
+}
+
+// Switch language from navbar
+function switchLanguage(lang) {
+  translatePage(lang);
+  const mobileNav = document.getElementById('mobileNav');
+  if (mobileNav) mobileNav.classList.remove('show');
+}
+
+// Select language from popup
+function selectLanguage(lang) {
+  translatePage(lang);
+  const overlay = document.getElementById('langOverlay');
+  if (overlay) {
+    overlay.style.display = 'none';
+    overlay.classList.add('hidden');
+  }
+  document.body.style.overflow = '';
+  popupShown = true;
+}
+
+// Show popup function
+function showLanguagePopup() {
+  const overlay = document.getElementById('langOverlay');
+
+  console.log('showLanguagePopup called');
+  console.log('localStorage languageSelected:', localStorage.getItem('languageSelected'));
+  console.log('popupShown:', popupShown);
+
+  // Don't show if language already selected
+  if (localStorage.getItem('languageSelected') === 'true') {
+    console.log('Language already selected, popup not shown');
+    return;
+  }
+
+  // Don't show if popup already shown
+  if (popupShown) {
+    console.log('Popup already shown, not showing again');
+    return;
+  }
+
+  if (!overlay) {
+    console.log('Overlay element not found!');
+    return;
+  }
+
+  console.log('Showing language popup');
+  popupShown = true;
+  overlay.style.display = 'flex';
+  overlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+// Add selectPlan function
+function selectPlan(event, btn) {
+  event.preventDefault();
+  const card = btn.closest('.price-card');
+  if (card) {
+    const planName = card.querySelector('.plan-name').innerText;
+    const price = btn.getAttribute('data-price');
+    localStorage.setItem('selectedPlan', planName);
+    localStorage.setItem('planAmount', price);
+    window.location.href = 'subscription.html?plan=' + encodeURIComponent(planName) + '&amount=' + price;
+  }
+}
+
+// On page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('selectedLanguage');
+  const languageSelected = localStorage.getItem('languageSelected');
+
+  console.log('DOMContentLoaded - Page loaded');
+  console.log('Saved language:', savedLang);
+  console.log('Language selected flag:', languageSelected);
+
+  // If user already selected a language before, apply it
+  if (savedLang === 'ta') {
+    translatePage('ta');
+  } else if (savedLang === 'en') {
+    translatePage('en');
+  } else {
+    // First time - set default English but DON'T mark as selected yet
+    translatePage('en');
+    // Clear the selected flag so popup shows
+    localStorage.removeItem('languageSelected');
+  }
+
+  // Show popup for first-time visitors after 2 seconds
+  setTimeout(function() {
+    const hasSelected = localStorage.getItem('languageSelected');
+    console.log('Timeout check - hasSelected:', hasSelected);
+
+    // Only show if language not selected yet
+    if (hasSelected !== 'true') {
+      showLanguagePopup();
+    } else {
+      console.log('Language already selected, popup skipped');
+    }
+  }, 2000);
+});
+
+// Make functions global
+window.switchLanguage = switchLanguage;
+window.selectLanguage = selectLanguage;
+window.selectPlan = selectPlan;
+
+</script>
+</body>
+</html>

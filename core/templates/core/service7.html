@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Business & Commercial Documentation | Legal Support</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT ===== */
+@media (max-width: 768px) {
+  .container { padding: 80px 16px 50px 16px; }
+  .page-title { font-size: 28px; }
+  .page-sub { font-size: 14px; margin-bottom: 32px; }
+  .box-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card { padding: 16px; }
+  .icon { font-size: 26px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 11px; }
+  .view { font-size: 11px; }
+  .popup-content { padding: 20px; max-width: 94%; }
+  .popup-content h2 { font-size: 20px; }
+  .popup-content ul li { font-size: 12px; padding: 8px 0; }
+  .lang-switcher-fixed { top: 12px; right: 12px; padding: 5px 12px; gap: 6px; }
+  .lang-btn-custom { font-size: 12px; padding: 4px 8px; }
+}
+
+@media (max-width: 550px) {
+  .box-grid { grid-template-columns: 1fr; gap: 16px; }
+  .container { padding: 80px 14px 40px 14px; }
+  .page-title { font-size: 26px; }
+  .card { padding: 18px; }
+  .icon { font-size: 28px; }
+  .card h3 { font-size: 16px; }
+  .card p { font-size: 12px; }
+  .view { font-size: 12px; }
+  .lang-switcher-fixed { top: 10px; right: 10px; padding: 4px 10px; }
+  .lang-btn-custom { font-size: 11px; padding: 3px 7px; }
+}
+
+@media (max-width: 380px) {
+  .page-title { font-size: 22px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 11px; }
+  .icon { font-size: 24px; }
+  .lang-switcher-fixed { top: 8px; right: 8px; padding: 4px 8px; }
+  .lang-btn-custom { font-size: 10px; padding: 2px 6px; }
+}
+
+@media (max-width: 700px) {
+  .corner-box { width: 140px; height: 140px; opacity: 0.5; }
+  .blob { width: 180px; height: 180px; filter: blur(70px); }
+}
+
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Business & Commercial Documentation</h1>
+<p class="page-sub" id="pageSub">Complete support for business registration, tax compliance & legal contracts</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('company')">
+  <div class="icon">🏢</div>
+  <h3 id="title1">Company Registration</h3>
+  <p id="desc1">Legal formation of business entity</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('gst')">
+  <div class="icon">🧾</div>
+  <h3 id="title2">GST Registration</h3>
+  <p id="desc2">Tax compliance & GSTIN setup</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('msme')">
+  <div class="icon">📊</div>
+  <h3 id="title3">MSME Registration</h3>
+  <p id="desc3">Small business government benefits</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('shopact')">
+  <div class="icon">🏪</div>
+  <h3 id="title4">Shop Act License</h3>
+  <p id="desc4">Commercial establishment approval</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('trade')">
+  <div class="icon">📜</div>
+  <h3 id="title5">Trade License</h3>
+  <p id="desc5">Municipal business permission</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('businessAgreement')">
+  <div class="icon">🤝</div>
+  <h3 id="title6">Business Agreements</h3>
+  <p id="desc6">Corporate contracts & legal deals</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// BUSINESS & COMMERCIAL DOCUMENTATION
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Business & Commercial Documentation',
+    pageSub: 'Complete support for business registration, tax compliance & legal contracts',
+    viewDetails: 'View Details →',
+    cards: {
+      company: { title: 'Company Registration', desc: 'Legal formation of business entity' },
+      gst: { title: 'GST Registration', desc: 'Tax compliance & GSTIN setup' },
+      msme: { title: 'MSME Registration', desc: 'Small business government benefits' },
+      shopact: { title: 'Shop Act License', desc: 'Commercial establishment approval' },
+      trade: { title: 'Trade License', desc: 'Municipal business permission' },
+      businessAgreement: { title: 'Business Agreements', desc: 'Corporate contracts & legal deals' }
+    }
+  },
+  'ta': {
+    pageTitle: 'வணிக மற்றும் வணிக ஆவணப்படுத்தல்',
+    pageSub: 'வணிக பதிவு, வரி இணக்கம் மற்றும் சட்ட ஒப்பந்தங்களுக்கான முழு ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      company: { title: 'நிறுவன பதிவு', desc: 'வணிக நிறுவனத்தின் சட்ட உருவாக்கம்' },
+      gst: { title: 'ஜிஎஸ்டி பதிவு', desc: 'வரி இணக்கம் & ஜிஎஸ்டிஐஎன் அமைப்பு' },
+      msme: { title: 'எம்எஸ்எம்இ பதிவு', desc: 'சிறு வணிக அரசு நன்மைகள்' },
+      shopact: { title: 'கடைச் சட்ட உரிமம்', desc: 'வணிக நிறுவன ஒப்புதல்' },
+      trade: { title: 'வர்த்தக உரிமம்', desc: 'நகராட்சி வணிக அனுமதி' },
+      businessAgreement: { title: 'வணிக ஒப்பந்தங்கள்', desc: 'கார்ப்பரேட் ஒப்பந்தங்கள் & சட்ட ஒப்பந்தங்கள்' }
+    }
+  }
+};
+
+// Popup content with complete legal details (EN + TA)
+const popupData = {
+  'en': {
+    company: {
+      title: "Company Registration",
+      list: [
+        "Company registration is the legal process of forming a business entity under the Companies Act.",
+        "Provides separate legal identity for the business.",
+        "Issued by Ministry of Corporate Affairs (MCA).",
+        "Required for corporate operations and legal recognition.",
+        "Enables banking, taxation, and investor participation."
+      ]
+    },
+    gst: {
+      title: "GST Registration",
+      list: [
+        "GST registration is mandatory tax enrollment under Goods and Services Tax system.",
+        "Allows businesses to collect and remit GST legally.",
+        "Required for interstate and commercial trade activities.",
+        "Provides GSTIN (unique tax identification number).",
+        "Ensures tax compliance and input tax credit eligibility."
+      ]
+    },
+    msme: {
+      title: "MSME Registration",
+      list: [
+        "MSME registration provides recognition for Micro, Small, and Medium Enterprises.",
+        "Offers government benefits, subsidies, and loan support.",
+        "Improves access to credit and business schemes.",
+        "Helps in tender participation and government contracts.",
+        "Boosts credibility of small businesses."
+      ]
+    },
+    shopact: {
+      title: "Shop Act License",
+      list: [
+        "Shop Act license is mandatory registration for shops and commercial establishments.",
+        "Regulated under state Shops and Establishment Act.",
+        "Defines working hours, employee rights, and business rules.",
+        "Required for retail and service-based businesses.",
+        "Ensures legal operation of business premises."
+      ]
+    },
+    trade: {
+      title: "Trade License",
+      list: [
+        "A trade license is an official permission issued by local municipal authorities.",
+        "Allows businesses to operate within a specific jurisdiction.",
+        "Ensures public safety and regulatory compliance.",
+        "Mandatory for commercial establishments.",
+        "Renewed periodically as per local regulations."
+      ]
+    },
+    businessAgreement: {
+      title: "Business Agreements",
+      list: [
+        "Business agreements are legally binding contracts between companies or business partners.",
+        "Defines terms of collaboration, responsibilities, and payments.",
+        "Includes partnership, vendor, and service contracts.",
+        "Ensures clarity in commercial transactions.",
+        "Protects business interests legally."
+      ]
+    }
+  },
+  'ta': {
+    company: {
+      title: "நிறுவன பதிவு",
+      list: [
+        "நிறுவன பதிவு என்பது நிறுவனச் சட்டத்தின் கீழ் ஒரு வணிக நிறுவனத்தை உருவாக்கும் சட்ட செயல்முறையாகும்.",
+        "வணிகத்திற்கு தனி சட்ட அடையாளத்தை வழங்குகிறது.",
+        "கார்ப்பரேட் விவகார அமைச்சகத்தால் வழங்கப்படுகிறது.",
+        "கார்ப்பரேட் செயல்பாடுகள் மற்றும் சட்ட அங்கீகாரத்திற்கு தேவை.",
+        "வங்கி, வரிவிதிப்பு மற்றும் முதலீட்டாளர் பங்கேற்பை செயல்படுத்துகிறது."
+      ]
+    },
+    gst: {
+      title: "ஜிஎஸ்டி பதிவு",
+      list: [
+        "ஜிஎஸ்டி பதிவு என்பது பொருட்கள் மற்றும் சேவைகள் வரி அமைப்பின் கீழ் கட்டாய வரி பதிவு ஆகும்.",
+        "வணிகங்கள் சட்டப்பூர்வமாக ஜிஎஸ்டியை வசூலிக்க மற்றும் செலுத்த அனுமதிக்கிறது.",
+        "மாநிலங்களிடையே மற்றும் வணிக வர்த்தக நடவடிக்கைகளுக்கு தேவை.",
+        "ஜிஎஸ்டிஐஎன் வழங்குகிறது.",
+        "வரி இணக்கம் மற்றும் உள்ளீட்டு வரி வரவு தகுதியை உறுதி செய்கிறது."
+      ]
+    },
+    msme: {
+      title: "எம்எஸ்எம்இ பதிவு",
+      list: [
+        "எம்எஸ்எம்இ பதிவு நுண், சிறு மற்றும் நடுத்தர நிறுவனங்களுக்கு அங்கீகாரம் அளிக்கிறது.",
+        "அரசு நன்மைகள், மானியங்கள் மற்றும் கடன் ஆதரவை வழங்குகிறது.",
+        "கடன் மற்றும் வணிக திட்டங்களுக்கான அணுகலை மேம்படுத்துகிறது.",
+        "டெண்டர் பங்கேற்பு மற்றும் அரசு ஒப்பந்தங்களில் உதவுகிறது.",
+        "சிறு வணிகங்களின் நம்பகத்தன்மையை அதிகரிக்கிறது."
+      ]
+    },
+    shopact: {
+      title: "கடைச் சட்ட உரிமம்",
+      list: [
+        "கடைச் சட்ட உரிமம் என்பது கடைகள் மற்றும் வணிக நிறுவனங்களுக்கு கட்டாய பதிவு ஆகும்.",
+        "மாநில கடைகள் மற்றும் நிறுவனச் சட்டத்தின் கீழ் கட்டுப்படுத்தப்படுகிறது.",
+        "வேலை நேரம், ஊழியர் உரிமைகள் மற்றும் வணிக விதிகளை வரையறுக்கிறது.",
+        "சில்லறை மற்றும் சேவை சார்ந்த வணிகங்களுக்கு தேவை.",
+        "வணிக வளாகத்தின் சட்டப்பூர்வ செயல்பாட்டை உறுதி செய்கிறது."
+      ]
+    },
+    trade: {
+      title: "வர்த்தக உரிமம்",
+      list: [
+        "வர்த்தக உரிமம் என்பது உள்ளூர் நகராட்சி அதிகாரிகளால் வழங்கப்படும் அதிகாரப்பூர்வ அனுமதியாகும்.",
+        "வணிகங்கள் ஒரு குறிப்பிட்ட எல்லைக்குள் செயல்பட அனுமதிக்கிறது.",
+        "பொது பாதுகாப்பு மற்றும் ஒழுங்குமுறை இணக்கத்தை உறுதி செய்கிறது.",
+        "வணிக நிறுவனங்களுக்கு கட்டாயமாகும்.",
+        "உள்ளூர் விதிமுறைகளின்படி அவ்வப்போது புதுப்பிக்கப்படுகிறது."
+      ]
+    },
+    businessAgreement: {
+      title: "வணிக ஒப்பந்தங்கள்",
+      list: [
+        "வணிக ஒப்பந்தங்கள் என்பது நிறுவனங்கள் அல்லது வணிக கூட்டாளர்களுக்கிடையேயான சட்டப்பூர்வமாக பிணைக்கக்கூடிய ஒப்பந்தங்கள் ஆகும்.",
+        "ஒத்துழைப்பு, பொறுப்புகள் மற்றும் பணம் செலுத்துதல் ஆகியவற்றின் விதிமுறைகளை வரையறுக்கிறது.",
+        "கூட்டாண்மை, விற்பனையாளர் மற்றும் சேவை ஒப்பந்தங்கள் அடங்கும்.",
+        "வணிக பரிவர்த்தனைகளில் தெளிவை உறுதி செய்கிறது.",
+        "வணிக நலன்களை சட்டப்பூர்வமாக பாதுகாக்கிறது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Business services
+  const cardKeys = ['company', 'gst', 'msme', 'shopact', 'trade', 'businessAgreement'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with full details based on current language
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  const popupDiv = document.getElementById('popup');
+  if (event.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Business & Commercial Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

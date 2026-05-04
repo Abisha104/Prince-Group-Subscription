@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loan & Mortgage Services | Legal & Verification Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+/* Sticky language switcher - stays at top always */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT - SMALL SCREENS ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 16px 50px 16px;
+  }
+  .page-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .page-sub {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .box-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .icon {
+    font-size: 26px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .view {
+    font-size: 11px;
+  }
+  .popup-content {
+    padding: 20px;
+    max-width: 94%;
+  }
+  .popup-content h2 {
+    font-size: 20px;
+  }
+  .popup-content ul li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .lang-switcher-fixed {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .box-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .container {
+    padding: 80px 14px 40px 14px;
+  }
+  .page-title {
+    font-size: 26px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .icon {
+    font-size: 28px;
+  }
+  .card h3 {
+    font-size: 16px;
+  }
+  .card p {
+    font-size: 12px;
+  }
+  .view {
+    font-size: 12px;
+  }
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+}
+
+/* very tiny devices 360px and below */
+@media (max-width: 380px) {
+  .page-title {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .icon {
+    font-size: 24px;
+  }
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+/* Keep all animations for mobile, corner boxes slight adjustment */
+@media (max-width: 700px) {
+  .corner-box {
+    width: 140px;
+    height: 140px;
+    opacity: 0.5;
+  }
+  .blob {
+    width: 180px;
+    height: 180px;
+    filter: blur(70px);
+  }
+}
+
+/* preserve desktop look */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher (Bilingual English/Tamil) -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Loan & Mortgage Services</h1>
+<p class="page-sub" id="pageSub">Professional support for loan, banking & mortgage documentation</p>
+
+<div class="box-grid">
+  <div class="card" onclick="openPopup('docVerification')">
+    <div class="icon">📄</div>
+    <h3 id="title1">Document Legal Verification</h3>
+    <p id="desc1">Authenticity & legal document validation</p>
+    <div class="view" id="view1">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('titleVerification')">
+    <div class="icon">🏷️</div>
+    <h3 id="title2">Title Verification</h3>
+    <p id="desc2">Ownership & property title confirmation</p>
+    <div class="view" id="view2">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('propertyCheck')">
+    <div class="icon">🏘️</div>
+    <h3 id="title3">Property Background Check</h3>
+    <p id="desc3">Complete legal history analysis</p>
+    <div class="view" id="view3">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('advocate')">
+    <div class="icon">⚖️</div>
+    <h3 id="title4">Advocate Consultation</h3>
+    <p id="desc4">Expert legal guidance & support</p>
+    <div class="view" id="view4">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('legalOpinion')">
+    <div class="icon">🧾</div>
+    <h3 id="title5">Legal Opinion</h3>
+    <p id="desc5">Professional legal document assessment</p>
+    <div class="view" id="view5">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('adjudication')">
+    <div class="icon">🏛️</div>
+    <h3 id="title6">Adjudication Process</h3>
+    <p id="desc6">Stamp duty valuation process</p>
+    <div class="view" id="view6">View Details →</div>
+  </div>
+
+  <div class="card" onclick="openPopup('stampDuty')">
+    <div class="icon">💰</div>
+    <h3 id="title7">Stamp Duty Verification</h3>
+    <p id="desc7">Government duty compliance check</p>
+    <div class="view" id="view7">View Details →</div>
+  </div>
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// Bilingual Translations for LEGAL & VERIFICATION SERVICES
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Legal & Verification Services',
+    pageSub: 'Professional legal validation, document checks & expert review services',
+    viewDetails: 'View Details →',
+    cards: {
+      docVerification: { title: 'Document Legal Verification', desc: 'Authenticity & legal document validation' },
+      titleVerification: { title: 'Title Verification', desc: 'Ownership & property title confirmation' },
+      propertyCheck: { title: 'Property Background Check', desc: 'Complete legal history analysis' },
+      advocate: { title: 'Advocate Consultation', desc: 'Expert legal guidance & support' },
+      legalOpinion: { title: 'Legal Opinion', desc: 'Professional legal document assessment' },
+      adjudication: { title: 'Adjudication Process', desc: 'Stamp duty valuation process' },
+      stampDuty: { title: 'Stamp Duty Verification', desc: 'Government duty compliance check' }
+    }
+  },
+  'ta': {
+    pageTitle: 'சட்ட மற்றும் சரிபார்ப்பு சேவைகள்',
+    pageSub: 'தொழில்முறை சட்ட சரிபார்ப்பு, ஆவண சோதனைகள் மற்றும் நிபுணர் மதிப்பாய்வு சேவைகள்',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      docVerification: { title: 'ஆவண சட்ட சரிபார்ப்பு', desc: 'உண்மையான & சட்ட ஆவண சரிபார்ப்பு' },
+      titleVerification: { title: 'உரிமை சரிபார்ப்பு', desc: 'சொத்து உரிமை உறுதிப்படுத்தல்' },
+      propertyCheck: { title: 'சொத்து பின்னணி சரிபார்ப்பு', desc: 'முழுமையான சட்ட வரலாறு பகுப்பாய்வு' },
+      advocate: { title: 'வழக்கறிஞர் ஆலோசனை', desc: 'நிபுணர் சட்ட வழிகாட்டுதல் மற்றும் ஆதரவு' },
+      legalOpinion: { title: 'சட்ட கருத்து', desc: 'தொழில்முறை சட்ட ஆவண மதிப்பீடு' },
+      adjudication: { title: 'தீர்ப்பாய செயல்முறை', desc: 'ஸ்டாம்ப் டூட்டி மதிப்பீடு செயல்முறை' },
+      stampDuty: { title: 'ஸ்டாம்ப் டூட்டி சரிபார்ப்பு', desc: 'அரசு கடமை இணக்க சரிபார்ப்பு' }
+    }
+  }
+};
+
+// Popup content details for each service type (EN + TA)
+const popupData = {
+  'en': {
+    docVerification: {
+      title: "Document Legal Verification",
+      list: [
+        "Document legal verification involves checking authenticity and legal validity of property and financial documents.",
+        "Ensures documents are genuine and properly executed.",
+        "Prevents use of forged or invalid records.",
+        "Verified by legal professionals or authorized experts.",
+        "Essential before any property transaction or loan approval."
+      ]
+    },
+    titleVerification: {
+      title: "Title Verification",
+      list: [
+        "Title verification confirms legal ownership of a property.",
+        "Checks chain of ownership history and previous transactions.",
+        "Ensures no legal disputes, claims, or encumbrances exist.",
+        "Verified through land records and government registry data.",
+        "Critical step before property purchase or mortgage."
+      ]
+    },
+    propertyCheck: {
+      title: "Property Background Check",
+      list: [
+        "Property background check reviews complete history of the property.",
+        "Includes ownership records, disputes, litigation status, and tax details.",
+        "Helps identify hidden legal risks.",
+        "Conducted using revenue records and municipal data.",
+        "Ensures safe investment decisions."
+      ]
+    },
+    advocate: {
+      title: "Advocate Consultation",
+      list: [
+        "Advocate consultation provides expert legal advice on property and contract matters.",
+        "Helps understand legal risks and documentation requirements.",
+        "Guides clients through legal procedures and compliance.",
+        "Ensures proper documentation strategy.",
+        "Reduces chances of legal disputes."
+      ]
+    },
+    legalOpinion: {
+      title: "Legal Opinion",
+      list: [
+        "Legal opinion is a formal assessment provided by a qualified advocate on document legality.",
+        "Confirms whether a transaction is legally valid or risky.",
+        "Used by banks and financial institutions before approvals.",
+        "Provides written legal assurance.",
+        "Highly important in property and loan processing."
+      ]
+    },
+    adjudication: {
+      title: "Adjudication Process",
+      list: [
+        "Adjudication is the legal process of determining stamp duty payable on documents.",
+        "Conducted by revenue or registration authorities.",
+        "Ensures correct valuation and legal compliance.",
+        "Required for certain property and financial agreements.",
+        "Prevents underpayment or legal penalties."
+      ]
+    },
+    stampDuty: {
+      title: "Stamp Duty Verification",
+      list: [
+        "Stamp duty verification ensures correct payment of government stamp duty on legal documents.",
+        "Confirms document is legally enforceable.",
+        "Based on state government stamp act regulations.",
+        "Prevents document rejection during registration.",
+        "Mandatory for property and agreement registration."
+      ]
+    }
+  },
+  'ta': {
+    docVerification: {
+      title: "ஆவண சட்ட சரிபார்ப்பு",
+      list: [
+        "ஆவண சட்ட சரிபார்ப்பு என்பது சொத்து மற்றும் நிதி ஆவணங்களின் உண்மைத்தன்மை மற்றும் சட்ட செல்லுபடியை சரிபார்க்கிறது.",
+        "ஆவணங்கள் உண்மையானவை மற்றும் சரியாக செயல்படுத்தப்பட்டவை என்பதை உறுதி செய்கிறது.",
+        "போலி அல்லது தவறான பதிவுகளைப் பயன்படுத்துவதைத் தடுக்கிறது.",
+        "சட்ட வல்லுநர்கள் அல்லது அங்கீகரிக்கப்பட்ட நிபுணர்களால் சரிபார்க்கப்பட்டது.",
+        "எந்தவொரு சொத்து பரிவர்த்தனை அல்லது கடன் ஒப்புதலுக்கு முன் அவசியம்."
+      ]
+    },
+    titleVerification: {
+      title: "உரிமை சரிபார்ப்பு",
+      list: [
+        "உரிமை சரிபார்ப்பு ஒரு சொத்தின் சட்ட உரிமையை உறுதிப்படுத்துகிறது.",
+        "உரிமையின் வரலாறு மற்றும் முந்தைய பரிவர்த்தனைகளின் சங்கிலியை சரிபார்க்கிறது.",
+        "சட்ட தகராறுகள், கோரிக்கைகள் அல்லது பாரங்கள் எதுவும் இல்லை என்பதை உறுதி செய்கிறது.",
+        "நிலப் பதிவுகள் மற்றும் அரசாங்கப் பதிவேட்டுத் தரவுகள் மூலம் சரிபார்க்கப்பட்டது.",
+        "சொத்து வாங்குதல் அல்லது அடமானத்திற்கு முன் முக்கியமான படி."
+      ]
+    },
+    propertyCheck: {
+      title: "சொத்து பின்னணி சரிபார்ப்பு",
+      list: [
+        "சொத்து பின்னணி சரிபார்ப்பு சொத்தின் முழுமையான வரலாற்றை மதிப்பாய்வு செய்கிறது.",
+        "உரிமை பதிவுகள், தகராறுகள், வழக்கு நிலை மற்றும் வரி விவரங்கள் ஆகியவை அடங்கும்.",
+        "மறைக்கப்பட்ட சட்ட அபாயங்களை அடையாளம் காண உதவுகிறது.",
+        "வருவாய் பதிவுகள் மற்றும் நகர்ப்புற தரவுகளைப் பயன்படுத்தி நடத்தப்படுகிறது.",
+        "பாதுகாப்பான முதலீட்டு முடிவுகளை உறுதி செய்கிறது."
+      ]
+    },
+    advocate: {
+      title: "வழக்கறிஞர் ஆலோசனை",
+      list: [
+        "வழக்கறிஞர் ஆலோசனை சொத்து மற்றும் ஒப்பந்த விஷயங்களில் நிபுணர் சட்ட ஆலோசனையை வழங்குகிறது.",
+        "சட்ட அபாயங்கள் மற்றும் ஆவணத் தேவைகளைப் புரிந்துகொள்ள உதவுகிறது.",
+        "சட்ட நடைமுறைகள் மற்றும் இணக்கம் மூலம் வாடிக்கையாளர்களுக்கு வழிகாட்டுகிறது.",
+        "சரியான ஆவண உத்தியை உறுதி செய்கிறது.",
+        "சட்ட தகராறுகளின் வாய்ப்புகளை குறைக்கிறது."
+      ]
+    },
+    legalOpinion: {
+      title: "சட்ட கருத்து",
+      list: [
+        "சட்ட கருத்து என்பது தகுதி வாய்ந்த வழக்கறிஞரால் வழங்கப்படும் ஆவணச் சட்டபூர்வமான மதிப்பீடு ஆகும்.",
+        "ஒரு பரிவர்த்தனை சட்டப்பூர்வமாக செல்லுபடியாகுமா அல்லது ஆபத்தானதா என்பதை உறுதிப்படுத்துகிறது.",
+        "ஒப்புதல்களுக்கு முன் வங்கிகள் மற்றும் நிதி நிறுவனங்களால் பயன்படுத்தப்படுகிறது.",
+        "எழுத்துப்பூர்வ சட்ட உத்தரவாதத்தை வழங்குகிறது.",
+        "சொத்து மற்றும் கடன் செயலாக்கத்தில் மிகவும் முக்கியமானது."
+      ]
+    },
+    adjudication: {
+      title: "தீர்ப்பாய செயல்முறை",
+      list: [
+        "தீர்ப்பாயம் என்பது ஆவணங்களில் செலுத்த வேண்டிய ஸ்டாம்ப் கடமையை நிர்ணயிக்கும் சட்ட செயல்முறையாகும்.",
+        "வருவாய் அல்லது பதிவு அதிகாரிகளால் நடத்தப்படுகிறது.",
+        "சரியான மதிப்பீடு மற்றும் சட்ட இணக்கத்தை உறுதி செய்கிறது.",
+        "சில சொத்து மற்றும் நிதி ஒப்பந்தங்களுக்கு தேவை.",
+        "குறைந்த கட்டணம் அல்லது சட்டப்பூர்வ அபராதங்களைத் தடுக்கிறது."
+      ]
+    },
+    stampDuty: {
+      title: "ஸ்டாம்ப் டூட்டி சரிபார்ப்பு",
+      list: [
+        "ஸ்டாம்ப் டூட்டி சரிபார்ப்பு சட்ட ஆவணங்களில் அரசாங்க ஸ்டாம்ப் கடமையை சரியாக செலுத்துவதை உறுதி செய்கிறது.",
+        "ஆவணம் சட்டப்பூர்வமாக நிறைவேற்றப்படக்கூடியது என்பதை உறுதிப்படுத்துகிறது.",
+        "மாநில அரசு ஸ்டாம்ப் சட்ட விதிமுறைகளின் அடிப்படையில்.",
+        "பதிவின் போது ஆவணம் நிராகரிப்பதைத் தடுக்கிறது.",
+        "சொத்து மற்றும் ஒப்பந்தப் பதிவுக்கு கட்டாயமாகும்."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (FIXED - WAS MISSING!)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Legal & Verification services
+  const cardKeys = ['docVerification', 'titleVerification', 'propertyCheck', 'advocate', 'legalOpinion', 'adjudication', 'stampDuty'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function (global)
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with content based on current language
+function openPopup(type) {
+  let data = popupData[currentLang][type];
+  if (!data) {
+    // fallback to first one
+    data = popupData[currentLang].docVerification;
+  }
+
+  document.getElementById('popupTitle').innerText = data.title;
+  const ul = document.getElementById('popupDetails');
+  ul.innerHTML = '';
+
+  data.list.forEach(item => {
+    const li = document.createElement('li');
+    li.innerText = '✔ ' + item;
+    ul.appendChild(li);
+  });
+
+  document.getElementById('popup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  const popupElement = document.getElementById('popup');
+  if (event.target === popupElement) {
+    closePopup();
+  }
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Legal & Verification Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

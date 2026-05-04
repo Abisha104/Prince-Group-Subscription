@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Registration & Government Services | Legal Documentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== FULLY RESPONSIVE MOBILE + STICKY LANG SWITCHER ========== */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* Responsive Grid - Tablet & Mobile */
+@media (max-width: 900px){
+  .box-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width: 650px){
+  .box-grid{grid-template-columns:1fr;}
+  .container{padding:80px 16px 50px 16px;}
+  .page-title{font-size:28px;}
+  .page-sub{font-size:14px; margin-bottom:32px;}
+  .card{padding:18px;}
+  .icon{font-size:28px;}
+  .card h3{font-size:16px;}
+  .card p{font-size:12px;}
+  .view{font-size:11px;}
+  .popup-content{padding:20px; max-width:94%;}
+  .popup-content h2{font-size:20px;}
+  .popup-content ul li{font-size:12px; padding:8px 0;}
+  .lang-switcher-fixed{top:12px; right:12px; padding:5px 12px; gap:6px;}
+  .lang-btn-custom{font-size:12px; padding:4px 8px;}
+}
+
+@media (max-width: 480px){
+  .container{padding:75px 14px 40px 14px;}
+  .page-title{font-size:26px;}
+  .card{padding:16px;}
+  .icon{font-size:26px;}
+  .card h3{font-size:15px;}
+  .lang-switcher-fixed{top:10px; right:10px; padding:4px 10px;}
+  .lang-btn-custom{font-size:11px; padding:3px 7px;}
+}
+
+@media (max-width: 360px){
+  .page-title{font-size:22px;}
+  .card h3{font-size:14px;}
+  .card p{font-size:11px;}
+  .icon{font-size:24px;}
+}
+
+/* preserve desktop look & animations */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+
+@media (max-width: 700px){
+  .corner-box{ width:140px; height:140px; opacity:0.5; }
+  .blob{ width:180px; height:180px; filter:blur(70px); }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Registration & Government Services</h1>
+<p class="page-sub" id="pageSub">Official documentation & legal registration support</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('marriage')">
+  <div class="icon">💍</div>
+  <h3 id="title1">Marriage Registration</h3>
+  <p id="desc1">Official legal marriage certification</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('birth')">
+  <div class="icon">👶</div>
+  <h3 id="title2">Birth Certificate Assistance</h3>
+  <p id="desc2">Government birth record support</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('nameChange')">
+  <div class="icon">📝</div>
+  <h3 id="title3">Name Change Documentation</h3>
+  <p id="desc3">Legal identity change process</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('poaReg')">
+  <div class="icon">📜</div>
+  <h3 id="title4">Power of Attorney Registration</h3>
+  <p id="desc4">Authorized legal representation</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('willReg')">
+  <div class="icon">📄</div>
+  <h3 id="title5">Will Registration</h3>
+  <p id="desc5">Legal inheritance documentation</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('society')">
+  <div class="icon">🏢</div>
+  <h3 id="title6">Society Registration</h3>
+  <p id="desc6">NGO & society legal formation</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('firm')">
+  <div class="icon">🏭</div>
+  <h3 id="title7">Firm Registration</h3>
+  <p id="desc7">Business legal registration setup</p>
+  <div class="view" id="view7">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP MODAL -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// REGISTRATION & GOVERNMENT SERVICES
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Registration & Government Services',
+    pageSub: 'Official documentation & legal registration support',
+    viewDetails: 'View Details →',
+    cards: {
+      marriage: { title: 'Marriage Registration', desc: 'Official legal marriage certification' },
+      birth: { title: 'Birth Certificate Assistance', desc: 'Government birth record support' },
+      nameChange: { title: 'Name Change Documentation', desc: 'Legal identity change process' },
+      poaReg: { title: 'Power of Attorney Registration', desc: 'Authorized legal representation' },
+      willReg: { title: 'Will Registration', desc: 'Legal inheritance documentation' },
+      society: { title: 'Society Registration', desc: 'NGO & society legal formation' },
+      firm: { title: 'Firm Registration', desc: 'Business legal registration setup' }
+    }
+  },
+  'ta': {
+    pageTitle: 'பதிவு மற்றும் அரசு சேவைகள்',
+    pageSub: 'அதிகாரப்பூர்வ ஆவணங்கள் & சட்ட பதிவு ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      marriage: { title: 'திருமணப் பதிவு', desc: 'அதிகாரப்பூர்வ சட்ட திருமண சான்றிதழ்' },
+      birth: { title: 'பிறப்புச் சான்றிதழ் உதவி', desc: 'அரசு பிறப்பு பதிவு ஆதரவு' },
+      nameChange: { title: 'பெயர் மாற்ற ஆவணங்கள்', desc: 'சட்ட அடையாள மாற்ற செயல்முறை' },
+      poaReg: { title: 'வக்காலத்து பதிவு', desc: 'அங்கீகரிக்கப்பட்ட சட்ட பிரதிநிதித்துவம்' },
+      willReg: { title: 'உயில்பத்திர பதிவு', desc: 'சட்ட மரபுரிமை ஆவணம்' },
+      society: { title: 'சங்கப் பதிவு', desc: 'தன்னார்வ & சங்க சட்ட உருவாக்கம்' },
+      firm: { title: 'நிறுவனப் பதிவு', desc: 'வணிக சட்ட பதிவு அமைப்பு' }
+    }
+  }
+};
+
+// Popup content with complete legal details (EN + TA)
+const popupData = {
+  'en': {
+    marriage: {
+      title: "Marriage Registration",
+      list: [
+        "Marriage registration is the official recording of a marriage under government authority.",
+        "Provides legal proof of marital status.",
+        "Required for visa, legal, and financial purposes.",
+        "Governed under Hindu Marriage Act or Special Marriage Act.",
+        "Ensures legal recognition of the union."
+      ]
+    },
+    birth: {
+      title: "Birth Certificate Assistance",
+      list: [
+        "Birth certificate assistance helps in obtaining official government-issued birth records.",
+        "Serves as primary identity and age proof document.",
+        "Issued by municipal or local authorities.",
+        "Required for education, passport, and legal identification.",
+        "Ensures official registration of birth records."
+      ]
+    },
+    nameChange: {
+      title: "Name Change Documentation",
+      list: [
+        "Name change documentation involves legal process of updating or changing a person's name in official records.",
+        "Requires affidavit, newspaper publication, and government gazette notification.",
+        "Ensures consistency across all legal documents.",
+        "Legally recognized by government authorities.",
+        "Used for personal, educational, and professional updates."
+      ]
+    },
+    poaReg: {
+      title: "Power of Attorney Registration",
+      list: [
+        "Power of Attorney registration legally authorizes a person to act on behalf of another.",
+        "Registered at Sub-Registrar Office for legal validity.",
+        "Used in property, financial, and legal matters.",
+        "Can be general or specific in nature.",
+        "Ensures enforceable legal delegation of authority."
+      ]
+    },
+    willReg: {
+      title: "Will Registration",
+      list: [
+        "Will registration is the legal process of recording a person's last will and testament.",
+        "Ensures distribution of assets as per the testator's wishes.",
+        "Helps avoid future legal disputes among heirs.",
+        "Registered under Sub-Registrar for authenticity.",
+        "Can be modified or revoked during lifetime."
+      ]
+    },
+    society: {
+      title: "Society Registration",
+      list: [
+        "Society registration is the legal formation of associations or societies for charitable, educational, or social purposes.",
+        "Governed under Societies Registration Act.",
+        "Provides legal identity to organizations.",
+        "Enables bank accounts, funding, and compliance.",
+        "Ensures structured governance and operation."
+      ]
+    },
+    firm: {
+      title: "Firm Registration",
+      list: [
+        "Firm registration legally establishes a partnership or business entity.",
+        "Provides recognition under Partnership Act or business laws.",
+        "Required for banking, taxation, and contracts.",
+        "Defines ownership, roles, and profit sharing.",
+        "Ensures legal identity for business operations."
+      ]
+    }
+  },
+  'ta': {
+    marriage: {
+      title: "திருமணப் பதிவு",
+      list: [
+        "திருமணப் பதிவு என்பது அரசு அதிகாரத்தின் கீழ் ஒரு திருமணத்தின் அதிகாரப்பூர்வ பதிவு ஆகும்.",
+        "திருமண நிலைக்கான சட்ட ஆதாரத்தை வழங்குகிறது.",
+        "விசா, சட்ட மற்றும் நிதி நோக்கங்களுக்காக தேவைப்படுகிறது.",
+        "இந்து திருமணச் சட்டம் அல்லது சிறப்பு திருமணச் சட்டத்தின் கீழ் நிர்வகிக்கப்படுகிறது.",
+        "திருமணத்தின் சட்ட அங்கீகாரத்தை உறுதி செய்கிறது."
+      ]
+    },
+    birth: {
+      title: "பிறப்புச் சான்றிதழ் உதவி",
+      list: [
+        "பிறப்புச் சான்றிதழ் உதவி அரசு வழங்கிய அதிகாரப்பூர்வ பிறப்புப் பதிவுகளைப் பெற உதவுகிறது.",
+        "முதன்மை அடையாளம் மற்றும் வயது ஆதார ஆவணமாக செயல்படுகிறது.",
+        "நகராட்சி அல்லது உள்ளூர் அதிகாரிகளால் வழங்கப்படுகிறது.",
+        "கல்வி, காப்பகம் மற்றும் சட்ட அடையாளத்திற்கு தேவை.",
+        "பிறப்புப் பதிவுகளின் அதிகாரப்பூர்வ பதிவை உறுதி செய்கிறது."
+      ]
+    },
+    nameChange: {
+      title: "பெயர் மாற்ற ஆவணங்கள்",
+      list: [
+        "பெயர் மாற்ற ஆவணங்கள் என்பது அதிகாரப்பூர்வ பதிவுகளில் ஒரு நபரின் பெயரைப் புதுப்பித்தல் அல்லது மாற்றும் சட்ட செயல்முறையை உள்ளடக்கியது.",
+        "பிள்ளையார் சத்தியம், செய்தித்தாள் வெளியீடு மற்றும் அரசு வர்த்தமானி அறிவிப்பு தேவை.",
+        "அனைத்து சட்ட ஆவணங்களிலும் நிலைத்தன்மையை உறுதி செய்கிறது.",
+        "அரசு அதிகாரிகளால் சட்டப்பூர்வமாக அங்கீகரிக்கப்பட்டுள்ளது.",
+        "தனிப்பட்ட, கல்வி மற்றும் தொழில்முறை மேம்படுத்தல்களுக்கு பயன்படுகிறது."
+      ]
+    },
+    poaReg: {
+      title: "வக்காலத்து பதிவு",
+      list: [
+        "வக்காலத்து பதிவு சட்டப்பூர்வமாக ஒரு நபர் மற்றொருவர் சார்பாக செயல்பட அதிகாரம் அளிக்கிறது.",
+        "சட்ட செல்லுபடியாகும் தன்மைக்காக துணைப் பதிவாளர் அலுவலகத்தில் பதிவு செய்யப்படுகிறது.",
+        "சொத்து, நிதி மற்றும் சட்ட விஷயங்களில் பயன்படுத்தப்படுகிறது.",
+        "பொது அல்லது குறிப்பிட்ட இயல்புடையதாக இருக்கலாம்.",
+        "அதிகாரத்தின் நிறைவேற்றக்கூடிய சட்ட பகிர்வை உறுதி செய்கிறது."
+      ]
+    },
+    willReg: {
+      title: "உயில்பத்திர பதிவு",
+      list: [
+        "உயில் பதிவு என்பது ஒரு நபரின் கடைசி விருப்பத்தையும் சாட்சியத்தையும் பதிவு செய்வதற்கான சட்ட செயல்முறையாகும்.",
+        "விருப்பத்தாளரின் விருப்பத்தின் படி சொத்துக்களின் விநியோகத்தை உறுதி செய்கிறது.",
+        "வருங்கால வாரிசுகளிடையே சட்ட சர்ச்சைகளைத் தவிர்க்க உதவுகிறது.",
+        "நம்பகத்தன்மைக்காக துணைப் பதிவாளரின் கீழ் பதிவு செய்யப்பட்டது.",
+        "வாழ்நாளில் மாற்றியமைக்கலாம் அல்லது ரத்து செய்யலாம்."
+      ]
+    },
+    society: {
+      title: "சங்கப் பதிவு",
+      list: [
+        "சங்கப் பதிவு என்பது தொண்டு, கல்வி அல்லது சமூக நோக்கங்களுக்காக சங்கங்கள் அல்லது சங்கங்களை சட்டப்பூர்வமாக உருவாக்குவதாகும்.",
+        "சங்கங்கள் பதிவுச் சட்டத்தின் கீழ் நிர்வகிக்கப்படுகிறது.",
+        "நிறுவனங்களுக்கு சட்ட அடையாளத்தை வழங்குகிறது.",
+        "வங்கிக் கணக்குகள், நிதியுதவி மற்றும் இணக்கத்தை செயல்படுத்துகிறது.",
+        "கட்டமைக்கப்பட்ட ஆளுகை மற்றும் செயல்பாட்டை உறுதி செய்கிறது."
+      ]
+    },
+    firm: {
+      title: "நிறுவனப் பதிவு",
+      list: [
+        "நிறுவனப் பதிவு சட்டப்பூர்வமாக ஒரு கூட்டாண்மை அல்லது வணிக நிறுவனத்தை நிறுவுகிறது.",
+        "கூட்டாண்மைச் சட்டம் அல்லது வணிகச் சட்டங்களின் கீழ் அங்கீகாரத்தை வழங்குகிறது.",
+        "வங்கி, வரிவிதிப்பு மற்றும் ஒப்பந்தங்களுக்கு தேவை.",
+        "உரிமை, பங்குகள் மற்றும் இலாபப் பகிர்வை வரையறுக்கிறது.",
+        "வணிக நடவடிக்கைகளுக்கான சட்ட அடையாளத்தை உறுதி செய்கிறது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (FIXED - WAS MISSING!)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Registration & Government services
+  const cardKeys = ['marriage', 'birth', 'nameChange', 'poaReg', 'willReg', 'society', 'firm'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with full details based on current language
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  const popupDiv = document.getElementById('popup');
+  if (event.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Registration & Government Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+
+</body>
+</html>

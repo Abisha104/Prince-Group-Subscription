@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Loan & Mortgage Services | Legal Documentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+/* Sticky language switcher - stays at top always */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT - SMALL SCREENS ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 16px 50px 16px;
+  }
+  .page-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .page-sub {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .box-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .icon {
+    font-size: 26px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .view {
+    font-size: 11px;
+  }
+  .popup-content {
+    padding: 20px;
+    max-width: 94%;
+  }
+  .popup-content h2 {
+    font-size: 20px;
+  }
+  .popup-content ul li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .lang-switcher-fixed {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    gap: 6px;
+  }
+  .lang-btn-custom {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .box-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .container {
+    padding: 80px 14px 40px 14px;
+  }
+  .page-title {
+    font-size: 26px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .icon {
+    font-size: 28px;
+  }
+  .card h3 {
+    font-size: 16px;
+  }
+  .card p {
+    font-size: 12px;
+  }
+  .view {
+    font-size: 12px;
+  }
+  .lang-switcher-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+  }
+  .lang-btn-custom {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+}
+
+/* very tiny devices 360px and below */
+@media (max-width: 380px) {
+  .page-title {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 11px;
+  }
+  .icon {
+    font-size: 24px;
+  }
+  .lang-switcher-fixed {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+  }
+  .lang-btn-custom {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+/* Keep all animations for mobile, corner boxes slight adjustment */
+@media (max-width: 700px) {
+  .corner-box {
+    width: 140px;
+    height: 140px;
+    opacity: 0.5;
+  }
+  .blob {
+    width: 180px;
+    height: 180px;
+    filter: blur(70px);
+  }
+}
+
+/* preserve desktop look */
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<!-- Background decorative layers (all animations intact) -->
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Loan & Mortgage Services</h1>
+<p class="page-sub" id="pageSub">Professional support for loan, banking & mortgage documentation</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('home')">
+  <div class="icon">🏠</div>
+  <h3 id="title1">Home Loan Documentation</h3>
+  <p id="desc1">End-to-end home loan file preparation</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('business')">
+  <div class="icon">🏢</div>
+  <h3 id="title2">Business Loan Documentation</h3>
+  <p id="desc2">Support for business financing process</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('mortgage')">
+  <div class="icon">📑</div>
+  <h3 id="title3">Mortgage Deed Registration</h3>
+  <p id="desc3">Legal mortgage registration support</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('simple')">
+  <div class="icon">🏦</div>
+  <h3 id="title4">Simple Mortgage</h3>
+  <p id="desc4">Basic property-backed loan setup</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('loanagreement')">
+  <div class="icon">📑</div>
+  <h3 id="title5">Loan Agreement Drafting</h3>
+  <p id="desc5">Legal contract between borrower and lender</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('loanfile')">
+  <div class="icon">📁</div>
+  <h3 id="title6">Bank Loan File Processing</h3>
+  <p id="desc6">Complete documentation & submission support</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('promissory')">
+  <div class="icon">🖊️</div>
+  <h3 id="title7">Promissory Note Registration</h3>
+  <p id="desc7">Legal promise for repayment of loan</p>
+  <div class="view" id="view7">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('followup')">
+  <div class="icon">📞</div>
+  <h3 id="title8">Loan Follow-up with Bank</h3>
+  <p id="desc8">Status tracking & approval coordination</p>
+  <div class="view" id="view8">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP MODAL -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// LOAN & MORTGAGE SERVICES
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Loan & Mortgage Services',
+    pageSub: 'Professional support for loan, banking & mortgage documentation',
+    viewDetails: 'View Details →',
+    cards: {
+      home: { title: 'Home Loan Documentation', desc: 'End-to-end home loan file preparation' },
+      business: { title: 'Business Loan Documentation', desc: 'Support for business financing process' },
+      mortgage: { title: 'Mortgage Deed Registration', desc: 'Legal mortgage registration support' },
+      simple: { title: 'Simple Mortgage', desc: 'Basic property-backed loan setup' },
+      loanagreement: { title: 'Loan Agreement Drafting', desc: 'Legal contract between borrower and lender' },
+      loanfile: { title: 'Bank Loan File Processing', desc: 'Complete documentation & submission support' },
+      promissory: { title: 'Promissory Note Registration', desc: 'Legal promise for repayment of loan' },
+      followup: { title: 'Loan Follow-up with Bank', desc: 'Status tracking & approval coordination' }
+    }
+  },
+  'ta': {
+    pageTitle: 'கடன் மற்றும் அடமான சேவைகள்',
+    pageSub: 'கடன், வங்கி மற்றும் அடமான ஆவணங்களுக்கான தொழில்முறை ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      home: { title: 'வீட்டுக் கடன் ஆவணங்கள்', desc: 'முழு வீட்டுக் கடன் கோப்பு தயாரிப்பு' },
+      business: { title: 'வணிகக் கடன் ஆவணங்கள்', desc: 'வணிக நிதியுதவி செயல்முறைக்கான ஆதரவு' },
+      mortgage: { title: 'அடமான பத்திரம் பதிவு', desc: 'சட்ட அடமான பதிவு ஆதரவு' },
+      simple: { title: 'எளிய அடமானம்', desc: 'சொத்து அடிப்படையிலான கடன் அமைப்பு' },
+      loanagreement: { title: 'கடன் ஒப்பந்தம் வரைதல்', desc: 'கடன் வாங்குபவருக்கும் கொடுப்பவருக்கும் இடையிலான சட்ட ஒப்பந்தம்' },
+      loanfile: { title: 'வங்கிக் கடன் கோப்பு செயலாக்கம்', desc: 'முழு ஆவணங்கள் மற்றும் சமர்ப்பிப்பு ஆதரவு' },
+      promissory: { title: 'உறுதிப்பத்திர பதிவு', desc: 'கடனைத் திருப்பிச் செலுத்துவதற்கான சட்ட உறுதிமொழி' },
+      followup: { title: 'வங்கியுடன் கடன் பின்தொடர்தல்', desc: 'நிலை கண்காணிப்பு & ஒப்புதல் ஒருங்கிணைப்பு' }
+    }
+  }
+};
+
+// Popup content with complete legal details (EN + TA)
+const popupData = {
+  'en': {
+    home: {
+      title: "Home Loan Documentation",
+      list: [
+        "Home loan documentation involves preparation and verification of borrower income, identity, and property-related documents required by banks for housing finance approval.",
+        "Includes salary slips, IT returns, bank statements, and property papers.",
+        "Ensures compliance with RBI and banking eligibility norms.",
+        "Helps banks assess repayment capacity and creditworthiness.",
+        "Essential for approval of housing finance loans."
+      ]
+    },
+    business: {
+      title: "Business Loan Documentation",
+      list: [
+        "Business loan documentation is the process of submitting financial and legal records of a business to secure funding from banks or NBFCs.",
+        "Includes balance sheets, GST filings, income tax returns, and business proof.",
+        "Used to evaluate business stability and cash flow.",
+        "Supports MSME and enterprise funding approvals.",
+        "Ensures financial transparency for lenders."
+      ]
+    },
+    mortgage: {
+      title: "Mortgage Deed Registration",
+      list: [
+        "A mortgage deed is a legally binding document that creates a charge on immovable property as security for a loan.",
+        "Registered under the Sub-Registrar office as per Indian Registration Act.",
+        "Protects lender rights until loan repayment is completed.",
+        "Acts as legal evidence of property collateral.",
+        "Mandatory for secured loan transactions."
+      ]
+    },
+    simple: {
+      title: "Simple Mortgage",
+      list: [
+        "A simple mortgage allows a borrower to keep possession of property while pledging it as security for a loan.",
+        "No physical transfer of property occurs.",
+        "Lender has right to recover dues through legal process if default occurs.",
+        "Common in banking and financial institutions.",
+        "Legally governed under Transfer of Property Act."
+      ]
+    },
+    loanagreement: {
+      title: "Loan Agreement Drafting",
+      list: [
+        "A loan agreement is a formal contract between borrower and lender defining repayment terms, interest rate, and obligations.",
+        "Legally enforceable document under contract law.",
+        "Includes EMI schedule, tenure, and penalty clauses.",
+        "Protects both borrower and lender interests.",
+        "Serves as primary reference for loan settlement."
+      ]
+    },
+    loanfile: {
+      title: "Bank Loan File Processing",
+      list: [
+        "Loan file processing includes complete preparation, verification, and submission of documents to the bank.",
+        "Ensures all eligibility and compliance requirements are met.",
+        "Reduces chances of loan rejection due to documentation errors.",
+        "Involves coordination with bank officers and verification teams.",
+        "Critical step in loan approval workflow."
+      ]
+    },
+    promissory: {
+      title: "Promissory Note Registration",
+      list: [
+        "A promissory note is a written legal promise by a borrower to repay a specific amount of money to the lender.",
+        "Legally enforceable under Negotiable Instruments Act.",
+        "Specifies loan amount, interest, and repayment date.",
+        "Acts as evidence of debt obligation.",
+        "Used in personal and business lending agreements."
+      ]
+    },
+    followup: {
+      title: "Loan Follow-up with Bank",
+      list: [
+        "Loan follow-up involves continuous coordination with banks to track application status and approval progress.",
+        "Ensures faster processing and clarification of queries.",
+        "Includes document resubmission and verification updates.",
+        "Reduces delays in loan sanction process.",
+        "Improves communication between borrower and bank."
+      ]
+    }
+  },
+  'ta': {
+    home: {
+      title: "வீட்டுக் கடன் ஆவணங்கள்",
+      list: [
+        "வீட்டுக் கடன் ஆவணங்களில் கடன் வாங்குபவரின் வருமானம், அடையாளம் மற்றும் சொத்து தொடர்பான ஆவணங்களை தயாரித்தல் மற்றும் சரிபார்த்தல் ஆகியவை அடங்கும்.",
+        "சம்பள சீட்டுகள், வருமான வரி வருமானம், வங்கி அறிக்கைகள் மற்றும் சொத்து ஆவணங்கள் ஆகியவை அடங்கும்.",
+        "RBI மற்றும் வங்கி தகுதி விதிமுறைகளுக்கு இணங்குவதை உறுதி செய்கிறது.",
+        "திருப்பிச் செலுத்தும் திறன் மற்றும் நம்பகத்தன்மையை மதிப்பிட வங்கிகளுக்கு உதவுகிறது.",
+        "வீட்டுக் கடன் ஒப்புதலுக்கு அவசியம்."
+      ]
+    },
+    business: {
+      title: "வணிகக் கடன் ஆவணங்கள்",
+      list: [
+        "வணிகக் கடன் ஆவணங்கள் என்பது வங்கிகள் அல்லது NBFC களிடமிருந்து நிதியுதவி பெற ஒரு வணிகத்தின் நிதி மற்றும் சட்ட பதிவுகளை சமர்ப்பிக்கும் செயல்முறையாகும்.",
+        "இருப்புநிலைக் குறிப்புகள், ஜிஎஸ்டி தாக்கல்கள், வருமான வரி வருமானம் மற்றும் வணிக ஆதாரம் ஆகியவை அடங்கும்.",
+        "வணிக நிலைத்தன்மை மற்றும் பணப்புழக்கத்தை மதிப்பிட பயன்படுகிறது.",
+        "MSME மற்றும் நிறுவன நிதியுதவி ஒப்புதல்களை ஆதரிக்கிறது.",
+        "கடனளிப்பவர்களுக்கான நிதி வெளிப்படைத்தன்மையை உறுதி செய்கிறது."
+      ]
+    },
+    mortgage: {
+      title: "அடமான பத்திரம் பதிவு",
+      list: [
+        "அடமான பத்திரம் என்பது கடனுக்கான பிணையமாக அசையா சொத்தின் மீது பிடித்தத்தை உருவாக்கும் சட்டப்பூர்வமாக பிணைக்கக்கூடிய ஆவணமாகும்.",
+        "இந்திய பதிவுச் சட்டத்தின்படி துணைப் பதிவாளர் அலுவலகத்தில் பதிவு செய்யப்படுகிறது.",
+        "கடன் திருப்பிச் செலுத்துதல் முடியும் வரை கடனளிப்பவரின் உரிமைகளைப் பாதுகாக்கிறது.",
+        "சொத்து பிணையத்தின் சட்ட ஆதாரமாக செயல்படுகிறது.",
+        "பாதுகாக்கப்பட்ட கடன் பரிவர்த்தனைகளுக்கு கட்டாயமாகும்."
+      ]
+    },
+    simple: {
+      title: "எளிய அடமானம்",
+      list: [
+        "எளிய அடமானம் என்பது கடன் வாங்குபவர் கடனுக்கான பிணையமாக உறுதியளிக்கும்போது சொத்தின் உடைமையை வைத்திருக்க அனுமதிக்கிறது.",
+        "சொத்தின் உடல் மாற்றம் எதுவும் நடைபெறாது.",
+        "தவறு நேர்ந்தால் கடனளிப்பவருக்கு சட்டப்பூர்வ நடவடிக்கை மூலம் நிலுவைத் தொகையை வசூலிக்க உரிமை உண்டு.",
+        "வங்கி மற்றும் நிதி நிறுவனங்களில் பொதுவானது.",
+        "சொத்து பரிமாற்றச் சட்டத்தின் கீழ் சட்டப்பூர்வமாக நிர்வகிக்கப்படுகிறது."
+      ]
+    },
+    loanagreement: {
+      title: "கடன் ஒப்பந்தம் வரைதல்",
+      list: [
+        "கடன் ஒப்பந்தம் என்பது திருப்பிச் செலுத்தும் விதிமுறைகள், வட்டி விகிதம் மற்றும் கடமைகளை வரையறுக்கும் கடன் வாங்குபவருக்கும் கொடுப்பவருக்கும் இடையிலான முறையான ஒப்பந்தமாகும்.",
+        "ஒப்பந்தச் சட்டத்தின் கீழ் சட்டப்பூர்வமாக நிறைவேற்றக்கூடிய ஆவணம்.",
+        "ஈஎம்ஐ அட்டவணை, பதவிகாலம் மற்றும் அபராத விதிகளை உள்ளடக்கியது.",
+        "கடன் வாங்குபவர் மற்றும் கொடுப்பவர் இருவரின் நலன்களையும் பாதுகாக்கிறது.",
+        "கடன் தீர்வுக்கான முதன்மை குறிப்பாக செயல்படுகிறது."
+      ]
+    },
+    loanfile: {
+      title: "வங்கிக் கடன் கோப்பு செயலாக்கம்",
+      list: [
+        "கடன் கோப்பு செயலாக்கம் என்பது வங்கிக்கு ஆவணங்களை முழுமையாக தயாரித்தல், சரிபார்த்தல் மற்றும் சமர்ப்பித்தல் ஆகியவற்றை உள்ளடக்கியது.",
+        "அனைத்து தகுதி மற்றும் இணக்கத் தேவைகளும் பூர்த்தி செய்யப்படுவதை உறுதி செய்கிறது.",
+        "ஆவணப் பிழைகள் காரணமாக கடன் நிராகரிப்பு வாய்ப்புகளை குறைக்கிறது.",
+        "வங்கி அதிகாரிகள் மற்றும் சரிபார்ப்பு குழுக்களுடன் ஒருங்கிணைப்பை உள்ளடக்கியது.",
+        "கடன் ஒப்புதல் பணிப்பாய்வில் முக்கியமான படி."
+      ]
+    },
+    promissory: {
+      title: "உறுதிப்பத்திர பதிவு",
+      list: [
+        "உறுதிப்பத்திரம் என்பது கடன் வாங்குபவர் கடனளிப்பவருக்கு ஒரு குறிப்பிட்ட தொகையை திருப்பிச் செலுத்துவதற்கான எழுத்துப்பூர்வ சட்ட உறுதிமொழியாகும்.",
+        "நெகோஷியபிள் இன்ஸ்ட்ரூமெண்ட்ஸ் சட்டத்தின் கீழ் சட்டப்பூர்வமாக நிறைவேற்றக்கூடியது.",
+        "கடன் தொகை, வட்டி மற்றும் திருப்பிச் செலுத்தும் தேதியைக் குறிப்பிடுகிறது.",
+        "கடன் கடமைக்கான ஆதாரமாக செயல்படுகிறது.",
+        "தனிப்பட்ட மற்றும் வணிக கடன் ஒப்பந்தங்களில் பயன்படுத்தப்படுகிறது."
+      ]
+    },
+    followup: {
+      title: "வங்கியுடன் கடன் பின்தொடர்தல்",
+      list: [
+        "கடன் பின்தொடர்தல் என்பது விண்ணப்ப நிலை மற்றும் ஒப்புதல் முன்னேற்றத்தைக் கண்காணிக்க வங்கிகளுடன் தொடர்ச்சியான ஒருங்கிணைப்பை உள்ளடக்கியது.",
+        "வேகமான செயலாக்கம் மற்றும் கேள்விகளை தெளிவுபடுத்துவதை உறுதி செய்கிறது.",
+        "மறுசமர்ப்பிப்பு மற்றும் சரிபார்ப்பு புதுப்பிப்புகளை உள்ளடக்கியது.",
+        "கடன் ஒப்புதல் செயல்முறையில் தாமதங்களை குறைக்கிறது.",
+        "கடன் வாங்குபவருக்கும் வங்கிக்கும் இடையிலான தகவல்தொடர்பை மேம்படுத்துகிறது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION (FIXED FOR LOAN SERVICES)
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // FIXED: Use the correct card keys for Loan & Mortgage services
+  const cardKeys = ['home', 'business', 'mortgage', 'simple', 'loanagreement', 'loanfile', 'promissory', 'followup'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function (called by buttons)
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with translated details
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup on background click
+window.onclick = function(e) {
+  const popupDiv = document.getElementById('popup');
+  if (e.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Loan Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

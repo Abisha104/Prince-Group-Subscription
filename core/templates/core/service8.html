@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Follow-up & Processing Services | Legal Documentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#05060a;
+  overflow-x:hidden;
+}
+
+/* MAIN MESH BACKGROUND */
+.mesh{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,0.28), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(16,185,129,0.22), transparent 50%),
+    radial-gradient(circle at 60% 50%, rgba(168,85,247,0.18), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #070a12 50%, #02030a 100%);
+
+  filter: blur(60px) saturate(130%);
+  transform: scale(1.2);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{ transform: translate(-2%, -2%) scale(1.2); }
+  100%{ transform: translate(2%, 2%) scale(1.25); }
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:0.06;
+  mix-blend-mode:overlay;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.page-sub{
+  text-align:center;
+  opacity:.7;
+  margin:10px 0 50px;
+}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 20px 40px rgba(34,197,94,0.1);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  opacity:.75;
+}
+
+.view{
+  margin-top:10px;
+  font-size:12px;
+  color:#22c55e;
+}
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10000;
+}
+
+.popup-content{
+  position:relative;
+  background:#0b1220;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:25px;
+  border-radius:16px;
+  width:100%;
+  max-width:500px;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-content h2{
+  color:#22c55e;
+  margin-bottom:12px;
+}
+
+.popup-content ul{
+  list-style:none;
+}
+
+.popup-content ul li{
+  padding:8px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:14px;
+  color:#fff;
+  opacity:.7;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  opacity:1;
+  color:#22c55e;
+}
+
+/* ========== ENHANCED FULLY RESPONSIVE MOBILE + STICKY LANG ========== */
+.lang-switcher-fixed{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  display:flex;
+  gap:10px;
+  background:rgba(0,0,0,0.75);
+  padding:8px 16px;
+  border-radius:50px;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
+}
+
+.lang-btn-custom{
+  background:none;
+  border:none;
+  color:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+  padding:5px 12px;
+  border-radius:30px;
+  transition:all 0.2s;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+}
+
+.lang-btn-custom:hover{
+  background:rgba(34,197,94,0.25);
+  transform:scale(1.02);
+}
+
+.lang-sep{
+  color:#ffffffaa;
+}
+
+/* ===== MOBILE 100% PERFECT FIT ===== */
+@media (max-width: 768px) {
+  .container { padding: 80px 16px 50px 16px; }
+  .page-title { font-size: 28px; }
+  .page-sub { font-size: 14px; margin-bottom: 32px; }
+  .box-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card { padding: 16px; }
+  .icon { font-size: 26px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 11px; }
+  .view { font-size: 11px; }
+  .popup-content { padding: 20px; max-width: 94%; }
+  .popup-content h2 { font-size: 20px; }
+  .popup-content ul li { font-size: 12px; padding: 8px 0; }
+  .lang-switcher-fixed { top: 12px; right: 12px; padding: 5px 12px; gap: 6px; }
+  .lang-btn-custom { font-size: 12px; padding: 4px 8px; }
+}
+
+@media (max-width: 550px) {
+  .box-grid { grid-template-columns: 1fr; gap: 16px; }
+  .container { padding: 80px 14px 40px 14px; }
+  .page-title { font-size: 26px; }
+  .card { padding: 18px; }
+  .icon { font-size: 28px; }
+  .card h3 { font-size: 16px; }
+  .card p { font-size: 12px; }
+  .view { font-size: 12px; }
+  .lang-switcher-fixed { top: 10px; right: 10px; padding: 4px 10px; }
+  .lang-btn-custom { font-size: 11px; padding: 3px 7px; }
+}
+
+@media (max-width: 380px) {
+  .page-title { font-size: 22px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 11px; }
+  .icon { font-size: 24px; }
+  .lang-switcher-fixed { top: 8px; right: 8px; padding: 4px 8px; }
+  .lang-btn-custom { font-size: 10px; padding: 2px 6px; }
+}
+
+@media (max-width: 700px) {
+  .corner-box { width: 140px; height: 140px; opacity: 0.5; }
+  .blob { width: 180px; height: 180px; filter: blur(70px); }
+}
+
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.corner-box{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(34,197,94,0.15);
+  border-radius:24px;
+  backdrop-filter: blur(12px);
+  box-shadow:0 0 60px rgba(34,197,94,0.08);
+  z-index:-1;
+}
+
+.corner1{ top:40px; left:40px; transform:rotate(12deg); }
+.corner2{ top:40px; right:40px; transform:rotate(-10deg); }
+.corner3{ bottom:40px; left:40px; transform:rotate(-8deg); }
+.corner4{ bottom:40px; right:40px; transform:rotate(14deg); }
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.25;
+  z-index:-2;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob1{ background:#22c55e; top:10%; left:5%; }
+.blob2{ background:#6366f1; bottom:10%; right:5%; }
+
+@keyframes floatBlob{
+  0%{ transform:translateY(0px) scale(1); }
+  100%{ transform:translateY(-40px) scale(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<div class="lines"></div>
+<div class="corner-box corner1"></div>
+<div class="corner-box corner2"></div>
+<div class="corner-box corner3"></div>
+<div class="corner-box corner4"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="mesh"></div>
+<div class="grain"></div>
+
+<div class="container">
+
+<h1 class="page-title" id="pageTitle">Follow-up & Processing Services</h1>
+<p class="page-sub" id="pageSub">End-to-end status tracking, coordination & support for faster completion</p>
+
+<div class="box-grid">
+
+<div class="card" onclick="openPopup('sroFollowup')">
+  <div class="icon">🏛️</div>
+  <h3 id="title1">Sub-Registrar Follow-up</h3>
+  <p id="desc1">Property registration status tracking</p>
+  <div class="view" id="view1">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('bankFollowup')">
+  <div class="icon">🏦</div>
+  <h3 id="title2">Bank Follow-up</h3>
+  <p id="desc2">Loan status & approval coordination</p>
+  <div class="view" id="view2">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('statusTracking')">
+  <div class="icon">📊</div>
+  <h3 id="title3">Document Status Tracking</h3>
+  <p id="desc3">Real-time application monitoring</p>
+  <div class="view" id="view3">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('notification')">
+  <div class="icon">📲</div>
+  <h3 id="title4">Customer Notification System</h3>
+  <p id="desc4">Instant updates & alerts</p>
+  <div class="view" id="view4">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('appointment')">
+  <div class="icon">📅</div>
+  <h3 id="title5">Appointment Booking</h3>
+  <p id="desc5">Office visit scheduling support</p>
+  <div class="view" id="view5">View Details →</div>
+</div>
+
+<div class="card" onclick="openPopup('token')">
+  <div class="icon">🎟️</div>
+  <h3 id="title6">Token / Slot Booking</h3>
+  <p id="desc6">Government queue management system</p>
+  <div class="view" id="view6">View Details →</div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <ul id="popupDetails"></ul>
+    <div class="close" onclick="closePopup()">✖</div>
+  </div>
+</div>
+
+<script>
+
+// ============================================
+// BILINGUAL TRANSLATIONS (ENGLISH / TAMIL)
+// FOLLOW-UP & PROCESSING SERVICES
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    pageTitle: 'Follow-up & Processing Services',
+    pageSub: 'End-to-end status tracking, coordination & support for faster completion',
+    viewDetails: 'View Details →',
+    cards: {
+      sroFollowup: { title: 'Sub-Registrar Follow-up', desc: 'Property registration status tracking' },
+      bankFollowup: { title: 'Bank Follow-up', desc: 'Loan status & approval coordination' },
+      statusTracking: { title: 'Document Status Tracking', desc: 'Real-time application monitoring' },
+      notification: { title: 'Customer Notification System', desc: 'Instant updates & alerts' },
+      appointment: { title: 'Appointment Booking', desc: 'Office visit scheduling support' },
+      token: { title: 'Token / Slot Booking', desc: 'Government queue management system' }
+    }
+  },
+  'ta': {
+    pageTitle: 'பின்தொடர்தல் மற்றும் செயலாக்க சேவைகள்',
+    pageSub: 'விரைவான முடிவுக்கான முழு நிலை கண்காணிப்பு, ஒருங்கிணைப்பு மற்றும் ஆதரவு',
+    viewDetails: 'விவரங்களைக் காண்க →',
+    cards: {
+      sroFollowup: { title: 'துணைப் பதிவாளர் பின்தொடர்தல்', desc: 'சொத்து பதிவு நிலை கண்காணிப்பு' },
+      bankFollowup: { title: 'வங்கி பின்தொடர்தல்', desc: 'கடன் நிலை மற்றும் ஒப்புதல் ஒருங்கிணைப்பு' },
+      statusTracking: { title: 'ஆவண நிலை கண்காணிப்பு', desc: 'நிகழ்நேர விண்ணப்ப கண்காணிப்பு' },
+      notification: { title: 'வாடிக்கையாளர் அறிவிப்பு அமைப்பு', desc: 'உடனடி புதுப்பித்தல்கள் மற்றும் எச்சரிக்கைகள்' },
+      appointment: { title: 'சந்திப்பு பதிவு', desc: 'அலுவலக வருகை திட்டமிடல் ஆதரவு' },
+      token: { title: 'டோக்கன் / ஸ்லாட் பதிவு', desc: 'அரசு வரிசை மேலாண்மை அமைப்பு' }
+    }
+  }
+};
+
+// Popup content with complete legal details (EN + TA)
+const popupData = {
+  'en': {
+    sroFollowup: {
+      title: "Sub-Registrar Office Follow-up",
+      list: [
+        "Sub-Registrar follow-up involves tracking and coordination of property registration applications.",
+        "Ensures timely execution of document registration process.",
+        "Helps resolve queries raised by registration officials.",
+        "Monitors document approval and stamping status.",
+        "Reduces delays in property registration workflow."
+      ]
+    },
+    bankFollowup: {
+      title: "Bank Follow-up",
+      list: [
+        "Bank follow-up involves continuous coordination with banks regarding loan applications.",
+        "Tracks loan approval, verification, and sanction status.",
+        "Helps resolve pending documentation or clarification issues.",
+        "Speeds up loan processing timeline.",
+        "Improves communication between borrower and bank."
+      ]
+    },
+    statusTracking: {
+      title: "Document Status Tracking",
+      list: [
+        "Document status tracking provides real-time monitoring of application progress.",
+        "Helps clients know current stage of processing.",
+        "Reduces uncertainty in legal and banking procedures.",
+        "Ensures transparency in documentation workflow.",
+        "Used for both government and private processes."
+      ]
+    },
+    notification: {
+      title: "Customer Notification System",
+      list: [
+        "Customer notification system provides timely updates on application progress.",
+        "Includes SMS, email, or direct communication alerts.",
+        "Keeps clients informed at every stage.",
+        "Improves service transparency and trust.",
+        "Reduces need for manual inquiries."
+      ]
+    },
+    appointment: {
+      title: "Appointment Booking Support",
+      list: [
+        "Appointment booking support helps schedule visits to government offices and banks.",
+        "Ensures proper time slot allocation for document processing.",
+        "Reduces waiting time and delays.",
+        "Helps manage official office workflows efficiently.",
+        "Essential for registration and verification processes."
+      ]
+    },
+    token: {
+      title: "Token / Slot Booking",
+      list: [
+        "Token or slot booking is a system for reserving time slots in government offices.",
+        "Ensures orderly processing of applications.",
+        "Reduces crowding and waiting time.",
+        "Required for Sub-Registrar and other departments.",
+        "Improves efficiency of public service systems."
+      ]
+    }
+  },
+  'ta': {
+    sroFollowup: {
+      title: "துணைப் பதிவாளர் பின்தொடர்தல்",
+      list: [
+        "துணைப் பதிவாளர் பின்தொடர்தல் என்பது சொத்து பதிவு விண்ணப்பங்களைக் கண்காணித்தல் மற்றும் ஒருங்கிணைத்தல் ஆகும்.",
+        "ஆவண பதிவு செயல்முறையின் சரியான நேரத்தில் செயல்படுத்தலை உறுதி செய்கிறது.",
+        "பதிவு அதிகாரிகளால் எழுப்பப்படும் கேள்விகளைத் தீர்க்க உதவுகிறது.",
+        "ஆவண ஒப்புதல் மற்றும் முத்திரை நிலையைக் கண்காணிக்கிறது.",
+        "சொத்து பதிவு பணிப்பாய்வில் தாமதங்களைக் குறைக்கிறது."
+      ]
+    },
+    bankFollowup: {
+      title: "வங்கி பின்தொடர்தல்",
+      list: [
+        "வங்கி பின்தொடர்தல் என்பது கடன் விண்ணப்பங்கள் குறித்து வங்கிகளுடன் தொடர்ச்சியான ஒருங்கிணைப்பை உள்ளடக்கியது.",
+        "கடன் ஒப்புதல், சரிபார்ப்பு மற்றும் அனுமதி நிலையைக் கண்காணிக்கிறது.",
+        "நிலுவையில் உள்ள ஆவணங்கள் அல்லது தெளிவுபடுத்தல் சிக்கல்களைத் தீர்க்க உதவுகிறது.",
+        "கடன் செயலாக்க கால அட்டவணையை விரைவுபடுத்துகிறது.",
+        "கடன் வாங்குபவருக்கும் வங்கிக்கும் இடையிலான தகவல்தொடர்பை மேம்படுத்துகிறது."
+      ]
+    },
+    statusTracking: {
+      title: "ஆவண நிலை கண்காணிப்பு",
+      list: [
+        "ஆவண நிலை கண்காணிப்பு விண்ணப்ப முன்னேற்றத்தின் நிகழ்நேர கண்காணிப்பை வழங்குகிறது.",
+        "செயலாக்கத்தின் தற்போதைய கட்டத்தை வாடிக்கையாளர்களுக்குத் தெரிய உதவுகிறது.",
+        "சட்ட மற்றும் வங்கி நடைமுறைகளில் நிச்சயமற்ற தன்மையைக் குறைக்கிறது.",
+        "ஆவணப் பணிப்பாய்வில் வெளிப்படைத்தன்மையை உறுதி செய்கிறது.",
+        "அரசு மற்றும் தனியார் செயல்முறைகளுக்கு பயன்படுகிறது."
+      ]
+    },
+    notification: {
+      title: "வாடிக்கையாளர் அறிவிப்பு அமைப்பு",
+      list: [
+        "வாடிக்கையாளர் அறிவிப்பு அமைப்பு விண்ணப்ப முன்னேற்றத்தில் சரியான நேரத்தில் புதுப்பிப்புகளை வழங்குகிறது.",
+        "SMS, மின்னஞ்சல் அல்லது நேரடி தொடர்பு எச்சரிக்கைகளை உள்ளடக்கியது.",
+        "ஒவ்வொரு கட்டத்திலும் வாடிக்கையாளர்களை தகவலறிவிக்கிறது.",
+        "சேவை வெளிப்படைத்தன்மையையும் நம்பிக்கையையும் மேம்படுத்துகிறது.",
+        "கையேடு விசாரணைகளின் தேவையைக் குறைக்கிறது."
+      ]
+    },
+    appointment: {
+      title: "சந்திப்பு பதிவு ஆதரவு",
+      list: [
+        "சந்திப்பு பதிவு ஆதரவு அரசு அலுவலகங்கள் மற்றும் வங்கிகளுக்கு வருகைகளைத் திட்டமிட உதவுகிறது.",
+        "ஆவண செயலாக்கத்திற்கான சரியான நேர ஒதுக்கீட்டை உறுதி செய்கிறது.",
+        "காத்திருக்கும் நேரத்தையும் தாமதங்களையும் குறைக்கிறது.",
+        "அலுவலக பணிப்பாய்வுகளை திறமையாக நிர்வகிக்க உதவுகிறது.",
+        "பதிவு மற்றும் சரிபார்ப்பு செயல்முறைகளுக்கு அவசியம்."
+      ]
+    },
+    token: {
+      title: "டோக்கன் / ஸ்லாட் பதிவு",
+      list: [
+        "டோக்கன் அல்லது ஸ்லாட் பதிவு என்பது அரசு அலுவலகங்களில் நேர இடங்களை முன்பதிவு செய்வதற்கான அமைப்பாகும்.",
+        "விண்ணப்பங்களை ஒழுங்காக செயலாக்குவதை உறுதி செய்கிறது.",
+        "நெரிசலையும் காத்திருக்கும் நேரத்தையும் குறைக்கிறது.",
+        "துணைப் பதிவாளர் மற்றும் பிற துறைகளுக்கு தேவைப்படுகிறது.",
+        "பொது சேவை அமைப்புகளின் செயல்திறனை மேம்படுத்துகிறது."
+      ]
+    }
+  }
+};
+
+// ============================================
+// MAIN applyLanguage FUNCTION
+// ============================================
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  // Update page title and subtitle
+  document.getElementById('pageTitle').innerText = translations[lang].pageTitle;
+  document.getElementById('pageSub').innerText = translations[lang].pageSub;
+
+  // Update all cards - CORRECT keys for Follow-up services
+  const cardKeys = ['sroFollowup', 'bankFollowup', 'statusTracking', 'notification', 'appointment', 'token'];
+
+  cardKeys.forEach((key, index) => {
+    const num = index + 1;
+    const titleElem = document.getElementById(`title${num}`);
+    const descElem = document.getElementById(`desc${num}`);
+    const viewElem = document.getElementById(`view${num}`);
+
+    if (titleElem) titleElem.innerText = translations[lang].cards[key].title;
+    if (descElem) descElem.innerText = translations[lang].cards[key].desc;
+    if (viewElem) viewElem.innerText = translations[lang].viewDetails;
+  });
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language function
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// Open popup with full details based on current language
+function openPopup(type) {
+  const data = popupData[currentLang][type];
+  if (data) {
+    document.getElementById('popupTitle').innerText = data.title;
+    const ul = document.getElementById('popupDetails');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  const popupDiv = document.getElementById('popup');
+  if (event.target === popupDiv) closePopup();
+};
+
+// ============================================
+// LANGUAGE SYNC FROM MAIN PAGE - SINGLE EVENT LISTENER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language from main page
+  const savedLang = localStorage.getItem('selectedLanguage');
+
+  console.log('Follow-up & Processing Service page loaded. Saved language:', savedLang);
+
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+    console.log('Tamil applied successfully');
+  } else {
+    applyLanguage('en');
+    console.log('English applied successfully');
+  }
+});
+</script>
+
+</body>
+</html>

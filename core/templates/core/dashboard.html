@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dashboard | Prince Group</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root {
+      --navy: #0f172a;
+      --navy-2: #1e293b;
+      --gold: #d4af37;
+      --gold-dark: #b98a16;
+      --gold-soft: rgba(212,175,55,0.12);
+      --white: #ffffff;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.08);
+      --success: #15803d;
+      --success-light: rgba(21,128,61,0.15);
+      --shadow: 0 15px 35px rgba(0,0,0,0.45);
+      --radius: 20px;
+    }
+
+    body{
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      color: var(--white);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Language Switcher - FIXED STICKY TOP */
+    .lang-switcher-fixed{
+      position:fixed;
+      top:16px;
+      right:16px;
+      z-index:9999;
+      display:flex;
+      gap:10px;
+      background:rgba(0,0,0,0.75);
+      padding:8px 16px;
+      border-radius:50px;
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(34,197,94,0.4);
+      box-shadow:0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .lang-btn-custom{
+      background:none;
+      border:none;
+      color:#22c55e;
+      font-weight:600;
+      cursor:pointer;
+      padding:5px 12px;
+      border-radius:30px;
+      transition:all 0.2s;
+      font-family:'Poppins',sans-serif;
+      font-size:14px;
+    }
+
+    .lang-btn-custom:hover{
+      background:rgba(34,197,94,0.25);
+      transform:scale(1.02);
+    }
+
+    .lang-sep{
+      color:#ffffffaa;
+    }
+
+    .container{
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .dashboard-header{
+      background: #020617;
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand h2{
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .brand p{
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .page-wrap{
+      padding: 24px 0 34px;
+    }
+
+    .welcome-card,
+    .panel,
+    .stat-card{
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .badge{
+      display: inline-block;
+      background: var(--gold-soft);
+      color: var(--gold);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+
+    .welcome-card h1{
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .welcome-card p{
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .action-row{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding: 11px 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .btn-primary{
+      background: linear-gradient(135deg,var(--gold),var(--gold-dark));
+      color: #000;
+    }
+
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(212,175,55,0.22);
+    }
+
+    .btn-outline{
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .btn-outline:hover{
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-danger{
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.22);
+      color: #fca5a5;
+    }
+
+    .btn-danger:hover{
+      background: rgba(239,68,68,0.18);
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin:20px 0;
+    }
+
+    .stat-card span{
+      font-size: 12px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-card strong{
+      font-size: 1rem;
+      display:block;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:18px;
+    }
+
+    .panel h3{
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .panel p{
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns: repeat(2,1fr);
+      gap:12px;
+      margin-top: 6px;
+    }
+
+    .benefit-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 120px;
+      transition: .25s ease;
+    }
+
+    .benefit-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(212,175,55,0.25);
+    }
+
+    .benefit-icon{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .benefit-card h4{
+      font-size: 14px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .benefit-card span{
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      display:block;
+    }
+
+    .status-box{
+      display:grid;
+      gap:10px;
+    }
+
+    .mini-box{
+      background:#020617;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+    }
+
+    .mini-box small{
+      font-size:11px;
+      color:var(--muted);
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .mini-box strong{
+      font-size:13px;
+      color:var(--white);
+      word-break: break-word;
+    }
+
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+      border-radius:20px;
+      background:var(--success-light);
+      color:#22c55e;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .bottom-actions{
+      margin-top: 24px;
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* Tablet */
+    @media (max-width: 992px){
+      .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+      .benefits-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px){
+      body {
+        padding-top: 0;
+      }
+      .lang-switcher-fixed {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        gap: 6px;
+      }
+      .lang-btn-custom {
+        font-size: 11px;
+        padding: 3px 8px;
+      }
+      .container{
+        padding:0 14px;
+      }
+      .dashboard-header{
+        padding: 14px 0;
+      }
+      .header-row{
+        align-items:flex-start;
+      }
+      .page-wrap{
+        padding: 70px 0 24px 0;
+      }
+      .welcome-card,
+      .panel,
+      .stat-card{
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .welcome-card h1{
+        font-size: 1.25rem;
+      }
+      .welcome-card p,
+      .panel p{
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .stats-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+        margin:16px 0;
+      }
+      .content-grid{
+        gap:12px;
+      }
+      .benefits-grid{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+      .benefit-card{
+        min-height: auto;
+        padding: 14px;
+      }
+      .action-row,
+      .bottom-actions{
+        flex-direction:column;
+      }
+      .btn{
+        width:100%;
+      }
+      .brand h2{
+        font-size: 1.05rem;
+      }
+      .brand p{
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .lang-switcher-fixed {
+        top: 8px;
+        right: 8px;
+        padding: 5px 10px;
+        gap: 4px;
+      }
+      .lang-btn-custom {
+        font-size: 10px;
+        padding: 3px 6px;
+      }
+      .lang-sep {
+        font-size: 10px;
+      }
+      .page-wrap{
+        padding: 65px 0 20px 0;
+      }
+      .welcome-card h1{
+        font-size: 1.1rem;
+      }
+      .stat-card strong{
+        font-size: 14px;
+      }
+      .benefit-card h4{
+        font-size: 13px;
+      }
+      .benefit-card span{
+        font-size: 11px;
+      }
+      .mini-box strong{
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Language Switcher - FIXED STICKY TOP -->
+<div class="lang-switcher-fixed">
+  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+</div>
+
+<header class="dashboard-header">
+  <div class="container">
+    <div class="header-row">
+      <div class="brand">
+        <h2 id="dashboardTitle">Prince Group Dashboard</h2>
+        <p id="dashboardSub">Subscription access and customer service overview</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <section class="welcome-card">
+      <span class="badge" id="memberBadge">Member Dashboard</span>
+      <h1 id="welcomeText">Welcome, <span id="welcomeUser">Customer</span></h1>
+      <p id="welcomeDesc">
+        Your subscription is active. You can view your selected plan, payment details,
+        and service-related information from this dashboard.
+      </p>
+
+      <div class="action-row">
+        <button class="btn btn-primary" onclick="goRequest()" id="requestBtn">Request Service</button>
+        <button class="btn btn-outline" onclick="goContact()" id="contactBtn">Contact Support</button>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span id="selectedPlanLabel">Selected Plan</span>
+        <strong id="planName">-</strong>
+      </div>
+
+      <div class="stat-card">
+        <span id="amountPaidLabel">Amount Paid</span>
+        <strong id="planAmount">-</strong>
+      </div>
+
+      <div class="stat-card">
+        <span id="paymentMethodLabel">Payment Method</span>
+        <strong id="paymentMethod">-</strong>
+      </div>
+
+      <div class="stat-card">
+        <span id="statusLabel">Subscription Status</span>
+        <strong><span class="status-pill" id="planStatus">Active</span></strong>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel">
+        <h3 id="benefitsTitle">Your Subscription Benefits</h3>
+        <p id="benefitsDesc">
+          Your current subscription gives you better service value, faster support access,
+          and smoother account handling for future requests.
+        </p>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h4 id="benefit1Title">Priority Support</h4>
+            <span id="benefit1Desc">Your service requests receive faster attention and quicker response handling.</span>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <h4 id="benefit2Title">Better Value</h4>
+            <span id="benefit2Desc">Your plan gives you improved pricing benefits and more useful service advantages.</span>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🛡️</div>
+            <h4 id="benefit3Title">Trusted Access</h4>
+            <span id="benefit3Desc">Your account remains connected to your subscription for safe and easy future use.</span>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📋</div>
+            <h4 id="benefit4Title">Easy Management</h4>
+            <span id="benefit4Desc">You can track your plan, payment status, and account details from one place.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 id="accountSummaryTitle">Account Summary</h3>
+        <p id="accountSummaryDesc">
+          Here is a quick overview of your subscription account details.
+        </p>
+
+        <div class="status-box">
+          <div class="mini-box">
+            <small id="usernameLabel">Username</small>
+            <strong id="summaryUser">-</strong>
+          </div>
+
+          <div class="mini-box">
+            <small id="mobileLabel">Mobile Number</small>
+            <strong id="summaryMobile">-</strong>
+          </div>
+
+          <div class="mini-box">
+            <small id="currentPlanLabel">Current Plan</small>
+            <strong id="summaryPlan">-</strong>
+          </div>
+
+          <div class="mini-box">
+            <small id="paymentStatusLabel">Payment Status</small>
+            <strong id="summaryPayment">Success</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-actions">
+      <button class="btn btn-outline" onclick="goHelp()" id="helpBtn">Help Center</button>
+      <button class="btn btn-danger" onclick="logoutUser()" id="logoutBtn">Logout</button>
+    </div>
+
+  </div>
+</main>
+
+<script>
+
+// ============================================
+// LANGUAGE TRANSLATIONS FOR DASHBOARD PAGE
+// ============================================
+let currentLang = 'en';
+
+const translations = {
+  'en': {
+    dashboardTitle: 'Prince Group Dashboard',
+    dashboardSub: 'Subscription access and customer service overview',
+    memberBadge: 'Member Dashboard',
+    welcomeText: 'Welcome, ',
+    welcomeDesc: 'Your subscription is active. You can view your selected plan, payment details, and service-related information from this dashboard.',
+    requestBtn: 'Request Service',
+    contactBtn: 'Contact Support',
+    selectedPlanLabel: 'Selected Plan',
+    amountPaidLabel: 'Amount Paid',
+    paymentMethodLabel: 'Payment Method',
+    statusLabel: 'Subscription Status',
+    benefitsTitle: 'Your Subscription Benefits',
+    benefitsDesc: 'Your current subscription gives you better service value, faster support access, and smoother account handling for future requests.',
+    benefit1Title: 'Priority Support',
+    benefit1Desc: 'Your service requests receive faster attention and quicker response handling.',
+    benefit2Title: 'Better Value',
+    benefit2Desc: 'Your plan gives you improved pricing benefits and more useful service advantages.',
+    benefit3Title: 'Trusted Access',
+    benefit3Desc: 'Your account remains connected to your subscription for safe and easy future use.',
+    benefit4Title: 'Easy Management',
+    benefit4Desc: 'You can track your plan, payment status, and account details from one place.',
+    accountSummaryTitle: 'Account Summary',
+    accountSummaryDesc: 'Here is a quick overview of your subscription account details.',
+    usernameLabel: 'Username',
+    mobileLabel: 'Mobile Number',
+    currentPlanLabel: 'Current Plan',
+    paymentStatusLabel: 'Payment Status',
+    helpBtn: 'Help Center',
+    logoutBtn: 'Logout'
+  },
+  'ta': {
+    dashboardTitle: 'பிரின்ஸ் குரூப் டாஷ்போர்டு',
+    dashboardSub: 'சந்தா அணுகல் மற்றும் வாடிக்கையாளர் சேவை மேலோட்டம்',
+    memberBadge: 'உறுப்பினர் டாஷ்போர்டு',
+    welcomeText: 'வரவேற்கிறோம், ',
+    welcomeDesc: 'உங்கள் சந்தா செயலில் உள்ளது. உங்கள் தேர்ந்தெடுக்கப்பட்ட திட்டம், கட்டண விவரங்கள் மற்றும் சேவை தொடர்பான தகவல்களை இந்த டாஷ்போர்டிலிருந்து பார்க்கலாம்.',
+    requestBtn: 'சேவையை கோருக',
+    contactBtn: 'ஆதரவை தொடர்பு கொள்ளுங்கள்',
+    selectedPlanLabel: 'தேர்ந்தெடுக்கப்பட்ட திட்டம்',
+    amountPaidLabel: 'செலுத்தப்பட்ட தொகை',
+    paymentMethodLabel: 'கட்டண முறை',
+    statusLabel: 'சந்தா நிலை',
+    benefitsTitle: 'உங்கள் சந்தா நன்மைகள்',
+    benefitsDesc: 'உங்கள் தற்போதைய சந்தா உங்களுக்கு சிறந்த சேவை மதிப்பு, விரைவான ஆதரவு அணுகல் மற்றும் எதிர்கால கோரிக்கைகளுக்கு மென்மையான கணக்கு கையாளுதலை வழங்குகிறது.',
+    benefit1Title: 'முன்னுரிமை ஆதரவு',
+    benefit1Desc: 'உங்கள் சேவை கோரிக்கைகள் விரைவான கவனத்தையும் வேகமான பதில் கையாளுதலையும் பெறும்.',
+    benefit2Title: 'சிறந்த மதிப்பு',
+    benefit2Desc: 'உங்கள் திட்டம் மேம்பட்ட விலை நன்மைகள் மற்றும் பயனுள்ள சேவை சலுகைகளை வழங்குகிறது.',
+    benefit3Title: 'நம்பகமான அணுகல்',
+    benefit3Desc: 'உங்கள் கணக்கு பாதுகாப்பான மற்றும் எளிதான எதிர்கால பயன்பாட்டிற்காக உங்கள் சந்தாவுடன் இணைக்கப்பட்டுள்ளது.',
+    benefit4Title: 'எளிதான மேலாண்மை',
+    benefit4Desc: 'உங்கள் திட்டம், கட்டண நிலை மற்றும் கணக்கு விவரங்களை ஒரே இடத்தில் கண்காணிக்கலாம்.',
+    accountSummaryTitle: 'கணக்கு சுருக்கம்',
+    accountSummaryDesc: 'உங்கள் சந்தா கணக்கு விவரங்களின் விரைவான மேலோட்டம் இங்கே.',
+    usernameLabel: 'பயனர்பெயர்',
+    mobileLabel: 'மொபைல் எண்',
+    currentPlanLabel: 'தற்போதைய திட்டம்',
+    paymentStatusLabel: 'கட்டண நிலை',
+    helpBtn: 'உதவி மையம்',
+    logoutBtn: 'வெளியேறு'
+  }
+};
+
+// Apply language
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('selectedLanguage', lang);
+
+  const t = translations[lang];
+
+  document.getElementById('dashboardTitle').innerText = t.dashboardTitle;
+  document.getElementById('dashboardSub').innerText = t.dashboardSub;
+  document.getElementById('memberBadge').innerText = t.memberBadge;
+  document.getElementById('welcomeDesc').innerText = t.welcomeDesc;
+  document.getElementById('requestBtn').innerText = t.requestBtn;
+  document.getElementById('contactBtn').innerText = t.contactBtn;
+  document.getElementById('selectedPlanLabel').innerText = t.selectedPlanLabel;
+  document.getElementById('amountPaidLabel').innerText = t.amountPaidLabel;
+  document.getElementById('paymentMethodLabel').innerText = t.paymentMethodLabel;
+  document.getElementById('statusLabel').innerText = t.statusLabel;
+  document.getElementById('benefitsTitle').innerText = t.benefitsTitle;
+  document.getElementById('benefitsDesc').innerText = t.benefitsDesc;
+  document.getElementById('benefit1Title').innerText = t.benefit1Title;
+  document.getElementById('benefit1Desc').innerText = t.benefit1Desc;
+  document.getElementById('benefit2Title').innerText = t.benefit2Title;
+  document.getElementById('benefit2Desc').innerText = t.benefit2Desc;
+  document.getElementById('benefit3Title').innerText = t.benefit3Title;
+  document.getElementById('benefit3Desc').innerText = t.benefit3Desc;
+  document.getElementById('benefit4Title').innerText = t.benefit4Title;
+  document.getElementById('benefit4Desc').innerText = t.benefit4Desc;
+  document.getElementById('accountSummaryTitle').innerText = t.accountSummaryTitle;
+  document.getElementById('accountSummaryDesc').innerText = t.accountSummaryDesc;
+  document.getElementById('usernameLabel').innerText = t.usernameLabel;
+  document.getElementById('mobileLabel').innerText = t.mobileLabel;
+  document.getElementById('currentPlanLabel').innerText = t.currentPlanLabel;
+  document.getElementById('paymentStatusLabel').innerText = t.paymentStatusLabel;
+  document.getElementById('helpBtn').innerText = t.helpBtn;
+  document.getElementById('logoutBtn').innerText = t.logoutBtn;
+
+  // Update welcome text with username
+  const username = localStorage.getItem("username") || "Customer";
+  document.getElementById('welcomeUser').textContent = username;
+  const welcomeTextElement = document.getElementById('welcomeText');
+  welcomeTextElement.innerHTML = t.welcomeText + '<span id="welcomeUser">' + username + '</span>';
+
+  // Update button styles
+  const btnTa = document.getElementById('btnTa');
+  const btnEn = document.getElementById('btnEn');
+  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
+  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
+}
+
+// Switch language
+function switchLanguage(lang) {
+  applyLanguage(lang);
+}
+
+// ==========================
+// LOAD DATA FROM LOCALSTORAGE
+// ==========================
+const username = localStorage.getItem("username") || "Customer";
+const mobile = localStorage.getItem("mobile") || "-";
+const plan = localStorage.getItem("selectedPlan") || "-";
+const amount = localStorage.getItem("planAmount") || "-";
+const paymentMethod = localStorage.getItem("paymentMethod") || "-";
+const paymentStatus = localStorage.getItem("paymentStatus") || "Success";
+
+// Set welcome user
+document.getElementById("welcomeUser").textContent = username;
+document.getElementById("summaryUser").textContent = username;
+document.getElementById("summaryMobile").textContent = mobile;
+document.getElementById("planName").textContent = plan;
+document.getElementById("summaryPlan").textContent = plan;
+document.getElementById("planAmount").textContent = amount !== "-" ? `₹${amount}` : "-";
+document.getElementById("paymentMethod").textContent = paymentMethod;
+document.getElementById("summaryPayment").textContent = paymentStatus;
+document.getElementById("planStatus").textContent = "Active";
+
+// ==========================
+// NAVIGATION FUNCTIONS
+// ==========================
+function goRequest(){
+  window.location.href = "requestservice.html";
+}
+
+function goContact(){
+  window.location.href = "contact.html";
+}
+
+function goHelp(){
+  window.location.href = "contact.html";
+}
+
+function logoutUser(){
+  localStorage.removeItem("username");
+  localStorage.removeItem("mobile");
+  localStorage.removeItem("password");
+  localStorage.removeItem("selectedPlan");
+  localStorage.removeItem("planAmount");
+  localStorage.removeItem("paymentMethod");
+  localStorage.removeItem("paymentStatus");
+  window.location.href = "website.html";
+}
+
+// ==========================
+// LOAD SAVED LANGUAGE ON PAGE LOAD
+// ==========================
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('selectedLanguage');
+  if (savedLang === 'ta') {
+    applyLanguage('ta');
+  } else {
+    applyLanguage('en');
+  }
+});
+</script>
+
+</body>
+</html>
