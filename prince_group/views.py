@@ -1,18 +1,12 @@
 import logging
 from datetime import timedelta
-import json
-from urllib import request
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse
-from django.views.generic import TemplateView
 
+from django.views.decorators.http import require_http_methods
 
 from core.models import (
     SubscriptionPlan, Customer, Subscription, Enquiry,
@@ -23,12 +17,16 @@ from core.forms import EnquiryForm, SubscriptionForm, QuickCustomerForm
 logger = logging.getLogger(__name__)
 
 
-import json
+
 import razorpay
+import json
+import hmac
+import hashlib
+
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from core.models import Payment
+
 
 
 # ---------- Main page ----------
@@ -247,87 +245,52 @@ def payment_page(request):
 
 
 
-import json
-import razorpay
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-
-# Razorpay client
-client = razorpay.Client(auth=("rzp_test_SlEcOxrhmHklen", "l7SPZDyZZPyADu6nD6OcGEa5"))
-
-
-# 🔥 CREATE ORDER
+# 🔹 CREATE ORDER
 @csrf_exempt
 def create_order(request):
-    amount = 10000  # ₹100 (paise)
+    if request.method == "POST":
+        data = json.loads(request.body)
 
-    payment = client.order.create({
-        "amount": amount,
-        "currency": "INR",
-        "payment_capture": "1"
-    })
+        amount = int(data.get("amount")) * 100  # paise
 
-    return JsonResponse(payment)
+        client = razorpay.Client(
+            auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
+        )
 
-
-# 🔥 VERIFY PAYMENT
-@csrf_exempt
-def verify_payment(request):
-    data = json.loads(request.body)
-
-    try:
-        client.utility.verify_payment_signature({
-            "razorpay_order_id": data['razorpay_order_id'],
-            "razorpay_payment_id": data['razorpay_payment_id'],
-            "razorpay_signature": data['razorpay_signature']
+        order = client.order.create({
+            "amount": amount,
+            "currency": "INR",
+            "payment_capture": 1
         })
 
-        return JsonResponse({"status": "success"})
+        return JsonResponse({
+            "order_id": order["id"],
+            "key": settings.RAZORPAY_KEY_ID
+        })
 
-    except:
-        return JsonResponse({"status": "failed"})
 
-# 🔥 VERIFY PAYMENT
+# 🔹 VERIFY PAYMENT
 @csrf_exempt
 def verify_payment(request):
     if request.method == "POST":
         data = json.loads(request.body)
 
-        razorpay_order_id = data.get("razorpay_order_id")
-        razorpay_payment_id = data.get("razorpay_payment_id")
-        razorpay_signature = data.get("razorpay_signature")
+        payment_id = data.get("razorpay_payment_id")
+        order_id = data.get("razorpay_order_id")
+        signature = data.get("razorpay_signature")
 
-        client = razorpay.Client(
-            auth=(settings.rzp_test_SlEcOxrhmHklen, settings.l7SPZDyZZPyADu6nD6OcGEa5)
-        )
+        generated_signature = hmac.new(
+            bytes(settings.RAZORPAY_KEY_SECRET, 'utf-8'),
+            bytes(order_id + "|" + payment_id, 'utf-8'),
+            hashlib.sha256
+        ).hexdigest()
 
-        try:
-            # 🔒 Signature verification
-            client.utility.verify_payment_signature({
-                'razorpay_order_id': razorpay_order_id,
-                'razorpay_payment_id': razorpay_payment_id,
-                'razorpay_signature': razorpay_signature
-            })
-
-            # ✅ Update DB
-            payment = Payment.objects.get(order_id=razorpay_order_id)
-            payment.payment_id = razorpay_payment_id
-            payment.signature = razorpay_signature
-            payment.status = "success"
-            payment.save()
-
+        if generated_signature == signature:
             return JsonResponse({"status": "success"})
-
-        except:
-            # ❌ Failed payment
-            try:
-                payment = Payment.objects.get(order_id=razorpay_order_id)
-                payment.status = "failed"
-                payment.save()
-            except:
-                pass
-
+        else:
             return JsonResponse({"status": "failed"})
+
+
 
 def payment_success(request):
     """Payment success page – reuse subscription success logic"""
@@ -359,20 +322,25 @@ def login_view(request):
 
 def customer_dashboard(request):
     customer_id = request.session.get('customer_id')
+
     if not customer_id:
-        return redirect('login')
+        return redirect('login')   # ✅ FIXED
 
     try:
         customer = Customer.objects.get(customer_id=customer_id)
+
         subscriptions = Subscription.objects.filter(customer=customer).select_related('plan')
         enquiries = Enquiry.objects.filter(phone=customer.phone)
+
         context = {
             'customer': customer,
             'subscriptions': subscriptions,
             'enquiries': enquiries,
             'active_subscription': subscriptions.filter(status='active').first(),
         }
+
         return render(request, 'core/dashboard.html', context)
+
     except Customer.DoesNotExist:
         request.session.flush()
         return redirect('login')
@@ -384,3 +352,6 @@ def logout_view(request):
     request.session.flush()
     messages.success(request, 'You have been logged out successfully.')
     return redirect('index')
+
+
+
