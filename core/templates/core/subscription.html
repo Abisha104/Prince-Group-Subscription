@@ -955,16 +955,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
 function goPayment(){
+
   clearError();
 
   const username = document.getElementById("username").value.trim();
   const mobile = document.getElementById("mobile").value.trim();
   const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirmPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
 
-  if(!username || !mobile || !password || !confirmPassword){
+  if(!username || !mobile || !password || !confirm){
     showError("Fill all fields");
     return;
   }
@@ -974,7 +974,7 @@ function goPayment(){
     return;
   }
 
-  if(!/^\d{10}$/.test(mobile)){
+  if(mobile.length !== 10){
     showError("Invalid mobile number");
     return;
   }
@@ -984,69 +984,71 @@ function goPayment(){
     return;
   }
 
-  if(password !== confirmPassword){
+  if(password !== confirm){
     showError("Passwords not matching");
     return;
   }
 
-  localStorage.setItem("username", username);
-  localStorage.setItem("mobile", mobile);
-
   fetch("/create-order/", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    plan: plan,
-    amount: amount
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      amount: amount
+    })
   })
-})
-.then(res => res.json())
-.then(data => {
+  .then(res => res.json())
+  .then(data => {
 
-  var options = {
-    key: "rzp_test_SlAn7R8uDTOsXv",
-    amount: data.amount,
-    currency: "INR",
-    name: "Prince Group",
-    description: plan + " Plan",
-    order_id: data.id,
+    var options = {
+      "key": data.key,
+      "amount": amount * 100,
+      "currency": "INR",
+      "name": "Prince Group",
+      "description": plan + " Plan",
+      "order_id": data.order_id,
 
-    handler: function (response) {
+      "handler": function (response){
 
-      fetch("/verify-payment/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(response)
-      })
-      .then(res => res.json())
-      .then(data => {
-        if(data.status === "success"){
-          window.location.href = "/payment-success.html";
-        } else {
-          alert("Payment failed");
-        }
-      });
+        // 🔐 VERIFY IN BACKEND
+        fetch("/verify-payment/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(response)
+        })
+        .then(res => res.json())
+        .then(data => {
 
-    }
-  };
+          if(data.status === "success"){
 
-  var rzp = new Razorpay(options);
+            // ✅ REDIRECT SUCCESS PAGE
+            window.location.href = "/payment-success.html";
 
-  rzp.on('payment.failed', function (){
-    alert("Payment failed. Try again.");
+          } else {
+            alert("Payment verification failed");
+          }
+
+        });
+
+      },
+
+      "prefill": {
+        "name": username,
+        "contact": mobile
+      },
+
+      "theme": {
+        "color": "#16a34a"
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+
   });
-
-  rzp.open();
-
-})
-.catch(() => {
-  alert("Server error. Try again later.");
-});
-
 }
 </script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
