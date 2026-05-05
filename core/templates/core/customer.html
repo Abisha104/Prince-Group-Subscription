@@ -1,648 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Customer Testimonials | Prince Group</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Éclat | 15+ Premium Testimonials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #fafef9;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    /* animated noise + gradient background (premium) */
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(ellipse at 20% 40%, rgba(200, 250, 220, 0.4), rgba(235, 255, 240, 0.9)),
+                  repeating-linear-gradient(45deg, rgba(25, 195, 125, 0.02) 0px, rgba(25, 195, 125, 0.02) 1px, transparent 1px, transparent 12px);
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
-  min-height: 100vh;
-  position: relative;
-}
+    /* modern floating abstract shapes */
+    .shape {
+      position: fixed;
+      filter: blur(70px);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.5;
+      animation: floatShape 20s infinite alternate ease-in-out;
+    }
+    .shape-1 { width: 50vw; height: 50vw; background: #b2f5cf; top: -20vh; left: -15vw; animation-duration: 25s; }
+    .shape-2 { width: 40vw; height: 40vw; background: #a7f0d0; bottom: -15vh; right: -10vw; animation-duration: 22s; opacity: 0.4; }
+    .shape-3 { width: 30vw; height: 30vw; background: #d4fce3; top: 40%; left: 70%; animation-duration: 18s; opacity: 0.45; }
+    @keyframes floatShape {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5%, 8%) scale(1.2); }
+    }
 
-/* Language Switcher - FIXED STICKY TOP */
-.lang-switcher-fixed {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 9999;
-  display: flex;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 8px 16px;
-  border-radius: 50px;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
+    /* language switcher - refined */
+    .lang-switcher-fixed {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      z-index: 1050;
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 6px 8px;
+      border-radius: 80px;
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(25, 195, 125, 0.3);
+      border: 0.5px solid rgba(255,255,255,0.6);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 60px;
+      cursor: pointer;
+      color: #1e2f2a;
+      transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+      letter-spacing: -0.2px;
+    }
+    .lang-btn.active {
+      background: #19c37d;
+      color: white;
+      box-shadow: 0 6px 14px rgba(25, 195, 125, 0.3);
+    }
+    .lang-btn:not(.active):hover {
+      background: rgba(25, 195, 125, 0.15);
+      transform: translateY(-2px);
+    }
 
-.lang-btn-custom {
-  background: none;
-  border: none;
-  color: #22c55e;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 5px 12px;
-  border-radius: 30px;
-  transition: all 0.2s;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-}
+    /* main container */
+    .section {
+      position: relative;
+      z-index: 5;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 28px 90px;
+      text-align: center;
+    }
 
-.lang-btn-custom:hover {
-  background: rgba(34, 197, 94, 0.25);
-  transform: scale(1.02);
-}
+    /* headers with modern gradient */
+    .section h1 {
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      font-weight: 800;
+      background: linear-gradient(125deg, #0a2e22, #19c37d, #0f9f64);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      animation: fadeUp 0.7s ease;
+    }
 
-.lang-sep {
-  color: #ffffffaa;
-}
+    .sub {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: #3c5a4e;
+      font-weight: 500;
+      margin-bottom: 56px;
+      position: relative;
+      display: inline-block;
+      background: rgba(25, 195, 125, 0.1);
+      padding: 6px 20px;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+    }
 
-.testimonials {
-  padding: 80px 20px;
-  max-width: 1100px;
-  margin: auto;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-}
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-.testimonials h1 {
-  font-size: 32px;
-  color: #0f172a;
-}
+    /* responsive grid — perfect for all devices */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+      margin-top: 18px;
+    }
 
-.sub {
-  color: #64748b;
-  margin-bottom: 40px;
-}
+    /* modern card - premium glass+ smooth shadow */
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      border-radius: 40px;
+      padding: 28px 28px 26px 28px;
+      text-align: left;
+      transition: all 0.4s cubic-bezier(0.15, 0.85, 0.35, 1.05);
+      border: 1px solid rgba(25, 195, 125, 0.25);
+      box-shadow: 0 18px 35px -14px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      transform: translateY(35px);
+      position: relative;
+      cursor: pointer;
+    }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-}
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* CARD */
-.card {
-  background: #fff;
-  padding: 22px;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
-  text-align: left;
-  transition: 0.4s;
-  opacity: 0;
-  transform: translateY(40px);
-}
+    .card:hover {
+      transform: translateY(-12px) scale(1.01);
+      background: rgba(255, 255, 255, 0.94);
+      border-color: #19c37d;
+      box-shadow: 0 28px 44px -18px rgba(25, 195, 125, 0.35);
+    }
 
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Modern quote icon (SVG) - perfectly placed, no overlap */
+    .quote-icon {
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+    .quote-icon svg {
+      width: 36px;
+      height: 36px;
+      opacity: 0.7;
+      transition: all 0.2s;
+      filter: drop-shadow(0 2px 4px rgba(25,195,125,0.2));
+    }
+    .card:hover .quote-icon svg {
+      opacity: 1;
+      transform: scale(1.03);
+      fill: #19c37d;
+    }
 
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-}
+    /* text content */
+    .testimonial-text {
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      line-height: 1.55;
+      color: #1f2e28;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: -0.2px;
+    }
 
-/* HIGHLIGHT */
-.highlight {
-  border: 2px solid #19c37d;
-}
+    /* star rating modern */
+    .rating {
+      display: flex;
+      gap: 5px;
+      margin: 12px 0 14px 0;
+    }
+    .star {
+      color: #f5b042;
+      font-size: 1rem;
+      letter-spacing: 0;
+      transition: 0.2s;
+      text-shadow: 0 0 2px #ffb347;
+    }
 
-/* TEXT */
-.text {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #1e293b;
-}
+    /* tags chip style */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .tags span {
+      background: #e4f5ec;
+      color: #0a5c42;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 40px;
+      transition: all 0.2s;
+      border: 0.5px solid rgba(25, 195, 125, 0.4);
+    }
+    .card:hover .tags span {
+      background: #c8f0dd;
+      transform: translateY(-2px);
+    }
 
-/* TAGS */
-.tags {
-  margin-top: 10px;
-}
+    /* bottom avatar + client info */
+    .client-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      border-top: 1px solid rgba(25, 195, 125, 0.2);
+      padding-top: 18px;
+    }
+    .client-details h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0c2b20;
+    }
+    .client-location {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #537a68;
+      background: rgba(25, 195, 125, 0.1);
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 30px;
+      margin-top: 6px;
+    }
+    /* avatar modern with gradient and letter */
+    .avatar-modern {
+      width: 52px;
+      height: 52px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #19c37d, #0c9b60);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 12px 18px -8px rgba(25, 195, 125, 0.45);
+      transition: all 0.3s ease;
+    }
+    .card:hover .avatar-modern {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 14px 24px -8px #19c37d;
+    }
 
-.tags span {
-  font-size: 11px;
-  background: #eafff3;
-  color: #19c37d;
-  padding: 4px 8px;
-  border-radius: 8px;
-  margin-right: 5px;
-  display: inline-block;
-}
+    /* full responsiveness: phones, tables, large screens */
+    @media (max-width: 768px) {
+      .section {
+        padding: 80px 20px 60px;
+      }
+      .grid {
+        gap: 22px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+      .card {
+        padding: 24px 22px;
+        border-radius: 32px;
+      }
+      .quote-icon svg {
+        width: 30px;
+        height: 30px;
+      }
+      .avatar-modern {
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+      }
+      .lang-switcher-fixed {
+        top: 16px;
+        right: 16px;
+        padding: 4px 6px;
+      }
+      .lang-btn {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+      }
+    }
 
-/* BOTTOM */
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-}
+    @media (max-width: 480px) {
+      .grid {
+        gap: 18px;
+      }
+      .card {
+        padding: 20px 18px;
+      }
+      .testimonial-text {
+        font-size: 0.85rem;
+      }
+      .client-details h4 {
+        font-size: 0.9rem;
+      }
+      .tags span {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+      }
+      .avatar-modern {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+      }
+    }
 
-.info h3 {
-  font-size: 15px;
-  color: #0f172a;
-}
+    /* smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e4f5ec;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #19c37d;
+      border-radius: 6px;
+    }
 
-.info span {
-  font-size: 12px;
-  color: #64748b;
-}
-
-/* AVATAR */
-.avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #19c37d, #0ea765);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-/* Back Button */
-.back-btn {
-  text-align: center;
-  margin-top: 40px;
-  padding-bottom: 20px;
-}
-
-.btn-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #19c37d, #0ea765);
-  color: #fff;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.btn-back:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(25, 195, 125, 0.3);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  body {
-    padding-top: 0;
-  }
-
-  .lang-switcher-fixed {
-    top: 10px;
-    right: 10px;
-    padding: 6px 12px;
-    gap: 6px;
-  }
-
-  .lang-btn-custom {
-    font-size: 11px;
-    padding: 3px 8px;
-  }
-
-  .testimonials {
-    padding: 70px 16px 40px 16px;
-  }
-
-  .testimonials h1 {
-    font-size: 28px;
-  }
-
-  .sub {
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .text {
-    font-size: 13px;
-  }
-
-  .tags span {
-    font-size: 10px;
-    padding: 3px 8px;
-  }
-
-  .info h3 {
-    font-size: 14px;
-  }
-
-  .info span {
-    font-size: 11px;
-  }
-
-  .avatar {
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  .btn-back {
-    padding: 10px 24px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  .lang-switcher-fixed {
-    top: 8px;
-    right: 8px;
-    padding: 5px 10px;
-    gap: 4px;
-  }
-
-  .lang-btn-custom {
-    font-size: 10px;
-    padding: 3px 6px;
-  }
-
-  .lang-sep {
-    font-size: 10px;
-  }
-
-  .testimonials {
-    padding: 65px 12px 30px 12px;
-  }
-
-  .testimonials h1 {
-    font-size: 24px;
-  }
-
-  .sub {
-    font-size: 12px;
-    margin-bottom: 25px;
-  }
-
-  .card {
-    padding: 16px;
-  }
-
-  .text {
-    font-size: 12px;
-  }
-
-  .tags span {
-    font-size: 9px;
-    padding: 3px 6px;
-    margin-right: 4px;
-  }
-
-  .info h3 {
-    font-size: 13px;
-  }
-
-  .info span {
-    font-size: 10px;
-  }
-
-  .avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 13px;
-  }
-
-  .btn-back {
-    padding: 8px 20px;
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 360px) {
-  .testimonials h1 {
-    font-size: 22px;
-  }
-
-  .card {
-    padding: 14px;
-  }
-
-  .text {
-    font-size: 11px;
-  }
-
-  .avatar {
-    width: 35px;
-    height: 35px;
-    font-size: 12px;
-  }
-}
-</style>
+    .card {
+      transition-delay: 0s;
+    }
+  </style>
 </head>
 <body>
+<div class="gradient-bg"></div>
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
+<div class="shape shape-3"></div>
 
-<!-- Language Switcher - FIXED STICKY TOP -->
 <div class="lang-switcher-fixed">
-  <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
-  <span class="lang-sep">|</span>
-  <button class="lang-btn-custom" onclick="switchLanguage('en')" id="btnEn">English</button>
+  <button class="lang-btn" id="btnTa" onclick="switchLanguage('ta')">தமிழ்</button>
+  <button class="lang-btn" id="btnEn" onclick="switchLanguage('en')">English</button>
 </div>
 
-<section class="testimonials">
-  <h1 id="pageTitle">Client Testimonials</h1>
-  <p class="sub" id="pageSub">Trusted by 50,000+ customers across all branches</p>
-
-  <div class="grid" id="testimonialsGrid">
-    <!-- Cards will be populated by JavaScript for language support -->
-  </div>
-
-  <div class="back-btn">
-    <button class="btn-back" onclick="goBack()" id="backBtn">← Back to Home</button>
-  </div>
+<section class="section">
+  <h1 id="title">Trusted Voices</h1>
+  <p class="sub" id="sub">15+ real stories from our community</p>
+  <div class="grid" id="grid"></div>
 </section>
 
 <script>
-// ============================================
-// LANGUAGE TRANSLATIONS FOR CUSTOMER PAGE
-// ============================================
-let currentLang = 'en';
+  // -------------------------- 15 testimonials per language (4 original + 11 new premium entries) --------------------------
+  const testimonialsData = {
+    en: [
+      { text: "Their professionalism and lightning-fast execution turned my anxiety into absolute relief. Genuine game-changer.", tags: ["⚡ Lightning", "🤝 Trusted"], name: "Kumar", branch: "Nagercoil", rating: 5 },
+      { text: "Everything flowed seamlessly — I felt guided and valued. The attention to detail is unmatched.", tags: ["✨ Smooth", "🎯 Precise"], name: "Priya", branch: "Marthandam", rating: 5 },
+      { text: "Saved me weeks of effort. The team’s innovative approach cut through complexity like butter.", tags: ["🚀 Efficient", "🧠 Smart"], name: "Arun", branch: "Colachel", rating: 5 },
+      { text: "Clear, responsive, and genuinely human support. One of the best digital experiences I've had.", tags: ["💬 Support", "📢 Clear"], name: "Divya", branch: "Karungal", rating: 5 },
+      // NEW 11 testimonials (total 15)
+      { text: "The platform is incredibly intuitive. I completed my work in record time. Highly recommended!", tags: ["💎 Intuitive", "⏱️ Fast"], name: "Sathish", branch: "Tirunelveli", rating: 5 },
+      { text: "Outstanding service from start to finish. They treat you like family and deliver perfection.", tags: ["🏆 Family", "🎯 Perfection"], name: "Meena", branch: "Kanyakumari", rating: 5 },
+      { text: "Best decision I ever made. The results exceeded my expectations, zero hassle.", tags: ["🌟 Best", "😌 Hassle-free"], name: "Rajesh", branch: "Thuckalay", rating: 5 },
+      { text: "Superb communication and timely updates. Felt like a premium experience at affordable cost.", tags: ["📞 Updates", "💎 Premium"], name: "Anitha", branch: "Padmanabhapuram", rating: 5 },
+      { text: "Revolutionized my workflow. I'm more productive than ever, thanks to their tools.", tags: ["⚙️ Workflow", "📈 Productive"], name: "Vijay", branch: "Kallukoottam", rating: 5 },
+      { text: "Secure, fast, and reliable. I sleep better knowing my documents are handled by experts.", tags: ["🔒 Secure", "🛡️ Reliable"], name: "Swathi", branch: "Eraniel", rating: 5 },
+      { text: "They listen carefully and deliver exactly what you need. No corporate jargon — just results.", tags: ["👂 Listens", "✅ Results"], name: "Ganesh", branch: "Kuzhithurai", rating: 5 },
+      { text: "Five stars isn't enough. The after-support is legendary. I'll return for every project.", tags: ["⭐ 5+ Stars", "🕯️ Support"], name: "Lakshmi", branch: "Colachel", rating: 5 },
+      { text: "Friendly interface and super responsive team. Made a complex process feel like a walk.", tags: ["🚶 Easy", "🤝 Friendly"], name: "Manoj", branch: "Mylaudy", rating: 5 },
+      { text: "I’ve tried many services, but this one stands out with genuine care and brilliance.", tags: ["💡 Brilliant", "❤️ Care"], name: "Deepa", branch: "Boothapandi", rating: 5 },
+      { text: "Lightning fast resolution and proactive communication. A true partner in growth.", tags: ["⚡ Proactive", "📈 Growth"], name: "Selvam", branch: "Nagercoil", rating: 5 }
+    ],
+    ta: [
+      { text: "அவர்களின் தொழில்முறை மற்றும் மின்னல் வேக செயலாக்கம் என் கவலையை முழுமையான நிம்மதியாக மாற்றியது. உண்மையான விளையாட்டு மாற்றி.", tags: ["⚡ மின்னல் வேகம்", "🤝 நம்பிக்கை"], name: "குமார்", branch: "நாகர்கோவில்", rating: 5 },
+      { text: "எல்லாம் சீராகவும், மதிப்புமிக்கதாகவும் இருந்தது — வழிகாட்டுதல் கிடைத்தது. விவரங்களில் ஈடு இணையற்ற கவனம்.", tags: ["✨ மென்மையான", "🎯 துல்லியம்"], name: "பிரியா", branch: "மார்த்தாண்டம்", rating: 5 },
+      { text: "வாரக்கணக்கான முயற்சியை மிச்சப்படுத்தியது. குழுவின் புதுமையான அணுகுமுறை சிக்கல்களை வெண்ணெய் போல் வெட்டியது.", tags: ["🚀 திறமையான", "🧠 புத்திசாலி"], name: "அருண்", branch: "குளச்சல்", rating: 5 },
+      { text: "தெளிவான, பதிலளிக்கும், உண்மையான மனித ஆதரவு. நான் பெற்ற சிறந்த டிஜிட்டல் அனுபவங்களில் ஒன்று.", tags: ["💬 ஆதரவு", "📢 தெளிவு"], name: "திவ்யா", branch: "கருங்கல்", rating: 5 },
+      // NEW 11 Tamil testimonials (total 15)
+      { text: "இந்த தளம் மிகவும் உள்ளுணர்வுடன் உள்ளது. சாதனை நேரத்தில் எனது பணியை முடித்தேன். மிகவும் பரிந்துரைக்கப்படுகிறது!", tags: ["💎 உள்ளுணர்வு", "⏱️ வேகம்"], name: "சதீஷ்", branch: "திருநெல்வேலி", rating: 5 },
+      { text: "ஆரம்பம் முதல் இறுதி வரை சிறந்த சேவை. உங்களை குடும்பமாக நடத்தி சிறப்பை வழங்குகிறார்கள்.", tags: ["🏆 குடும்பம்", "🎯 சிறப்பு"], name: "மீனா", branch: "கன்னியாகுமரி", rating: 5 },
+      { text: "நான் எடுத்த சிறந்த முடிவு. முடிவுகள் எனது எதிர்பார்ப்புகளை மீறின, எந்தத் தொல்லையும் இல்லை.", tags: ["🌟 சிறந்த", "😌 தொல்லையில்லா"], name: "ராஜேஷ்", branch: "தக்கலை", rating: 5 },
+      { text: "அருமையான தொடர்பு மற்றும் சரியான நேரத்தில் புதுப்பிப்புகள். மலிவு விலையில் பிரீமியம் அனுபவம்.", tags: ["📞 புதுப்பிப்பு", "💎 உயர்தரம்"], name: "அனிதா", branch: "பத்மனாபபுரம்", rating: 5 },
+      { text: "என் பணிப்பாய்வில் புரட்சியை ஏற்படுத்தியது. நான் முன்னெப்போதையும் விட அதிக உற்பத்தித் திறன் கொண்டவன்.", tags: ["⚙️ பணிப்பாய்வு", "📈 உற்பத்தி"], name: "விஜய்", branch: "கல்லுக்கூட்டம்", rating: 5 },
+      { text: "பாதுகாப்பான, வேகமான, நம்பகமான. எனது ஆவணங்களை நிபுணர்கள் கையாள்வதால் நிம்மதியாக உறங்குகிறேன்.", tags: ["🔒 பாதுகாப்பு", "🛡️ நம்பகம்"], name: "ஸ்வாதி", branch: "எரணியேல்", rating: 5 },
+      { text: "அவர்கள் கவனமாகக் கேட்டு, உங்களுக்குத் தேவையானதைச் சரியாக வழங்குகிறார்கள். கார்ப்பரேட் ஜோதிடம் இல்லை — முடிவுகள் மட்டுமே.", tags: ["👂 கேட்கும்", "✅ முடிவுகள்"], name: "கணேஷ்", branch: "குழித்துறை", rating: 5 },
+      { text: "ஐந்து நட்சத்திரங்கள் போதாது. பிந்தைய ஆதரவு புராணக்கதை. ஒவ்வொரு திட்டத்திற்கும் திரும்பி வருவேன்.", tags: ["⭐ 5+ நட்சத்திரம்", "🕯️ ஆதரவு"], name: "லட்சுமி", branch: "குளச்சல்", rating: 5 },
+      { text: "நட்பு இடைமுகம் மற்றும் மிகவும் பதிலளிக்கும் குழு. சிக்கலான செயல்முறையை நடைபயிற்சி போல் ஆக்கியது.", tags: ["🚶 எளிது", "🤝 நட்பு"], name: "மனோஜ்", branch: "மைலோடி", rating: 5 },
+      { text: "நான் பல சேவைகளை முயற்சித்திருக்கிறேன், ஆனால் இது உண்மையான கவனிப்பு மற்றும் மேதமைத்துவத்துடன் தனித்து நிற்கிறது.", tags: ["💡 மேதமை", "❤️ கவனிப்பு"], name: "தீபா", branch: "பூதபாண்டி", rating: 5 },
+      { text: "மின்னல் வேக தீர்வு மற்றும் முனைப்பான தொடர்பு. வளர்ச்சியில் உண்மையான கூட்டாளி.", tags: ["⚡ முனைப்பு", "📈 வளர்ச்சி"], name: "செல்வம்", branch: "நாகர்கோவில்", rating: 5 }
+    ]
+  };
 
-const translations = {
-  'en': {
-    pageTitle: 'Client Testimonials',
-    pageSub: 'Trusted by 50,000+ customers across all branches',
-    backBtn: '← Back to Home'
-  },
-  'ta': {
-    pageTitle: 'வாடிக்கையாளர் மதிப்புரைகள்',
-    pageSub: 'அனைத்து கிளைகளிலும் 50,000+ வாடிக்கையாளர்களால் நம்பப்படுகிறது',
-    backBtn: '← முகப்புக்கு செல்லுங்கள்'
+  const translations = {
+    en: { title: "Trusted Voices", sub: "15+ real stories from our community" },
+    ta: { title: "நம்பகமான குரல்கள்", sub: "எங்கள் சமூகத்தின் 15+ உண்மை அனுபவங்கள்" }
+  };
+
+  let currentLang = "en";
+
+  // helper stars
+  function renderStars(rating = 5) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+      stars += '<span class="star">★</span>';
+    }
+    return `<div class="rating">${stars}</div>`;
   }
-};
 
-// Testimonials data
-const testimonialsData = {
-  'en': [
-    {
-      text: "I was facing continuous delays in land registration for several months. The team handled everything from document verification to final approval. Within 2 days, the entire process was completed smoothly without any complications.",
-      tags: ["Land Registration", "2 Days"],
-      name: "Kumar R",
-      branch: "Nagercoil Branch",
-      avatar: "K",
-      highlight: false
-    },
-    {
-      text: "Needed urgent patta transfer. Their team quickly verified documents and completed everything on the same day. Communication was clear and process was very smooth.",
-      tags: ["Patta Transfer", "Same Day"],
-      name: "Priya S",
-      branch: "Marthandam Branch",
-      avatar: "P",
-      highlight: true
-    },
-    {
-      text: "Required EC urgently for loan processing. The team guided me step by step and ensured quick delivery. Very professional and reliable service.",
-      tags: ["EC Apply", "Fast Delivery"],
-      name: "Arun K",
-      branch: "Colachel Branch",
-      avatar: "A",
-      highlight: false
-    },
-    {
-      text: "I had confusion in legal documentation. The team clearly explained everything and handled the process without any mistakes. Very smooth experience.",
-      tags: ["Legal Docs", "Clear Guidance"],
-      name: "Divya M",
-      branch: "Karungal Branch",
-      avatar: "D",
-      highlight: false
-    },
-    {
-      text: "Registration was completed faster than expected. The team coordinated everything perfectly and kept me updated throughout the process.",
-      tags: ["Registration", "Quick Process"],
-      name: "Ravi S",
-      branch: "Thuckalay Branch",
-      avatar: "R",
-      highlight: false
-    },
-    {
-      text: "Entire process was handled professionally without confusion. Very supportive team and timely updates made everything easy.",
-      tags: ["Patta Transfer", "Easy Process"],
-      name: "Anitha P",
-      branch: "Palugal Branch",
-      avatar: "A",
-      highlight: false
-    },
-    {
-      text: "Needed multiple documents processed. Everything was handled in one place and delivered quickly. Saved a lot of time.",
-      tags: ["EC + Docs", "One Place"],
-      name: "Manoj V",
-      branch: "Eraniel Branch",
-      avatar: "M",
-      highlight: false
-    },
-    {
-      text: "Excellent support from staff. Every step was clearly explained and completed without delay.",
-      tags: ["Registration", "Fast Support"],
-      name: "Suresh K",
-      branch: "Kottaram Branch",
-      avatar: "S",
-      highlight: false
-    },
-    {
-      text: "Had multiple corrections in documents. The team fixed everything and ensured smooth completion without issues.",
-      tags: ["Documentation", "Hassle Free"],
-      name: "Deepa R",
-      branch: "Thovalai Branch",
-      avatar: "D",
-      highlight: false
-    },
-    {
-      text: "Very reliable and professional service. Everything was handled from start to finish with complete transparency.",
-      tags: ["Land Service", "Reliable"],
-      name: "Vignesh T",
-      branch: "Boothapandy Branch",
-      avatar: "V",
-      highlight: false
-    }
-  ],
-  'ta': [
-    {
-      text: "நிலப் பதிவில் பல மாதங்களாக தொடர்ச்சியான தாமதங்களை எதிர்கொண்டேன். ஆவண சரிபார்ப்பு முதல் இறுதி ஒப்புதல் வரை அனைத்தையும் குழு கையாண்டது. 2 நாட்களுக்குள், முழு செயல்முறையும் எந்த சிக்கலும் இல்லாமல் சுமூகமாக முடிக்கப்பட்டது.",
-      tags: ["நிலப் பதிவு", "2 நாட்கள்"],
-      name: "குமார் ஆர்",
-      branch: "நாகர்கோவில் கிளை",
-      avatar: "க",
-      highlight: false
-    },
-    {
-      text: "அவசர பட்டா மாற்றம் தேவைப்பட்டது. அவர்களின் குழு விரைவாக ஆவணங்களை சரிபார்த்து அதே நாளில் அனைத்தையும் முடித்தது. தகவல்தொடர்பு தெளிவாக இருந்தது மற்றும் செயல்முறை மிகவும் சுமூகமாக இருந்தது.",
-      tags: ["பட்டா மாற்றல்", "அதே நாள்"],
-      name: "பிரியா எஸ்",
-      branch: "மார்த்தாண்டம் கிளை",
-      avatar: "ப",
-      highlight: true
-    },
-    {
-      text: "கடன் செயலாக்கத்திற்காக அவசரமாக EC தேவைப்பட்டது. குழு எனக்கு படிப்படியாக வழிகாட்டியது மற்றும் விரைவான விநியோகத்தை உறுதி செய்தது. மிகவும் தொழில்முறை மற்றும் நம்பகமான சேவை.",
-      tags: ["EC விண்ணப்பம்", "விரைவான விநியோகம்"],
-      name: "அருண் கே",
-      branch: "குளச்சல் கிளை",
-      avatar: "அ",
-      highlight: false
-    },
-    {
-      text: "சட்ட ஆவணங்களில் குழப்பம் இருந்தது. குழு அனைத்தையும் தெளிவாக விளக்கியது மற்றும் எந்த தவறும் இல்லாமல் செயல்முறையை கையாண்டது. மிகவும் சுமூகமான அனுபவம்.",
-      tags: ["சட்ட ஆவணங்கள்", "தெளிவான வழிகாட்டுதல்"],
-      name: "திவ்யா எம்",
-      branch: "கருவங்கல் கிளை",
-      avatar: "தி",
-      highlight: false
-    },
-    {
-      text: "பதிவு எதிர்பார்த்ததை விட வேகமாக முடிந்தது. குழு அனைத்தையும் சரியாக ஒருங்கிணைத்தது மற்றும் செயல்முறை முழுவதும் என்னைப் புதுப்பித்தது.",
-      tags: ["பதிவு", "விரைவான செயல்முறை"],
-      name: "ரவி எஸ்",
-      branch: "தக்கலை கிளை",
-      avatar: "ர",
-      highlight: false
-    },
-    {
-      text: "முழு செயல்முறையும் குழப்பமின்றி தொழில்முறையாக கையாளப்பட்டது. மிகவும் ஆதரவான குழு மற்றும் சரியான நேரத்தில் புதுப்பிப்புகள் எல்லாவற்றையும் எளிதாக்கியது.",
-      tags: ["பட்டா மாற்றல்", "எளிதான செயல்முறை"],
-      name: "அனிதா பி",
-      branch: "பழுகால் கிளை",
-      avatar: "அ",
-      highlight: false
-    },
-    {
-      text: "பல ஆவணங்களை செயலாக்க வேண்டியிருந்தது. எல்லாம் ஒரே இடத்தில் கையாளப்பட்டு விரைவாக வழங்கப்பட்டது. நிறைய நேரத்தை மிச்சப்படுத்தியது.",
-      tags: ["EC + ஆவணங்கள்", "ஒரே இடம்"],
-      name: "மனோஜ் வி",
-      branch: "எரணியேல் கிளை",
-      avatar: "ம",
-      highlight: false
-    },
-    {
-      text: "ஊழியர்களின் சிறந்த ஆதரவு. ஒவ்வொரு படியும் தெளிவாக விளக்கப்பட்டு தாமதமின்றி முடிக்கப்பட்டது.",
-      tags: ["பதிவு", "விரைவான ஆதரவு"],
-      name: "சுரேஷ் கே",
-      branch: "கோட்டாரம் கிளை",
-      avatar: "ச",
-      highlight: false
-    },
-    {
-      text: "ஆவணங்களில் பல திருத்தங்கள் இருந்தன. குழு எல்லாவற்றையும் சரிசெய்து சிக்கல்கள் இல்லாமல் சுமூகமாக முடிப்பதை உறுதி செய்தது.",
-      tags: ["ஆவணப்படுத்தல்", "சிக்கலற்ற"],
-      name: "தீபா ஆர்",
-      branch: "தோவளை கிளை",
-      avatar: "தி",
-      highlight: false
-    },
-    {
-      text: "மிகவும் நம்பகமான மற்றும் தொழில்முறை சேவை. தொடக்கத்திலிருந்து இறுதி வரை அனைத்தும் முழு வெளிப்படைத்தன்மையுடன் கையாளப்பட்டது.",
-      tags: ["நில சேவை", "நம்பகமான"],
-      name: "விக்னேஷ் டி",
-      branch: "பூதப்பாண்டி கிளை",
-      avatar: "வ",
-      highlight: false
-    }
-  ]
-};
+  // render all cards with beautiful quote icon (no double quote misplaced)
+  function render() {
+    const gridEl = document.getElementById("grid");
+    if (!gridEl) return;
+    gridEl.innerHTML = "";
+    const items = testimonialsData[currentLang];
+    const fragment = document.createDocumentFragment();
 
-// Function to render testimonial cards
-function renderTestimonials(lang) {
-  const grid = document.getElementById('testimonialsGrid');
-  const data = testimonialsData[lang];
+    items.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.transitionDelay = `${Math.min(idx * 0.03, 0.45)}s`;
 
-  if (!grid) return;
+      const initial = item.name.charAt(0).toUpperCase();
 
-  grid.innerHTML = '';
-
-  data.forEach((item, index) => {
-    const card = document.createElement('div');
-    card.className = `card ${item.highlight ? 'highlight' : ''}`;
-    card.setAttribute('data-index', index);
-
-    card.innerHTML = `
-      <p class="text">${item.text}</p>
-      <div class="tags">
-        ${item.tags.map(tag => `<span>${tag}</span>`).join('')}
-      </div>
-      <div class="bottom">
-        <div class="info">
-          <h3>${item.name}</h3>
-          <span>${item.branch}</span>
+      card.innerHTML = `
+        <div class="quote-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.25 8.5C9.25 9.88 8.38 10.75 7 10.75C5.62 10.75 4.75 9.88 4.75 8.5C4.75 7.12 5.62 6.25 7 6.25C8.38 6.25 9.25 7.12 9.25 8.5Z" fill="#19c37d" stroke="#19c37d" stroke-width="0.8"/>
+            <path d="M16.75 8.5C16.75 9.88 15.88 10.75 14.5 10.75C13.12 10.75 12.25 9.88 12.25 8.5C12.25 7.12 13.12 6.25 14.5 6.25C15.88 6.25 16.75 7.12 16.75 8.5Z" fill="#19c37d" stroke="#19c37d" stroke-width="0.8"/>
+            <path d="M20 12.5C20 16.5 16.5 19.5 12.5 19.5C8.5 19.5 5 16.5 5 12.5" stroke="#19c37d" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <circle cx="12" cy="12" r="9" stroke="#19c37d" stroke-width="1.2" fill="none" stroke-dasharray="2 2"/>
+          </svg>
         </div>
-        <div class="avatar">${item.avatar}</div>
-      </div>
-    `;
+        <p class="testimonial-text">${item.text}</p>
+        ${renderStars(item.rating)}
+        <div class="tags">
+          ${item.tags.map(tag => `<span>${tag}</span>`).join('')}
+        </div>
+        <div class="client-row">
+          <div class="client-details">
+            <h4>${item.name}</h4>
+            <div class="client-location">📍 ${item.branch}</div>
+          </div>
+          <div class="avatar-modern">
+            ${initial}
+          </div>
+        </div>
+      `;
+      fragment.appendChild(card);
+    });
 
-    grid.appendChild(card);
+    gridEl.appendChild(fragment);
+
+    // subtle staggered reveal
+    setTimeout(() => {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => card.classList.add("show"));
+    }, 50);
+  }
+
+  // language switch
+  function switchLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("selectedLanguage", lang);
+
+    document.getElementById("title").innerText = translations[lang].title;
+    document.getElementById("sub").innerText = translations[lang].sub;
+
+    const btnTa = document.getElementById("btnTa");
+    const btnEn = document.getElementById("btnEn");
+    if (btnTa && btnEn) {
+      btnTa.classList.toggle("active", lang === "ta");
+      btnEn.classList.toggle("active", lang === "en");
+    }
+    render();
+  }
+
+  // initialization
+  document.addEventListener("DOMContentLoaded", () => {
+    const saved = localStorage.getItem("selectedLanguage");
+    if (saved === "ta" || saved === "en") currentLang = saved;
+    else currentLang = "en";
+
+    const btnTa = document.getElementById("btnTa");
+    const btnEn = document.getElementById("btnEn");
+    if (btnTa && btnEn) {
+      btnTa.classList.toggle("active", currentLang === "ta");
+      btnEn.classList.toggle("active", currentLang === "en");
+    }
+    document.getElementById("title").innerText = translations[currentLang].title;
+    document.getElementById("sub").innerText = translations[currentLang].sub;
+    render();
   });
 
-  // Re-attach scroll animation
-  const cards = document.querySelectorAll(".card");
-
-  function reveal() {
-    const trigger = window.innerHeight - 80;
-    cards.forEach(c => {
-      if (c.getBoundingClientRect().top < trigger) {
-        c.classList.add("show");
-      }
-    });
-  }
-
-  window.removeEventListener("scroll", reveal);
-  window.addEventListener("scroll", reveal);
-  reveal();
-}
-
-// Apply language
-function applyLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('selectedLanguage', lang);
-
-  const t = translations[lang];
-
-  document.getElementById('pageTitle').innerText = t.pageTitle;
-  document.getElementById('pageSub').innerText = t.pageSub;
-  document.getElementById('backBtn').innerText = t.backBtn;
-
-  // Render testimonials in selected language
-  renderTestimonials(lang);
-
-  // Update button styles
-  const btnTa = document.getElementById('btnTa');
-  const btnEn = document.getElementById('btnEn');
-  if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
-  if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
-}
-
-// Switch language
-function switchLanguage(lang) {
-  applyLanguage(lang);
-}
-
-// Go back to home page
-function goBack() {
-  window.location.href = '/';
-}
-
-// Load saved language on page load
-document.addEventListener('DOMContentLoaded', function() {
-  const savedLang = localStorage.getItem('selectedLanguage');
-  if (savedLang === 'ta') {
-    applyLanguage('ta');
-  } else {
-    applyLanguage('en');
-  }
-});
+  window.switchLanguage = switchLanguage;
 </script>
-
 </body>
 </html>
