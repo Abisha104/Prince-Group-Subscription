@@ -5,388 +5,386 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Payment Successful | Prince Group</title>
   <style>
-html {
-  scroll-behavior: smooth;
-}
+    /* ========== RESET & VARIABLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    :root {
+      --green-deep: #064e3b;
+      --green-primary: #10b981;
+      --green-dark: #059669;
+      --green-glow: rgba(16, 185, 129, 0.4);
+      --white-glass: rgba(255, 255, 255, 0.94);
+      --text-dark: #064e3b;
+      --text-light: #475569;
+      --shadow-premium: 0 20px 35px -10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(16, 185, 129, 0.2);
+      --radius-card: 1.8rem;
+    }
 
-:root {
-  --green:#16a34a;
-  --green-dark:#15803d;
-  --green-soft:#dcfce7;
+    /* full viewport – prevent any overflow */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-  --bg:#f0fdf4;
-  --card:#ffffff;
-  --text:#052e16;
-  --muted:#64748b;
-  --border:#e5e7eb;
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Poppins', sans-serif;
+      background: radial-gradient(ellipse at 20% 40%, rgba(200, 250, 220, 0.4), rgba(235, 255, 240, 0.9)),
+                  repeating-linear-gradient(45deg, rgba(25, 195, 125, 0.02) 0px, rgba(25, 195, 125, 0.02) 1px, transparent 1px, transparent 12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-  --shadow-sm: 0 10px 25px rgba(0,0,0,0.05);
-  --shadow-md: 0 20px 40px rgba(0,0,0,0.08);
+    /* ========== ENHANCED BACKGROUND MOTION (GREEN THEME) ========== */
+    .bg-glow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
 
-  --radius-xl: 28px;
-  --radius-lg: 18px;
-}
+    .bg-glow::before {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.4), rgba(6, 78, 59, 0.1));
+      top: -20%;
+      left: -20%;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: floatGlow 14s infinite alternate ease-in-out;
+    }
 
-/* BODY */
-body{
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg,#ecfdf5,#d1fae5);
-  min-height:100vh;
-  color:var(--text);
-  position:relative;
-}
+    .bg-glow::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.08));
+      bottom: -20%;
+      right: -20%;
+      border-radius: 50%;
+      filter: blur(90px);
+      animation: floatGlow 18s infinite alternate-reverse ease-in-out;
+    }
 
-/* Language Switcher - FIXED STICKY TOP */
-.lang-switcher-fixed{
-  position:fixed;
-  top:16px;
-  right:16px;
-  z-index:9999;
-  display:flex;
-  gap:10px;
-  background:rgba(0,0,0,0.75);
-  padding:8px 16px;
-  border-radius:50px;
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(34,197,94,0.4);
-  box-shadow:0 6px 18px rgba(0,0,0,0.3);
-}
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      100% { transform: translate(4%, 6%) scale(1.15); opacity: 0.9; }
+    }
 
-.lang-btn-custom{
-  background:none;
-  border:none;
-  color:#22c55e;
-  font-weight:600;
-  cursor:pointer;
-  padding:5px 12px;
-  border-radius:30px;
-  transition:all 0.2s;
-  font-family:'Poppins',sans-serif;
-  font-size:14px;
-}
+    /* ========== LANGUAGE SWITCHER (PREMIUM GLASS) ========== */
+    .lang-switcher-fixed {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 9999;
+      display: flex;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(20px);
+      padding: 5px 12px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
 
-.lang-btn-custom:hover{
-  background:rgba(34,197,94,0.25);
-  transform:scale(1.02);
-}
+    .lang-btn-custom {
+      background: none;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+    }
 
-.lang-sep{
-  color:#ffffffaa;
-}
+    .lang-sep {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-/* WRAP */
-.page-wrap{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-}
+    /* ========== PAGE WRAPPER – EXACT CENTERING ========== */
+    .page-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
 
-/* CARD */
-.success-card{
-  width:100%;
-  max-width:620px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius-xl);
-  padding:36px 30px;
-  box-shadow:var(--shadow-md);
-  text-align:center;
-  animation:fadeUp .6s ease;
-}
+    /* ========== PREMIUM CARD – COMPACT & FITS ONE SCREEN ========== */
+    .success-card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--white-glass);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-premium);
+      text-align: center;
+      animation: cardRise 0.5s ease;
+      /* ensure no scroll – content height will be < viewport */
+      max-height: 94vh;
+      overflow-y: auto;
+    }
 
-/* SUCCESS ICON */
-.success-icon{
-  width:84px;
-  height:84px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--green-soft);
-  color:var(--green-dark);
-  font-size:34px;
-  font-weight:800;
-  animation:pop .4s ease;
-}
+    /* hide scrollbar for clean look (no scroll anyway) */
+    .success-card::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
 
-/* BADGE */
-.top-badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:var(--green-soft);
-  color:var(--green-dark);
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:16px;
-}
+    @keyframes cardRise {
+      0% { opacity: 0; transform: translateY(15px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
-/* TITLE */
-h1{
-  font-size:2rem;
-  margin-bottom:10px;
-}
+    /* ========== ICON ========== */
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 10px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 34px;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
+      animation: popIn 0.4s ease;
+    }
 
-/* TEXT */
-.subtext{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.8;
-  margin-bottom:28px;
-}
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      80% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
 
-/* SUMMARY */
-.summary-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-bottom:20px;
-}
+    .top-badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.18);
+      backdrop-filter: blur(4px);
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--green-dark);
+      border: 0.5px solid rgba(16, 185, 129, 0.4);
+      margin-bottom: 10px;
+    }
 
-.summary-box{
-  background:#f9fafb;
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  padding:16px;
-  box-shadow:var(--shadow-sm);
-  transition:.25s;
-}
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #064e3b, #059669);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 4px;
+      letter-spacing: -0.2px;
+    }
 
-.summary-box:hover{
-  transform:translateY(-3px);
-}
+    .subtext {
+      color: var(--text-light);
+      font-size: 0.72rem;
+      line-height: 1.35;
+      margin-bottom: 18px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-.summary-box span{
-  font-size:12px;
-  color:var(--muted);
-}
+    /* ========== SUMMARY GRID (COMPACT) ========== */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
 
-.summary-box strong{
-  display:block;
-  margin-top:6px;
-  font-size:16px;
-  font-weight:700;
-}
+    .summary-box {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 18px;
+      padding: 8px 6px;
+      transition: all 0.2s ease;
+    }
 
-/* MEMBER ID FULL WIDTH */
-.summary-box.full{
-  grid-column:1 / -1;
-}
+    .summary-box span {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--green-dark);
+    }
 
-/* BUTTON */
-.btn-row{
-  margin-top:16px;
-}
+    .summary-box strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
 
-.btn{
-  min-width:220px;
-  height:52px;
-  border:none;
-  border-radius:999px;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-  background:linear-gradient(135deg,var(--green),var(--green-dark));
-  color:#fff;
-  transition:.3s;
-  box-shadow:0 12px 25px rgba(22,163,74,0.25);
-}
+    .summary-box.full {
+      grid-column: 1 / -1;
+      background: linear-gradient(105deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02));
+      border-color: rgba(16, 185, 129, 0.4);
+    }
 
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 30px rgba(22,163,74,0.35);
-}
+    /* ========== BUTTON ========== */
+    .btn-row {
+      margin-top: 14px;
+    }
 
-.btn:focus{
-  outline:2px solid var(--green);
-  outline-offset:2px;
-}
+    .btn {
+      width: 100%;
+      max-width: 220px;
+      height: 44px;
+      border: none;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(95deg, var(--green-primary), var(--green-dark));
+      color: white;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px -6px rgba(16, 185, 129, 0.45);
+      letter-spacing: 0.3px;
+    }
 
-/* NOTE */
-.bottom-note{
-  margin-top:16px;
-  font-size:12px;
-  color:var(--muted);
-}
+    .btn:active {
+      transform: scale(0.97);
+    }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
+    .bottom-note {
+      margin-top: 12px;
+      font-size: 0.6rem;
+      color: var(--text-light);
+      background: rgba(16, 185, 129, 0.08);
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 30px;
+    }
 
-@keyframes pop{
-  from{transform:scale(0.7);}
-  to{transform:scale(1);}
-}
+    /* ========== MOBILE PERFECT FIT – NO SCROLL ========== */
+    @media (max-width: 640px) {
+      .page-wrap {
+        padding: 10px;
+      }
+      .success-card {
+        padding: 16px 14px;
+        max-width: 480px;
+      }
+      .success-icon {
+        width: 58px;
+        height: 58px;
+        font-size: 30px;
+        margin-bottom: 8px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .subtext {
+        font-size: 0.7rem;
+        margin-bottom: 16px;
+      }
+      .summary-box {
+        padding: 7px 5px;
+      }
+      .summary-box strong {
+        font-size: 0.75rem;
+      }
+      .btn {
+        height: 42px;
+        font-size: 0.75rem;
+      }
+    }
 
-/* ========== RESPONSIVE ========== */
-@media(max-width:768px){
-  body {
-    padding-top: 0;
-  }
-  .lang-switcher-fixed {
-    top: 10px;
-    right: 10px;
-    padding: 6px 12px;
-    gap: 6px;
-  }
-  .lang-btn-custom {
-    font-size: 11px;
-    padding: 3px 8px;
-  }
-  .page-wrap {
-    padding: 70px 20px 20px 20px;
-  }
-  .success-card {
-    padding: 28px 24px;
-  }
-  .success-icon {
-    width: 76px;
-    height: 76px;
-    font-size: 30px;
-  }
-  h1 {
-    font-size: 1.8rem;
-  }
-  .subtext {
-    font-size: 13px;
-  }
-  .summary-box {
-    padding: 14px;
-  }
-  .btn {
-    height: 50px;
-    font-size: 14px;
-  }
-}
+    @media (max-width: 480px) {
+      .success-card {
+        padding: 14px 12px;
+        border-radius: 28px;
+      }
+      .success-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 28px;
+      }
+      .top-badge {
+        font-size: 9px;
+        padding: 3px 12px;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      .subtext {
+        font-size: 0.65rem;
+        margin-bottom: 14px;
+      }
+      .summary-grid {
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .summary-box {
+        padding: 6px 4px;
+        border-radius: 14px;
+      }
+      .summary-box span {
+        font-size: 8px;
+      }
+      .summary-box strong {
+        font-size: 0.7rem;
+      }
+      .btn {
+        height: 40px;
+        font-size: 0.7rem;
+        max-width: 200px;
+      }
+      .bottom-note {
+        font-size: 0.55rem;
+      }
+    }
 
-@media(max-width:640px){
-  .page-wrap {
-    padding: 65px 16px 16px 16px;
-  }
-  .success-card{
-    padding: 20px;
-    border-radius: var(--radius-xl);
-  }
-  .summary-grid{
-    grid-template-columns:1fr;
-  }
-  .btn{
-    width:100%;
-  }
-}
-
-@media(max-width:480px){
-  .lang-switcher-fixed {
-    top: 8px;
-    right: 8px;
-    padding: 5px 10px;
-    gap: 4px;
-  }
-  .lang-btn-custom {
-    font-size: 10px;
-    padding: 3px 6px;
-  }
-  .lang-sep {
-    font-size: 10px;
-  }
-  .page-wrap {
-    padding: 60px 12px 12px 12px;
-  }
-  .success-card {
-    padding: 16px;
-  }
-  .success-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 28px;
-    margin-bottom: 16px;
-  }
-  .top-badge {
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-  h1 {
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-  }
-  .subtext {
-    font-size: 12px;
-    margin-bottom: 24px;
-  }
-  .summary-grid {
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-  .summary-box {
-    padding: 12px;
-  }
-  .summary-box span {
-    font-size: 11px;
-  }
-  .summary-box strong {
-    font-size: 15px;
-  }
-  .btn {
-    height: 48px;
-    font-size: 14px;
-  }
-  .bottom-note {
-    font-size: 11px;
-    margin-top: 14px;
-  }
-}
-
-@media(max-width:360px){
-  .lang-switcher-fixed {
-    top: 6px;
-    right: 6px;
-    padding: 4px 8px;
-  }
-  .lang-btn-custom {
-    font-size: 9px;
-    padding: 2px 5px;
-  }
-  .page-wrap {
-    padding: 55px 10px 10px 10px;
-  }
-  .success-card {
-    padding: 14px;
-  }
-  .success-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-  h1 {
-    font-size: 1.4rem;
-  }
-  .subtext {
-    font-size: 11px;
-  }
-  .summary-box strong {
-    font-size: 14px;
-  }
-  .btn {
-    height: 44px;
-    font-size: 13px;
-  }
-}
-</style>
+    @media (max-width: 380px) {
+      .success-card {
+        padding: 12px 10px;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+      .summary-box strong {
+        font-size: 0.65rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Language Switcher - FIXED STICKY TOP -->
+<!-- PREMIUM GREEN GLOW BACKGROUND -->
+<div class="bg-glow"></div>
+
+<!-- LANGUAGE SWITCHER -->
 <div class="lang-switcher-fixed">
   <button class="lang-btn-custom" onclick="switchLanguage('ta')" id="btnTa">தமிழ்</button>
   <span class="lang-sep">|</span>
@@ -407,17 +405,14 @@ h1{
         <span id="usernameLabel">Username</span>
         <strong id="userName">-</strong>
       </div>
-
       <div class="summary-box">
         <span id="planLabel">Selected Plan</span>
         <strong id="userPlan">-</strong>
       </div>
-
       <div class="summary-box">
         <span id="amountLabel">Amount Paid</span>
         <strong id="userAmount">-</strong>
       </div>
-
       <div class="summary-box">
         <span id="methodLabel">Payment Method</span>
         <strong id="paymentMethod">-</strong>
@@ -440,7 +435,6 @@ h1{
 </div>
 
 <script>
-
 // ============================================
 // LANGUAGE TRANSLATIONS FOR PAYMENT SUCCESS PAGE
 // ============================================
@@ -491,14 +485,12 @@ function applyLanguage(lang) {
   document.getElementById('dashboardBtn').innerText = t.dashboardBtn;
   document.getElementById('bottomNote').innerText = t.bottomNote;
 
-  // Update button styles
   const btnTa = document.getElementById('btnTa');
   const btnEn = document.getElementById('btnEn');
   if (btnTa) btnTa.style.opacity = lang === 'ta' ? '1' : '0.6';
   if (btnEn) btnEn.style.opacity = lang === 'en' ? '1' : '0.6';
 }
 
-// Switch language
 function switchLanguage(lang) {
   applyLanguage(lang);
 }
@@ -513,32 +505,21 @@ const monthly = daily * 30;
 const method = localStorage.getItem("paymentMethod") || "-";
 const memberId = localStorage.getItem("memberID") || "-";
 
-// Update UI
 document.getElementById("userName").textContent = username;
 document.getElementById("userPlan").textContent = plan;
 document.getElementById("userAmount").textContent = `₹${monthly} / month`;
 document.getElementById("paymentMethod").textContent = method;
 document.getElementById("memberId").textContent = memberId;
 
-// ==========================
-// FUNCTION TO GO TO DASHBOARD
-// ==========================
 function goToDashboard(){
-  window.location.href = "core/dashboard.html";
+  window.location.href = "/dashboard/";
 }
 
-// ==========================
-// LOAD SAVED LANGUAGE ON PAGE LOAD
-// ==========================
 document.addEventListener('DOMContentLoaded', function() {
   const savedLang = localStorage.getItem('selectedLanguage');
-  if (savedLang === 'ta') {
-    applyLanguage('ta');
-  } else {
-    applyLanguage('en');
-  }
+  if (savedLang === 'ta') applyLanguage('ta');
+  else applyLanguage('en');
 });
 </script>
-
 </body>
 </html>
