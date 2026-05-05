@@ -445,15 +445,15 @@ button:hover {
         <div class="info">
           <div class="row">
             <span class="icon">📍</span>
-            <span id="addressText">எரணியேல், தமிழ்நாடு</span>
+            <span id="addressText">இரணியல், தமிழ்நாடு</span>
           </div>
           <div class="row">
             <span class="icon">📞</span>
-            <span id="phoneText">+91 89392 58163</span>
+            <span id="phoneText"> +91 8939980178</span>
           </div>
           <div class="row">
             <span class="icon">✉️</span>
-            <span id="emailText">pricegroup@gmail.com</span>
+            <span id="emailText">pricegrouperaniel@gmail.com</span>
           </div>
           <div class="row">
             <span class="icon">⏰</span>
@@ -541,9 +541,9 @@ const translations = {
     descText1: "நிலப் பதிவு, பட்டா மாற்றல், EC விண்ணப்பங்கள் மற்றும் அனைத்து சட்ட ஆவணங்களும் முழு ஆதரவுடன் நிபுணர்களால் கையாளப்படுகின்றன.",
     boldText: "குழப்பம் இல்லை. தாமதம் இல்லை. தெளிவான செயல்முறை மற்றும் விரைவான முடிவு.",
     officeTitle: "தலைமை அலுவலகம்",
-    addressText: "எரணியேல், தமிழ்நாடு",
-    phoneText: "+91 89392 58163",
-    emailText: "pricegroup@gmail.com",
+    addressText: "இரணியல், கன்னியாகுமரி",
+    phoneText: " +91 8939980178",
+    emailText: "pricegrouperaniel@gmail.com",
     hoursText: "திங்கள் – சனி | காலை 9:00 – மாலை 7:00",
     formTitle: "இலவச திரும்ப அழைப்பைக் கோரவும்",
     formSub: "இந்த படிவத்தை நிரப்பவும் — எங்கள் நிர்வாகி சில நிமிடங்களில் உங்களை அழைப்பார்",
@@ -610,6 +610,48 @@ function switchLanguage(lang) {
   applyLanguage(lang);
 }
 
+
+document.getElementById('submitBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const t = translations[currentLang];
+  const name = document.getElementById('fullName').value.trim();
+  const mobile = document.getElementById('mobileNum').value.trim();
+  const service = document.getElementById('serviceSelect').value;
+  const message = document.getElementById('messageText').value.trim();
+
+  if (!name || !mobile) {
+    alert(t.alertFill);
+    return;
+  }
+
+  if (!/^\d{10}$/.test(mobile)) {
+    alert(t.alertValidMobile);
+    return;
+  }
+
+  if (!service) {
+    alert(t.alertSelectService);
+    return;
+  }
+
+  const text = `✨ *Prince Group - Callback Request*
+
+Hi, I would like a callback regarding your services.
+
+━━━━━━━━━━━━━━━
+👤 Name: ${name}
+📞 Mobile: ${mobile}
+🛠️ Service: ${service}
+💬 Message: ${message || 'Not mentioned'}
+
+━━━━━━━━━━━━━━━
+⏰ Submitted: ${new Date().toLocaleString()}
+
+Please contact me at the earliest. Thank you.`;
+
+  window.open(`https://wa.me/8939980178?text=${text}`, '_blank');
+});
 // Go back to home
 
 function goBack() {
