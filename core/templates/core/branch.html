@@ -166,6 +166,7 @@ body{
   overflow:hidden;
   box-shadow:var(--shadow);
   border:1px solid rgba(25,195,125,0.15);
+
 }
 
 .map-card iframe{
@@ -329,6 +330,7 @@ body{
 
   .map-card {
     height: 350px;
+     margin-top: -25px;
   }
 
   .branch-list {
@@ -405,9 +407,7 @@ body{
     </div>
   </div>
 
-  <div class="back-btn">
-    <button class="btn-back" onclick="goBack()" id="backBtn">← முகப்புக்கு செல்லுங்கள்</button>
-  </div>
+
 </div>
 
 <script>
@@ -415,36 +415,46 @@ body{
 const defaultMap = document.getElementById("mapFrame").src;
 
 const branches = [
-  { name:"Kollemcode", nameTa:"கொல்லேம்கோடு", phone:"8939258163", email:"pricegroupkollemcode@gmail.com",
-    map:`https://www.google.com/maps/embed?pb=!4v1776843163505!6m8!1m7!1s6_gPLp3bcY0MwDLSyL8icw!2m2!1d8.303051154351754!2d77.12178449302482!3f140.89!4f1.53!5f0.7820865974627469` },
-  { name:"Palugal", nameTa:"பழுகால்", phone:"8939258163", email:"pricegrouppalugal@gmail.com",
+  { name:"Kollemcode", nameTa:"கொல்லம்கோடு", phone:"8939258163", email:"pricegroupkollemcode@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777961647779!6m8!1m7!1s6_gPLp3bcY0MwDLSyL8icw!2m2!1d8.303051154351754!2d77.12178449302482!3f144.11894703704522!4f2.648569314666048!5f1.1210236159326736` },
+  { name:"Palugal", nameTa:"பழுகல்", phone:"9361073196", email:"pricegrouppalugal@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777445887064!6m8!1m7!1s_9p1hewl12kFp1B9sq5Hsw!2m2!1d8.38861115683139!2d77.16392210601944!3f25.417658012146546!4f-13.74621736150776!5f0.7820865974627469` },
-  { name:"Arumanai", nameTa:"அருமனை", phone:"8939258163", email:"pricegrouparumanai@gmail.com",
-    map:`https://www.google.com/maps/embed?pb=!4v1777446134728!6m8!1m7!1s3Gp7yQzn9wfDnIPxEvSA2w!2m2!1d8.363170322021169!2d77.23440596067171!3f307.7511418365202!4f14.085052040065833!5f0.7820865974627469` },
-  { name:"Marthandam", nameTa:"மார்த்தாண்டம்", phone:"8939258163", email:"princegroupmarthandam@gmail.com",
+  { name:"Arumanai", nameTa:"அருமனை", phone:"8220394178", email:"pricegrouparumanai@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777961945324!6m8!1m7!1s3Gp7yQzn9wfDnIPxEvSA2w!2m2!1d8.363170322021169!2d77.23440596067171!3f357.5947810904755!4f7.056150915508908!5f2.666285629661915` },
+  { name:"Marthandam", nameTa:"மார்த்தாண்டம்", phone:"8870404178", email:"princegroupmarthandam@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777446494486!6m8!1m7!1sBDeu-CxsdDV5vPPe4lbbUw!2m2!1d8.31066470604366!2d77.21102162443817!3f209.26219578781735!4f23.08273664089603!5f0.7820865974627469` },
-  { name:"Thiruvattar", nameTa:"திருவட்டார்", phone:"8939258163", email:"pricegrouppalugal@gmail.com",
+  { name:"Thiruvattar", nameTa:"திருவட்டார்", phone:"9789499178", email:"pricegroupthiruvattar@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777446824926!6m8!1m7!1sXF3iNaSeNSkBPHlDchJpYQ!2m2!1d8.335571840364807!2d77.27184636012184!3f127.80712802207064!4f3.6573773187016485!5f0.7463510912153708` },
-  { name:"Verkilambi", nameTa:"வேர்க்கிளம்பி", phone:"8939258163", email:"princegroupverkilambi@gmail.com",
+  { name:"Verkilambi", nameTa:"வேர்கிளம்பி", phone:"7339070114", email:"princegroupverkilambi@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777447083216!6m8!1m7!1skxSghN5uL-D4v61WcyRq7Q!2m2!1d8.298190697865008!2d77.29049949390692!3f171.7387138807871!4f5.706822846421446!5f0.784780679435263` },
-  { name:"Munchirai", nameTa:"முஞ்சிறை", phone:"8939258163", email:"princegroupmunchirai@gmail.com",
+  { name:"Munchirai", nameTa:"முஞ்சிறை", phone:"8681980178", email:"princegroupmunchirai@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777447207678!6m8!1m7!1sMYyK9BL1VPeqnbTHvxT8Qw!2m2!1d8.285926904084636!2d77.17658822215432!3f158.0393433960191!4f-7.746242401030273!5f0.7820865974627469` },
-  { name:"Karungal", nameTa:"கருங்கல்", phone:"8939258163", email:"princegroupkarungal@gmail.com",
+  { name:"Karungal", nameTa:"கருங்கல்", phone:"9384170178", email:"princegroupkarungal@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777447360228!6m8!1m7!1sOyxNhxuLjSMiyAIKwixa9w!2m2!1d8.131994594883572!2d77.3561682708069!3f348.5428890864595!4f9.794600610492452!5f0.7820865974627469` },
-  { name:"Palliyadi", nameTa:"பள்ளியாடி", phone:"8939258163", email:"princegrouppalliyadi@gmail.com",
+  { name:"Palliyadi", nameTa:"பள்ளியாடி", phone:"9566909178", email:"princegrouppalliyadi@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777447528292!6m8!1m7!1sIn-0vOnK9D9cy4P3l7d-Ow!2m2!1d8.264295167443189!2d77.2554277404138!3f221.98656951100443!4f9.919793163213555!5f0.8421079015677805` },
-  { name:"Thuckalay", nameTa:"தக்கலை", phone:"8939258163", email:"princegroupthuckalay@gmail.com",
+  { name:"Thuckalay", nameTa:"தக்கலை", phone:"9489385178", email:"princegroupthuckalay@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777447708431!6m8!1m7!1sA04KQRIGTJjbwYd0_NsRqQ!2m2!1d8.242120773492644!2d77.31948587206114!3f42.186244499997514!4f3.1828266136056698!5f0.8338601636975929` },
-  { name:"Eraniel", nameTa:"எரணியேல்", phone:"8939258163", email:"princegroup eraniel@gmail.com",
+  { name:"Eraniel", nameTa:"இரணியல்", phone:"8939980178", email:"princegrouperaniel@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777448005471!6m8!1m7!1sQtxr-AxdsWEppUUCexatyw!2m2!1d8.202634240620114!2d77.30558822955749!3f344.9218928974178!4f18.920931423911654!5f2.02543936326639` },
-  { name:"Colachel", nameTa:"குளச்சல்", phone:"8939258163", email:"princegroupcolachel@gmail.com",
-    map:`https://www.google.com/maps/embed?pb=!4v1777448173914!6m8!1m7!1sKKw1jJS0DcNTZ5jdKoI33A!2m2!1d8.180413013943417!2d77.26319811851175!3f189.13334654076579!4f1.8753750681237875!5f1.3283929113968571` },
-  { name:"Manavalakurichi", nameTa:"மணவாளக்குறிச்சி", phone:"8939258163", email:"princegroupmanavalakurichi@gmail.com",
+  { name:"Colachel", nameTa:"குளச்சல்", phone:"9789730012", email:"princegroupcolachel@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777962775085!6m8!1m7!1sKKw1jJS0DcNTZ5jdKoI33A!2m2!1d8.180413013943417!2d77.26319811851175!3f187.48489317922704!4f2.744283025897289!5f2.18887477895931` },
+  { name:"Manavalakurichi", nameTa:"மணவாளக்குறிச்சி", phone:"8220594178", email:"princegroupmanavalakurichi@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777448367040!6m8!1m7!1s_4UxIrKUZjDvoVIMqf29cg!2m2!1d8.175955976134581!2d77.28575379472562!3f155.63561879847697!4f9.842635196095074!5f0.7506375262517648` },
-  { name:"Rajakkamangalam", nameTa:"ராஜாக்கமங்கலம்", phone:"8939258163", email:"princegrouprajakkamangalam@gmail.com",
+  { name:"Rajakkamangalam", nameTa:"ராஜாக்கமங்கலம்", phone:"8300933178", email:"princegrouprajakkamangalam@gmail.com",
     map:`https://www.google.com/maps/embed?pb=!4v1777448502020!6m8!1m7!1sOyxNhxuLjSMiyAIKwixa9w!2m2!1d8.131994594883572!2d77.3561682708069!3f350.10829713408054!4f20.4030181858368!5f1.1929032723261084` },
-  { name:"Nagercoil", nameTa:"நாகர்கோவில்", phone:"8939258163", email:"princegroupnagercoil@gmail.com",
-    map:`https://www.google.com/maps/embed?pb=!4v1777448717747!6m8!1m7!1s7cR-3kSaDAehrom4RFyryw!2m2!1d8.179433096171792!2d77.4303795043014!3f117.97979619624813!4f2.3627068495037093!5f1.3758882561576904` }
+  { name:"Nagercoil", nameTa:"நாகர்கோவில்", phone:"7558165718", email:"princegroupnagercoil@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777448717747!6m8!1m7!1s7cR-3kSaDAehrom4RFyryw!2m2!1d8.179433096171792!2d77.4303795043014!3f117.97979619624813!4f2.3627068495037093!5f1.3758882561576904`} ,
+  { name:"Edaladudi", nameTa:"எடலக்குடி", phone:"", email:"pricegroupedalakudi@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777961173064!6m8!1m7!1s-I7kjRRheD0NOjCDn-6x9Q!2m2!1d8.162449313331829!2d77.44891859994678!3f72.68458978594289!4f-1.5185429198040197!5f0.7820865974627469` },
+  { name:"Kottaram", nameTa:"கொட்டாரம்", phone:"8300228412", email:"pricegroupkottaram@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777961409288!6m8!1m7!1sFSpK6EUEsRfiEZkHmZf2rw!2m2!1d8.117750493777784!2d77.52054533370575!3f271.91560313830655!4f2.0337149155414664!5f1.937082996780962` },
+   { name:"Thovalai", nameTa:"தோவாளை", phone:"6379126460", email:"pricegroupthovalai@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777962363350!6m8!1m7!1sqSDUIwyJo_ZMmjF8DNX7Yw!2m2!1d8.230907771857968!2d77.50532583616587!3f338.15291083290094!4f7.683758442474357!5f0.7820865974627469` },
+   { name:"Boothapandy", nameTa:"பூதபாண்டி", phone:"7448975519", email:"pricegroupboothapandy@gmail.com",
+    map:`https://www.google.com/maps/embed?pb=!4v1777962463877!6m8!1m7!1sdGQ3vfVSepe9L254Cjbfww!2m2!1d8.265667253793607!2d77.444431955357!3f283.0842504896232!4f9.331120921884462!5f1.1035278481974735` },
+
+
 ];
 
 let currentLang = 'ta'; // Default to Tamil
@@ -454,7 +464,6 @@ const translations = {
     headerTitle: 'Locate Us',
     headerSub: 'Pick your nearest branch instantly',
     headOfficeBtn: 'Head Office',
-    backBtn: '← Back to Home',
     call: 'Call',
     map: 'Map'
   },
@@ -480,9 +489,6 @@ function setMap(link) {
   mapFrame.src = link;
 }
 
-function goBack() {
-  window.location.href = 'website.html';
-}
 
 function applyLanguage(lang) {
   currentLang = lang;
@@ -493,7 +499,7 @@ function applyLanguage(lang) {
   document.getElementById('headerTitle').innerText = t.headerTitle;
   document.getElementById('headerSub').innerText = t.headerSub;
   document.getElementById('headOfficeBtn').innerText = t.headOfficeBtn;
-  document.getElementById('backBtn').innerHTML = t.backBtn;
+
 
   // Update button styles
   const btnTa = document.getElementById('btnTa');
@@ -543,6 +549,8 @@ function renderBranches() {
     list.appendChild(div);
   });
 }
+
+
 
 // Load saved language on page load
 document.addEventListener('DOMContentLoaded', function() {
