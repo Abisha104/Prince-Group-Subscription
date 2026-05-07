@@ -688,81 +688,143 @@
       line-height:1.45;
       font-weight:700;
     }
+/* =========================================
+   NAV AFTER HERO
+========================================= */
 
-  /* NAV AFTER HERO */
 .site-header{
-  position:fixed; /* sticky remove pannom */
-  top:-100px; /* initially hide */
+  position:fixed;
+  top:-100px;
   left:0;
   width:100%;
   z-index:1000;
 
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
+
   background:rgba(255,255,255,0.82);
+
   border-bottom:1px solid rgba(25,195,125,0.12);
-  box-shadow:0 10px 30px rgba(16,24,40,0.05);
+
+  box-shadow:
+    0 10px 30px rgba(16,24,40,0.05);
 
   transition:all .4s ease;
+
   opacity:0;
+
+  /* IMPORTANT */
+  overflow:visible;
 }
 
 /* SHOW AFTER SCROLL */
+
 .site-header.show{
   top:0;
   opacity:1;
 }
 
-.site-header .container {
+/* =========================================
+   CONTAINER
+========================================= */
+
+.site-header .container{
   width:100%;
   max-width:100%;
+
   margin:0;
+
   padding:0 20px;
+
+  /* REMOVE relative from here */
+  position:static;
+
+  overflow:visible;
 }
+
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar{
   min-height:58px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:24px;
+
+  /* IMPORTANT */
+  position:relative;
+
+  overflow:visible;
 }
+
+/* =========================================
+   BRAND
+========================================= */
 
 .brand{
   display:flex;
   align-items:center;
-  gap:0px;
+
+  gap:0;
+
   min-width:0;
+
   flex-shrink:0;
 }
 
 .brand img{
   width:90px;
   height:90px;
+
   object-fit:contain;
-  filter:drop-shadow(0 6px 18px rgba(25,195,125,0.20));
+
+  filter:
+    drop-shadow(
+      0 6px 18px rgba(25,195,125,0.20)
+    );
 }
 
 .brand-text{
   display:flex;
   flex-direction:column;
-  gap:0px;
+
+  gap:0;
+
   min-width:0;
-  margin-left: -12px;
+
+  margin-left:-12px;
 }
 
 .brand-text h2{
   font-size:1.12rem;
   line-height:1.1;
+
   margin-bottom:4px;
+
   font-weight:800;
+
   color:var(--logo-dark);
+
   font-family:'Cinzel', serif;
 }
+
 .brand-text .com{
-  background:linear-gradient(90deg, var(--logo-dark) 0%, var(--logo-mid) 34%, var(--logo-light) 72%, var(--green-bright) 100%);
+  background:
+    linear-gradient(
+      90deg,
+      var(--logo-dark) 0%,
+      var(--logo-mid) 34%,
+      var(--logo-light) 72%,
+      var(--green-bright) 100%
+    );
+
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+
   background-clip:text;
   color:transparent;
 }
@@ -770,35 +832,59 @@
 .brand-text p{
   font-size:0.8rem;
   color:#4b5a6b;
+
   line-height:1.2;
 }
+
+/* =========================================
+   DESKTOP NAV
+========================================= */
 
 .nav-links{
   display:flex;
   align-items:center;
+
   gap:22px;
+
   flex:1;
+
   justify-content:flex-end;
 }
 
 .nav-links a{
   position:relative;
+
   font-size:0.95rem;
+
   color:#102031;
+
   font-weight:700;
+
   transition:all .25s ease;
+
   font-family:'Cinzel', serif;
 }
 
 .nav-links a::after{
   content:"";
+
   position:absolute;
+
   left:0;
   bottom:-8px;
+
   width:0;
   height:2px;
+
   border-radius:10px;
-  background:linear-gradient(90deg, var(--green), var(--green-dark));
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--green-dark)
+    );
+
   transition:width .25s ease;
 }
 
@@ -810,154 +896,314 @@
   width:100%;
 }
 
+/* =========================================
+   CTA
+========================================= */
+
 .nav-cta{
   padding:12px 18px;
+
   border-radius:999px;
-  background:linear-gradient(135deg, var(--green-bright), var(--green-dark));
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--green-bright),
+      var(--green-dark)
+    );
+
   color:#fff !important;
-  box-shadow:0 14px 28px rgba(25,195,125,0.22);
+
+  box-shadow:
+    0 14px 28px rgba(25,195,125,0.22);
 }
 
 .nav-cta::after{
   display:none;
 }
-/* ========== MOBILE NAVIGATION - UNIFIED ========== */
- /* ========== MOBILE MENU BUTTON - FULLY VISIBLE ========== */
-  .menu-btn {
-    display: none;  /* hidden on desktop, shown on tablet/mobile via media query */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(25, 195, 125, 0.1);
-    border: 1px solid rgba(25, 195, 125, 0.25);
-    cursor: pointer;
-    gap: 5px;
-    transition: all 0.2s ease;
-    z-index: 1001;
+
+/* =========================================
+   MENU BUTTON
+========================================= */
+
+.menu-btn{
+  display:none;
+
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  width:44px;
+  height:44px;
+
+  border-radius:12px;
+
+  background:rgba(25,195,125,0.1);
+
+  border:1px solid rgba(25,195,125,0.25);
+
+  cursor:pointer;
+
+  gap:5px;
+
+  transition:all .2s ease;
+
+  z-index:1002;
+}
+
+.menu-btn span{
+  display:block;
+
+  width:20px;
+  height:2.5px;
+
+  background:#0f172a;
+
+  border-radius:4px;
+
+  transition:all .25s ease;
+}
+
+.menu-btn:hover{
+  background:rgba(25,195,125,0.2);
+}
+
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+.mobile-nav{
+  position:absolute;
+
+  top:100%;
+  left:0;
+  right:0;
+
+  display:flex;
+  flex-direction:column;
+
+  padding:16px 20px;
+
+  background:rgba(255,255,255,0.98);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(25,195,125,0.15);
+
+  box-shadow:
+    0 20px 30px rgba(0,0,0,0.08);
+
+  border-radius:
+    0 0 22px 22px;
+
+  z-index:9999;
+
+  /* HIDDEN */
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transform:
+    translateY(-10px);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    visibility .3s ease;
+}
+
+/* SHOW */
+
+.mobile-nav.show{
+  opacity:1;
+  visibility:visible;
+
+  pointer-events:auto;
+
+  transform:
+    translateY(0);
+}
+
+/* =========================================
+   MOBILE LINKS
+========================================= */
+
+.mobile-nav a{
+  display:block;
+
+  padding:14px 0;
+
+  font-size:0.95rem;
+
+  font-weight:600;
+
+  color:#0f172a;
+
+  text-decoration:none;
+
+  border-bottom:
+    1px solid rgba(0,0,0,0.05);
+}
+
+.mobile-nav a:last-child{
+  border-bottom:none;
+}
+
+/* =========================================
+   MOBILE CTA
+========================================= */
+
+.mobile-nav .nav-cta{
+  background:
+    linear-gradient(
+      135deg,
+      #27d98d,
+      #109d63
+    );
+
+  color:#fff !important;
+
+  text-align:center;
+
+  padding:12px;
+
+  border-radius:30px;
+
+  margin-top:10px;
+}
+
+/* =========================================
+   MOBILE LANGUAGE
+========================================= */
+
+.lang-switcher-mobile{
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  padding:0 0 16px;
+
+  margin-bottom:8px;
+
+  border-bottom:
+    1px solid rgba(0,0,0,0.05);
+}
+
+.lang-switcher-mobile .lang-btn{
+  background:none;
+
+  border:none;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  padding:6px 12px;
+
+  border-radius:8px;
+}
+
+.lang-switcher-mobile .lang-btn.active{
+  background:#19c37d;
+  color:#fff;
+}
+
+/* =========================================
+   TABLET + MOBILE
+========================================= */
+
+@media (max-width:1199px){
+
+  .menu-btn{
+    display:flex;
   }
 
-  .menu-btn span {
-    display: block;
-    width: 20px;
-    height: 2.5px;
-    background: #0f172a;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+  .nav-links{
+    display:none;
   }
 
-  .menu-btn:hover {
-    background: rgba(25, 195, 125, 0.2);
-    transform: scale(1.02);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:768px){
+
+  .navbar{
+    min-height:70px;
   }
 
-  /* ========== MOBILE NAVIGATION PANEL ========== */
-  .mobile-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(18px);
-    padding: 16px 20px;
-    flex-direction: column;
-    gap: 0;
-    border-bottom: 1px solid rgba(25, 195, 125, 0.15);
-    z-index: 1000;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  .brand img{
+    width:72px;
+    height:72px;
   }
 
-  .mobile-nav.show {
-    display: flex !important;
+  .brand-text h2{
+    font-size:1rem;
   }
 
-  .mobile-nav a {
-    display: block;
-    padding: 14px 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #0f172a;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  .brand-text p{
+    font-size:0.72rem;
   }
 
-  .mobile-nav a:last-child {
-    border-bottom: none;
+  .lang-switcher{
+    display:none;
   }
 
-  .mobile-nav .nav-cta {
-    background: linear-gradient(135deg, #27d98d, #109d63);
-    color: #fff !important;
-    text-align: center;
-    padding: 12px;
-    border-radius: 30px;
-    margin-top: 10px;
-    border-bottom: none;
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width:480px){
+
+  .site-header .container{
+    padding:0 14px;
   }
 
-  .lang-switcher-mobile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 0 16px 0;
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  .menu-btn{
+    width:40px;
+    height:40px;
   }
 
-  .lang-switcher-mobile .lang-btn {
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: background 0.2s;
+  .menu-btn span{
+    width:18px;
   }
 
-  .lang-switcher-mobile .lang-btn.active {
-    background: #19c37d;
-    color: white;
+  .mobile-nav{
+    padding:14px 16px;
   }
 
-  /* ========== MEDIA QUERIES - SHOW MENU BUTTON ON TABLET & MOBILE ========== */
-  @media (max-width: 1199px) {
-    .menu-btn {
-      display: flex !important;
-    }
-    .nav-links {
-      display: none !important;
-    }
+  .mobile-nav a{
+    padding:12px 0;
+    font-size:0.88rem;
   }
 
-  /* For very small screens, adjust spacing */
-  @media (max-width: 480px) {
-    .menu-btn {
-      width: 38px;
-      height: 38px;
-      gap: 4px;
-    }
-    .menu-btn span {
-      width: 16px;
-      height: 2px;
-    }
-    .mobile-nav {
-      padding: 12px 16px;
-    }
-    .mobile-nav a {
-      padding: 10px 0;
-      font-size: 0.85rem;
-    }
+  .brand img{
+    width:64px;
+    height:64px;
   }
 
-  /* Make sure the header container has relative positioning for absolute mobile nav */
-  .site-header .container {
-    position: relative;
+  .brand-text{
+    margin-left:-8px;
   }
 
+  .brand-text h2{
+    font-size:0.92rem;
+  }
+
+  .brand-text p{
+    font-size:0.68rem;
+  }
+
+}
     /* FEATURE CARDS */
 /* FEATURE CARDS */
 .cards-grid{
@@ -971,6 +1217,7 @@
   position:relative;
   background:rgba(255,255,255,0.86);
   border:3px solid rgba(86, 221, 165, 0.14);
+  border-color:rgba(25,195,125,0.22);
   border-radius:28px;
   padding:30px 26px;
   box-shadow:var(--card-shadow);
@@ -1121,6 +1368,74 @@
       box-shadow:0 24px 55px rgba(25,195,125,0.14);
       background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,255,249,0.96));
     }
+
+
+    /* SERVICE BOX */
+.service-row{
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(16,185,129,0.08);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+/* SLIDE RIBBON */
+.service-row::before{
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: -120px;
+
+  width: 180px;
+  height: 100%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(16,185,129,0.08),
+    rgba(255,215,0,0.10)
+  );
+
+  transform: skewX(-28deg);
+
+  transition:
+    right .45s ease,
+    opacity .45s ease;
+
+  opacity: .7;
+
+  z-index: 0;
+}
+
+/* HOVER */
+.service-row:hover{
+  transform: translateY(-4px);
+
+  border-color: rgba(16,185,129,0.18);
+
+  box-shadow:
+    0 18px 35px rgba(0,0,0,0.06);
+}
+
+/* RIBBON SLIDE EFFECT */
+.service-row:hover::before{
+  right: -40px;
+  opacity: 1;
+}
+
+/* CONTENT ABOVE */
+.service-row > *{
+  position: relative;
+  z-index: 2;
+}
+
 
     .service-top{
       display:flex;
@@ -1458,303 +1773,536 @@
     z-index: 0;
   }
 
-  /* ----- PRICING GRID (FLEXIBLE + MOBILE PERFECT) ----- */
-  .pricing-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    position: relative;
-    z-index: 2;
+/* =========================================
+   PRICING GRID - FULL RESPONSIVE PREMIUM UI
+========================================= */
+
+.pricing-grid{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  flex-wrap:wrap;
+  gap:2rem;
+  width:100%;
+  margin-top:2.5rem;
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.price-card{
+  position:relative;
+  flex:1 1 320px;
+  max-width:360px;
+  min-width:280px;
+
+  padding:2rem 1.6rem;
+
+  overflow:hidden;
+  border-radius:2.5rem;
+
+  background:#fff;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+  isolation:isolate;
+}
+
+/* =========================================
+   ROTATING BORDER
+========================================= */
+
+.price-card::before{
+  content:"";
+  position:absolute;
+  inset:-150%;
+
+  background:conic-gradient(
+    #10b981,
+    #ffd700,
+    #34d399,
+    #10b981
+  );
+
+  animation:rotateBorder 4s linear infinite;
+  z-index:0;
+}
+
+/* =========================================
+   INNER LAYER
+========================================= */
+
+.price-card::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+
+  border-radius:calc(2.5rem - 2px);
+
+  background:rgba(255,255,255,0.97);
+
+  z-index:1;
+}
+
+/* =========================================
+   POPULAR CARD BG
+========================================= */
+
+.price-card.popular::after{
+  background:linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #f3fff7 28%,
+    #dcfce7 58%,
+    #ffe8b3 100%
+  );
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.price-card > *{
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================
+   HOVER
+========================================= */
+
+.price-card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* POPULAR ONLY */
+.price-card.popular:hover{
+  transform:
+    perspective(1000px)
+    rotateX(3deg)
+    rotateY(3deg)
+    translateY(-10px);
+
+  box-shadow:
+    0 30px 45px -15px rgba(16,185,129,.28);
+}
+
+/* =========================================
+   RIBBON
+========================================= */
+
+.ribbon{
+  position:absolute;
+  top:20px;
+  right:-42px;
+
+  padding:7px 42px;
+
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:#fff;
+
+  transform:rotate(45deg);
+
+  z-index:5;
+
+  box-shadow:
+    0 10px 18px rgba(0,0,0,.12);
+}
+
+.price-card.popular .ribbon{
+  background:linear-gradient(
+    95deg,
+    #f59e0b,
+    #d97706
+  );
+}
+
+.price-card:not(.popular) .ribbon{
+  background:linear-gradient(
+    95deg,
+    #64748b,
+    #475569
+  );
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.plan-label{
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  color:#10b981;
+
+  margin-bottom:.6rem;
+}
+
+.plan-name{
+  font-size:2rem;
+  line-height:1.2;
+  font-weight:800;
+
+  background:linear-gradient(
+    125deg,
+    #064e3b,
+    #10b981
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+
+  margin-bottom:.5rem;
+}
+
+.plan-price{
+  font-size:2.8rem;
+  font-weight:800;
+
+  color:#0f172a;
+
+  margin-bottom:1rem;
+}
+
+.plan-price span{
+  font-size:1rem;
+  font-weight:500;
+  color:#475569;
+}
+
+.plan-desc{
+  font-size:.92rem;
+  line-height:1.7;
+  color:#334155;
+
+  margin-bottom:1.7rem;
+
+  min-height:78px;
+}
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.feature-list{
+  list-style:none;
+  margin-bottom:2rem;
+}
+
+.feature-list li{
+  position:relative;
+
+  padding-left:1.9rem;
+  margin-bottom:1rem;
+
+  font-size:.9rem;
+  font-weight:500;
+  line-height:1.5;
+
+  color:#1e293b;
+
+  transition:transform .2s ease;
+}
+
+.feature-list li:hover{
+  transform:translateX(5px);
+}
+
+.feature-list li::before{
+  content:"✓";
+
+  position:absolute;
+  left:0;
+  top:1px;
+
+  width:1.2rem;
+  height:1.2rem;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#10b981;
+  color:#fff;
+
+  font-size:.72rem;
+
+  box-shadow:
+    0 4px 8px rgba(16,185,129,.35);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.subscribe-btn{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+
+  padding:.95rem 1rem;
+
+  border:none;
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-size:.92rem;
+  font-weight:800;
+
+  overflow:hidden;
+  cursor:pointer;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.btn-primary{
+  background:linear-gradient(
+    95deg,
+    #10b981,
+    #059669
+  );
+
+  color:#fff;
+
+  box-shadow:
+    0 12px 24px -10px rgba(16,185,129,.45);
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 16px 28px -12px rgba(16,185,129,.55);
+}
+
+.btn-secondary{
+  background:#fff;
+
+  color:#10b981;
+
+  border:1px solid rgba(16,185,129,.35);
+}
+
+.btn-secondary:hover{
+  background:#10b981;
+  color:#fff;
+}
+
+/* =========================================
+   BORDER ANIMATION
+========================================= */
+
+@keyframes rotateBorder{
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width:1400px){
+
+  .pricing-grid{
+    gap:2.5rem;
   }
 
-  /* ----- MODERN CARD WITH 3D TILT & GLOW ----- */
-  .price-card {
-    flex: 1 1 300px;
-    max-width: 350px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    border-radius: 2.5rem;
-    padding: 2rem 1.5rem;
-    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-    transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+  .price-card{
+    max-width:380px;
+  }
+}
+
+/* =========================================
+   LAPTOP
+========================================= */
+
+@media (max-width:1200px){
+
+  .pricing-grid{
+    gap:1.8rem;
   }
 
-  /* 3D tilt effect on hover (mouse follow) */
-  .price-card:hover {
-    transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-8px);
-    border-color: #10b981;
-    box-shadow: 0 30px 45px -15px rgba(16, 185, 129, 0.3);
-    background: rgba(255, 255, 255, 0.98);
+  .price-card{
+    max-width:340px;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width:992px){
+
+  .pricing-grid{
+    gap:1.5rem;
   }
 
-  /* Animated gradient border (pulse effect) */
-  .price-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 2.5rem;
-    padding: 2px;
-    background: linear-gradient(125deg, transparent, #10b981, #34d399, transparent);
-   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-   -webkit-mask-composite: xor;
-   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-   mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s;
-    pointer-events: none;
-  }
-  .price-card:hover::before {
-    opacity: 1;
-    animation: borderPulse 1.5s infinite;
-  }
-  @keyframes borderPulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
+  .price-card{
+    flex:1 1 calc(50% - 1.5rem);
+    max-width:100%;
   }
 
-  /* ---- POPULAR CARD (MOST CHOSEN) - EXTRA GLAM ---- */
-  .price-card.popular {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), #d1fae5);
-    border: 1px solid #10b981;
-    box-shadow: 0 25px 40px -14px rgba(16, 185, 129, 0.4);
-    transform: scale(1.02);
-  }
-  .price-card.popular:hover {
-    transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.02) translateY(-10px);
-  }
-  .price-card.popular::before {
-    background: linear-gradient(125deg, #10b981, #fbbf24, #10b981);
+  .plan-name{
+    font-size:1.8rem;
   }
 
-  /* ----- RIBBON – MODERN BOUNCE + GLOW ----- */
-  .ribbon {
-    position: absolute;
-    top: 18px;
-    right: -34px;
-    background: linear-gradient(95deg, #10b981, #059669);
-    color: white;
-    padding: 6px 42px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    transform: rotate(45deg);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-    z-index: 2;
-    text-transform: uppercase;
-    transition: all 0.2s;
+  .plan-price{
+    font-size:2.5rem;
   }
-  .price-card.popular .ribbon {
-    background: linear-gradient(95deg, #f59e0b, #d97706);
-    animation: ribbonBounce 0.8s infinite alternate;
-  }
-  @keyframes ribbonBounce {
-    from { transform: rotate(45deg) translateY(0); }
-    to { transform: rotate(45deg) translateY(-3px); }
-  }
-  .price-card:not(.popular) .ribbon {
-    background: linear-gradient(95deg, #64748b, #475569);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:768px){
+
+  .pricing-grid{
+    flex-direction:column;
+    align-items:center;
+    gap:1.4rem;
   }
 
-  /* ----- TYPOGRAPHY (BOLDER, MODERN) ----- */
-  .plan-label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #10b981;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .plan-name {
-    font-size: 1.8rem;
-    font-weight: 800;
-    background: linear-gradient(125deg, #064e3b, #10b981);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0.5rem;
-  }
-  .plan-price {
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 0.8rem;
-  }
-  .plan-price span {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #475569;
-  }
-  .plan-desc {
-    color: #334155;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    min-height: 70px;
+  .price-card{
+    width:100%;
+    max-width:100%;
+    min-width:100%;
+
+    padding:1.7rem 1.3rem;
+
+    border-radius:2rem;
   }
 
-  /* ---- FEATURE LIST WITH ANIMATED CHECK ICONS ---- */
-  .feature-list {
-    list-style: none;
-    margin-bottom: 2rem;
-  }
-  .feature-list li {
-    position: relative;
-    padding-left: 1.8rem;
-    margin-bottom: 0.8rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #1e293b;
-    transition: transform 0.2s;
-  }
-  .feature-list li:hover {
-    transform: translateX(5px);
-  }
-  .feature-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: -1px;
-    width: 1.2rem;
-    height: 1.2rem;
-    background: #10b981;
-    color: white;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
-    transition: transform 0.2s, background 0.2s;
-  }
-  .feature-list li:hover::before {
-    transform: scale(1.1);
-    background: #059669;
+  .price-card:hover,
+  .price-card.popular:hover{
+    transform:translateY(-6px);
   }
 
-  /* ---- BUTTONS (GLASS, HOVER RIPPLE) ---- */
-  .subscribe-btn {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    padding: 0.9rem 0;
-    border-radius: 60px;
-    font-weight: 800;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-    background: #f8fafc;
-    color: #0f172a;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-  }
-  .subscribe-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-  }
-  .subscribe-btn:hover::after {
-    left: 100%;
-  }
-  .btn-primary {
-    background: linear-gradient(95deg, #10b981, #059669);
-    color: white;
-    box-shadow: 0 10px 20px -8px rgba(16, 185, 129, 0.5);
-  }
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px -10px rgba(16, 185, 129, 0.7);
-  }
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(16, 185, 129, 0.5);
-    color: #10b981;
-  }
-  .btn-secondary:hover {
-    background: #10b981;
-    color: white;
-    transform: translateY(-3px);
+  .plan-label{
+    font-size:.65rem;
   }
 
-  /* ========== RESPONSIVE (MOBILE PERFECT) ========== */
-  @media (max-width: 1024px) {
-    .price-card {
-      max-width: 320px;
-    }
-  }
-  @media (max-width: 768px) {
-    .pricing-grid {
-      gap: 1.5rem;
-    }
-    .price-card {
-      max-width: 100%;
-      padding: 1.5rem;
-    }
-    .price-card.popular {
-      transform: scale(1);
-    }
-    .price-card.popular:hover {
-      transform: translateY(-8px);
-    }
-    .plan-name {
-      font-size: 1.6rem;
-    }
-    .plan-price {
-      font-size: 2.2rem;
-    }
-    .ribbon {
-      font-size: 0.65rem;
-      padding: 4px 36px;
-      top: 14px;
-      right: -30px;
-    }
-  }
-  @media (max-width: 480px) {
-    .price-card {
-      padding: 1.2rem;
-    }
-    .plan-desc {
-      min-height: auto;
-      font-size: 0.8rem;
-    }
-    .feature-list li {
-      font-size: 0.8rem;
-      padding-left: 1.6rem;
-    }
-    .subscribe-btn {
-      padding: 0.7rem;
-      font-size: 0.8rem;
-    }
+  .plan-name{
+    font-size:1.65rem;
   }
 
-  /* ========== STAGGERED SCROLL REVEAL + 3D TILT SCRIPT ========== */
-  .price-card.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  .plan-price{
+    font-size:2.2rem;
   }
-  .price-card.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
+
+  .plan-desc{
+    min-height:auto;
+    font-size:.85rem;
   }
-  .price-card:nth-child(1).show { transition-delay: 0.1s; }
-  .price-card:nth-child(2).show { transition-delay: 0.2s; }
-  .price-card:nth-child(3).show { transition-delay: 0.3s; }
+
+  .feature-list li{
+    font-size:.84rem;
+  }
+
+  .subscribe-btn{
+    font-size:.85rem;
+    padding:.85rem;
+  }
+
+  .ribbon{
+    top:18px;
+    right:-42px;
+
+    font-size:.62rem;
+    padding:6px 40px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width:480px){
+
+  .pricing-grid{
+    gap:1.2rem;
+  }
+
+  .price-card{
+    padding:1.4rem 1.1rem;
+    border-radius:1.8rem;
+  }
+
+  .plan-name{
+    font-size:1.45rem;
+  }
+
+  .plan-price{
+    font-size:2rem;
+  }
+
+  .feature-list li{
+    padding-left:1.7rem;
+    margin-bottom:.85rem;
+  }
+
+  .ribbon{
+    top:16px;
+    right:-46px;
+
+    padding:5px 42px;
+
+    font-size:.58rem;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width:360px){
+
+  .price-card{
+    padding:1.2rem .95rem;
+  }
+
+  .plan-name{
+    font-size:1.3rem;
+  }
+
+  .plan-price{
+    font-size:1.8rem;
+  }
+
+  .subscribe-btn{
+    font-size:.8rem;
+  }
+
+  .ribbon{
+    right:-50px;
+  }
+}
 /* FEATURES */
 .feature-list{
   list-style:none;
@@ -2403,17 +2951,46 @@
 #contact.section-soft {
   position: relative;
   padding: 100px 0;
-  background: #ffffff;
   overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(16,185,129,0.12) 0%,
+      transparent 32%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(255,215,0,0.12) 0%,
+      transparent 35%
+    ),
+
+    #ffffff;
 }
 
 #contact.section-soft::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(25,195,125,0.03) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(25,195,125,0.02) 0%, transparent 60%);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(16,185,129,0.10) 0%,
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(255,215,0,0.10) 0%,
+      transparent 40%
+    );
+
+  filter: blur(30px);
+
   animation: slowMove 16s infinite alternate ease-in-out;
+
   pointer-events: none;
 }
 
@@ -2437,7 +3014,12 @@
 /* Cards */
 .contact-box,
 .contact-form {
-  background: #ffffff;
+  background: linear-gradient(
+  135deg,
+  rgba(16, 185, 129, 0.18) 0%,
+  rgba(52, 211, 153, 0.14) 38%,
+  rgba(255, 215, 120, 0.16) 100%
+);
   border-radius: 28px;
   padding: 40px 36px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
@@ -3522,7 +4104,7 @@ img {
 
 .section, .hero, .site-header {
   max-width: 100vw;
-  overflow: hidden;
+
 }
 
 
@@ -4091,9 +4673,7 @@ img {
     height: 40px;
   }
 
-  .nav-links {
-    display: none;
-  }
+
 }
 
 /* ============================================== */
@@ -4468,57 +5048,143 @@ img {
       </div>
     </div>
   </section>
+<!-- NAVBAR STARTS AFTER HERO -->
+<header class="site-header">
+  <div class="container">
 
-  <!-- NAVBAR STARTS AFTER HERO -->
-  <header class="site-header">
-    <div class="container">
-      <div class="navbar">
-        <a href="#home" class="brand">
-          <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
-          <div class="brand-text">
-            <h2>Prince Group<span class="com"> of Company</span></h2>
-            <p>Trusted registration & subscription platform</p>
-          </div>
-        </a>
+    <div class="navbar">
 
-        <nav class="nav-links">
-          <a href="#overview" data-i18n="nav.overview">Explore</a>
-          <a href="#services" data-i18n="nav.services">Features</a>
-          <a href="#plans" data-i18n="nav.plans">Pricing</a>
-          <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
-          <a href="#testimonials" data-i18n="nav.testimonials">Reviews</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
-          <a href="login.html" class="nav-cta" data-i18n="nav.login">Member Login</a>
-        </nav>
+      <a href="#home" class="brand">
+        <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
 
-        <!-- LANGUAGE SWITCHER -->
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="ta" onclick="switchLanguage('ta')">TA</button>
-          <span class="lang-separator">|</span>
-          <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <div class="brand-text">
+          <h2>
+            Prince Group
+            <span class="com"> of Company</span>
+          </h2>
+
+          <p>
+            Trusted registration & subscription platform
+          </p>
         </div>
+      </a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="mobile-nav" id="mobileNav">
-        <div class="lang-switcher-mobile">
-          <button class="lang-btn" data-lang="ta" onclick="switchLanguage('ta')">TA</button>
-          <span class="lang-separator">|</span>
-          <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
-        </div>
-        <a href="#overview" data-i18n="nav.overview">Overview</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
-        <a href="#plans" data-i18n="nav.plans">Plans</a>
+      <!-- DESKTOP NAV -->
+      <nav class="nav-links">
+        <a href="#overview" data-i18n="nav.overview">Explore</a>
+        <a href="#services" data-i18n="nav.services">Features</a>
+        <a href="#plans" data-i18n="nav.plans">Pricing</a>
         <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
         <a href="#testimonials" data-i18n="nav.testimonials">Reviews</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a href="login.html" class="nav-cta" data-i18n="nav.login">Member Login</a>
+
+        <a
+          href="login.html"
+          class="nav-cta"
+          data-i18n="nav.login"
+        >
+          Member Login
+        </a>
+      </nav>
+
+      <!-- LANGUAGE SWITCHER -->
+      <div class="lang-switcher">
+
+        <button
+          class="lang-btn active"
+          data-lang="ta"
+          onclick="switchLanguage('ta')"
+        >
+          TA
+        </button>
+
+        <span class="lang-separator">|</span>
+
+        <button
+          class="lang-btn"
+          data-lang="en"
+          onclick="switchLanguage('en')"
+        >
+          EN
+        </button>
+
       </div>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Toggle Menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- MOBILE NAVIGATION -->
+      <div class="mobile-nav" id="mobileNav">
+
+        <div class="lang-switcher-mobile">
+
+          <button
+            class="lang-btn active"
+            data-lang="ta"
+            onclick="switchLanguage('ta')"
+          >
+            TA
+          </button>
+
+          <span class="lang-separator">|</span>
+
+          <button
+            class="lang-btn"
+            data-lang="en"
+            onclick="switchLanguage('en')"
+          >
+            EN
+          </button>
+
+        </div>
+
+        <a href="#overview" data-i18n="nav.overview">
+          Overview
+        </a>
+
+        <a href="#services" data-i18n="nav.services">
+          Services
+        </a>
+
+        <a href="#plans" data-i18n="nav.plans">
+          Plans
+        </a>
+
+        <a href="#benefits" data-i18n="nav.benefits">
+          Benefits
+        </a>
+
+        <a href="#testimonials" data-i18n="nav.testimonials">
+          Reviews
+        </a>
+
+        <a href="#contact" data-i18n="nav.contact">
+          Contact
+        </a>
+
+        <a
+          href="login.html"
+          class="nav-cta"
+          data-i18n="nav.login"
+        >
+          Member Login
+        </a>
+
+      </div>
+      <!-- MOBILE NAV END -->
+
     </div>
-  </header>
+
+  </div>
+</header>
 
   <main>
     <!-- OVERVIEW -->
