@@ -3011,6 +3011,54 @@
   z-index: 2;
 }
 
+
+
+.wave-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 500px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.wave-decoration svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tablet and desktop – keep as is */
+@media (min-width: 768px) {
+  .wave-decoration {
+    top: 20px;
+    max-width: 420px;
+  }
+}
+
+/* Mobile – reduce size, move lower, or lower opacity */
+@media (max-width: 767px) {
+  .wave-decoration {
+    top: 60px;
+    max-width: 280px;
+    opacity: 0.55;
+  }
+}
+
+/* Very small phones – optional hide if still overlapping */
+@media (max-width: 480px) {
+  .wave-decoration {
+    top: 80px;
+    max-width: 220px;
+    opacity: 0.4;
+  }
+}
+
+
+
+
 /* Cards */
 .contact-box,
 .contact-form {
@@ -5054,21 +5102,20 @@ img {
 
     <div class="navbar">
 
-      <a href="#home" class="brand">
-        <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
+     <a href="#home" class="brand">
+  <img src="{% static 'images/logo_clean.png' %}" alt="Prince Group Logo">
 
-        <div class="brand-text">
-          <h2>
-            Prince Group
-            <span class="com"> of Company</span>
-          </h2>
+  <div class="brand-text">
+    <h2>
+      <span data-i18n="brand.name">Prince Group</span>
+      <span class="com" data-i18n="brand.suffix"> of Company</span>
+    </h2>
 
-          <p>
-            Trusted registration & subscription platform
-          </p>
-        </div>
-      </a>
-
+    <p data-i18n="brand.tagline">
+      Trusted registration & subscription platform
+    </p>
+  </div>
+</a>
       <!-- DESKTOP NAV -->
       <nav class="nav-links">
         <a href="#overview" data-i18n="nav.overview">Explore</a>
@@ -5636,9 +5683,9 @@ img {
 
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span> 💎 Member Advantages</div>
-      <h2 class="section-title">Why Customers <span class="grad">Choose Subscription</span></h2>
-      <p class="section-subtitle">
+      <div class="eyebrow"><span class="dot"></span> <span data-i18n="benefits.eyebrow">💎 Member Advantages</span></div>
+      <h2 class="section-title"><span data-i18n="benefits.title">Why Customers </span><span class="grad" data-i18n="benefits.title.highlight">Choose Subscription</span></h2>
+      <p class="section-subtitle" data-i18n="benefits.subtitle">
         Our subscription model delivers real savings, priority handling, and ongoing support –
         making every interaction faster, smoother, and more valuable.
       </p>
@@ -5667,40 +5714,40 @@ img {
           </svg>
         </div>
 
-        <div class="eyebrow"><span class="dot"></span> ⚡ Premium / Member Services</div>
-        <h3>Choose a plan that fits your needs – and unlock exclusive benefits instantly.</h3>
-        <p>
+        <div class="eyebrow"><span class="dot"></span> <span data-i18n="benefits.main.eyebrow">⚡ Premium / Member Services</span></div>
+        <h3 data-i18n="benefits.main.title">Choose a plan that fits your needs – and unlock exclusive benefits instantly.</h3>
+        <p data-i18n="benefits.main.text">
           Subscribed members enjoy reduced fees, faster turnarounds, dedicated follow‑up,
           and priority access – saving both time and money on every service request.
         </p>
 
         <div class="member-highlight">
-          <strong>✅ What’s included in every membership:</strong>
-          <span>✔ Priority Processing  ✔ Reduced Fees  ✔ Dedicated Executive  ✔ Faster Approval  ✔ Doorstep Service  ✔ Exclusive Offers</span>
+          <strong data-i18n="benefits.member.highlight.title">✅ What’s included in every membership:</strong>
+          <span data-i18n="benefits.member.highlight.list">✔ Priority Processing  ✔ Reduced Fees  ✔ Dedicated Executive  ✔ Faster Approval  ✔ Doorstep Service  ✔ Exclusive Offers</span>
         </div>
 
         <div class="point-list">
           <div class="point-item reveal stagger-item">
             <div class="point-icon">💰</div>
             <div>
-              <h4>Up to 75% savings on document work</h4>
-              <p>Compared to one‑time service charges, subscribers pay significantly less per document – ideal for multiple transactions.</p>
+              <h4 data-i18n="benefits.point1.title">Up to 75% savings on document work</h4>
+              <p data-i18n="benefits.point1.text">Compared to one‑time service charges, subscribers pay significantly less per document – ideal for multiple transactions.</p>
             </div>
           </div>
 
           <div class="point-item reveal stagger-item">
             <div class="point-icon">⚡</div>
             <div>
-              <h4>Priority service flow</h4>
-              <p>Your requests are moved to the front of the queue. Get faster responses, quicker processing, and less waiting time.</p>
+              <h4 data-i18n="benefits.point2.title">Priority service flow</h4>
+              <p data-i18n="benefits.point2.text">Your requests are moved to the front of the queue. Get faster responses, quicker processing, and less waiting time.</p>
             </div>
           </div>
 
           <div class="point-item reveal stagger-item">
             <div class="point-icon">🤝</div>
             <div>
-              <h4>Long‑term relationship benefits</h4>
-              <p>We learn your history, anticipate your needs, and provide consistent, reliable support year after year.</p>
+              <h4 data-i18n="benefits.point3.title">Long‑term relationship benefits</h4>
+              <p data-i18n="benefits.point3.text">We learn your history, anticipate your needs, and provide consistent, reliable support year after year.</p>
             </div>
           </div>
         </div>
@@ -5710,26 +5757,26 @@ img {
       <div class="benefits-grid">
         <div class="mini-benefit reveal stagger-item">
           <div class="feature-icon">🚀</div>
-          <h4>Faster Response</h4>
-          <p>Subscribers get replies in hours, not days – plus a dedicated contact person.</p>
+          <h4 data-i18n="benefits.mini1.title">Faster Response</h4>
+          <p data-i18n="benefits.mini1.text">Subscribers get replies in hours, not days – plus a dedicated contact person.</p>
         </div>
 
         <div class="mini-benefit reveal stagger-item">
           <div class="feature-icon">💎</div>
-          <h4>Better Value</h4>
-          <p>Save 40% to 75% compared to standard rates. The more you use, the more you save.</p>
+          <h4 data-i18n="benefits.mini2.title">Better Value</h4>
+          <p data-i18n="benefits.mini2.text">Save 40% to 75% compared to standard rates. The more you use, the more you save.</p>
         </div>
 
         <div class="mini-benefit reveal stagger-item">
           <div class="feature-icon">🔒</div>
-          <h4>Trusted Process</h4>
-          <p>Transparent documentation, clear communication, and zero hidden charges.</p>
+          <h4 data-i18n="benefits.mini3.title">Trusted Process</h4>
+          <p data-i18n="benefits.mini3.text">Transparent documentation, clear communication, and zero hidden charges.</p>
         </div>
 
         <div class="mini-benefit reveal stagger-item">
           <div class="feature-icon">📞</div>
-          <h4>Ongoing Support</h4>
-          <p>We stay connected – follow‑up, reminders, and assistance whenever you need it.</p>
+          <h4 data-i18n="benefits.mini4.title">Ongoing Support</h4>
+          <p data-i18n="benefits.mini4.text">We stay connected – follow‑up, reminders, and assistance whenever you need it.</p>
         </div>
       </div>
     </div>
@@ -5763,7 +5810,22 @@ img {
     <!-- CONTACT -->
 
 <section class="section section-soft" id="contact">
-  <div class="container">
+
+   <div class="wave-decoration" aria-hidden="true">
+    <svg viewBox="0 0 420 180" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="flowGold3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#b8860b" stop-opacity="0.55"/>
+        <stop offset="55%" stop-color="#daa520" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#0f8a5c" stop-opacity="0.6"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,120 C70,88 120,152 190,108 C258,66 304,124 420,54" fill="none" stroke="url(#flowGold3)" stroke-width="2.2"/>
+    <path d="M0,148 C70,116 120,178 190,134 C258,92 304,150 420,78" fill="none" stroke="url(#flowGold3)" stroke-width="1.8"/>
+  </svg>
+  </div>
+
+  <div class="container" style="position: relative; z-index: 1;">
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot"></span> <span data-i18n="contact.eyebrow">Contact Us</span></div>
       <h2 class="section-title"><span data-i18n="contact.title">Let’s Help You </span><span class="grad" data-i18n="contact.title.highlight">Faster</span></h2>
@@ -5813,40 +5875,41 @@ img {
           </div>
         </div>
 
-       <div class="stats-wrapper">
-  <!-- animated label will be injected via JS but also static fallback -->
-  <div class="stats-label">✨ Click to view details ✨</div>
-  <div class="stats-strip">
-    <!-- BRANCH item with mobile text -->
-    <div class="stats-item">
-      <a href="branch.html" class="stats-mini" title="View all 20+ branch locations">
-        <strong>20+</strong>
-        <span data-i18n="contact.branches">Branches</span>
-      </a>
-      <span class="stats-mobile-label">🗺️ Our Branch Locations</span>
-    </div>
-    <!-- CUSTOMERS item -->
-    <div class="stats-item">
-      <a href="customer.html" class="stats-mini" title="Read customer success stories">
-        <strong>50K+</strong>
-        <span data-i18n="contact.customers">Customers</span>
-      </a>
-      <span class="stats-mobile-label">⭐ Our Customer Reviews</span>
-    </div>
-    <!-- FAST RESPONSE item -->
-    <div class="stats-item">
-      <a href="fastresponse.html" class="stats-mini highlight" title="See our response commitment">
-        <strong>Fast</strong>
-        <span data-i18n="contact.response">Response</span>
-      </a>
-      <span class="stats-mobile-label">📞 Instant Call Back</span>
-    </div>
-  </div>
-</div>
+        <div class="stats-wrapper">
+          <div class="stats-label" data-i18n="stats.label">✨ Click to view details ✨</div>
+          <div class="stats-strip">
+            <div class="stats-item">
+              <a href="branch.html" class="stats-mini" title="View all 20+ branch locations">
+                <strong>20+</strong>
+                <span data-i18n="contact.branches">Branches</span>
+              </a>
+              <span class="stats-mobile-label" data-i18n="stats.branch.mobile">🗺️ Our Branch Locations</span>
+            </div>
+            <div class="stats-item">
+              <a href="customer.html" class="stats-mini" title="Read customer success stories">
+                <strong>50K+</strong>
+                <span data-i18n="contact.customers">Customers</span>
+              </a>
+              <span class="stats-mobile-label" data-i18n="stats.customer.mobile">⭐ Our Customer Reviews</span>
+            </div>
+            <div class="stats-item">
+              <a href="fastresponse.html" class="stats-mini highlight" title="See our response commitment">
+                <strong>Fast</strong>
+                <span data-i18n="contact.response">Response</span>
+              </a>
+              <span class="stats-mobile-label" data-i18n="stats.response.mobile">📞 Instant Call Back</span>
+            </div>
+          </div>
+        </div>
       </div>
+
       <!-- RIGHT CARD (FORM) -->
       <div class="contact-form reveal">
+
+
+
         <h3 data-i18n="contact.form.title">Send Your Enquiry</h3>
+
         <p data-i18n="contact.form.text">
           Fill in your details and our team will contact you shortly with the right support.
         </p>
@@ -5854,55 +5917,55 @@ img {
         <form id="contactForm">
           <div class="form-grid">
             <div class="form-group">
-              <label>Full Name</label>
+              <label data-i18n="contact.form.name">Full Name</label>
               <div class="input-wrap">
                 <span>👤</span>
-                <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
+                <input type="text" id="name" name="user_name" data-i18n-placeholder="contact.form.name.placeholder" placeholder="Enter your name" required>
               </div>
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
+              <label data-i18n="contact.form.phone">Phone Number</label>
               <div class="input-wrap">
                 <span>📱</span>
-                <input type="tel" id="phone" name="user_phone" placeholder="Enter your mobile number" required>
+                <input type="tel" id="phone" name="user_phone" data-i18n-placeholder="contact.form.phone.placeholder" placeholder="Enter your mobile number" required>
               </div>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
+              <label data-i18n="contact.form.email">Email Address</label>
               <div class="input-wrap">
                 <span>✉️</span>
-                <input type="email" id="email" name="user_email" placeholder="Enter your email">
+                <input type="email" id="email" name="user_email" data-i18n-placeholder="contact.form.email.placeholder" placeholder="Enter your email">
               </div>
             </div>
             <div class="form-group">
-              <label>Service Type</label>
+              <label data-i18n="contact.form.service">Service Type</label>
               <div class="input-wrap">
                 <span>📂</span>
                 <select id="service" name="service_type" required>
-                  <option value="">Select a service</option>
-                  <option>Property Documentation</option>
-                  <option>Loan & Mortgage Service</option>
-                  <option>Agreement & Contract</option>
-                  <option>Legal Verification</option>
-                  <option>Registration & Government Service</option>
-                  <option>Land & Revenue Service</option>
-                  <option>Business Documentation</option>
-                  <option>Subscription Enquiry</option>
+                  <option value="" data-i18n="contact.form.service.default">Select a service</option>
+                  <option data-i18n="contact.form.service.option1">Property Documentation</option>
+                  <option data-i18n="contact.form.service.option2">Loan & Mortgage Service</option>
+                  <option data-i18n="contact.form.service.option3">Agreement & Contract</option>
+                  <option data-i18n="contact.form.service.option4">Legal Verification</option>
+                  <option data-i18n="contact.form.service.option5">Registration & Government Service</option>
+                  <option data-i18n="contact.form.service.option6">Land & Revenue Service</option>
+                  <option data-i18n="contact.form.service.option7">Business Documentation</option>
+                  <option data-i18n="contact.form.service.option8">Subscription Enquiry</option>
                 </select>
               </div>
             </div>
             <div class="form-group full">
-              <label>Message</label>
+              <label data-i18n="contact.form.message">Message</label>
               <div class="input-wrap">
                 <span>📝</span>
-                <textarea id="message" name="user_message" placeholder="Tell us what support you need"></textarea>
+                <textarea id="message" name="user_message" data-i18n-placeholder="contact.form.message.placeholder" placeholder="Tell us what support you need"></textarea>
               </div>
             </div>
             <div class="form-group full">
-              <button type="submit" class="btn btn-primary" data-ripple>Send Enquiry</button>
+              <button type="submit" class="btn btn-primary" data-ripple data-i18n="contact.form.submit">Send Enquiry</button>
             </div>
           </div>
-          <div class="form-note" id="formNote">
+          <div class="form-note" id="formNote" data-i18n="contact.form.note">
             Your enquiry has been submitted successfully.
           </div>
         </form>
@@ -6367,6 +6430,9 @@ document.querySelectorAll(".subscribe-btn").forEach(btn => {
 const translations = {
   'en': {
     // Navigation
+      "brand.name": "Prince Group",
+"brand.suffix": " of Company",
+"brand.tagline": "Trusted registration & subscription platform",
     "nav.overview": "Explore",
     "nav.services": "Services",
     "nav.plans": "Plans",
@@ -6542,6 +6608,23 @@ const translations = {
     "contact.form.phone.placeholder": "Enter your mobile number",
     "contact.form.email.placeholder": "Enter your email",
     "contact.form.message.placeholder": "Tell us what support you need",
+       "stats.label": "✨ Click to view details ✨",
+
+    "stats.branch.mobile": "🗺️ Our Branch Locations",
+
+    "stats.customer.mobile": "⭐ Our Customer Reviews",
+
+    "stats.response.mobile": "📞 Instant Call Back",
+
+      "contact.form.service.default": "Select a service",
+"contact.form.service.option1": "Property Documentation",
+"contact.form.service.option2": "Loan & Mortgage Service",
+"contact.form.service.option3": "Agreement & Contract",
+"contact.form.service.option4": "Legal Verification",
+"contact.form.service.option5": "Registration & Government Service",
+"contact.form.service.option6": "Land & Revenue Service",
+"contact.form.service.option7": "Business Documentation",
+"contact.form.service.option8": "Subscription Enquiry",
 
     // Footer
     "footer.brand": "Prince Groups",
@@ -6561,6 +6644,9 @@ const translations = {
   },
   'ta': {
     // Navigation
+      "brand.name": "பிரின்ஸ் குரூப்",
+"brand.suffix": " நிறுவனம்",
+"brand.tagline": "நம்பகமான பதிவு & சந்தா தளம்",
     "nav.overview": "ஆராய்க",
     "nav.services": "சேவைகள்",
     "nav.plans": "திட்டங்கள்",
@@ -6736,6 +6822,24 @@ const translations = {
     "contact.form.phone.placeholder": "உங்கள் மொபைல் எண்ணை உள்ளீடு செய்யவும்",
     "contact.form.email.placeholder": "உங்கள் மின்னஞ்சலை உள்ளீடு செய்யவும்",
     "contact.form.message.placeholder": "எந்த ஆதரவு தேவை என்பதை எங்களுக்கு சொல்லுங்கள்",
+
+    "stats.label": "✨ விவரங்களை பார்க்க கிளிக் செய்யவும் ✨",
+
+    "stats.branch.mobile": "🗺️ எங்கள் கிளை இடங்கள்",
+
+    "stats.customer.mobile": "⭐ வாடிக்கையாளர் மதிப்புரைகள்",
+
+    "stats.response.mobile": "📞 உடனடி அழைப்பு சேவை",
+
+      "contact.form.service.default": "சேவையைத் தேர்வு செய்க",
+"contact.form.service.option1": "சொத்து ஆவணம்",
+"contact.form.service.option2": "கடன் & அடமான சேவை",
+"contact.form.service.option3": "ஒப்பந்தம் & ஒப்பந்தங்கள்",
+"contact.form.service.option4": "சட்ட சரிபார்ப்பு",
+"contact.form.service.option5": "பதிவு & அரசு சேவை",
+"contact.form.service.option6": "நிலம் & வருவாய் சேவை",
+"contact.form.service.option7": "வணிக ஆவணம்",
+"contact.form.service.option8": "சந்தா விசாரணை",
 
     // Footer
     "footer.brand": "பிரின்ஸ்  குரூப்",
