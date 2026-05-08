@@ -12,10 +12,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('subscription.html', views.subscription_page, name='subscription_html'),
     path('payment.html', views.payment_page, name='payment_html'),
-    path('payment-success.html', views.payment_success, name='payment_success_html'),
+    path('payment-success/', views.payment_success, name='payment_success'),
     path('login/', views.login_view, name='login'),
-    path('dashboard/', views.customer_dashboard, name='customer_dashboard'),
+    path("customer_dashboard/", views.customer_dashboard, name="customer_dashboard"),
     path('logout/', views.logout_view, name='logout'),
+path("set-session/", views.set_session),
 
 
 path('branch.html', TemplateView.as_view(template_name='core/branch.html'), name='branch'),
