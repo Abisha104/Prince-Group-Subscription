@@ -1024,8 +1024,23 @@ function goPayment(){
 
           if(data.status === "success"){
 
+              localStorage.setItem("username", username);
+  localStorage.setItem("paymentMethod", "Razorpay");
+  localStorage.setItem("memberID", "PG" + Date.now());
+
+
+
+   // 🔥 IMPORTANT: session create call
+ fetch("/set-session/", {
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({
+    customer_id: localStorage.getItem("memberID")
+  })
+});
+
             // ✅ REDIRECT SUCCESS PAGE
-            window.location.href = "/payment-success.html";
+            window.location.href = "/payment-success/";
 
           } else {
             alert("Payment verification failed");
