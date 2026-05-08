@@ -268,28 +268,34 @@ def create_order(request):
             "key": settings.RAZORPAY_KEY_ID
         })
 
-
-# 🔹 VERIFY PAYMENT
 @csrf_exempt
 def verify_payment(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
+    data = json.loads(request.body)
 
-        payment_id = data.get("razorpay_payment_id")
-        order_id = data.get("razorpay_order_id")
-        signature = data.get("razorpay_signature")
+    payment_id = data.get("razorpay_payment_id")
+    order_id = data.get("razorpay_order_id")
+    signature = data.get("razorpay_signature")
 
-        generated_signature = hmac.new(
-            bytes(settings.RAZORPAY_KEY_SECRET, 'utf-8'),
-            bytes(order_id + "|" + payment_id, 'utf-8'),
-            hashlib.sha256
-        ).hexdigest()
+    client = razorpay.Client(
+        auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
+    )
 
-        if generated_signature == signature:
-            return JsonResponse({"status": "success"})
-        else:
-            return JsonResponse({"status": "failed"})
+    try:
+        client.utility.verify_payment_signature({
+            "razorpay_order_id": order_id,
+            "razorpay_payment_id": payment_id,
+            "razorpay_signature": signature
+        })
 
+        request.session["payment_verified"] = True
+
+        return JsonResponse({"status": "success"})
+
+    except Exception as e:
+        return JsonResponse({
+            "status": "failed",
+            "error": str(e)
+        })
 
 
 def payment_success(request):
@@ -321,6 +327,7 @@ def login_view(request):
 
 
 def customer_dashboard(request):
+    print("SESSION DATA:", request.session.get("customer_id"))
     customer_id = request.session.get('customer_id')
 
     if not customer_id:
@@ -354,4 +361,10 @@ def logout_view(request):
     return redirect('index')
 
 
+@csrf_exempt
+def set_session(request):
+    data = json.loads(request.body)
 
+    request.session["temp_customer_id"] = data.get("customer_id")
+
+    return JsonResponse({"status": "ok"})
